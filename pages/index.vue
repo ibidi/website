@@ -14,9 +14,10 @@
             </span>
             <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <Icon name="logos:spotify-icon" class="w-4 h-4" />
-              <template v-if="currentTrack.isPlaying && currentTrack.song">
+              <template v-if="currentTrack.song">
                 <a :href="currentTrack.song.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
                   {{ currentTrack.song.title }} - {{ currentTrack.song.artist }}
+                  <span v-if="!currentTrack.isPlaying" class="text-xs text-zinc-500">(son çalan)</span>
                 </a>
               </template>
               <span v-else>Listening to Nothing</span>
@@ -391,6 +392,12 @@ interface CurrentTrack {
     albumArt: string
     url: string
   } | null
+  lastPlayed?: {
+    title: string
+    artist: string
+    albumArt: string
+    url: string
+  }
 }
 
 const currentTrack = ref<CurrentTrack>({
@@ -399,22 +406,47 @@ const currentTrack = ref<CurrentTrack>({
 })
 
 let lastSongTitle = ref<string | null>(null)
+let lastPlayedSong = ref<CurrentTrack['song']>(null)
 
 const fetchCurrentTrack = async () => {
   try {
     const { data } = await useFetch('/api/spotify/now-playing')
+    console.log('Spotify API yanıtı:', data.value)
+    
     if (data.value) {
       const newTrack = data.value as CurrentTrack
       
-      // Sadece şarkı değiştiyse güncelle
-      if (newTrack.song?.title !== lastSongTitle.value) {
+      if (newTrack.isPlaying && newTrack.song) {
+        // Aktif çalan şarkı varsa güncelle ve son çalanı kaydet
         currentTrack.value = newTrack
-        lastSongTitle.value = newTrack.song?.title || null
-        console.log('Şarkı güncellendi:', newTrack.song?.title)
+        lastSongTitle.value = newTrack.song.title
+        lastPlayedSong.value = newTrack.song
+        console.log('Şarkı güncellendi:', newTrack.song.title)
+      } else if (lastPlayedSong.value) {
+        // Aktif çalan yoksa ama son çalan varsa onu göster
+        currentTrack.value = {
+          isPlaying: false,
+          song: lastPlayedSong.value
+        }
+        console.log('Son çalan şarkı gösteriliyor:', lastPlayedSong.value.title)
       }
+    } else {
+      console.log('API yanıtı boş geldi')
     }
   } catch (error) {
-    console.error('Spotify API hatası:', error)
+    console.error('Spotify API detaylı hata:', error)
+    // Hata durumunda son çalan şarkıyı göster
+    if (lastPlayedSong.value) {
+      currentTrack.value = {
+        isPlaying: false,
+        song: lastPlayedSong.value
+      }
+    } else {
+      currentTrack.value = {
+        isPlaying: false,
+        song: null
+      }
+    }
   }
 }
 
