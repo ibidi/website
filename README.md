@@ -12,7 +12,7 @@
 </p>
 
 <div align="center">
-  <img src="public/preview.png" alt="Website Preview" width="100%" />
+  <img src="https://i.hizliresim.com/q41aejn.png" alt="Website Preview" width="100%" />
 </div>
 
 ## ✨ Features
@@ -88,8 +88,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ibidi/blog.git
-   cd blog
+   git clone https://github.com/ibidi/website.git
+   cd website
    ```
 
 2. **Install dependencies**
