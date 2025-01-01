@@ -67,6 +67,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  title: 'Blog'
+})
+
 const selectedTags = ref<string[]>([])
 
 const { data: posts } = await useAsyncData('posts', () => 
@@ -77,8 +81,8 @@ const { data: posts } = await useAsyncData('posts', () =>
 
 const uniqueTags = computed(() => {
   const tags = new Set<string>()
-  posts.value?.forEach(post => {
-    post.tags?.forEach(tag => tags.add(tag))
+  posts.value?.forEach((post) => {
+    post.tags?.forEach((tag: string) => tags.add(tag))
   })
   return Array.from(tags)
 })

@@ -33,6 +33,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  title: 'Projects'
+})
+
 interface FeaturedProject {
   id: number
   title: string

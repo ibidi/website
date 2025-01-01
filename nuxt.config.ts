@@ -35,14 +35,15 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Kişisel Blog ve Portföy',
+      titleTemplate: '%s - ibidi.tr',
+      title: 'Home',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Kişisel blog ve portföy sitesi' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: 'https://i.hizliresim.com/q41aejn.png' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }
       ]
     }

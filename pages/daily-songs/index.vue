@@ -118,6 +118,11 @@ interface Song {
   isVideo: boolean
 }
 
+interface ApiResponse {
+  songs: Song[]
+  error?: string
+}
+
 const loading = ref(true)
 const error = ref('')
 const songs = ref<Song[]>([])
@@ -128,8 +133,7 @@ const fetchSongs = async () => {
     loading.value = true
     error.value = ''
 
-    // Server API'den şarkıları al
-    const response = await $fetch('/api/songs')
+    const response = await $fetch<ApiResponse>('/api/songs')
 
     // Error kontrolü
     if ('error' in response) {
@@ -197,5 +201,9 @@ const filteredSongs = computed(() => {
   })
 
   return filtered
+})
+
+definePageMeta({
+  title: 'Daily Songs'
 })
 </script> 

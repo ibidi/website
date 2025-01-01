@@ -178,6 +178,10 @@ const getLanguageIcon = (language: string | null) => {
 onMounted(() => {
   fetchRepositories()
 })
+
+definePageMeta({
+  title: 'Repositories'
+})
 </script>
 
 <style lang="postcss">

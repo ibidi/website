@@ -425,6 +425,10 @@ onMounted(() => {
   // Her 10 saniyede bir kontrol et (çok sık değil)
   setInterval(fetchCurrentTrack, 10000)
 })
+
+definePageMeta({
+  title: 'Home'
+})
 </script>
 
 <style lang="postcss">
