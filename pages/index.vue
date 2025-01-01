@@ -121,7 +121,7 @@
                       <Icon name="carbon:bot" class="text-base text-green-500" />
                     </div>
                     <div>
-                      <h3 class="text-base font-medium text-zinc-200">EGGSY's Discord Bot</h3>
+                      <h3 class="text-base font-medium text-zinc-200">Not Bilgi Teknolojileri</h3>
                       <p class="text-sm text-zinc-400">Developer, Social Media Expert, IT</p>
                       <p class="text-xs text-zinc-500 mt-1">2023-2025</p>
                     </div>
