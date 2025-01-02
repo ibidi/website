@@ -1,114 +1,68 @@
+<!-- Command Menu -->
 <template>
-  <div v-if="isOpen" class="fixed inset-0 z-50">
-    <!-- Backdrop -->
-    <div class="fixed inset-0 bg-black/60" @click="close"></div>
+  <div>
+    <!-- Overlay -->
+    <div v-if="isOpen" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" @click="close"></div>
 
     <!-- Menu -->
-    <div class="fixed inset-6 md:inset-auto md:left-1/2 md:top-24 md:-translate-x-1/2 md:w-[640px] bg-zinc-900/95 backdrop-blur rounded-xl border border-zinc-800 shadow-xl p-4">
-      <!-- Search -->
-      <div class="p-3">
-        <input
-          ref="searchInput"
-          v-model="search"
-          type="text"
-          placeholder="Type a command or search"
-          class="w-full bg-transparent text-lg text-zinc-200 placeholder-zinc-500 outline-none border-b border-zinc-800 pb-3 mb-4"
-        >
-      </div>
+    <div v-if="isOpen" class="fixed inset-x-4 top-4 z-50 max-w-2xl mx-auto">
+      <div class="bg-white dark:bg-zinc-900 rounded-lg shadow-xl border border-zinc-200 dark:border-zinc-700/50 overflow-hidden">
+        <!-- Search Input -->
+        <div class="p-4 border-b border-zinc-200 dark:border-zinc-700/50">
+          <div class="flex items-center gap-2">
+            <Icon name="carbon:search" class="text-lg text-zinc-400" />
+            <input
+              ref="searchInput"
+              v-model="search"
+              type="text"
+              placeholder="Type a command or search"
+              class="w-full bg-transparent text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 focus:outline-none"
+              @keydown.esc="close"
+            >
+          </div>
+        </div>
 
-      <!-- Menu Items -->
-      <div class="p-2 max-h-[60vh] overflow-y-auto">
         <!-- Navigation -->
-        <div class="mb-6">
-          <h3 class="text-sm text-zinc-500 px-2 mb-4">Navigation</h3>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-            <NuxtLink 
-              to="/" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
+        <div class="p-2">
+          <div class="px-2 py-1.5 text-xs font-medium text-zinc-400 uppercase">Navigation</div>
+          <div class="mt-2">
+            <NuxtLink
+              v-for="item in navigation"
+              :key="item.path"
+              :to="item.path"
+              class="flex items-center gap-2 px-3 py-2 text-sm text-zinc-600 dark:text-zinc-400 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
               @click="close"
             >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:home" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Home</span>
-            </NuxtLink>
-            <NuxtLink 
-              to="/blog" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
-              @click="close"
-            >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:blog" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Blog</span>
-            </NuxtLink>
-            <NuxtLink 
-              to="/projects" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
-              @click="close"
-            >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:tools" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Projects</span>
-            </NuxtLink>
-            <NuxtLink 
-              to="/donate" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
-              @click="close"
-            >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:currency-dollar" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Donate</span>
-            </NuxtLink>
-            <NuxtLink 
-              to="/daily-songs" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
-              @click="close"
-            >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:music" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Daily Song</span>
+              <Icon :name="item.icon" class="text-base" />
+              {{ item.name }}
             </NuxtLink>
           </div>
         </div>
 
         <!-- Me -->
-        <div class="mb-6">
-          <h3 class="text-sm text-zinc-500 px-2 mb-4">Me</h3>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-            <NuxtLink 
-              to="/repositories" 
-              class="group relative flex items-center gap-3 text-zinc-400 hover:text-zinc-200 rounded-lg p-3 transition-colors duration-200 overflow-hidden"
+        <div class="p-2 border-t border-zinc-200 dark:border-zinc-700/50">
+          <div class="px-2 py-1.5 text-xs font-medium text-zinc-400 uppercase">Me</div>
+          <div class="mt-2">
+            <NuxtLink
+              v-for="item in me"
+              :key="item.path"
+              :to="item.path"
+              class="flex items-center gap-2 px-3 py-2 text-sm text-zinc-600 dark:text-zinc-400 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
               @click="close"
             >
-              <div class="absolute inset-0 bg-zinc-800/0 group-hover:bg-zinc-800/50 transition-colors duration-200"></div>
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 animate-gradient-x"></div>
-              </div>
-              <Icon name="carbon:folder" class="text-2xl text-zinc-500 relative z-10" />
-              <span class="text-base relative z-10">Repositories</span>
+              <Icon :name="item.icon" class="text-base" />
+              {{ item.name }}
             </NuxtLink>
           </div>
         </div>
-      </div>
 
-      <!-- Footer -->
-      <div class="absolute bottom-2 left-3 flex items-center gap-2 text-xs text-zinc-500 mt-4 pt-4 border-t border-zinc-800">
-        <kbd class="px-1.5 py-0.5 bg-[#2A2E3B] rounded">ESC</kbd>
-        <span>to close</span>
+        <!-- Keyboard Shortcut -->
+        <div class="p-4 border-t border-zinc-200 dark:border-zinc-700/50">
+          <div class="flex items-center justify-end gap-2 text-xs text-zinc-400">
+            <kbd class="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700">esc</kbd>
+            <span>to close</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -117,36 +71,22 @@
 <script setup lang="ts">
 const isOpen = ref(false)
 const search = ref('')
-const searchInput = ref<HTMLInputElement>()
+const searchInput = ref<HTMLInputElement | null>(null)
 
-const navigationItems = [
-  { title: 'Home', href: '/', icon: 'carbon:home' },
-  { title: 'Blog', href: '/blog', icon: 'carbon:blog' },
-  { title: 'Projects', href: '/projects', icon: 'carbon:tool-kit' },
-  { title: 'Donate', href: '/donate', icon: 'carbon:currency-dollar' },
-  { title: 'Daily Song', href: '/daily-songs', icon: 'carbon:music' }
+const navigation = [
+  { name: 'Home', path: '/', icon: 'carbon:home' },
+  { name: 'Blog', path: '/blog', icon: 'carbon:document' },
+  { name: 'Projects', path: '/projects', icon: 'carbon:tool-kit' },
+  { name: 'Daily Song', path: '/daily-songs', icon: 'carbon:music' },
 ]
 
-const meItems = [
-  { title: 'Repositories', href: '/repositories', icon: 'carbon:folder' }
+const me = [
+  { name: 'Repositories', path: '/repositories', icon: 'carbon:code' },
 ]
-
-const filteredNavigationItems = computed(() => {
-  if (!search.value) return navigationItems
-  return navigationItems.filter(item =>
-    item.title.toLowerCase().includes(search.value.toLowerCase())
-  )
-})
-
-const filteredMeItems = computed(() => {
-  if (!search.value) return meItems
-  return meItems.filter(item =>
-    item.title.toLowerCase().includes(search.value.toLowerCase())
-  )
-})
 
 const open = () => {
   isOpen.value = true
+  // Menü açıldığında input'a odaklanma
   nextTick(() => {
     searchInput.value?.focus()
   })
@@ -157,20 +97,16 @@ const close = () => {
   search.value = ''
 }
 
-// Klavye kısayolu
+// Global kısayol tuşu
 onMounted(() => {
   const handleKeydown = (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault()
       if (isOpen.value) {
         close()
       } else {
         open()
       }
-    }
-
-    if (e.key === 'Escape' && isOpen.value) {
-      close()
     }
   }
 
@@ -180,25 +116,27 @@ onMounted(() => {
   })
 })
 
+// Dışa aktarılan metodlar
 defineExpose({
   open,
   close
 })
-</script> 
+</script>
 
-<style>
-@keyframes gradient-x {
-  0% {
-    background-size: 200% 100%;
-    background-position: 0% 0%;
-  }
-  100% {
-    background-size: 200% 100%;
-    background-position: -200% 0%;
-  }
+<style lang="postcss">
+::selection {
+  @apply bg-violet-500/20 text-violet-200;
 }
 
-.animate-gradient-x {
-  animation: gradient-x 3s linear infinite;
+::-moz-selection {
+  @apply bg-violet-500/20 text-violet-200;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
 }
 </style> 

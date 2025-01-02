@@ -45,7 +45,10 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://i.hizliresim.com/q41aejn.png' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }
-      ]
+      ],
+      htmlAttrs: {
+        class: 'light'
+      }
     }
   }
 })

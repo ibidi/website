@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 pt-32 md:pt-40">
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
     <div class="container mx-auto max-w-4xl">
       <div class="flex flex-col gap-20">
         <div class="space-y-6">
@@ -52,117 +52,26 @@
         </div>
 
         <!-- Experience & Education -->
-        <div class="grid gap-20 md:grid-cols-2">
+        <div class="grid gap-8 md:grid-cols-2">
           <!-- Experience -->
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="text-xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
-            </div>
-
+            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
             <div class="space-y-4">
-              <!-- Demirayak Yazılım -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-red-500/10 flex items-center justify-center">
-                      <Icon name="carbon:development" class="text-base text-red-500" />
-                    </div>
-                    <div>
-                      <div class="flex items-center gap-2">
-                        <h3 class="text-base font-medium text-zinc-200">Demirayak Yazılım</h3>
-                        <span class="px-2 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded">PRESENT</span>
+              <div v-for="job in jobs" :key="job.id" class="group">
+                <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                        <Icon :name="job.icon" class="text-base text-violet-500" />
                       </div>
-                      <p class="text-sm text-zinc-400">Full Stack Developer</p>
-                      <p class="text-xs text-zinc-500 mt-1">2019-Present</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Vien -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-blue-500/10 flex items-center justify-center">
-                      <Icon name="carbon:shopping-bag" class="text-base text-blue-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">Vien Bag</h3>
-                      <p class="text-sm text-zinc-400">Web Developer</p>
-                      <p class="text-xs text-zinc-500 mt-1">2024-2025</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- As Aksis -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-indigo-500/10 flex items-center justify-center">
-                      <Icon name="carbon:face-satisfied" class="text-base text-indigo-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">As Aksis Güzellik Merkezleri</h3>
-                      <p class="text-sm text-zinc-400">Web Developer</p>
-                      <p class="text-xs text-zinc-500 mt-1">2023-2025</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Not Bilgi Teknolojileri -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-green-500/10 flex items-center justify-center">
-                      <Icon name="carbon:laptop" class="text-base text-green-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">Not Bilgi Teknolojileri</h3>
-                      <p class="text-sm text-zinc-400">Developer, Social Media Expert, IT</p>
-                      <p class="text-xs text-zinc-500 mt-1">2023-2025</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ASEDE -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center">
-                      <Icon name="carbon:shopping-cart" class="text-base text-purple-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">ASEDE</h3>
-                      <p class="text-sm text-zinc-400">Developer</p>
-                      <p class="text-xs text-zinc-500 mt-1">2023-2024</p>
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ job.company }}</h3>
+                          <span v-if="job.isPresent" class="px-2 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded">PRESENT</span>
+                        </div>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ job.title }}</p>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ job.date }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -172,69 +81,20 @@
 
           <!-- Education -->
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="text-xl font-medium text-zinc-200">Education</h2>
-            </div>
-
+            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Education</h2>
             <div class="space-y-4">
-              <!-- Istanbul Gelisim University -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-emerald-500/10 flex items-center justify-center">
-                      <Icon name="carbon:education" class="text-base text-emerald-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">Istanbul Gelisim University</h3>
-                      <p class="text-sm text-zinc-400">Computer Programming</p>
-                      <p class="text-xs text-zinc-500 mt-1">2019-2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Anadolu University -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-sky-500/10 flex items-center justify-center">
-                      <Icon name="carbon:education" class="text-base text-sky-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">Anadolu University</h3>
-                      <p class="text-sm text-zinc-400">Web Design and Development</p>
-                      <p class="text-xs text-zinc-500 mt-1">2023-2025</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Istanbul Arel University -->
-              <div class="group relative">
-                <div class="block p-4 bg-zinc-900/50 hover:text-zinc-200 rounded-lg transition-colors duration-200 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                  <div class="absolute inset-0 bg-zinc-800/50"></div>
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                  </div>
-                  <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-md bg-orange-500/10 flex items-center justify-center">
-                      <Icon name="carbon:education" class="text-base text-orange-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-200">Istanbul Arel University</h3>
-                      <p class="text-sm text-zinc-400">Software Engineering</p>
-                      <p class="text-xs text-zinc-500 mt-1">2022-2026</p>
+              <div v-for="education in educations" :key="education.id" class="group">
+                <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                        <Icon name="carbon:education" class="text-base text-violet-500" />
+                      </div>
+                      <div>
+                        <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ education.school }}</h3>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ education.field }}</p>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ education.date }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -244,153 +104,74 @@
         </div>
 
         <!-- Technologies -->
-        <div class="space-y-8">
-          <h2 class="text-xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
-
-          <!-- Development -->
-          <div class="space-y-8">
-            <h2 class="text-xl text-zinc-200">DEVELOPMENT</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
+        <div class="space-y-4">
+          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- Frontend -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:application-web" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Frontend</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Vue.js, React.js, TypeScript, TailwindCSS</p>
+                    </div>
+                  </div>
                 </div>
-                <Icon name="logos:typescript-icon" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">TypeScript</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:vue" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Vue.js</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:react" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">React.js</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:html-5" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">HTML5</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:tailwindcss-icon" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Tailwind CSS</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:nodejs-icon" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Node.js</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:sass" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Sass</span>
               </div>
             </div>
-          </div>
 
-          <!-- Apps -->
-          <div class="space-y-8">
-            <h2 class="text-xl text-zinc-200">APPS</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
+            <!-- Backend -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:data-base" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Backend</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Node.js, PHP, MySQL, MongoDB</p>
+                    </div>
+                  </div>
                 </div>
-                <Icon name="logos:visual-studio-code" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">VS Code</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="simple-icons:raycast" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Raycast</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:figma" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Figma</span>
               </div>
             </div>
-          </div>
 
-          <!-- Services -->
-          <div class="space-y-8">
-            <h2 class="text-xl text-zinc-200">SERVICES</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
+            <!-- Tools -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:tools" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Tools</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">VS Code, Git, Docker, Figma</p>
+                    </div>
+                  </div>
                 </div>
-                <Icon name="logos:github-icon" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">GitHub</span>
               </div>
+            </div>
 
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
+            <!-- Cloud -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:cloud" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Cloud</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">AWS, Netlify, Vercel, DigitalOcean</p>
+                    </div>
+                  </div>
                 </div>
-                <Icon name="logos:firebase" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Firebase</span>
-              </div>
-
-              <div class="group relative flex items-center gap-3 bg-zinc-900/50 hover:text-zinc-200 rounded-lg p-4 transition-colors duration-200 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10"></div>
-                <div class="absolute inset-0 bg-zinc-800/50"></div>
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div class="absolute inset-px bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 group-hover:animate-gradient-x"></div>
-                </div>
-                <Icon name="logos:netlify" class="w-8 h-8 relative z-10" />
-                <span class="text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 relative z-10">Netlify</span>
               </div>
             </div>
           </div>
@@ -478,6 +259,82 @@ onMounted(() => {
 definePageMeta({
   title: 'Home'
 })
+
+interface Job {
+  id: number
+  company: string
+  title: string
+  date: string
+  icon: string
+  isPresent?: boolean
+}
+
+interface Education {
+  id: number
+  school: string
+  field: string
+  date: string
+}
+
+const jobs: Job[] = [
+  {
+    id: 1,
+    company: 'Demirayak Yazılım',
+    title: 'Full Stack Developer',
+    date: '2019-Present',
+    icon: 'carbon:development',
+    isPresent: true
+  },
+  {
+    id: 2,
+    company: 'Vien Bag',
+    title: 'Web Developer',
+    date: '2024-2025',
+    icon: 'carbon:shopping-bag'
+  },
+  {
+    id: 3,
+    company: 'As Aksis Güzellik Merkezleri',
+    title: 'Web Developer',
+    date: '2023-2025',
+    icon: 'carbon:face-satisfied'
+  },
+  {
+    id: 4,
+    company: 'Not Bilgi Teknolojileri',
+    title: 'Developer, Social Media Expert, IT',
+    date: '2023-2025',
+    icon: 'carbon:laptop'
+  },
+  {
+    id: 5,
+    company: 'ASEDE',
+    title: 'Developer',
+    date: '2023-2024',
+    icon: 'carbon:shopping-cart'
+  }
+]
+
+const educations: Education[] = [
+  {
+    id: 1,
+    school: 'Istanbul Gelisim University',
+    field: 'Computer Programming',
+    date: '2019-2021'
+  },
+  {
+    id: 2,
+    school: 'Anadolu University',
+    field: 'Web Design and Development',
+    date: '2023-2025'
+  },
+  {
+    id: 3,
+    school: 'Istanbul Arel University',
+    field: 'Software Engineering',
+    date: '2022-2026'
+  }
+]
 </script>
 
 <style lang="postcss">
