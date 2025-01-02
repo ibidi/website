@@ -25,13 +25,30 @@
           </div>
 
           <p class="text-base text-zinc-600 dark:text-zinc-400">
-            Self taught full-stack developer from Turkey. Making projects with <span class="text-red-500">❤️</span>
+            Full Stack Web Developer - in ❤️ with Node.js, TypeScript, PHP, React.js and Vue.js - 🇹🇷
           </p>
 
-          <a href="mailto:info@ibidi.tr" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-            <Icon name="carbon:email" class="text-base" />
-            Contact
-          </a>
+          <div class="flex items-center gap-3">
+            <a href="mailto:info@ibidi.tr" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+              <Icon name="carbon:email" class="text-base" />
+              Contact
+            </a>
+
+            <div class="flex items-center gap-2">
+              <a href="https://github.com/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <Icon name="carbon:logo-github" class="text-xl" />
+              </a>
+              <a href="https://twitter.com/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <Icon name="carbon:logo-twitter" class="text-xl" />
+              </a>
+              <a href="https://linkedin.com/in/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <Icon name="carbon:logo-linkedin" class="text-xl" />
+              </a>
+              <a href="https://instagram.com/ibidi.dev" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <Icon name="carbon:logo-instagram" class="text-xl" />
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Experience & Education -->
@@ -53,7 +70,7 @@
                   </div>
                   <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-md bg-red-500/10 flex items-center justify-center">
-                      <Icon name="carbon:globe" class="text-base text-red-500" />
+                      <Icon name="carbon:development" class="text-base text-red-500" />
                     </div>
                     <div>
                       <div class="flex items-center gap-2">
@@ -77,7 +94,7 @@
                   </div>
                   <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-md bg-blue-500/10 flex items-center justify-center">
-                      <Icon name="carbon:code" class="text-base text-blue-500" />
+                      <Icon name="carbon:shopping-bag" class="text-base text-blue-500" />
                     </div>
                     <div>
                       <h3 class="text-base font-medium text-zinc-200">Vien Bag</h3>
@@ -98,7 +115,7 @@
                   </div>
                   <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-md bg-indigo-500/10 flex items-center justify-center">
-                      <Icon name="carbon:logo-discord" class="text-base text-indigo-500" />
+                      <Icon name="carbon:face-satisfied" class="text-base text-indigo-500" />
                     </div>
                     <div>
                       <h3 class="text-base font-medium text-zinc-200">As Aksis Güzellik Merkezleri</h3>
@@ -119,7 +136,7 @@
                   </div>
                   <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-md bg-green-500/10 flex items-center justify-center">
-                      <Icon name="carbon:bot" class="text-base text-green-500" />
+                      <Icon name="carbon:laptop" class="text-base text-green-500" />
                     </div>
                     <div>
                       <h3 class="text-base font-medium text-zinc-200">Not Bilgi Teknolojileri</h3>
@@ -140,7 +157,7 @@
                   </div>
                   <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center">
-                      <Icon name="carbon:list" class="text-base text-purple-500" />
+                      <Icon name="carbon:shopping-cart" class="text-base text-purple-500" />
                     </div>
                     <div>
                       <h3 class="text-base font-medium text-zinc-200">ASEDE</h3>
