@@ -215,27 +215,27 @@ let lastPlayedSong = ref<CurrentTrack['song']>(null)
 const fetchCurrentTrack = async () => {
   try {
     const { data } = await useFetch('/api/spotify/now-playing')
-    console.log('Spotify API yanıtı:', data.value)
     
     if (data.value) {
       const newTrack = data.value as CurrentTrack
       
       if (newTrack.isPlaying && newTrack.song) {
+        // Şarkı değişikliğini kontrol et
+        if (!currentTrack.value.song || currentTrack.value.song.title !== newTrack.song.title) {
+          console.log('Yeni şarkı çalıyor:', newTrack.song.title, '-', newTrack.song.artist)
+        }
+        
         // Aktif çalan şarkı varsa güncelle ve son çalanı kaydet
         currentTrack.value = newTrack
         lastSongTitle.value = newTrack.song.title
         lastPlayedSong.value = newTrack.song
-        console.log('Şarkı güncellendi:', newTrack.song.title)
       } else if (lastPlayedSong.value) {
         // Aktif çalan yoksa ama son çalan varsa onu göster
         currentTrack.value = {
           isPlaying: false,
           song: lastPlayedSong.value
         }
-        console.log('Son çalan şarkı gösteriliyor:', lastPlayedSong.value.title)
       }
-    } else {
-      console.log('API yanıtı boş geldi')
     }
   } catch (error) {
     console.error('Spotify API detaylı hata:', error)
@@ -245,11 +245,6 @@ const fetchCurrentTrack = async () => {
         isPlaying: false,
         song: lastPlayedSong.value
       }
-    } else {
-      currentTrack.value = {
-        isPlaying: false,
-        song: null
-      }
     }
   }
 }
@@ -258,8 +253,8 @@ const fetchCurrentTrack = async () => {
 onMounted(() => {
   fetchCurrentTrack()
   
-  // Her 30 saniyede bir kontrol et
-  setInterval(fetchCurrentTrack, 30000)
+  // Her 3 saniyede bir kontrol et
+  setInterval(fetchCurrentTrack, 3000)
 })
 
 definePageMeta({
