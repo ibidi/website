@@ -15,16 +15,14 @@
           <div class="flex items-center gap-2">
             <button 
               @click="openCommandMenu"
-              class="inline-flex items-center gap-2 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+              class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <Icon name="carbon:search" class="text-base" />
-              <span class="hidden sm:inline">Search</span>
-              <kbd class="hidden sm:inline px-1.5 py-0.5 text-xs bg-zinc-200 dark:bg-zinc-700 rounded">⌘K</kbd>
             </button>
 
             <button 
               @click="toggleColorMode"
-              class="inline-flex items-center justify-center w-9 h-9 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+              class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <Icon v-if="colorMode.value === 'dark'" name="carbon:sun" class="text-base" />
               <Icon v-else name="carbon:moon" class="text-base" />
