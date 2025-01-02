@@ -1,6 +1,6 @@
 <!-- Repository Page -->
 <template>
-  <div class="min-h-screen bg-white dark:bg-zinc-900 px-4 pt-28 pb-12 md:pt-32 md:pb-20">
+  <div class="min-h-screen bg-white dark:bg-zinc-900 px-4 pt-32 md:pt-40 pb-12 md:pb-20">
     <div class="container mx-auto max-w-4xl">
       <div class="space-y-8">
         <div class="flex items-center justify-between">
