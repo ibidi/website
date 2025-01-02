@@ -1,9 +1,9 @@
 ---
 title: "Discord Token Kullanımı ve Güvenlik"
-date: "2024-01-14"
+date: "2025-01-01"
 excerpt: "Discord'da token kullanımı, güvenlik riskleri ve dikkat edilmesi gerekenler hakkında detaylı bir rehber."
 readTime: 5
-image: "https://i.imgur.com/D4VQPhP.jpg"
+image: "https://i.pinimg.com/originals/f5/03/64/f503648e3e879a1332d2111c88ce09c4.gif"
 tags:
   - Discord
   - Güvenlik

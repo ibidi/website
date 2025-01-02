@@ -20,7 +20,13 @@
                   <span v-if="!currentTrack.isPlaying" class="text-xs text-zinc-500">(son çalan)</span>
                 </a>
               </template>
-              <span v-else>Listening to Nothing</span>
+              <template v-else-if="lastPlayedSong">
+                <a :href="lastPlayedSong.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
+                  {{ lastPlayedSong.title }} - {{ lastPlayedSong.artist }}
+                  <span class="text-xs text-zinc-500">(son çalan)</span>
+                </a>
+              </template>
+              <span v-else>Nothing</span>
             </span>
           </div>
 
@@ -252,8 +258,8 @@ const fetchCurrentTrack = async () => {
 onMounted(() => {
   fetchCurrentTrack()
   
-  // Her 1 saniyede bir kontrol et
-  setInterval(fetchCurrentTrack, 1000)
+  // Her 30 saniyede bir kontrol et
+  setInterval(fetchCurrentTrack, 30000)
 })
 
 definePageMeta({

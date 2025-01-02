@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white dark:bg-zinc-900">
+  <div class="flex flex-col min-h-screen bg-white dark:bg-zinc-900">
     <!-- Header -->
     <header class="fixed inset-x-0 top-0 z-30 backdrop-blur bg-white/80 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-700/50">
       <div class="container mx-auto max-w-4xl px-4 h-16">
@@ -33,7 +33,12 @@
     </header>
 
     <!-- Main -->
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+
+    <!-- Footer -->
+    <Footer />
 
     <!-- Command Menu -->
     <CommandMenu ref="commandMenu" />
@@ -41,6 +46,8 @@
 </template>
 
 <script setup lang="ts">
+import Footer from '~/components/Footer.vue'
+
 const colorMode = useColorMode()
 const commandMenu = ref()
 

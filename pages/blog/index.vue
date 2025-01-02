@@ -1,65 +1,42 @@
 <template>
   <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
-    <div class="container mx-auto max-w-4xl">
-      <div class="flex flex-col gap-20">
-        <div class="space-y-6">
-          <h1 class="text-3xl font-medium text-zinc-200">Blog</h1>
-          <p class="text-base text-zinc-400">
-            Yazılım, teknoloji ve kişisel deneyimlerim hakkında yazılar.
-          </p>
+    <div class="container mx-auto max-w-4xl px-4">
+      <div class="space-y-6">
+        <h1 class="text-3xl font-medium text-zinc-900 dark:text-zinc-200">Blog</h1>
+        <p class="text-base text-zinc-600 dark:text-zinc-400">Yazılım, teknoloji ve kişisel deneyimlerim hakkında yazılar.</p>
 
-          <div class="flex flex-wrap gap-2">
-            <button 
-              v-for="tag in uniqueTags" 
-              :key="tag"
-              @click="toggleTag(tag)"
-              :class="[
-                'px-2.5 py-1.5 text-sm rounded-md transition-all duration-200',
-                selectedTags.includes(tag)
-                  ? 'bg-violet-500/20 text-violet-400 hover:bg-violet-500/30'
-                  : 'bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800'
-              ]"
-            >
-              {{ tag }}
-            </button>
-          </div>
+        <div class="flex flex-wrap gap-2">
+          <NuxtLink 
+            v-for="tag in tags" 
+            :key="tag"
+            :to="`/blog/tag/${tag.toLowerCase()}`"
+            class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+          >
+            {{ tag }}
+          </NuxtLink>
         </div>
 
         <div class="space-y-4">
-          <div v-for="post in filteredPosts" :key="post._path" class="group">
-            <NuxtLink :to="post._path" class="block p-4 bg-zinc-800/50 rounded-md border border-zinc-700/50 transition-all duration-200 hover:bg-zinc-800">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                  <Icon name="carbon:document" class="text-base text-violet-500" />
-                </div>
-                <div class="flex-1">
-                  <div class="flex items-center justify-between gap-4">
-                    <div class="space-y-1">
-                      <div class="flex items-center gap-2">
-                        <h3 class="text-base font-medium text-zinc-200">{{ post.title }}</h3>
-                        <span v-if="post.isNew" class="px-2 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded">YENİ</span>
-                      </div>
-                      <p class="text-sm text-zinc-400">{{ post.excerpt }}</p>
-                    </div>
-                    <div class="hidden md:flex items-center gap-2 text-sm text-zinc-500">
-                      <time>{{ formatDate(post.date) }}</time>
-                      <span class="text-zinc-700">•</span>
-                      <span>{{ post.readTime }} dk</span>
-                    </div>
-                  </div>
-                  <div class="mt-4 flex flex-wrap gap-2">
-                    <span 
-                      v-for="tag in post.tags" 
-                      :key="tag"
-                      class="px-2 py-0.5 text-xs bg-zinc-800 text-zinc-400 rounded"
-                    >
-                      {{ tag }}
-                    </span>
-                  </div>
+          <NuxtLink
+            v-for="article in articles"
+            :key="article._path"
+            :to="article._path"
+            class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                <Icon name="carbon:document" class="text-base text-violet-500" />
+              </div>
+              <div class="flex-1">
+                <h2 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ article.title }}</h2>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ formatDate(article.date) }}</span>
+                  <span class="text-sm text-zinc-600 dark:text-zinc-400">•</span>
+                  <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ article.readingTime || 5 }} dk okuma</span>
                 </div>
               </div>
-            </NuxtLink>
-          </div>
+            </div>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -67,40 +44,15 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  title: 'Blog'
-})
-
-const selectedTags = ref<string[]>([])
-
-const { data: posts } = await useAsyncData('posts', () => 
-  queryContent('blog')
-    .sort({ date: -1 })
-    .find()
-)
-
-const uniqueTags = computed(() => {
-  const tags = new Set<string>()
-  posts.value?.forEach((post) => {
-    post.tags?.forEach((tag: string) => tags.add(tag))
-  })
-  return Array.from(tags)
-})
-
-const toggleTag = (tag: string) => {
-  if (selectedTags.value.includes(tag)) {
-    selectedTags.value = selectedTags.value.filter(t => t !== tag)
-  } else {
-    selectedTags.value.push(tag)
-  }
+interface Article {
+  _path: string
+  title: string
+  date: string
+  readingTime: number
 }
 
-const filteredPosts = computed(() => {
-  if (selectedTags.value.length === 0) return posts.value
-  return posts.value?.filter(post => 
-    selectedTags.value.some(tag => post.tags?.includes(tag))
-  )
-})
+const { data: articles } = await useAsyncData('articles', () => queryContent('blog').find())
+const tags = ['Discord', 'Güvenlik', 'Token']
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString('tr-TR', {
@@ -108,5 +60,11 @@ const formatDate = (date: string) => {
     month: 'long',
     day: 'numeric'
   })
+}
+
+const calculateReadingTime = (content: string) => {
+  const wordsPerMinute = 200
+  const words = content.split(/\s+/).length
+  return Math.ceil(words / wordsPerMinute)
 }
 </script> 

@@ -1,79 +1,48 @@
 <template>
-  <div class="min-h-screen bg-zinc-900">
-    <!-- Hero Section -->
-    <div class="relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-violet-500/10 via-zinc-900/50 to-zinc-900"></div>
-      <div class="relative container mx-auto max-w-5xl px-4 pt-24 pb-32 md:pt-32 md:pb-40">
-        <div class="flex flex-col items-center text-center">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/50 backdrop-blur border border-zinc-700/50 text-sm text-zinc-400 mb-8">
-            <Icon name="carbon:pen" class="text-violet-400" />
-            <span>Blog</span>
+  <div v-if="data" class="min-h-screen bg-white dark:bg-zinc-900">
+    <div class="w-full min-h-screen bg-white dark:bg-zinc-900">
+      <div class="container mx-auto max-w-4xl px-4 py-32">
+        <div class="flex items-center gap-2 mb-8">
+          <NuxtLink 
+            to="/blog"
+            class="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-violet-500 dark:hover:text-violet-400"
+          >
+            <Icon name="carbon:arrow-left" class="text-base" />
+            Blog'a Dön
+          </NuxtLink>
+        </div>
+
+        <article class="prose dark:prose-invert max-w-none">
+          <div class="space-y-4 not-prose">
+            <h1 class="text-3xl font-medium text-zinc-900 dark:text-zinc-200">{{ data.title }}</h1>
+            
+            <!-- Hero Image/GIF -->
+            <img 
+              v-if="data.image" 
+              :src="data.image" 
+              :alt="data.title"
+              class="w-full h-64 object-cover rounded-lg"
+              :class="{ 'animate-pulse': data.image.endsWith('.gif') }"
+            />
+
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ formatDate(data.date) }}</span>
+              <span class="text-sm text-zinc-600 dark:text-zinc-400">•</span>
+              <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ data.readingTime || 5 }} dk okuma</span>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span 
+                v-for="tag in data.tags" 
+                :key="tag"
+                class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50"
+              >
+                {{ tag }}
+              </span>
+            </div>
           </div>
 
-          <h1 class="text-4xl md:text-6xl font-medium text-zinc-100 mb-6 tracking-tight">
-            Blog Yazıları
-          </h1>
-          <p class="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed">
-            Yazılım geliştirme, teknoloji ve kişisel deneyimlerim hakkında yazılar.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Posts Grid -->
-    <div class="container mx-auto max-w-6xl px-4 -mt-20 relative pb-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article 
-          v-for="post in data" 
-          :key="post._path" 
-          class="group relative bg-zinc-800/30 backdrop-blur border border-zinc-700/50 rounded-2xl overflow-hidden hover:border-violet-500/50 transition-colors duration-300"
-        >
-          <NuxtLink :to="post._path" class="block">
-            <!-- Image -->
-            <div class="relative aspect-[16/9] overflow-hidden">
-              <img 
-                :src="post.image" 
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                alt=""
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="p-6">
-              <!-- Meta -->
-              <div class="flex items-center gap-3 text-sm text-zinc-400 mb-4">
-                <time class="flex items-center gap-1.5">
-                  <Icon name="carbon:calendar" class="text-violet-400" />
-                  {{ formatDate(post.date) }}
-                </time>
-                <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
-                <span class="flex items-center gap-1.5">
-                  <Icon name="carbon:time" class="text-violet-400" />
-                  {{ post.readTime }} dakika
-                </span>
-              </div>
-
-              <!-- Title -->
-              <h2 class="text-xl font-medium text-zinc-100 mb-3 group-hover:text-violet-400 transition-colors duration-300">
-                {{ post.title }}
-              </h2>
-
-              <!-- Excerpt -->
-              <p class="text-zinc-400 line-clamp-2 mb-6">{{ post.excerpt }}</p>
-
-              <!-- Tags -->
-              <div class="flex flex-wrap gap-2">
-                <span 
-                  v-for="tag in post.tags" 
-                  :key="tag"
-                  class="px-3 py-1 text-sm bg-zinc-900/50 text-zinc-400 rounded-full border border-zinc-800 group-hover:border-violet-500/30 transition-colors duration-300"
-                >
-                  {{ tag }}
-                </span>
-              </div>
-            </div>
-          </NuxtLink>
+          <ContentRenderer v-if="data" :value="data" />
         </article>
       </div>
     </div>
@@ -81,15 +50,19 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  name: 'blog-multiple'
-})
+interface Article {
+  title: string
+  date: string
+  image?: string
+  tags: string[]
+  readingTime: number
+  body: object
+}
 
-const { data } = await useAsyncData('posts', () => 
-  queryContent('/blog')
-    .only(['_path', 'title', 'date', 'excerpt', 'readTime', 'tags', 'image'])
-    .sort({ date: -1 })
-    .find()
+const { data } = await useAsyncData<Article>('article', () => 
+  queryContent<Article>()
+    .where({ _path: useRoute().path })
+    .findOne()
 )
 
 const formatDate = (date: string) => {
@@ -100,3 +73,56 @@ const formatDate = (date: string) => {
   })
 }
 </script> 
+
+<style>
+/* Temel prose stilleri */
+.prose {
+  --tw-prose-body: theme('colors.zinc.600');
+  --tw-prose-headings: theme('colors.zinc.900');
+  --tw-prose-links: theme('colors.violet.500');
+  --tw-prose-bold: theme('colors.zinc.900');
+  --tw-prose-counters: theme('colors.zinc.500');
+  --tw-prose-bullets: theme('colors.zinc.300');
+  --tw-prose-hr: theme('colors.zinc.200');
+  --tw-prose-quotes: theme('colors.zinc.900');
+  --tw-prose-quote-borders: theme('colors.zinc.200');
+  --tw-prose-captions: theme('colors.zinc.500');
+  --tw-prose-code: theme('colors.zinc.900');
+  --tw-prose-pre-code: theme('colors.zinc.900');
+  --tw-prose-pre-bg: theme('colors.zinc.100');
+}
+
+/* Karanlık tema için prose stilleri */
+.dark .prose {
+  --tw-prose-body: theme('colors.zinc.400');
+  --tw-prose-headings: theme('colors.zinc.200');
+  --tw-prose-links: theme('colors.violet.400');
+  --tw-prose-bold: theme('colors.zinc.200');
+  --tw-prose-counters: theme('colors.zinc.400');
+  --tw-prose-bullets: theme('colors.zinc.600');
+  --tw-prose-hr: theme('colors.zinc.700');
+  --tw-prose-quotes: theme('colors.zinc.200');
+  --tw-prose-quote-borders: theme('colors.zinc.700');
+  --tw-prose-captions: theme('colors.zinc.400');
+  --tw-prose-code: theme('colors.zinc.200');
+  --tw-prose-pre-code: theme('colors.zinc.200');
+  --tw-prose-pre-bg: theme('colors.zinc.800');
+}
+
+/* Özel elementler için stiller */
+.prose code {
+  @apply bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded;
+}
+
+.prose pre {
+  @apply bg-zinc-100 dark:bg-zinc-800 rounded-lg;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-zinc-200 dark:border-zinc-700;
+}
+</style> 

@@ -4,7 +4,7 @@
     <div class="container mx-auto max-w-4xl px-4 relative">
       <div class="flex items-center justify-center">
         <a 
-          href="https://github.com/ibidi" 
+          href="https://github.com/ibidi/website" 
           target="_blank"
           class="text-sm text-center text-zinc-600 dark:text-zinc-400 hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-200"
         >
