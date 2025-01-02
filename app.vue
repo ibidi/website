@@ -17,7 +17,7 @@
               @click="openCommandMenu"
               class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
-              <Icon name="carbon:search" class="text-base" />
+              <Icon name="carbon:menu" class="text-base" />
             </button>
 
             <button 
