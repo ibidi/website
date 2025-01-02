@@ -454,8 +454,8 @@ const fetchCurrentTrack = async () => {
 onMounted(() => {
   fetchCurrentTrack()
   
-  // Her 10 saniyede bir kontrol et (çok sık değil)
-  setInterval(fetchCurrentTrack, 10000)
+  // Her 1 saniyede bir kontrol et
+  setInterval(fetchCurrentTrack, 1000)
 })
 
 definePageMeta({
