@@ -25,9 +25,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      githubUsername: 'ibidi',
-      spotifyClientId: process.env.SPOTIFY_CLIENT_ID,
-      spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET
+      githubUsername: 'ibidi'
     }
   },
   typescript: {

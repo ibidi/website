@@ -111,18 +111,35 @@ const formatDate = (date: string) => {
 
 /* Özel elementler için stiller */
 .prose code {
-  @apply bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded;
+  background-color: rgb(244 244 245);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+:root[class='dark'] .prose code {
+  background-color: rgb(39 39 42);
 }
 
 .prose pre {
-  @apply bg-zinc-100 dark:bg-zinc-800 rounded-lg;
+  background-color: rgb(244 244 245);
+  border-radius: 0.5rem;
+}
+
+:root[class='dark'] .prose pre {
+  background-color: rgb(39 39 42);
 }
 
 .prose pre code {
-  @apply bg-transparent p-0;
+  background-color: transparent;
+  padding: 0;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-zinc-200 dark:border-zinc-700;
+  border-left-width: 4px;
+  border-color: rgb(228 228 231);
+}
+
+:root[class='dark'] .prose blockquote {
+  border-color: rgb(63 63 70);
 }
 </style> 
