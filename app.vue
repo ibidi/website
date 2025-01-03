@@ -1,16 +1,24 @@
 <template>
   <div class="flex flex-col min-h-screen bg-white dark:bg-zinc-900">
     <!-- Snow Effect -->
-    <SnowEffect />
+    <ClientOnly>
+      <SnowEffect />
+    </ClientOnly>
 
     <!-- Header -->
-    <header class="fixed inset-x-0 top-0 z-30 backdrop-blur bg-white/80 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-700/50">
+    <header class="fixed inset-x-0 top-0 z-30 backdrop-blur bg-white/80 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-700/50 will-change-transform">
       <div class="container mx-auto max-w-4xl px-4 h-16">
         <div class="flex items-center justify-between h-full">
           <!-- Logo -->
           <NuxtLink to="/" class="flex items-center">
             <div class="w-[48px] h-[48px] bg-black rounded-lg flex items-center justify-center">
-              <img src="https://i.hizliresim.com/q41aejn.png" alt="ibidi" class="w-11 h-11" />
+              <img 
+                src="https://i.hizliresim.com/q41aejn.png" 
+                alt="ibidi" 
+                class="w-11 h-11"
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </NuxtLink>
 
@@ -37,6 +45,7 @@
 
     <!-- Main -->
     <NuxtLayout>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
 
@@ -44,7 +53,9 @@
     <Footer />
 
     <!-- Command Menu -->
-    <CommandMenu ref="commandMenu" />
+    <ClientOnly>
+      <CommandMenu ref="commandMenu" />
+    </ClientOnly>
   </div>
 </template>
 
@@ -66,14 +77,29 @@ const openCommandMenu = () => {
 
 <style lang="postcss">
 html {
-  @apply antialiased;
+  @apply antialiased scroll-smooth;
+  text-rendering: optimizeLegibility;
 }
 
 html.dark {
   @apply bg-zinc-900;
+  color-scheme: dark;
 }
 
 html.light {
   @apply bg-white;
+  color-scheme: light;
+}
+
+/* Performans optimizasyonları */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.will-change-transform {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 </style>

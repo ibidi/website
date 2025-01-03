@@ -8,6 +8,9 @@ export default {
     './plugins/**/*.{js,ts}',
     './app.vue',
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       fontFamily: {
