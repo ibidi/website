@@ -41,7 +41,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Kişisel blog ve portföy sitesi' }
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: 'https://i.hizliresim.com/q41aejn.png' },
+        { rel: 'icon', type: 'image/png', href: '/logo.png' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }
       ],
       htmlAttrs: {
