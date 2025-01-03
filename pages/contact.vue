@@ -1,89 +1,88 @@
 <template>
-  <div class="container mx-auto max-w-4xl px-4 py-16">
-    <!-- Header -->
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold text-zinc-100 mb-4">Contact</h1>
-      <p class="text-lg text-zinc-400">If you have any questions, feel free to contact me.</p>
-    </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-start justify-center py-20">
+      <h1 class="text-4xl font-bold text-zinc-200">Contact</h1>
+      <p class="mt-4 text-zinc-400">If you have any questions, feel free to contact me.</p>
 
-    <!-- Contact Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Discord -->
-      <a 
-        href="https://discord.gg/your-invite-link" 
-        target="_blank"
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">Discord</h2>
-          <Icon name="simple-icons:discord" class="text-2xl text-zinc-400 group-hover:text-[#5865F2]" />
-        </div>
-        <p class="text-zinc-400">Join my Discord server!</p>
-      </a>
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
+        <!-- Discord -->
+        <a href="https://discord.gg/DISCORD_LINK" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">Discord</h2>
+            <div class="text-zinc-400">
+              <Icon name="simple-icons:discord" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">Join my Discord server!</p>
+        </a>
 
-      <!-- Twitter -->
-      <a 
-        href="https://twitter.com/ibidicodes" 
-        target="_blank"
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">Twitter</h2>
-          <Icon name="simple-icons:twitter" class="text-2xl text-zinc-400 group-hover:text-[#1DA1F2]" />
-        </div>
-        <p class="text-zinc-400">Follow me on Twitter!</p>
-      </a>
+        <!-- X (Twitter) -->
+        <a href="https://x.com/ibidicodes" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">X</h2>
+            <div class="text-zinc-400">
+              <Icon name="simple-icons:x" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">Follow me on X!</p>
+        </a>
 
-      <!-- GitHub -->
-      <a 
-        href="https://github.com/ibidi" 
-        target="_blank"
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">Github</h2>
-          <Icon name="simple-icons:github" class="text-2xl text-zinc-400 group-hover:text-white" />
-        </div>
-        <p class="text-zinc-400">Follow me on GitHub!</p>
-      </a>
+        <!-- GitHub -->
+        <a href="https://github.com/ibidi" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">GitHub</h2>
+            <div class="text-zinc-400">
+              <Icon name="simple-icons:github" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">Follow me on GitHub!</p>
+        </a>
 
-      <!-- LinkedIn -->
-      <a 
-        href="https://linkedin.com/in/ibidi" 
-        target="_blank"
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">LinkedIn</h2>
-          <Icon name="simple-icons:linkedin" class="text-2xl text-zinc-400 group-hover:text-[#0A66C2]" />
-        </div>
-        <p class="text-zinc-400">Connect with me on LinkedIn!</p>
-      </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/ibidi" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">LinkedIn</h2>
+            <div class="text-zinc-400">
+              <Icon name="simple-icons:linkedin" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">Connect with me on LinkedIn!</p>
+        </a>
 
-      <!-- Trello -->
-      <a 
-        href="https://trello.com/your-board" 
-        target="_blank"
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">Trello</h2>
-          <Icon name="simple-icons:trello" class="text-2xl text-zinc-400 group-hover:text-[#0052CC]" />
-        </div>
-        <p class="text-zinc-400">View my Trello board!</p>
-      </a>
+        <!-- Email -->
+        <a href="mailto:info@ibidi.tr" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">Email</h2>
+            <div class="text-zinc-400">
+              <Icon name="carbon:email" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">Send me an email!</p>
+        </a>
 
-      <!-- Email -->
-      <a 
-        href="mailto:your-email@example.com" 
-        class="group p-6 bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800/50 rounded-lg transition-colors duration-200"
-      >
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-zinc-100">Email</h2>
-          <Icon name="carbon:email" class="text-2xl text-zinc-400 group-hover:text-zinc-100" />
-        </div>
-        <p class="text-zinc-400">Send me an email!</p>
-      </a>
+        <!-- Trello -->
+        <a href="https://trello.com/YOUR_TRELLO" target="_blank" rel="noopener noreferrer" class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-200">Trello</h2>
+            <div class="text-zinc-400">
+              <Icon name="simple-icons:trello" class="text-2xl" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-400">View my Trello board!</p>
+        </a>
+      </div>
     </div>
   </div>
-</template> 
+</template>
+
+<script setup lang="ts">
+useHead({
+  title: 'İletişim',
+  meta: [
+    {
+      name: 'description',
+      content: 'Benimle iletişime geçin'
+    }
+  ]
+})
+</script> 

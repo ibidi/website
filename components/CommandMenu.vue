@@ -78,6 +78,7 @@ const navigation = [
   { name: 'Blog', path: '/blog', icon: 'carbon:document' },
   { name: 'Projects', path: '/projects', icon: 'carbon:tool-kit' },
   { name: 'Daily Song', path: '/daily-songs', icon: 'carbon:music' },
+  { name: 'Contact', path: '/contact', icon: 'carbon:email' },
 ]
 
 const me = [
