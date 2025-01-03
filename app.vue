@@ -1,5 +1,8 @@
 <template>
   <div class="flex flex-col min-h-screen bg-white dark:bg-zinc-900">
+    <!-- Loading Bar -->
+    <NuxtLoadingIndicator :height="3" color="#818cf8" />
+
     <!-- Snow Effect -->
     <ClientOnly>
       <SnowEffect />
@@ -45,7 +48,6 @@
 
     <!-- Main -->
     <NuxtLayout>
-      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
 
