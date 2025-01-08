@@ -182,12 +182,19 @@
             </div>
           </div>
         </div>
+
+        <div class="space-y-4">
+          <DailySong />
+          <!-- Diğer içerikler -->
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import DailySong from '~/components/DailySong.vue'
+
 interface CurrentTrack {
   isPlaying: boolean
   song: {
@@ -361,4 +368,4 @@ const educations: Education[] = [
 ::-moz-selection {
   @apply bg-violet-500/20 text-violet-200;
 }
-</style> 
+</style>

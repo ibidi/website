@@ -48,13 +48,17 @@
 
     <!-- Main -->
     <NuxtLayout>
-      <NuxtPage />
+      <template #default>
+        <NuxtPage />
+      </template>
     </NuxtLayout>
 
     <!-- Footer -->
-    <DailySong />
-    <SocialMedia />
-    <Footer />
+    <NuxtLayout>
+      <template #default>
+        <Footer />
+      </template>
+    </NuxtLayout>
 
     <!-- Command Menu -->
     <ClientOnly>
@@ -66,8 +70,6 @@
 <script setup lang="ts">
 import Footer from '~/components/Footer.vue'
 import SnowEffect from '~/components/SnowEffect.vue'
-import DailySong from '~/components/DailySong.vue'
-import SocialMedia from '~/components/SocialMedia.vue'
 
 const colorMode = useColorMode()
 const commandMenu = ref()
