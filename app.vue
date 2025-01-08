@@ -47,18 +47,16 @@
     </header>
 
     <!-- Main -->
-    <NuxtLayout>
-      <template #default>
-        <NuxtPage />
-      </template>
-    </NuxtLayout>
+    <div class="flex-1 flex flex-col">
+      <NuxtLayout>
+        <template #default>
+          <NuxtPage />
+        </template>
+      </NuxtLayout>
+    </div>
 
     <!-- Footer -->
-    <NuxtLayout>
-      <template #default>
-        <Footer />
-      </template>
-    </NuxtLayout>
+    <Footer />
 
     <!-- Command Menu -->
     <ClientOnly>
