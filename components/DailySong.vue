@@ -57,18 +57,18 @@ interface Song {
 
 const songList: Song[] = [
   {
-    title: "Bohemian Rhapsody",
-    artist: "Queen",
-    description: "Rock müzik tarihinin en önemli parçalarından biri. Farklı müzikal bölümler ve dramatik anlatımıyla benzersiz bir deneyim sunuyor.",
-    imageUrl: "https://i.scdn.co/image/ab67616d0000b273365b3fb800c19f7ff72602da",
-    spotifyUrl: "https://open.spotify.com/track/3z8h0TU7ReDPLIbEnYhWZb"
+    title: "Kahırlı Merdiven",
+    artist: "Adamlar",
+    description: "ibidi daily song #1",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02f7a592e891ae553aba1caa4e",
+    spotifyUrl: "https://open.spotify.com/intl-tr/album/3iiDh9sqqJDc9rxsGCm0pS"
   },
   {
-    title: "Imagine",
-    artist: "John Lennon",
-    description: "Barış ve umut dolu bir klasik. John Lennon'ın en tanınmış solo çalışmalarından biri olan bu şarkı, evrensel bir mesaj taşıyor.",
-    imageUrl: "https://i.scdn.co/image/ab67616d0000b273d20c2c09e519c5f19eed735e",
-    spotifyUrl: "https://open.spotify.com/track/7pKfPomDEeI4TPT6EOYjn9"
+    title: "Geri Dönme Bana",
+    artist: "İdo Tatlıses",
+    description: "ibidi daily song #2",
+    imageUrl: "https://i.scdn.co/image/ab67616d0000b27358b8666ddfa23646408d26df",
+    spotifyUrl: "https://open.spotify.com/intl-tr/track/3KbPTfekVN4tg4uxlSenWv?si=8e9d4e22e17c4426"
   }
 ]
 
