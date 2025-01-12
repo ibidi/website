@@ -109,6 +109,8 @@
           </div>
         </div>
 
+        <DailySong />
+
         <!-- Technologies -->
         <div class="space-y-4">
           <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
@@ -184,7 +186,6 @@
         </div>
 
         <div class="space-y-4">
-          <DailySong />
           <!-- Diğer içerikler -->
         </div>
       </div>
