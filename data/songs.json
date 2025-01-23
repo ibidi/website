@@ -1,0 +1,74 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Trankobuskas Remix",
+      "artist": "Reckol & Berk Erdemanar",
+      "genre": "Remix",
+      "date": "27/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "2",
+      "title": "WASTE (Sped Up Version)",
+      "artist": "Juice WRLD",
+      "genre": "Hip Hop",
+      "date": "26/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "3",
+      "title": "Yalan",
+      "artist": "Sezen Aksu",
+      "genre": "Pop",
+      "date": "22/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "4",
+      "title": "Son Mektup",
+      "artist": "Müslüm Gürses",
+      "genre": "Arabesk",
+      "date": "21/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "5",
+      "title": "Bak Bana",
+      "artist": "Serdar Ortaç",
+      "genre": "Pop",
+      "date": "20/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "6",
+      "title": "Caddelerde rüzgar",
+      "artist": "Ajda Pekkan",
+      "genre": "Pop",
+      "date": "19/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    },
+    {
+      "id": "7",
+      "title": "Hiç Işık Yok",
+      "artist": "Duman",
+      "genre": "Rock",
+      "date": "18/02/2023",
+      "thumbnail": "https://i.ytimg.com/vi/Zy-QXqH9vQ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Zy-QXqH9vQ4",
+      "isVideo": true
+    }
+  ]
+} 
