@@ -78,6 +78,24 @@ useHead({
       name: 'google-site-verification',
       content: 'Zq3zNotEs830wJsNV193ov0f-EL845pYEXlQfS5egjA'
     }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'İhsan Baki Doğan',
+        jobTitle: 'Full Stack Developer',
+        url: 'https://ibidi.tr',
+        sameAs: [
+          'https://github.com/ibidi',
+          'https://x.com/ibidicodes',
+        ],
+        image: 'https://ibidi.tr/logo.png',
+        description: 'Full Stack Developer with expertise in Vue.js, Node.js, and modern web technologies.'
+      })
+    }
   ]
 })
 

@@ -34,6 +34,7 @@ export { updateSiteConfig } from '../node_modules/nuxt-site-config/dist/runtime/
 export { useNitroOrigin } from '../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin';
 export { useSiteConfig } from '../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig';
 export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '../node_modules/nuxt-site-config/dist/runtime/app/composables/utils';
+export { usePWAIcon } from '../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon';
 export { queryContent } from '../node_modules/@nuxt/content/dist/runtime/legacy/composables/query';
 export { useContentHelpers } from '../node_modules/@nuxt/content/dist/runtime/composables/helpers';
 export { useContentHead } from '../node_modules/@nuxt/content/dist/runtime/composables/head';

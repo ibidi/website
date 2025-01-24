@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/color-mode',
     '@nuxtjs/robots',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@kevinmarrec/nuxt-pwa'
   ],
   colorMode: {
     classSuffix: '',
@@ -24,6 +25,25 @@ export default defineNuxtConfig({
         searchDepth: 3
       }
     }
+  },
+  pwa: {
+    manifest: {
+      name: 'İhsan Baki Doğan',
+      short_name: 'ibidi',
+      description: 'Full Stack Developer & Personal Blog',
+      theme_color: '#000000',
+      background_color: '#000000',
+      display: 'standalone',
+      orientation: 'portrait'
+    },
+    meta: {
+      author: 'İhsan Baki Doğan'
+    }
+  },
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Sitemap: 'https://ibidi.tr/sitemap.xml'
   },
   runtimeConfig: {
     public: {

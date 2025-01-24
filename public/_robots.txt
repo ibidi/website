@@ -1,1 +1,5 @@
+User-agent: *
+Allow: /
 
+# Sitemap
+Sitemap: https://ibidi.tr/sitemap.xml

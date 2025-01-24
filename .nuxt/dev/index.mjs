@@ -210,7 +210,7 @@ const _Qq9UcKCtw9 = (function(nitro) {
 
 const rootDir = "/Users/ibidi/Desktop/vize/website";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Kişisel blog ve portföy sitesi"},{"name":"format-detection","content":"telephone=no"},{"name":"theme-color","content":"#000000"},{"property":"og:site_name","content":"ibidi.tr"},{"property":"og:type","content":"website"},{"name":"twitter:card","content":"summary_large_image"},{"name":"twitter:site","content":"@ibidi"},{"name":"robots","content":"index, follow"}],"link":[{"rel":"icon","type":"image/png","href":"/logo.png"},{"rel":"icon","type":"image/png","href":"/favicon.png"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s - ibidi.tr","title":"Home","htmlAttrs":{"class":"light"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Kişisel blog ve portföy sitesi"},{"name":"format-detection","content":"telephone=no"},{"name":"theme-color","content":"#000000"},{"property":"og:site_name","content":"ibidi.tr"},{"property":"og:type","content":"website"},{"name":"twitter:card","content":"summary_large_image"},{"name":"twitter:site","content":"@ibidi"},{"name":"robots","content":"index, follow"},{"name":"mobile-web-app-capable","content":"yes","key":"mobile-web-app-capable"},{"name":"apple-mobile-web-app-title","content":"Home","key":"apple-mobile-web-app-title"},{"name":"author","content":"İhsan Baki Doğan","key":"author"},{"name":"theme-color","content":"#000000","key":"theme-color"},{"property":"og:type","content":"website","key":"og:type"},{"property":"og:title","content":"Home","key":"og:title"},{"property":"og:site_name","content":"nuxt-app","key":"og:site_name"},{"name":"twitter:card","content":"summary","key":"twitter:card"}],"link":[{"rel":"icon","type":"image/png","href":"/logo.png"},{"rel":"icon","type":"image/png","href":"/favicon.png"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"},{"rel":"manifest","href":"/manifest.json"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s - ibidi.tr","title":"Home","htmlAttrs":{"class":"light","lang":"en"}};
 
 const appRootTag = "div";
 
@@ -704,6 +704,18 @@ const _inlineRuntimeConfig = {
           1
         ]
       }
+    },
+    "pwaManifest": {
+      "name": "İhsan Baki Doğan",
+      "short_name": "ibidi",
+      "description": "Full Stack Developer & Personal Blog",
+      "lang": "en",
+      "start_url": "/?standalone=true",
+      "display": "standalone",
+      "background_color": "#000000",
+      "theme_color": "#000000",
+      "icons": [],
+      "orientation": "portrait"
     }
   },
   "icon": {
@@ -885,18 +897,76 @@ const _inlineRuntimeConfig = {
     "credits": true,
     "groups": [
       {
+        "comment": [],
+        "disallow": [],
+        "allow": [
+          "/"
+        ],
         "userAgent": [
           "*"
         ],
-        "disallow": [
-          ""
-        ],
-        "allow": [],
         "_indexable": true,
-        "_rules": []
+        "_rules": [
+          {
+            "pattern": "/",
+            "allow": true
+          }
+        ]
+      },
+      {
+        "comment": [],
+        "disallow": [],
+        "allow": [
+          "/"
+        ],
+        "userAgent": [
+          "*"
+        ],
+        "_indexable": true,
+        "_rules": [
+          {
+            "pattern": "/",
+            "allow": true
+          }
+        ]
+      },
+      {
+        "comment": [],
+        "disallow": [],
+        "allow": [
+          "/"
+        ],
+        "userAgent": [
+          "*"
+        ],
+        "_indexable": true,
+        "_rules": [
+          {
+            "pattern": "/",
+            "allow": true
+          }
+        ]
+      },
+      {
+        "comment": [],
+        "disallow": [],
+        "allow": [
+          "/"
+        ],
+        "userAgent": [
+          "*"
+        ],
+        "_indexable": true,
+        "_rules": [
+          {
+            "pattern": "/",
+            "allow": true
+          }
+        ]
       }
     ],
     "sitemap": [
+      "https://ibidi.tr/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -2803,6 +2873,36 @@ const _ku3ynY2ww0 = (function(nitro) {
   });
 });
 
+const _YIQLm9HuXM = (function(nitro) {
+  nitro.hooks.hook("render:html", (htmlContext) => {
+    htmlContext.head.push(
+      [
+        "<script>",
+        "if ('serviceWorker' in navigator) {",
+        "  navigator.serviceWorker.getRegistrations().then((registrations) => {",
+        "    for (const registration of registrations) {",
+        "      console.info('[PWA] Unregistering Service Worker:', registration)",
+        "      registration.unregister()",
+        "    }",
+        "  })",
+        "}",
+        "if ('caches' in window) {",
+        "  caches.keys()",
+        "    .then((keys) => {",
+        "      if (keys.length) {",
+        "        console.info('[PWA] Cleaning cache for:', keys.join(', '))",
+        "        for (const key of keys) {",
+        "          caches.delete(key)",
+        "        }",
+        "      }",
+        "    })",
+        "}",
+        "<\/script>"
+      ].join("\n")
+    );
+  });
+});
+
 const plugins = [
   _Qq9UcKCtw9,
 _MtQGmLuHkn,
@@ -2810,7 +2910,8 @@ _E486YEiWCk,
 _oYMNiVniXp,
 _T7RRGTEP9p,
 _o7qYcyv5hp,
-_ku3ynY2ww0
+_ku3ynY2ww0,
+_YIQLm9HuXM
 ];
 
 const warnOnceSet = /* @__PURE__ */ new Set();
@@ -5626,6 +5727,8 @@ const _AECf5z = defineEventHandler(async (e) => {
   return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
 });
 
+const _LTYlhM = defineEventHandler(() => useRuntimeConfig().public.pwaManifest);
+
 const _nEGRz0 = defineEventHandler(async (event) => {
   const { getContentQuery } = await Promise.resolve().then(function () { return query; });
   const { serverQueryContent } = await Promise.resolve().then(function () { return storage; });
@@ -5748,6 +5851,7 @@ const handlers = [
   { route: '/__sitemap__/debug.json', handler: _cHrAIs, lazy: false, middleware: false, method: undefined },
   { route: '/__sitemap__/style.xsl', handler: _IUsCKZ, lazy: false, middleware: false, method: undefined },
   { route: '/sitemap.xml', handler: _AECf5z, lazy: false, middleware: false, method: undefined },
+  { route: '/manifest.json', handler: _LTYlhM, lazy: false, middleware: false, method: undefined },
   { route: '/api/_content/query/:qid/**:params', handler: _nEGRz0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _nEGRz0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _nEGRz0, lazy: false, middleware: false, method: "get" },
