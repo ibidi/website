@@ -66,8 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import Footer from '~/components/Footer.vue'
-import SnowEffect from '~/components/SnowEffect.vue'
+import Footer from './components/Footer.vue'
 
 const colorMode = useColorMode()
 const commandMenu = ref()
