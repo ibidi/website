@@ -6,7 +6,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/icon',
     '@nuxt/content',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap'
   ],
   colorMode: {
     classSuffix: '',
@@ -38,7 +40,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Kişisel blog ve portföy sitesi' }
+        { name: 'description', content: 'Kişisel blog ve portföy sitesi' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'theme-color', content: '#000000' },
+        { property: 'og:site_name', content: 'ibidi.tr' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@ibidi' },
+        { name: 'robots', content: 'index, follow' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
@@ -48,6 +57,17 @@ export default defineNuxtConfig({
       htmlAttrs: {
         class: 'light'
       }
+    }
+  },
+  routeRules: {
+    '/**': {
+      prerender: true
+    },
+    '/api/**': {
+      ssr: true
+    },
+    '/admin/**': {
+      ssr: true
     }
   }
 })

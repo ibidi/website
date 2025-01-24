@@ -195,6 +195,12 @@
 import DailySong from '~/components/DailySong.vue'
 import type { Song } from '~/types/spotify'
 
+// SEO
+useSeo({
+  title: 'İhsan Baki Doğan - Full Stack Developer',
+  description: 'Full Stack Developer with expertise in Vue.js, Node.js, and modern web technologies. Check out my portfolio and blog.',
+})
+
 interface CurrentTrack {
   isPlaying: boolean
   song: {

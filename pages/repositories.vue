@@ -95,6 +95,12 @@
 </template>
 
 <script setup lang="ts">
+// SEO
+useSeo({
+  title: 'GitHub Repositories - İhsan Baki Doğan',
+  description: 'GitHub üzerindeki açık kaynak projelerim ve katkıda bulunduğum repositoryler.',
+})
+
 interface Repository {
   id: number
   name: string

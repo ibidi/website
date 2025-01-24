@@ -33,8 +33,10 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  title: 'Projects'
+// SEO
+useSeo({
+  title: 'Projeler - İhsan Baki Doğan',
+  description: 'Geliştirdiğim açık kaynak ve kişisel projeler. Web uygulamaları, araçlar ve daha fazlası.',
 })
 
 interface FeaturedProject {

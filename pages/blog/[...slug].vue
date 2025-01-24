@@ -57,6 +57,7 @@ interface Article {
   tags: string[]
   readingTime: number
   body: object
+  description?: string
 }
 
 const { data } = await useAsyncData<Article>('article', () => 
@@ -64,6 +65,13 @@ const { data } = await useAsyncData<Article>('article', () =>
     .where({ _path: useRoute().path })
     .findOne()
 )
+
+// SEO
+useSeo({
+  title: data.value?.title ? `${data.value.title} - İhsan Baki Doğan` : 'Blog - İhsan Baki Doğan',
+  description: data.value?.description || 'Yazılım ve teknoloji üzerine detaylı bir blog yazısı.',
+  image: data.value?.image,
+})
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString('tr-TR', {

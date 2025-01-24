@@ -54,6 +54,12 @@ interface Article {
 const { data: articles } = await useAsyncData('articles', () => queryContent('blog').find())
 const tags = ['Discord', 'Güvenlik', 'Token']
 
+// SEO
+useSeo({
+  title: 'Blog - İhsan Baki Doğan',
+  description: 'Yazılım, teknoloji ve kişisel deneyimlerim hakkında yazılar. Discord, güvenlik, web geliştirme ve daha fazlası.',
+})
+
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString('tr-TR', {
     year: 'numeric',

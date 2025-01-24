@@ -71,6 +71,16 @@ import Footer from './components/Footer.vue'
 const colorMode = useColorMode()
 const commandMenu = ref()
 
+// Google Site Verification
+useHead({
+  meta: [
+    {
+      name: 'google-site-verification',
+      content: 'Zq3zNotEs830wJsNV193ov0f-EL845pYEXlQfS5egjA'
+    }
+  ]
+})
+
 const toggleColorMode = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 }

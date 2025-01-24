@@ -30,6 +30,12 @@
 </template>
 
 <script setup lang="ts">
+// SEO
+useSeo({
+  title: 'Daily Songs - İhsan Baki Doğan',
+  description: 'Her gün dinlediğim şarkılar ve müzik listem. Spotify üzerinden günlük müzik paylaşımları.',
+})
+
 interface Song {
   id: number
   title: string

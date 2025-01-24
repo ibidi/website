@@ -88,6 +88,12 @@
 </template>
 
 <script setup lang="ts">
+// SEO
+useSeo({
+  title: 'İletişim - İhsan Baki Doğan',
+  description: 'Benimle iletişime geçin. Discord, Twitter ve diğer sosyal medya kanalları üzerinden ulaşabilirsiniz.',
+})
+
 definePageMeta({
   title: 'İletişim'
 })

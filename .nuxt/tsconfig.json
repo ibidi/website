@@ -104,6 +104,24 @@
       "#color-mode-options": [
         "./color-mode-options.mjs"
       ],
+      "#site-config": [
+        "../node_modules/nuxt-site-config/dist/runtime"
+      ],
+      "#site-config/*": [
+        "../node_modules/nuxt-site-config/dist/runtime/*"
+      ],
+      "#robots": [
+        "../node_modules/@nuxtjs/robots/dist/runtime"
+      ],
+      "#robots/*": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/*"
+      ],
+      "#sitemap": [
+        "../node_modules/@nuxtjs/sitemap/dist/runtime"
+      ],
+      "#sitemap/*": [
+        "../node_modules/@nuxtjs/sitemap/dist/runtime/*"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -165,6 +183,12 @@
     "../node_modules/@nuxt/content/dist/runtime",
     "../node_modules/@nuxtjs/color-mode/runtime",
     "../node_modules/@nuxtjs/color-mode/dist/runtime",
+    "../node_modules/nuxt-site-config/dist/runtime",
+    "../node_modules/nuxt-site-config/dist/dist/runtime",
+    "../node_modules/@nuxtjs/robots/runtime",
+    "../node_modules/@nuxtjs/robots/dist/runtime",
+    "../node_modules/@nuxtjs/sitemap/runtime",
+    "../node_modules/@nuxtjs/sitemap/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -180,6 +204,9 @@
     "../node_modules/@nuxtjs/mdc/node_modules",
     "../node_modules/@nuxt/content/node_modules",
     "../node_modules/@nuxtjs/color-mode/node_modules",
+    "../node_modules/nuxt-site-config/node_modules",
+    "../node_modules/@nuxtjs/robots/node_modules",
+    "../node_modules/@nuxtjs/sitemap/node_modules",
     "../node_modules/@nuxt/devtools/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
@@ -192,6 +219,12 @@
     "../node_modules/@nuxt/content/dist/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",
     "../node_modules/@nuxtjs/color-mode/dist/runtime/server",
+    "../node_modules/nuxt-site-config/dist/runtime/server",
+    "../node_modules/nuxt-site-config/dist/dist/runtime/server",
+    "../node_modules/@nuxtjs/robots/runtime/server",
+    "../node_modules/@nuxtjs/robots/dist/runtime/server",
+    "../node_modules/@nuxtjs/sitemap/runtime/server",
+    "../node_modules/@nuxtjs/sitemap/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",

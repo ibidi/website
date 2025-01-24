@@ -546,13 +546,22 @@
   resolved "https://registry.npmjs.org/@nuxt/devalue/-/devalue-2.0.2.tgz"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@^1.6.4", "@nuxt/devtools-kit@1.7.0":
+"@nuxt/devtools-kit@^1.6.0", "@nuxt/devtools-kit@^1.6.4", "@nuxt/devtools-kit@1.7.0":
   version "1.7.0"
   resolved "https://registry.npmjs.org/@nuxt/devtools-kit/-/devtools-kit-1.7.0.tgz"
   integrity sha512-+NgZ2uP5BuneqvQbe7EdOEaFEDy8762c99pLABtn7/Ur0ExEsQJMP7pYjjoTfKubhBqecr5Vo9yHkPBj1eHulQ==
   dependencies:
     "@nuxt/kit" "^3.15.0"
     "@nuxt/schema" "^3.15.0"
+    execa "^7.2.0"
+
+"@nuxt/devtools-kit@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.npmjs.org/@nuxt/devtools-kit/-/devtools-kit-2.0.0-beta.3.tgz"
+  integrity sha512-VeMfxhwUk1InAca9C8HouIn0+4ON11B0MxL/Mv7m/FcgdyADH5nTp6P3+GoCe8TsHgyKSJ688ZVFFxXKDDDGcg==
+  dependencies:
+    "@nuxt/kit" "^3.15.1"
+    "@nuxt/schema" "^3.15.1"
     execa "^7.2.0"
 
 "@nuxt/devtools-wizard@1.7.0":
@@ -660,7 +669,7 @@
     unimport "^3.14.5"
     untyped "^1.5.2"
 
-"@nuxt/kit@^3.15.1":
+"@nuxt/kit@^3.15.1", "@nuxt/kit@^3.15.2":
   version "3.15.2"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.15.2.tgz"
   integrity sha512-nxiPJVz2fICcyBKlN5pL1IgZVejyArulREsS5HvAk07hijlYuZ5toRM8soLt51VQNpFd/PedL+Z1AlYu/bQCYQ==
@@ -687,7 +696,7 @@
     unimport "^3.14.6"
     untyped "^1.5.2"
 
-"@nuxt/schema@^3.15.0", "@nuxt/schema@3.15.0":
+"@nuxt/schema@^3.13.2", "@nuxt/schema@^3.15.0", "@nuxt/schema@3.15.0":
   version "3.15.0"
   resolved "https://registry.npmjs.org/@nuxt/schema/-/schema-3.15.0.tgz"
   integrity sha512-sAgLgSOj/SZxUmlJ/Q3TLRwIAqmiiZ5gCBrT+eq9CowIj7bgxX92pT720pDLEDs4wlXiTTsqC8nyqXQis8pPyA==
@@ -706,7 +715,7 @@
     unimport "^3.14.5"
     untyped "^1.5.2"
 
-"@nuxt/schema@3.15.2":
+"@nuxt/schema@^3.15.1", "@nuxt/schema@3.15.2":
   version "3.15.2"
   resolved "https://registry.npmjs.org/@nuxt/schema/-/schema-3.15.2.tgz"
   integrity sha512-cTHGbLTbrQ83B+7Mh0ggc5MzIp74o8KciA0boCiBJyK5uImH9QQNK6VgfwRWcTD5sj3WNKiIB1luOMom3LHgVw==
@@ -824,6 +833,41 @@
     unist-util-visit "^5.0.0"
     unwasm "^0.3.9"
     vfile "^6.0.3"
+
+"@nuxtjs/robots@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@nuxtjs/robots/-/robots-5.2.2.tgz"
+  integrity sha512-8krXcdG/iysVhY1VNJFeLyCV20/Qvlq37TjRjgV91EKJnjcsjUWBlvyVYANOJsbKuoZK4WFoFUGt8Ehrbg91gg==
+  dependencies:
+    "@nuxt/devtools-kit" "^2.0.0-beta.3"
+    "@nuxt/kit" "^3.15.2"
+    consola "^3.4.0"
+    defu "^6.1.4"
+    nuxt-site-config "^3.0.6"
+    pathe "^2.0.2"
+    pkg-types "^1.3.1"
+    sirv "^3.0.0"
+    std-env "^3.8.0"
+    ufo "^1.5.4"
+
+"@nuxtjs/sitemap@^7.2.3":
+  version "7.2.3"
+  resolved "https://registry.npmjs.org/@nuxtjs/sitemap/-/sitemap-7.2.3.tgz"
+  integrity sha512-El7By5jORUCYd6aSK8wUvSNtt+vSd/nTnnPZa/vBs6B5GrNXvLVamDrC2AtbO5HrIvYLQIVuNTTfMuA0dV/UPA==
+  dependencies:
+    "@nuxt/devtools-kit" "^2.0.0-beta.3"
+    "@nuxt/kit" "^3.15.2"
+    chalk "^5.4.1"
+    defu "^6.1.4"
+    h3-compression "^0.3.2"
+    nuxt-site-config "^3.0.6"
+    ofetch "^1.4.1"
+    pathe "^2.0.2"
+    pkg-types "^1.3.1"
+    radix3 "^1.1.2"
+    semver "^7.6.3"
+    sirv "^3.0.0"
+    ufo "^1.5.4"
 
 "@nuxtjs/tailwindcss@^6.13.1":
   version "6.13.1"
@@ -1124,6 +1168,11 @@
   dependencies:
     undici-types "~6.20.0"
 
+"@types/node@^17.0.5":
+  version "17.0.45"
+  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz"
+  integrity sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==
+
 "@types/parse-path@^7.0.0":
   version "7.0.3"
   resolved "https://registry.npmjs.org/@types/parse-path/-/parse-path-7.0.3.tgz"
@@ -1133,6 +1182,13 @@
   version "1.20.2"
   resolved "https://registry.npmjs.org/@types/resolve/-/resolve-1.20.2.tgz"
   integrity sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==
+
+"@types/sax@^1.2.1":
+  version "1.2.7"
+  resolved "https://registry.npmjs.org/@types/sax/-/sax-1.2.7.tgz"
+  integrity sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==
+  dependencies:
+    "@types/node" "*"
 
 "@types/spotify-api@*":
   version "0.0.25"
@@ -1552,7 +1608,7 @@ archiver@^7.0.1:
     tar-stream "^3.0.0"
     zip-stream "^6.0.1"
 
-arg@^5.0.2:
+arg@^5.0.0, arg@^5.0.2:
   version "5.0.2"
   resolved "https://registry.npmjs.org/arg/-/arg-5.0.2.tgz"
   integrity sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==
@@ -1800,6 +1856,11 @@ chalk@^4.1.1, chalk@^4.1.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chalk@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz"
+  integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
 
 change-case@^5.4.4:
   version "5.4.4"
@@ -3034,7 +3095,12 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@^1.12.0, h3@^1.13.0, h3@^1.13.1:
+h3-compression@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/h3-compression/-/h3-compression-0.3.2.tgz"
+  integrity sha512-B+yCKyDRnO0BXSfjAP4tCXJgJwmnKp3GyH5Yh66mY9KuOCrrGQSPk/gBFG2TgH7OyB/6mvqNZ1X0XNVuy0qRsw==
+
+h3@^1.12.0, h3@^1.13.0, h3@^1.13.1, h3@^1.6.0:
   version "1.13.1"
   resolved "https://registry.npmjs.org/h3/-/h3-1.13.1.tgz"
   integrity sha512-u/z6Z4YY+ANZ05cRRfsFJadTBrNA6e3jxdU+AN5UCbZSZEUwgHiwjvUEe0k1NoQmAvQmETwr+xB5jd7mhCJuIQ==
@@ -4679,6 +4745,33 @@ nuxi@^3.17.2:
   resolved "https://registry.npmjs.org/nuxi/-/nuxi-3.17.2.tgz"
   integrity sha512-JDVtBBwEe9VjVkhxwR/crtGJnyLHzvl2F1pjtglekjTVeiMThfhQHcvsI/u007gBAfPpmaCIdRGnoeTF4VKS8w==
 
+nuxt-site-config-kit@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.npmjs.org/nuxt-site-config-kit/-/nuxt-site-config-kit-3.0.6.tgz"
+  integrity sha512-QBOFzAIo+D02avFQQ7gNlRyA372/PQlgW2IjL2nttvjfHapqYbvP6tIP55soL+1+D8YvF/bGZgS+vJtfQhroUg==
+  dependencies:
+    "@nuxt/kit" "^3.13.2"
+    "@nuxt/schema" "^3.13.2"
+    pkg-types "^1.2.1"
+    site-config-stack "3.0.6"
+    std-env "^3.7.0"
+    ufo "^1.5.4"
+
+nuxt-site-config@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.npmjs.org/nuxt-site-config/-/nuxt-site-config-3.0.6.tgz"
+  integrity sha512-Mkyen81br21/nA2sxlLCOtJZ2L8sGL+YzxHlsVhLhEnC355CP2SwKVtYqJNJ4aYFbxeusqZXJFiD4KbveHhk0w==
+  dependencies:
+    "@nuxt/devtools-kit" "^1.6.0"
+    "@nuxt/kit" "^3.13.2"
+    "@nuxt/schema" "^3.13.2"
+    nuxt-site-config-kit "3.0.6"
+    pathe "^1.1.2"
+    pkg-types "^1.2.1"
+    sirv "^3.0.0"
+    site-config-stack "3.0.6"
+    ufo "^1.5.4"
+
 nuxt@^3.0.0, nuxt@^3.15.0:
   version "3.15.0"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.15.0.tgz"
@@ -4986,7 +5079,7 @@ pathe@^1.1.1, pathe@^1.1.2:
   resolved "https://registry.npmjs.org/pathe/-/pathe-1.1.2.tgz"
   integrity sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==
 
-pathe@^2.0.1:
+pathe@^2.0.1, pathe@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npmjs.org/pathe/-/pathe-2.0.2.tgz"
   integrity sha512-15Ztpk+nov8DR524R4BF7uEuzESgzUEAV4Ah7CUMNGXdE5ELuvxElxGXndBl32vMSsWa1jpNf22Z+Er3sKwq+w==
@@ -5750,6 +5843,11 @@ safe-regex-test@^1.1.0:
     es-errors "^1.3.0"
     is-regex "^1.2.1"
 
+sax@^1.2.4:
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/sax/-/sax-1.4.1.tgz"
+  integrity sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==
+
 scule@^1.3.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/scule/-/scule-1.3.0.tgz"
@@ -5924,6 +6022,23 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+site-config-stack@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.npmjs.org/site-config-stack/-/site-config-stack-3.0.6.tgz"
+  integrity sha512-lqNI6Xvbwf4NBFqGJ1gNUIe12SOYw8YOuhrbl52JTVwBgtZZzXYh/ZQAwBHwXC7pxULvfIPUd8AJA35WtqU5YA==
+  dependencies:
+    ufo "^1.5.4"
+
+sitemap@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.npmjs.org/sitemap/-/sitemap-8.0.0.tgz"
+  integrity sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==
+  dependencies:
+    "@types/node" "^17.0.5"
+    "@types/sax" "^1.2.1"
+    arg "^5.0.0"
+    sax "^1.2.4"
 
 skin-tone@^2.0.0:
   version "2.0.0"
@@ -6778,7 +6893,7 @@ vite-plugin-vue-inspector@^5.3.1:
     kolorist "^1.8.0"
     magic-string "^0.30.4"
 
-vite@*, "vite@^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0", "vite@^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0-0", "vite@^3.1.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.1", "vite@^5.0.0 || ^6.0.0", vite@^6.0.5, vite@>=2.0.0:
+vite@*, "vite@^2.6.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0", "vite@^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0-0", "vite@^3.1.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.1", "vite@^5.0.0 || ^6.0.0", vite@^6.0.5, vite@>=2.0.0, vite@>=6.0:
   version "6.0.6"
   resolved "https://registry.npmjs.org/vite/-/vite-6.0.6.tgz"
   integrity sha512-NSjmUuckPmDU18bHz7QZ+bTYhRR0iA72cs2QAxCqDpafJ0S6qetco0LB3WW2OxlMHS0JmAv+yZ/R3uPmMyGTjQ==
@@ -6868,7 +6983,7 @@ vue-router@^4.4.0, vue-router@^4.5.0, vue-router@latest:
   dependencies:
     "@vue/devtools-api" "^6.6.4"
 
-"vue@^2.7.0 || ^3.2.25", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.25, vue@^3.3.4, vue@^3.5.13, "vue@>=2.7 || >=3", vue@>=3, vue@3.5.13, vue@latest:
+"vue@^2.7.0 || ^3.2.25", vue@^3, vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.25, vue@^3.3.4, vue@^3.5.13, "vue@>=2.7 || >=3", vue@>=3, vue@3.5.13, vue@latest:
   version "3.5.13"
   resolved "https://registry.npmjs.org/vue/-/vue-3.5.13.tgz"
   integrity sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==
