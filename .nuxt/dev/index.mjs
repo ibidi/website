@@ -210,7 +210,7 @@ const _Qq9UcKCtw9 = (function(nitro) {
 
 const rootDir = "/Users/ibidi/Desktop/vize/website";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Kişisel blog ve portföy sitesi"},{"name":"format-detection","content":"telephone=no"},{"name":"theme-color","content":"#000000"},{"property":"og:site_name","content":"ibidi.tr"},{"property":"og:type","content":"website"},{"name":"twitter:card","content":"summary_large_image"},{"name":"twitter:site","content":"@ibidi"},{"name":"robots","content":"index, follow"},{"name":"mobile-web-app-capable","content":"yes","key":"mobile-web-app-capable"},{"name":"apple-mobile-web-app-title","content":"Home","key":"apple-mobile-web-app-title"},{"name":"author","content":"İhsan Baki Doğan","key":"author"},{"name":"theme-color","content":"#000000","key":"theme-color"},{"property":"og:type","content":"website","key":"og:type"},{"property":"og:title","content":"Home","key":"og:title"},{"property":"og:site_name","content":"nuxt-app","key":"og:site_name"},{"name":"twitter:card","content":"summary","key":"twitter:card"}],"link":[{"rel":"icon","type":"image/png","href":"/logo.png"},{"rel":"icon","type":"image/png","href":"/favicon.png"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"},{"rel":"manifest","href":"/manifest.json"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s - ibidi.tr","title":"Home","htmlAttrs":{"class":"light","lang":"en"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Kişisel blog ve portföy sitesi"},{"name":"format-detection","content":"telephone=no"},{"name":"theme-color","content":"#000000"},{"property":"og:site_name","content":"ibidi.tr"},{"property":"og:type","content":"website"},{"name":"twitter:card","content":"summary_large_image"},{"name":"twitter:site","content":"@ibidi"},{"name":"robots","content":"index, follow"},{"name":"mobile-web-app-capable","content":"yes","key":"mobile-web-app-capable"},{"name":"apple-mobile-web-app-title","content":"Home","key":"apple-mobile-web-app-title"},{"name":"author","content":"İhsan Baki Doğan","key":"author"},{"name":"theme-color","content":"#000000","key":"theme-color"},{"property":"og:type","content":"website","key":"og:type"},{"property":"og:title","content":"Home","key":"og:title"},{"property":"og:site_name","content":"nuxt-app","key":"og:site_name"},{"name":"twitter:card","content":"summary","key":"twitter:card"}],"link":[{"rel":"icon","type":"image/png","href":"/logo.png"},{"rel":"icon","type":"image/png","href":"/favicon.png"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"},{"rel":"manifest","href":"/manifest.json"}],"style":[],"script":[],"noscript":[],"titleTemplate":"%s - ibidi.tr","title":"Home","htmlAttrs":{"lang":"en","class":"light"}};
 
 const appRootTag = "div";
 
@@ -896,40 +896,6 @@ const _inlineRuntimeConfig = {
     "debug": false,
     "credits": true,
     "groups": [
-      {
-        "comment": [],
-        "disallow": [],
-        "allow": [
-          "/"
-        ],
-        "userAgent": [
-          "*"
-        ],
-        "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "/",
-            "allow": true
-          }
-        ]
-      },
-      {
-        "comment": [],
-        "disallow": [],
-        "allow": [
-          "/"
-        ],
-        "userAgent": [
-          "*"
-        ],
-        "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "/",
-            "allow": true
-          }
-        ]
-      },
       {
         "comment": [],
         "disallow": [],

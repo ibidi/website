@@ -54,6 +54,7 @@ export default defineNuxtConfig({
     strict: true
   },
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       titleTemplate: '%s - ibidi.tr',
       title: 'Home',
@@ -75,6 +76,7 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }
       ],
       htmlAttrs: {
+        lang: 'tr',
         class: 'light'
       }
     }
