@@ -340,10 +340,17 @@ const jobs: Job[] = [
   },
   {
     id: 5,
-    company: 'ASEDE',
+    company: 'VIEN',
     title: 'Developer',
     date: '2023-2024',
     icon: 'carbon:shopping-cart'
+  },
+  {
+    id: 6,
+    company: "OGUZKAAN KOLEJI",
+    title: "Teacher & IT",
+    date: '2023-2025',
+    icon: 'carbon:laptop'
   }
 ]
 
