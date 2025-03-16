@@ -31,7 +31,7 @@
           </div>
 
           <p class="text-base text-zinc-600 dark:text-zinc-400">
-            Full Stack Web Developer - in ❤️ with Node.js, TypeScript, PHP, React.js and Vue.js - 🇹🇷
+            Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷
           </p>
 
           <div class="flex items-center gap-3">
