@@ -12,17 +12,17 @@
               <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
-            <span v-if="lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
               <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
               <template v-if="lastPlayedTrack.url">
-                <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
+                <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200 ml-2">
                   {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
                   <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
                   <span v-else class="text-xs text-zinc-500">(son çalan)</span>
                 </a>
               </template>
-              <span v-else>
+              <span v-else class="ml-2">
                 {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
                 <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
                 <span v-else class="text-xs text-zinc-500">(son çalan)</span>
