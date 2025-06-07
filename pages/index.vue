@@ -178,27 +178,6 @@ useSeo({
 })
 
 interface CurrentTrack {
-  isPlaying: boolean
-  song: {
-    id: string
-    title: string
-    artist: string
-    imageUrl: string
-    spotifyUrl: string
-    isPlaying: boolean
-  } | null
-  lastPlayed?: {
-    title: string
-    artist: string
-    albumArt: string
-    spotifyUrl: string
-  }
-}
-
-const currentTrack = ref<CurrentTrack>({
-  isPlaying: false,
-  song: null
-})
 interface Job {
   id: number
   company: string

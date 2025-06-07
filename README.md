@@ -8,7 +8,7 @@
 </div>
 
 <p align="center">
-  A modern and responsive personal portfolio website with dynamic theme switching, Spotify integration, and smooth animations.
+  A modern and responsive personal portfolio website with dynamic theme switching, Last.fm integration, and smooth animations.
 </p>
 
 <div align="center">
@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <td>🎵</td>
-    <td><strong>Spotify Integration:</strong> Real-time "Now Playing" status</td>
+    <td><strong>Last.fm Integration:</strong> Real-time music statistics</td>
   </tr>
   <tr>
     <td>🎨</td>
@@ -69,7 +69,7 @@
   - Better IDE support
   - Enhanced code quality
 
-- **[Spotify Web API](https://developer.spotify.com/documentation/web-api/)**
+
   - OAuth integration
   - Real-time track updates
   - Rich track metadata
@@ -81,7 +81,7 @@
 ### Prerequisites
 
 - Node.js (v16 or higher)
-- Spotify Developer Account
+
 - Git
 
 ### Installation Steps
@@ -108,8 +108,7 @@
    
    Create a `.env` file in the root directory:
    ```env
-   SPOTIFY_CLIENT_ID=your_client_id
-   SPOTIFY_CLIENT_SECRET=your_client_secret
+
    ```
 
 4. **Start development server**
