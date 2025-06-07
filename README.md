@@ -12,7 +12,7 @@
 </p>
 
 <div align="center">
-  <img src="public/projects/ibidi.png" alt="Website Preview" width="100%" />
+  <img src="public/images/projects/ibidi.png" alt="Website Preview" width="100%" />
 </div>
 
 ## ✨ Features
