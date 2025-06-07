@@ -187,6 +187,58 @@ const projects: Project[] = [
     ],
     imageOnLeft: true,
     technologies: ['Python', 'FastAPI', 'Spotify API', 'NLP', 'Machine Learning', 'Vue.js', 'Nuxt.js']
+  },
+  {
+    id: 8,
+    tag: 'Siber Güvenlik / Simülasyon',
+    title: 'Siber Güvenlik Simülasyonu',
+    description: 'Yeni başlayanlar için etkileşimli siber güvenlik deneyimi. Phishing, zayıf şifreler, güncel olmayan yazılımlar ve sosyal mühendislik senaryoları içerir.',
+    longDescription: '<p>Bu simülasyon, siber güvenliğe ilgi duyan herkesin temel prensipleri uygulamalı olarak öğrenmesini hedefliyor. Kullanıcılar, bir IT güvenlik görevlisi rolüne girerek çeşitli gerçekçi senaryolarda doğru kararlar vermeye çalışır.</p><p><strong>Ele Alınan Senaryolar:</strong></p><ul><li>🔐 Phishing saldırılarını tespit etme</li><li>🔑 Zayıf şifrelerin etkisini anlama</li><li>⚠️ Güncellenmemiş yazılımlarla başa çıkma</li><li>🕵️‍♂️ Sosyal mühendislik tuzaklarını analiz etme</li></ul><p><strong>✨ Öne Çıkan Özellikler:</strong></p><ul><li>Kullanıcı adı ile giriş & skor tablosu</li><li>Her bölüm sonunda "Ne öğrendin?" bilgilendirme ekranı</li><li>Doğru kararlarla puan toplama, yanlışlarla risk puanı artışı</li><li>Simülasyon sonunda detaylı geri bildirim raporu</li></ul>',
+    image: '/images/projects/siber_simulasyon.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'Live App', url: 'https://sibersimulasyon.netlify.app', icon: 'carbon:launch' }
+    ],
+    imageOnLeft: false,
+    technologies: ['JavaScript', 'HTML', 'CSS', 'Vue.js', 'Netlify']
+  },
+  {
+    id: 9,
+    tag: 'WooCommerce / E-ticaret Eklentisi',
+    title: 'WooCommerce Kargo Barkod Eklentisi',
+    description: 'WooCommerce için sipariş kargo barkod etiketlerini kolayca yazdırmayı sağlayan eklenti. Termal yazıcılarla uyumlu, çeşitli formatları destekler.',
+    longDescription: '<p>WooCommerce ile e-ticaret yapanlar için geliştirilmiş, sipariş kargo barkod etiketlerini yazdırma sürecini kolaylaştıran bir eklentidir. Özellikle bazı yazıcılarda yaşanan ölçeklendirme sorunlarına çözüm sunar.</p><p><strong>✅ Temel Özellikler:</strong></p><ul><li>Siparişe özel otomatik barkod üretimi</li><li>Termal yazıcılarla tam uyum</li><li>Tek tıkla veya toplu barkod yazdırma</li><li>QR, Code128 gibi çeşitli barkod formatı desteği</li><li>Kargo etiketlerine kolayca entegre edilebilir yapı</li><li>WooCommerce ile sorunsuz ve tam entegre çalışma</li></ul><p>Bu eklenti, kargolama süreçlerini hızlandırmak ve operasyonel verimliliği artırmak isteyen işletmeler için idealdir.</p>',
+    image: '/images/projects/woocommerce_barkod_eklentisi.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'Daha Fazla Bilgi', url: 'https://hayatikodla.net/kargo-barkod-woocommerce/', icon: 'carbon:link' }
+    ],
+    imageOnLeft: true,
+    technologies: ['PHP', 'WordPress', 'WooCommerce', 'JavaScript', 'HTML', 'CSS']
+  },
+  {
+    id: 10,
+    tag: 'E-ticaret / Entegrasyon / Açık Kaynak',
+    title: 'Shopify - Trendyol Entegrasyonu',
+    description: 'React ile geliştirilen, Shopify ve Trendyol arasında veri akışını otomatikleştiren açık kaynaklı entegrasyon projesi.',
+    longDescription: '<p>E-ticaret süreçlerini kolaylaştırmak amacıyla React ile geliştirilmiş bir Shopify-Trendyol entegrasyonudur. Bu proje, yakın bir zamanda açık kaynak olarak paylaşılacaktır.</p><p><strong>✅ Projenin Sağladıkları:</strong></p><ul><li>Shopify mağazanız ile Trendyol arasındaki veri akışını otomatikleştirebilirsiniz.</li><li>Ürün senkronizasyonu ve sipariş yönetimini kolaylaştırabilirsiniz.</li><li>Açık kaynak olması sayesinde kendi ihtiyacınıza göre projeyi özelleştirebilirsiniz!</li></ul><p>E-ticaret entegrasyonlarını geliştirmek ve açık kaynak dünyasına katkıda bulunmak isteyenler için tasarlanmıştır.</p>',
+    image: '/images/projects/shopify_trendyol_entegrasyonu.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'GitHub', url: 'https://github.com/ibidi/trendyol-shopify', icon: 'carbon:logo-github' }
+    ],
+    imageOnLeft: false,
+    technologies: ['React', 'JavaScript', 'Node.js', 'Shopify API', 'Trendyol API']
+  },
+  {
+    id: 11,
+    tag: 'Eğitim / Kaynak / Web Uygulaması',
+    title: 'Yazılım Sözlük',
+    description: 'Yazılım terimlerini, kavramlarını ve teknolojilerini anlaşılır bir şekilde sunan, kapsamlı ve erişilebilir bir sözlük platformu.',
+    longDescription: '<p>Yazılım Sözlük, yazılım dünyasında sıkça karşılaşılan terimleri, kavramları ve teknolojilerini anlaşılır bir şekilde sunan bir platformdur. Herkesin kolayca bilgiye ulaşmasını sağlamak amacıyla tasarlanmıştır.</p><p><strong>💡 Amacı:</strong></p><ul><li>Özellikle yazılıma yeni başlayanlar için temel bir kaynak olmak.</li><li>Sektör profesyonelleri için hızlı ve güvenilir bir referans noktası sunmak.</li><li>Kapsamlı, erişilebilir ve sürekli güncellenen bir bilgi havuzu oluşturmak.</li></ul><p>Platform, kullanıcıların yazılım alanındaki bilgilerini artırmalarına ve kavramları daha iyi anlamalarına yardımcı olmayı hedefler.</p>',
+    image: '/images/projects/yazilim_sozluk.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'Sözlüğe Göz At', url: 'https://yazilim-sozluk.vercel.app', icon: 'carbon:launch' }
+    ],
+    imageOnLeft: true,
+    technologies: ['Next.js', 'React', 'Vercel', 'Tailwind CSS', 'TypeScript']
   }
   // Add more projects here following the same structure
 ];
