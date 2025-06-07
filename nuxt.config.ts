@@ -47,7 +47,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      githubUsername: 'ibidi'
+      githubUsername: 'ibidi',
+      lastFmApiKey: process.env.LASTFM_API_KEY,
+      lastFmUsername: 'ibidishu'
     }
   },
   typescript: {
