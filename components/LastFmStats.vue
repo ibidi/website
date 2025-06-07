@@ -29,7 +29,7 @@
         </div>
         <div>
           <p class="text-zinc-700 dark:text-zinc-300">Total Plays</p>
-          <p class="flex items-center gap-2">{{ Number(userInfo.playcount).toLocaleString() }} <Icon name="carbon:play-filled" class="w-5 h-5 opacity-75" /></p>
+          <p class="flex items-center">{{ Number(userInfo.playcount).toLocaleString() }} <Icon name="carbon:play-filled" class="w-5 h-5 opacity-75 ml-1" /></p>
         </div>
       </div>
     </section>
