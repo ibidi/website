@@ -194,9 +194,7 @@
           </div>
         </div>
 
-        <div class="space-y-4">
-          <!-- Diğer içerikler -->
-        </div>
+        <HomeBlogSection />
       </div>
     </div>
   </div>
@@ -204,6 +202,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import HomeBlogSection from '~/components/HomeBlogSection.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
