@@ -309,7 +309,7 @@ const jobs: Job[] = [
     company: 'Aksis Güzellik Salonları',
     title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
-    image: '/images/experience/aksis.png' // Placeholder image path
+    image: '/images/experience/aksis.jpeg' // Placeholder image path
   },
   {
     id: 3,
