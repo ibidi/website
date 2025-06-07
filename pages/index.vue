@@ -1,5 +1,6 @@
 <template>
-  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
+  <div class="relative pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden z-0">
+    <div id="animated-code-background" class="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none"></div>
     <div class="container mx-auto max-w-4xl">
       <div class="flex flex-col gap-20">
         <div class="space-y-6">
@@ -272,6 +273,52 @@ onUnmounted(() => {
   }
 });
 
+const animatedCodeBackground = ref<HTMLElement | null>(null);
+const codeSnippets = [
+  'const', 'let', 'var', 'function', '=>', 'async', 'await',
+  'import', 'export', 'default', 'React', 'Vue', 'Angular',
+  '<div>', '<span>', '<p>', '<h1>', 'useEffect', 'useState',
+  'computed', 'watch', 'ref', 'props', 'class', 'interface',
+  'type', 'enum', 'public', 'private', 'protected', 'static',
+  'return', 'if', 'else', 'for', 'while', 'switch', 'case',
+  'break', 'continue', 'try', 'catch', 'finally', 'throw',
+  'new', 'this', 'super', 'extends', 'implements', 'package',
+  'null', 'undefined', 'true', 'false', 'NaN', 'Infinity',
+  'JSON.parse', 'JSON.stringify', 'console.log', 'fetch',
+  'axios', 'Promise', '.then()', '.catch()', 'Array.map',
+  'Array.filter', 'Array.reduce', '{...obj}', '[...arr]',
+  'CSS', 'HTML', 'JS', 'TS', 'Python', 'Java', 'C#', 'C++',
+  'Ruby', 'Go', 'Rust', 'SQL', 'NoSQL', 'API', 'REST', 'GraphQL',
+  'Docker', 'K8s', 'AWS', 'Azure', 'GCP', 'git', 'npm', 'yarn',
+  'webpack', 'babel', 'tailwind', 'bootstrap', '0x', '// TODO:',
+  '/* comment */', 'Error', 'Exception', 'module.exports'
+];
+
+onMounted(() => {
+  fetchLastPlayedTrack();
+  refreshInterval = setInterval(fetchLastPlayedTrack, 30000);
+
+  const backgroundContainer = document.getElementById('animated-code-background');
+  if (backgroundContainer) {
+    const numberOfSnippets = 70; // Adjust for density
+    for (let i = 0; i < numberOfSnippets; i++) {
+      const snippetElement = document.createElement('span');
+      snippetElement.innerText = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+      snippetElement.style.position = 'absolute';
+      snippetElement.style.left = `${Math.random() * 100}%`;
+      snippetElement.style.top = `${Math.random() * 100}%`; // Start at random positions
+      snippetElement.style.fontSize = `${Math.random() * 10 + 8}px`; // e.g., 8px to 18px
+      snippetElement.style.animationName = 'drift';
+      snippetElement.style.animationDuration = `${Math.random() * 20 + 15}s`; // 15s to 35s
+      snippetElement.style.animationDelay = `${Math.random() * 15}s`; // 0s to 15s delay
+      snippetElement.style.animationIterationCount = 'infinite';
+      snippetElement.style.animationTimingFunction = 'linear';
+      snippetElement.style.opacity = '0'; // Animation will handle fade in
+      backgroundContainer.appendChild(snippetElement);
+    }
+  }
+});
+
 // SEO
 useSeo({
   title: 'İhsan Baki Doğan - Full Stack Developer',
@@ -367,6 +414,41 @@ const educations: Education[] = [
 .animate-gradient-x {
   animation: gradient-x 3s linear infinite;
 }
+
+#animated-code-background span {
+  font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  user-select: none;
+  /* Base color will be set by dark/light mode specific styles */
+}
+
+.dark #animated-code-background span {
+  color: rgba(200, 200, 220, 0.1); /* Light text on dark bg, 90% transparent -> 10% opacity */
+}
+
+html:not(.dark) #animated-code-background span {
+  color: rgba(50, 50, 70, 0.1); /* Dark text on light bg, 90% transparent -> 10% opacity */
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(15vh) translateX(0vw) rotate(0deg);
+    opacity: 0;
+  }
+  10%, 90% {
+    /* Target opacity is 0.3 (70% transparent), but color already has low alpha. */
+    /* Let's make it slightly more visible during animation if base alpha is low */
+    opacity: 1; /* The color's alpha will dictate the actual visibility */
+  }
+  100% {
+    transform: translateY(-100vh) translateX(calc(var(--random-drift-x, 0) * 1vw)) rotate(calc(var(--random-rotate, 0) * 1deg));
+    opacity: 0;
+  }
+}
+
+/* Add this if you want varied horizontal drift and rotation */
+/* In the onMounted script, you would add: */
+/* snippetElement.style.setProperty('--random-drift-x', (Math.random() * 20 - 10).toString()); */
+/* snippetElement.style.setProperty('--random-rotate', (Math.random() * 60 - 30).toString()); */
 
 ::selection {
   @apply bg-violet-500/20 text-violet-200;
