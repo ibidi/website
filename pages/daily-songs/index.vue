@@ -9,7 +9,7 @@
 
         <div class="grid gap-4 md:grid-cols-2">
           <div v-for="song in songs" :key="song.id" class="group">
-            <a :href="song.url" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+            <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
               <div class="space-y-4">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
@@ -21,7 +21,7 @@
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -33,64 +33,55 @@
 // SEO
 useSeo({
   title: 'Daily Songs - İhsan Baki Doğan',
-  description: 'Her gün dinlediğim şarkılar ve müzik listem. Spotify üzerinden günlük müzik paylaşımları.',
+  description: 'Her gün dinlediğim şarkılar ve müzik listem.',
 })
 
 interface Song {
   id: number
   title: string
   artist: string
-  url: string
 }
 
 const songs: Song[] = [
   {
     id: 1,
     title: 'Yüzyüzeyken Konuşuruz',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 2,
     title: 'Adamlar',
-    artist: 'Koca Yaşlı Şişko Dünya',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Koca Yaşlı Şişko Dünya'
   },
   {
     id: 3,
     title: 'Test Song #3',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 4,
     title: 'Test Song #4',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 5,
     title: 'Test Song #5',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 6,
     title: 'Test Song #6',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 7,
     title: 'Test Song #7',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   },
   {
     id: 8,
     title: 'Test Song #8',
-    artist: 'Sandal',
-    url: 'https://open.spotify.com/track/4uYqFdWZuQM1oMVXVOQm4l'
+    artist: 'Sandal'
   }
 ]
 
