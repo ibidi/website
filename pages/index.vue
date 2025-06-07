@@ -14,6 +14,7 @@
             </span>
             <span v-if="lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+              <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
               <template v-if="lastPlayedTrack.url">
                 <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
                   {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
@@ -199,7 +200,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
@@ -255,8 +256,18 @@ async function fetchLastPlayedTrack() {
   }
 }
 
+let refreshInterval: NodeJS.Timeout | null = null;
+
 onMounted(() => {
   fetchLastPlayedTrack();
+  // Refresh every 30 seconds (30000 milliseconds)
+  refreshInterval = setInterval(fetchLastPlayedTrack, 30000);
+});
+
+onUnmounted(() => {
+  if (refreshInterval) {
+    clearInterval(refreshInterval);
+  }
 });
 
 // SEO
