@@ -352,20 +352,29 @@ const jobs: Job[] = [
   },
   {
     id: 2,
-    company: 'Aksis Güzellik Salonları',
-    title: 'Full Stack Developer / Social Media Expert',
-    date: '2023-2025',
-    image: '/images/experience/aksis.jpeg' // Placeholder image path
+    company: 'Hayati Kodla',
+    title: 'Full Stack Developer / Operation Manager',
+    date: '2024-Present',
+    image: '/images/experience/hayatikodla.png', // Placeholder image path
+    isPresent: true
   },
   {
     id: 3,
+    company: 'Aksis Güzellik Salonları',
+    title: 'Full Stack Developer / Social Media Expert',
+    date: '2023-Present',
+    image: '/images/experience/aksis.jpeg', // Placeholder image path
+    isPresent: true
+  },
+  {
+    id: 4,
     company: 'Not Bilgi Teknolojileri',
     title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
     image: '/images/experience/not-bilgi.png' // Placeholder image path
   },
   {
-    id: 4,
+    id: 5,
     company: "Oguzkaan Koleji",
     title: "Information Technology Teacher / IT Specialist",
     date: '2023-2025',
