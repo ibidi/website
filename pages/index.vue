@@ -1,18 +1,20 @@
 <template>
-  <div class="relative"> 
-    <AnimatedCodeBackground />
-    <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
-      <div class="container mx-auto max-w-4xl">
-        <div class="flex flex-col gap-20">
-          <div class="space-y-6">
-            <h1 class="text-3xl font-medium text-zinc-900 dark:text-zinc-200">
-              Hi, I am İhsan Baki Doğan
-            </h1>
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
+    <div class="container mx-auto max-w-4xl">
+      <div class="flex flex-col gap-20">
+        <div class="space-y-6">
+          <h1 class="text-3xl font-medium text-zinc-900 dark:text-zinc-200">
+            Hi, I am İhsan Baki Doğan
+          </h1>
 
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
-                <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
-                {{ isOnline ? 'Online' : 'Offline' }}
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+              <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
+              {{ isOnline ? 'Online' : 'Offline' }}
+            </span>
+            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+              <span class="inline-flex items-center">
+                <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007] mr-0" />
                 <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300 ml-0" />
               </span>
               <template v-if="lastPlayedTrack.url">
@@ -26,7 +28,7 @@
                 {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
                 <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
                 <span v-else class="text-xs text-zinc-500">(son çalan)</span>
-                </a>
+              </span>
             </span>
             <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-500 border border-zinc-200 dark:border-zinc-700/50">
                 <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
@@ -200,7 +202,6 @@
 </template>
 
 <script setup lang="ts">
-import AnimatedCodeBackground from '~/components/AnimatedCodeBackground.vue';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 const config = useRuntimeConfig();
