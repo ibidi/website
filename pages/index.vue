@@ -265,7 +265,6 @@ useSeo({
   description: 'Full Stack Developer with expertise in Vue.js, Node.js, and modern web technologies. Check out my portfolio and blog.',
 })
 
-interface CurrentTrack {
 interface Job {
   id: number
   company: string
