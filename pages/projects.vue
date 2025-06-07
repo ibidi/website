@@ -98,10 +98,10 @@ const projects: Project[] = [
   {
     id: 1,
     tag: 'Social Platform',
-    title: 'Arhaval Message Board',
-    description: 'Arhaval katılımcıları için özel bir sosyal medya platformu. Next.js, Firebase ve Tailwind CSS ile geliştirildi.',
-    longDescription: '<p>Arhaval katılımcıları için geliştirilmiş, özel bir iletişim ve paylaşım platformudur. Bu platform, katılımcıların program boyunca ve sonrasında birbirleriyle etkileşimde kalmalarını, duyuruları takip etmelerini ve anılarını paylaşmalarını kolaylaştırmayı amaçlamıştır.</p><p><strong>Temel Özellikler:</strong></p><ul><li>Kullanıcı profilleri ve kişisel feed\'ler</li><li>Grup tartışmaları ve mesajlaşma</li><li>Etkinlik takvimi ve duyurular</li><li>Fotoğraf ve video paylaşımı</li><li>Güvenli ve özel erişim</li></ul><p>Proje, modern web teknolojileri kullanılarak kısa bir sürede hayata geçirilmiş ve katılımcılardan olumlu geri dönüşler almıştır.</p>',
-    image: '/images/projects/arhaval_message_board.png', // Placeholder - Update this path
+    title: 'Message Board',
+    description: 'ibidi katılımcıları için özel bir sosyal medya platformu. Next.js, Firebase ve Tailwind CSS ile geliştirildi.',
+    longDescription: '<p>ibidi katılımcıları için geliştirilmiş, özel bir iletişim ve paylaşım platformudur. Bu platform, katılımcıların program boyunca ve sonrasında birbirleriyle etkileşimde kalmalarını, duyuruları takip etmelerini ve anılarını paylaşmalarını kolaylaştırmayı amaçlamıştır.</p><p><strong>Temel Özellikler:</strong></p><ul><li>Kullanıcı profilleri ve kişisel feed\'ler</li><li>Grup tartışmaları ve mesajlaşma</li><li>Etkinlik takvimi ve duyurular</li><li>Fotoğraf ve video paylaşımı</li><li>Güvenli ve özel erişim</li></ul><p>Proje, modern web teknolojileri kullanılarak kısa bir sürede hayata geçirilmiş ve katılımcılardan olumlu geri dönüşler almıştır.</p>',
+    image: '/images/projects/ibidi.png', // Placeholder - Update this path
     buttons: [
       { text: 'Video', url: '#', icon: 'carbon:video-filled' },
       // { text: 'Live Demo', url: '#', icon: 'carbon:launch' }
@@ -115,7 +115,7 @@ const projects: Project[] = [
     title: 'Gelişim Üniversitesi Telegram Bot',
     description: 'Gelişim Üniversitesi öğrencileri ve personeli için geliştirilmiş Telegram bot.',
     longDescription: '<p>Gelişim Üniversitesi\'nin öğrenci ve personeline yönelik olarak tasarlanan Telegram bot, üniversite yaşamını kolaylaştıran birçok özelliği bir araya getirmektedir. Kullanıcılar ders programlarına, sınav sonuçlarına, duyurulara ve daha birçok bilgiye kolayca erişebilirler.</p><p><strong>Öne Çıkan Modüller:</strong></p><ul><li>Ders Programı ve Takvimi</li><li>Not Görüntüleme</li><li>Akademik Takvim</li><li>Yemekhane Menüsü</li><li>Kampüs Haritası ve Navigasyon</li><li>Üniversite Haberleri ve Duyuruları</li><li>İletişim Rehberi</li></ul><p>Uygulama, hem iOS hem de Android platformları için native olarak geliştirilmiş olup, kullanıcı dostu arayüzü ve performansıyla dikkat çekmektedir.</p>',
-    image: '/images/projects/gsu_telegram_bot.png', // Placeholder - Update this path
+    image: '/images/projects/igu_telegram_bot.png', // Placeholder - Update this path
     buttons: [
       { text: 'App Store', url: '#', icon: 'simple-icons:appleappstore' },
       { text: 'Play Store', url: '#', icon: 'simple-icons:googleplay' }
