@@ -8,11 +8,11 @@
 </div>
 
 <p align="center">
-  A modern and responsive personal portfolio website with dynamic theme switching, Last.fm integration, and smooth animations.
+  A modern and responsive personal portfolio website with dynamic theme switching, Last.fm integration, an animated code background, homepage blog section, and smooth animations.
 </p>
 
 <div align="center">
-  <img src="https://i.hizliresim.com/q41aejn.png" alt="Website Preview" width="100%" />
+  <img src="public/projects/ibidi.png" alt="Website Preview" width="100%" />
 </div>
 
 ## ✨ Features
@@ -42,6 +42,14 @@
     <td>🔍</td>
     <td><strong>Command Menu:</strong> Quick navigation with ⌘K shortcut</td>
   </tr>
+  <tr>
+    <td>💻</td>
+    <td><strong>Animated Background:</strong> Subtle drifting code snippets on the homepage</td>
+  </tr>
+  <tr>
+    <td>✍️</td>
+    <td><strong>Blog on Homepage:</strong> Displays latest posts directly on the main page</td>
+  </tr>
 </table>
 
 ## 🚀 Tech Stack
@@ -53,6 +61,7 @@
   - Server-Side Rendering
   - Auto-imports
   - File-based routing
+  - `@nuxt/content` for Markdown-based blog
 
 - **[Vue 3](https://vuejs.org/)** - The Progressive JavaScript Framework
   - Composition API
@@ -106,9 +115,10 @@
 
 3. **Configure environment variables**
    
-   Create a `.env` file in the root directory:
+   Create a `.env` file in the root directory with your Last.fm credentials:
    ```env
-
+LASTFM_API_KEY=your_lastfm_api_key_here
+LASTFM_USERNAME=your_lastfm_username_here
    ```
 
 4. **Start development server**
