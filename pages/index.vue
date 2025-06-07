@@ -7,29 +7,6 @@
             Hi, I am İhsan Baki Doğan
           </h1>
 
-          <div class="flex items-center gap-3">
-            <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
-              <span class="w-2 h-2 rounded-full" :class="currentTrack?.isPlaying ? 'bg-emerald-500' : 'bg-red-500'"></span>
-              {{ currentTrack?.isPlaying ? 'Online' : 'Offline' }}
-            </span>
-            <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
-              <Icon name="logos:spotify-icon" class="w-4 h-4" />
-              <template v-if="currentTrack?.song">
-                <a :href="currentTrack.song.spotifyUrl" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
-                  {{ currentTrack.song.title }} - {{ currentTrack.song.artist }}
-                  <span v-if="!currentTrack.isPlaying" class="text-xs text-zinc-500">(son çalan)</span>
-                </a>
-              </template>
-              <template v-else-if="lastPlayedSong">
-                <a :href="lastPlayedSong.spotifyUrl" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
-                  {{ lastPlayedSong.title }} - {{ lastPlayedSong.artist }}
-                  <span class="text-xs text-zinc-500">(son çalan)</span>
-                </a>
-              </template>
-              <span v-else>Nothing</span>
-            </span>
-          </div>
-
           <p class="text-base text-zinc-600 dark:text-zinc-400">
             Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷
           </p>
@@ -192,8 +169,7 @@
 </template>
 
 <script setup lang="ts">
-import DailySong from '~/components/DailySong.vue'
-import type { Song } from '~/types/spotify'
+
 
 // SEO
 useSeo({
@@ -223,75 +199,6 @@ const currentTrack = ref<CurrentTrack>({
   isPlaying: false,
   song: null
 })
-
-const lastPlayedSong = ref<Song | null>(null)
-
-// localStorage işlemlerini client-side'da yap
-onMounted(() => {
-  // Sayfa yüklendiğinde localStorage'dan son çalan şarkıyı al
-  const savedSong = localStorage.getItem('lastPlayedSong')
-  if (savedSong) {
-    try {
-      lastPlayedSong.value = JSON.parse(savedSong)
-    } catch (e) {
-      console.error('Error parsing saved song:', e)
-    }
-  }
-})
-
-const fetchCurrentTrack = async () => {
-  try {
-    const { data: nowPlaying } = await useFetch('/api/spotify/now-playing', {
-      key: 'spotify-now-playing',
-      transform: (response) => {
-        if (!response) return null
-        return {
-          isPlaying: response.isPlaying || false,
-          song: response.song ? {
-            id: response.song.id || '',
-            title: response.song.title,
-            artist: response.song.artist,
-            imageUrl: response.song.albumArt,
-            spotifyUrl: response.song.url,
-            isPlaying: response.isPlaying || false
-          } : null
-        }
-      }
-    })
-
-    if (nowPlaying.value) {
-      currentTrack.value = nowPlaying.value
-
-      // Eğer şarkı varsa ve tarayıcı ortamındaysak, son çalan şarkı olarak kaydet
-      if (nowPlaying.value.song && process.client) {
-        lastPlayedSong.value = nowPlaying.value.song
-        localStorage.setItem('lastPlayedSong', JSON.stringify(nowPlaying.value.song))
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching current track:', error)
-  }
-}
-
-// Sayfa yüklendiğinde ve periyodik olarak şarkı bilgisini güncelle
-onMounted(() => {
-  fetchCurrentTrack()
-  
-  // Her 30 saniyede bir güncelle
-  const interval = setInterval(() => {
-    fetchCurrentTrack()
-  }, 30000)
-
-  // Component unmount olduğunda interval'i temizle
-  onUnmounted(() => {
-    clearInterval(interval)
-  })
-})
-
-definePageMeta({
-  title: 'Home'
-})
-
 interface Job {
   id: number
   company: string
