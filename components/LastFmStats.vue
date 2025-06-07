@@ -64,6 +64,28 @@
         </div>
       </div>
     </section>
+
+    <!-- RECENT SONGS -->
+    <section v-if="recentTracks && recentTracks.length > 0">
+      <h2 class="text-sm font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-6">Recent Songs</h2>
+      <div class="space-y-4">
+        <div v-for="track in recentTracks" :key="track.date?.uts || track.mbid || track.name" class="bg-zinc-50 dark:bg-zinc-800/30 p-4 rounded-lg flex items-center space-x-4 hover:bg-zinc-100 dark:hover:bg-zinc-700/50 transition-colors duration-150">
+          <img v-if="track.image && track.image.find(img => img.size === 'medium')?.['#text']" :src="track.image.find(img => img.size === 'medium')['#text']" alt="Album Art" class="w-16 h-16 rounded-md object-cover">
+          <div v-else class="w-16 h-16 bg-zinc-200 dark:bg-zinc-700 rounded-md flex items-center justify-center">
+            <Icon name="ph:music-notes-simple-fill" class="w-8 h-8 text-zinc-400 dark:text-zinc-500" />
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              <a :href="track.url" target="_blank" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-200">{{ track.name }}</a>
+            </h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">by {{ track.artist['#text'] || track.artist.name }}</p>
+            <p v-if="track.date?.uts || track['@attr']?.nowplaying" class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              {{ track['@attr']?.nowplaying === 'true' ? 'Now Playing' : new Date(parseInt(track.date.uts) * 1000).toLocaleString() }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
