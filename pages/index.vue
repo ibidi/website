@@ -7,6 +7,36 @@
             Hi, I am İhsan Baki Doğan
           </h1>
 
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+              <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
+              {{ isOnline ? 'Online' : 'Offline' }}
+            </span>
+            <span v-if="lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+              <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+              <template v-if="lastPlayedTrack.url">
+                <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200">
+                  {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
+                  <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
+                  <span v-else class="text-xs text-zinc-500">(son çalan)</span>
+                </a>
+              </template>
+              <span v-else>
+                {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
+                <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
+                <span v-else class="text-xs text-zinc-500">(son çalan)</span>
+              </span>
+            </span>
+            <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-500 border border-zinc-200 dark:border-zinc-700/50">
+                <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+                <span>Müzik aktivitesi yok</span>
+            </span>
+            <span v-else-if="fetchError" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-red-500 dark:text-red-400 border border-zinc-200 dark:border-zinc-700/50">
+                <Icon name="carbon:error" class="w-4 h-4" /> <!-- Changed to error icon -->
+                <span>Veri alınamadı</span>
+            </span>
+          </div>
+
           <p class="text-base text-zinc-600 dark:text-zinc-400">
             Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷
           </p>
@@ -169,7 +199,65 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, computed } from 'vue';
 
+const config = useRuntimeConfig();
+const apiKey = config.public.lastFmApiKey;
+const username = config.public.lastFmUsername;
+const LASTFM_API_BASE_URL = 'https://ws.audioscrobbler.com/2.0/';
+
+interface LastPlayedTrack {
+  name: string;
+  artist: string;
+  url?: string;
+  nowPlaying?: boolean;
+  albumArt?: string;
+}
+
+const lastPlayedTrack = ref<LastPlayedTrack | null>(null);
+const fetchError = ref<string | null>(null);
+
+const isOnline = computed(() => !!lastPlayedTrack.value?.nowPlaying);
+
+async function fetchLastPlayedTrack() {
+  if (!apiKey || !username) {
+    fetchError.value = 'Last.fm API anahtarı veya kullanıcı adı yapılandırılmamış.';
+    console.error(fetchError.value);
+    return;
+  }
+  try {
+    const params = new URLSearchParams({
+      method: 'user.getrecenttracks',
+      user: username,
+      api_key: apiKey,
+      format: 'json',
+      limit: '1'
+    }).toString();
+
+    const response = await $fetch<any>(`${LASTFM_API_BASE_URL}?${params}`);
+
+    if (response && response.recenttracks && response.recenttracks.track && response.recenttracks.track.length > 0) {
+      const track = response.recenttracks.track[0];
+      lastPlayedTrack.value = {
+        name: track.name,
+        artist: track.artist['#text'],
+        url: track.url,
+        nowPlaying: track['@attr']?.nowplaying === 'true',
+        albumArt: track.image?.find((img: any) => img.size === 'medium')?.['#text']
+      };
+    } else {
+      lastPlayedTrack.value = null; // No recent tracks or unexpected response
+    }
+  } catch (err: any) {
+    console.error('Error fetching Last.fm recent track:', err);
+    fetchError.value = `Last.fm verisi alınamadı: ${err.message}`;
+    lastPlayedTrack.value = null;
+  }
+}
+
+onMounted(() => {
+  fetchLastPlayedTrack();
+});
 
 // SEO
 useSeo({
