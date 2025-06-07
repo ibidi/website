@@ -298,43 +298,29 @@ const jobs: Job[] = [
   {
     id: 1,
     company: 'Demirayak Yazılım',
-    title: 'Full Stack Developer',
+    title: 'Full Stack Developer / Co-Founder',
     date: '2019-Present',
     icon: 'carbon:development',
     isPresent: true
   },
   {
     id: 2,
-    company: 'Vien Bag',
-    title: 'Web Developer',
-    date: '2024-2025',
-    icon: 'carbon:shopping-bag'
-  },
-  {
-    id: 3,
-    company: 'As Aksis Güzellik Merkezleri',
-    title: 'Web Developer',
+    company: 'Aksis Güzellik Salonları',
+    title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
     icon: 'carbon:face-satisfied'
   },
   {
-    id: 4,
+    id: 3,
     company: 'Not Bilgi Teknolojileri',
-    title: 'Developer, Social Media Expert, IT',
+    title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
     icon: 'carbon:laptop'
   },
   {
-    id: 5,
-    company: 'VIEN',
-    title: 'Developer',
-    date: '2023-2024',
-    icon: 'carbon:shopping-cart'
-  },
-  {
-    id: 6,
-    company: "OGUZKAAN KOLEJI",
-    title: "Teacher & IT",
+    id: 4,
+    company: "Oguzkaan Koleji",
+    title: "Information Technology Teacher / Instructor - IT Specialist / IT Expert / IT Professional ",
     date: '2023-2025',
     icon: 'carbon:laptop'
   }
