@@ -135,6 +135,58 @@ const projects: Project[] = [
     ],
     imageOnLeft: true,
     technologies: ['Vue.js', 'Nuxt 3', 'Tailwind CSS', 'TypeScript']
+  },
+  {
+    id: 4,
+    tag: 'Automation / Bot',
+    title: 'Schengen Visa Bot',
+    description: 'Schengen vizesi randevu süreçlerini takip eden ve kullanıcıları bilgilendiren Telegram botu.',
+    longDescription: '<p>Schengen vizesi başvuru süreçlerinde randevu bulma zorluğunu hafifletmek amacıyla geliştirilmiş bir Telegram botudur. Belirli aralıklarla konsoloslukların randevu sistemlerini kontrol eder ve boş yer bulunduğunda kullanıcıya bildirim gönderir.</p><p><strong>Temel Özellikler:</strong></p><ul><li>Otomatik randevu takibi</li><li>Telegram üzerinden anlık bildirimler</li><li>Kullanıcı dostu komut arayüzü</li><li>Birden fazla konsolosluk desteği (isteğe bağlı)</li></ul>',
+    image: '/images/projects/schengen_visa_bot.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'GitHub', url: 'https://github.com/ibidi/schengen-visa-bot', icon: 'carbon:logo-github' }
+    ],
+    imageOnLeft: false,
+    technologies: ['Python', 'Telethon', 'SQLite', 'Telegram API']
+  },
+  {
+    id: 5,
+    tag: 'AI / Education',
+    title: 'Oğuzkaan AI',
+    description: 'Oğuzkaan Koleji için geliştirilmiş, yapay zeka destekli çeşitli eğitim araçları ve modülleri.',
+    longDescription: '<p>Oğuzkaan Koleji öğrencileri ve öğretmenlerinin eğitim süreçlerini desteklemek amacıyla geliştirilmiş yapay zeka tabanlı bir projedir. Öğrenci performansını analiz etme, kişiselleştirilmiş öğrenme materyalleri önerme ve eğitim süreçlerini otomatize etme gibi çeşitli modüller içerir.</p><p><strong>Öne Çıkanlar:</strong></p><ul><li>Yapay zeka destekli soru bankası</li><li>Kişiselleştirilmiş çalışma planları</li><li>Performans analizi ve raporlama</li><li>OpenAI API entegrasyonu</li></ul>',
+    image: '/images/projects/oguzkaan_ai.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'GitHub', url: 'https://github.com/ibidi/oguzkaan-ai', icon: 'carbon:logo-github' }
+    ],
+    imageOnLeft: true,
+    technologies: ['Python', 'TensorFlow', 'Flask', 'OpenAI API', 'Pandas', 'NumPy']
+  },
+  {
+    id: 6,
+    tag: 'Music / Web App',
+    title: 'Radio Quuzy',
+    description: 'Çeşitli müzik türlerinde kesintisiz yayın yapan online radyo platformu.',
+    longDescription: '<p>Radio Quuzy, kullanıcıların farklı müzik türlerini keşfedebileceği ve 7/24 kesintisiz müzik dinleyebileceği bir online radyo platformudur. Kullanıcı dostu arayüzü ve geniş müzik arşivi ile keyifli bir dinleme deneyimi sunmayı hedefler.</p><p><strong>Özellikler:</strong></p><ul><li>Farklı türlerde radyo kanalları</li><li>Canlı ve kesintisiz yayın</li><li>Şarkı ve sanatçı bilgileri</li><li>Mobil uyumlu tasarım</li></ul>',
+    image: '/images/projects/radio_quuzy.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'Live App', url: 'https://radio.quuzy.com', icon: 'carbon:launch' }
+    ],
+    imageOnLeft: false,
+    technologies: ['HTML5 Audio', 'JavaScript', 'CSS', 'Streaming Server (e.g., Icecast)']
+  },
+  {
+    id: 7,
+    tag: 'AI / Music Discovery',
+    title: 'Quuzy',
+    description: 'Yapay zeka tabanlı Quuzy, Spotify entegrasyonu sayesinde modunuza özel ruh analizi yaparak size otomatik şarkılar öneriyor.',
+    longDescription: '<p>Geliştirdiğim yapay zeka tabanlı Quuzy, Spotify entegrasyonu sayesinde modunuza özel ruh analizi yaparak size otomatik şarkılar öneriyor. Proje, kullanıcıların müzik keşif deneyimini kişiselleştirmeyi ve ruh hallerine uygun yeni parçalar bulmalarını kolaylaştırmayı amaçlamaktadır.</p><p><strong>Anahtar Özellikler:</strong></p><ul><li>Spotify API ile derin entegrasyon</li><li>Doğal dil işleme ile ruh hali analizi</li><li>Makine öğrenmesi tabanlı kişiselleştirilmiş şarkı önerileri</li><li>Kullanıcı dostu ve etkileşimli arayüz</li><li>Geniş müzik veri tabanına erişim ve akıllı filtreleme</li></ul><p>Quuzy, müziğinizi sizinle birlikte hissetmesini sağlar.</p>',
+    image: '/images/projects/quuzy.png', // Placeholder - Update this path
+    buttons: [
+      { text: 'Live App', url: 'https://quuzy.com', icon: 'carbon:launch' }
+    ],
+    imageOnLeft: true,
+    technologies: ['Python', 'FastAPI', 'Spotify API', 'NLP', 'Machine Learning', 'Vue.js', 'Nuxt.js']
   }
   // Add more projects here following the same structure
 ];
