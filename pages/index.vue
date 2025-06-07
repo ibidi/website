@@ -14,8 +14,8 @@
             </span>
             <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <span class="inline-flex items-center">
-                <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
-                <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+                <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007] mr-0" />
+                <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300 ml-0" />
               </span>
               <template v-if="lastPlayedTrack.url">
                 <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200 ml-2">
@@ -78,7 +78,7 @@
                   <div class="space-y-4">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                        <Icon :name="job.icon" class="text-base text-violet-500" />
+                        <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
                       </div>
                       <div>
                         <div class="flex items-center gap-2">
@@ -104,7 +104,7 @@
                   <div class="space-y-4">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                        <Icon name="carbon:education" class="text-base text-violet-500" />
+                        <img :src="education.image" :alt="education.school" class="w-full h-full object-contain" />
                       </div>
                       <div>
                         <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ education.school }}</h3>
@@ -283,7 +283,7 @@ interface Job {
   company: string
   title: string
   date: string
-  icon: string
+  image: string // Changed from icon to image
   isPresent?: boolean
 }
 
@@ -292,6 +292,7 @@ interface Education {
   school: string
   field: string
   date: string
+  image: string // Added image property
 }
 
 const jobs: Job[] = [
@@ -300,7 +301,7 @@ const jobs: Job[] = [
     company: 'Demirayak Yazılım',
     title: 'Full Stack Developer / Co-Founder',
     date: '2019-Present',
-    icon: 'carbon:development',
+    image: '/images/experience/demirayak.png', // Placeholder image path
     isPresent: true
   },
   {
@@ -308,21 +309,21 @@ const jobs: Job[] = [
     company: 'Aksis Güzellik Salonları',
     title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
-    icon: 'carbon:face-satisfied'
+    image: '/images/experience/aksis.png' // Placeholder image path
   },
   {
     id: 3,
     company: 'Not Bilgi Teknolojileri',
     title: 'Full Stack Developer / Social Media Expert',
     date: '2023-2025',
-    icon: 'carbon:laptop'
+    image: '/images/experience/not-bilgi.png' // Placeholder image path
   },
   {
     id: 4,
     company: "Oguzkaan Koleji",
     title: "Information Technology Teacher / IT Specialist",
     date: '2023-2025',
-    icon: 'carbon:laptop'
+    image: '/images/experience/oguzkaan.png' // Placeholder image path
   }
 ]
 
@@ -331,19 +332,22 @@ const educations: Education[] = [
     id: 1,
     school: 'Istanbul Gelisim University',
     field: 'Computer Programming',
-    date: '2019-2021'
+    date: '2019-2021',
+    image: '/images/education/gelisim.png' // Placeholder image path
   },
   {
     id: 2,
     school: 'Anadolu University',
     field: 'Web Design and Development',
-    date: '2023-2025'
+    date: '2023-2025',
+    image: '/images/education/anadolu.png' // Placeholder image path
   },
   {
     id: 3,
-    school: 'Istanbul Arel University',
-    field: 'Software Engineering',
-    date: '2022-2026'
+    school: 'Istanbul University',
+    field: 'Medical Documentation and Secretarial Services',
+    date: '2022-2024',
+    image: '/images/education/istanbul.png' // Placeholder image path
   }
 ]
 </script>
