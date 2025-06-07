@@ -320,7 +320,7 @@ const jobs: Job[] = [
   {
     id: 4,
     company: "Oguzkaan Koleji",
-    title: "Information Technology Teacher / Instructor - IT Specialist / IT Expert / IT Professional ",
+    title: "Information Technology Teacher / IT Specialist",
     date: '2023-2025',
     icon: 'carbon:laptop'
   }
