@@ -4,9 +4,14 @@
     <div class="container mx-auto max-w-4xl">
       <div class="flex flex-col gap-20">
         <div class="space-y-6">
-          <h1 class="text-3xl font-medium text-zinc-900 dark:text-zinc-200">
-            Hi, I am İhsan Baki Doğan
-          </h1>
+          <BlurText 
+            text="Hi, I am İhsan Baki Doğan"
+            tag="h1"
+            class-name="text-3xl font-medium text-zinc-900 dark:text-zinc-200"
+            :delay="100"
+            animate-by="words"
+            direction="top"
+          />
 
           <div class="flex items-center gap-3">
             <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
@@ -204,6 +209,7 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import AnimatedSquares from '~/components/AnimatedSquares.vue';
 import HomeBlogSection from '~/components/HomeBlogSection.vue';
+import BlurText from '~/components/BlurText.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
