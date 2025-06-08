@@ -225,8 +225,8 @@
               <template #secondContent>
                 <div class="w-full h-full flex flex-col items-center justify-center p-4 bg-violet-700 text-white">
                   <Icon name="carbon:code" class="text-6xl mb-4" />
-                  <h3 class="text-2xl font-semibold">Vue & GSAP</h3>
-                  <p class="text-md text-center">Harika animasyonlar!</p>
+                  <h3 class="text-2xl font-semibold">ibidi</h3>
+                  <p class="text-md text-center">Full Stack Developer</p>
                 </div>
               </template>
             </PixelTransition>
