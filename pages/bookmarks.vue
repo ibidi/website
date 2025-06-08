@@ -11,25 +11,34 @@
           </p>
         </div>
 
-        <div v-if="bookmarks.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div 
-            v-for="bookmark in bookmarks" 
-            :key="bookmark.id" 
-            class="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-800/50 shadow-sm hover:shadow-md transition-shadow duration-200"
-          >
-            <div class="p-6">
-              <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                <a :href="bookmark.url" target="_blank" rel="noopener noreferrer" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-200">
-                  {{ bookmark.title }}
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                </a>
-              </h3>
-              <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">
-                {{ bookmark.description }}
-              </p>
-              <p class="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
-                Eklendi: {{ formatDate(bookmark.dateAdded) }}
-              </p>
+        <div v-if="groupedBookmarks.size > 0" class="space-y-12">
+                    <div v-for="([dateGroup, items]) in groupedBookmarks" :key="dateGroup" class="space-y-6">
+            <h2 class="text-xl font-medium text-zinc-400 dark:text-zinc-500">
+              {{ formatGroupDate(dateGroup) }}
+            </h2>
+            <div class="space-y-4">
+              <a 
+                v-for="bookmark in items" 
+                :key="bookmark.id" 
+                :href="bookmark.url" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
+              >
+                <div class="flex justify-between items-start">
+                  <div class="flex-grow pr-4">
+                    <h3 class="text-md font-semibold text-zinc-900 dark:text-zinc-100">
+                      {{ bookmark.title }}
+                    </h3>
+                    <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                      {{ bookmark.description }}
+                    </p>
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 whitespace-nowrap pt-1">
+                    {{ formatCardDate(bookmark.dateAdded) }}
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -42,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 interface Bookmark {
   id: string;
@@ -88,6 +97,36 @@ const bookmarks = ref<Bookmark[]>([
   }
 ]);
 
+const formatGroupDate = (dateString: string) => {
+  // dateString will be 'YYYY-MM-DD' from grouping
+  const date = new Date(dateString + 'T00:00:00'); // Ensure it's parsed as local, not UTC for grouping
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options); // Using en-US for 'February 14, 2025' format
+};
+
+const formatCardDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+const groupedBookmarks = computed(() => {
+  const groups = new Map<string, Bookmark[]>();
+  const sortedBookmarks = [...bookmarks.value].sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
+
+  for (const bookmark of sortedBookmarks) {
+    const dateKey = bookmark.dateAdded.split('T')[0]; // Group by YYYY-MM-DD
+    if (!groups.has(dateKey)) {
+      groups.set(dateKey, []);
+    }
+    groups.get(dateKey)!.push(bookmark);
+  }
+  return groups;
+});
+
+// Original formatDate (can be removed if not used elsewhere, or kept for other purposes)
 const formatDate = (dateString: string) => {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString('tr-TR', options);
@@ -101,6 +140,13 @@ definePageMeta({
 
 <style scoped>
 /* Gerekirse ek özel stiller buraya eklenebilir */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
