@@ -371,7 +371,8 @@ const jobs: Job[] = [
     company: 'ASEDE',
     title: 'Full Stack Developer',
     date: '2022-2025',
-    image: '/images/experience/asede.PNG' // Placeholder image path
+    image: '/images/experience/asede.PNG', // Placeholder image path
+    isPresent: true
   },
   {
     id: 5,
