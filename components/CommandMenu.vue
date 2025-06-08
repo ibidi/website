@@ -79,6 +79,7 @@ const navigation = [
   { name: 'Projects', path: '/projects', icon: 'carbon:tool-kit' },
   { name: 'Resources', path: '/resources', icon: 'carbon:catalog' },
   { name: 'Daily Song', path: '/muzik', icon: 'carbon:music' },
+  { name: 'Yer İmleri', path: '/bookmarks', icon: 'carbon:bookmark' },
   { name: 'Contact', path: '/contact', icon: 'carbon:email' },
 ]
 
