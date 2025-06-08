@@ -2,14 +2,6 @@
   <div class="relative pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden">
     <div class="container mx-auto max-w-4xl">
       <div class="space-y-12">
-        <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-            Yer İmlerim
-          </h1>
-          <p class="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Kayda değer bulduğum ve daha sonra tekrar ziyaret etmek isteyebileceğim web sayfaları.
-          </p>
-        </div>
 
         <div v-if="groupedBookmarks.size > 0" class="space-y-12">
                     <div v-for="([dateGroup, items]) in groupedBookmarks" :key="dateGroup" class="space-y-6">
