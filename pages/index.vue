@@ -46,9 +46,12 @@
             </span>
           </div>
 
-          <p class="text-base text-zinc-600 dark:text-zinc-400">
-            Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷
-          </p>
+          <ShinyText 
+            text="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷"
+            tag="p"
+            class-name="text-base text-zinc-600 dark:text-zinc-400"
+            :speed="8"
+          />
 
           <div class="flex items-center gap-3">
             <a href="mailto:info@ibidi.tr" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
@@ -210,6 +213,7 @@ import { ref, onMounted, onUnmounted, computed } from 'vue';
 import AnimatedSquares from '~/components/AnimatedSquares.vue';
 import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
+import ShinyText from '~/components/ShinyText.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
