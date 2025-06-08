@@ -18,7 +18,8 @@
     "nuxt": "^3.15.0",
     "sitemap": "^8.0.0",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "gsap": "^3.12.5"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.2.5",
