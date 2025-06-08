@@ -217,7 +217,7 @@
             >
               <template #firstContent>
                 <img 
-                  src="https://source.unsplash.com/random/600x450?abstract,code"
+                  src="/images/projects/ibidi.png"
                   alt="Abstract Code Wallpaper"
                   class="w-full h-full object-cover"
                 />
