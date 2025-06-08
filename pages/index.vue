@@ -212,29 +212,31 @@
 
         <HomeBlogSection />
 
-        <!-- Pixel Transition Example -->
-        <div class="space-y-4 py-12">
-          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200 text-center">Pixel Transition Efekti</h2>
-          <div class="flex justify-center">
+        <!-- Portfolio Section -->
+        <div class="space-y-8 py-12">
+          <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl text-center">Portfolio</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <PixelTransition 
-              :grid-size="10" 
-              pixel-color="#8b5cf6" 
-              :animation-step-duration="0.5"
-              class-name="shadow-xl"
-              aspect-ratio="75%" 
+              v-for="item in portfolioItems" 
+              :key="item.id"
+              :grid-size="item.gridSize || 10" 
+              :pixel-color="item.pixelColor || '#8b5cf6'" 
+              :animation-step-duration="item.animationStepDuration || 0.4"
+              class-name="shadow-xl w-full"
+              :aspect-ratio="item.aspectRatio || '75%'" 
             >
               <template #firstContent>
                 <img 
-                  src="/images/projects/ibidi.png"
-                  alt="Abstract Code Wallpaper"
+                  :src="item.imageUrl"
+                  :alt="item.title"
                   class="w-full h-full object-cover"
                 />
               </template>
               <template #secondContent>
-                <div class="w-full h-full flex flex-col items-center justify-center p-4 bg-violet-700 text-white">
-                  <Icon name="carbon:code" class="text-6xl mb-4" />
-                  <h3 class="text-2xl font-semibold">ibidi</h3>
-                  <p class="text-md text-center">Full Stack Developer</p>
+                <div :class="['w-full h-full flex flex-col items-center justify-center p-4 text-white', item.bgColor || 'bg-violet-700']">
+                  <Icon v-if="item.iconName" :name="item.iconName" class="text-5xl sm:text-6xl mb-3 sm:mb-4" />
+                  <h3 class="text-xl sm:text-2xl font-semibold text-center">{{ item.title }}</h3>
+                  <p v-if="item.description" class="text-sm sm:text-md text-center mt-1">{{ item.description }}</p>
                 </div>
               </template>
             </PixelTransition>
@@ -439,6 +441,52 @@ const jobs: Job[] = [
     image: '/images/experience/oguzkaan.png' // Placeholder image path
   }
 ]
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl: string;
+  iconName?: string;
+  gridSize?: number;
+  pixelColor?: string;
+  animationStepDuration?: number;
+  aspectRatio?: string;
+  bgColor?: string;
+}
+
+const portfolioItems = ref<PortfolioItem[]>([
+  {
+    id: '1',
+    title: 'ibidi.tech',
+    description: 'Personal Website & Blog',
+    imageUrl: '/images/projects/ibidi.png',
+    iconName: 'carbon:user-avatar-filled-alt',
+    pixelColor: '#8b5cf6', // Violet
+    bgColor: 'bg-violet-700',
+    aspectRatio: '75%'
+  },
+  {
+    id: '2',
+    title: 'Project Alpha',
+    description: 'E-commerce Platform',
+    imageUrl: 'https://source.unsplash.com/random/600x450?technology,shop',
+    iconName: 'carbon:shopping-cart',
+    pixelColor: '#34d399', // Emerald
+    bgColor: 'bg-emerald-600',
+    aspectRatio: '75%'
+  },
+  {
+    id: '3',
+    title: 'Service Beta',
+    description: 'SaaS Application',
+    imageUrl: 'https://source.unsplash.com/random/600x450?business,app',
+    iconName: 'carbon:cloud-service',
+    pixelColor: '#60a5fa', // Blue
+    bgColor: 'bg-blue-600',
+    aspectRatio: '75%'
+  },
+]);
 
 const educations: Education[] = [
   {
