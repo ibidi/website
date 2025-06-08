@@ -80,6 +80,7 @@ const navigation = [
   { name: 'Resources', path: '/resources', icon: 'carbon:catalog' },
   { name: 'Daily Song', path: '/muzik', icon: 'carbon:music' },
   { name: 'Bookmarks', path: '/bookmarks', icon: 'carbon:bookmark' },
+  { name: 'Gallery', path: '/gallery', icon: 'carbon:image-search' },
   { name: 'Contact', path: '/contact', icon: 'carbon:email' },
 ]
 

@@ -203,6 +203,35 @@
         </div>
 
         <HomeBlogSection />
+
+        <!-- Pixel Transition Example -->
+        <div class="space-y-4 py-12">
+          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200 text-center">Pixel Transition Efekti</h2>
+          <div class="flex justify-center">
+            <PixelTransition 
+              :grid-size="10" 
+              pixel-color="#8b5cf6" 
+              :animation-step-duration="0.5"
+              class-name="shadow-xl"
+              aspect-ratio="75%" 
+            >
+              <template #firstContent>
+                <img 
+                  src="https://source.unsplash.com/random/600x450?abstract,code"
+                  alt="Abstract Code Wallpaper"
+                  class="w-full h-full object-cover"
+                />
+              </template>
+              <template #secondContent>
+                <div class="w-full h-full flex flex-col items-center justify-center p-4 bg-violet-700 text-white">
+                  <Icon name="carbon:code" class="text-6xl mb-4" />
+                  <h3 class="text-2xl font-semibold">Vue & GSAP</h3>
+                  <p class="text-md text-center">Harika animasyonlar!</p>
+                </div>
+              </template>
+            </PixelTransition>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -214,6 +243,7 @@ import AnimatedSquares from '~/components/AnimatedSquares.vue';
 import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
 import ShinyText from '~/components/ShinyText.vue';
+import PixelTransition from '~/components/PixelTransition.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
