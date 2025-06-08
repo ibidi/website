@@ -1,6 +1,6 @@
 <template>
   <div class="relative pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden z-0">
-    <div id="animated-code-background" class="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none"></div>
+    <AnimatedSquares class="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none" />
     <div class="container mx-auto max-w-4xl">
       <div class="flex flex-col gap-20">
         <div class="space-y-6">
@@ -202,6 +202,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import AnimatedSquares from '~/components/AnimatedSquares.vue';
 import HomeBlogSection from '~/components/HomeBlogSection.vue';
 
 const config = useRuntimeConfig();
