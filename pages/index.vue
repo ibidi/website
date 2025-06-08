@@ -53,7 +53,14 @@
             :speed="8"
           />
 
-          <div class="flex items-center gap-3">
+          <AnimatedContent
+            :distance="50"
+            direction="horizontal"
+            :duration="0.8"
+            :delay="0.2"
+            ease="power2.out"
+          >
+            <div class="flex items-center gap-3">
             <a href="mailto:info@ibidi.tr" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
               <Icon name="carbon:email" class="text-base" />
               Contact
@@ -74,6 +81,7 @@
               </a>
             </div>
           </div>
+          </AnimatedContent>
         </div>
 
         <!-- Experience & Education -->
@@ -244,6 +252,7 @@ import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
 import ShinyText from '~/components/ShinyText.vue';
 import PixelTransition from '~/components/PixelTransition.vue';
+import AnimatedContent from '~/components/AnimatedContent.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
