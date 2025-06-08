@@ -368,16 +368,23 @@ const jobs: Job[] = [
   },
   {
     id: 4,
-    company: 'Not Bilgi Teknolojileri',
-    title: 'Full Stack Developer / Social Media Expert',
-    date: '2023-2025',
-    image: '/images/experience/not-bilgi.png' // Placeholder image path
+    company: 'ASEDE',
+    title: 'Full Stack Developer',
+    date: '2022-2025',
+    image: '/images/experience/asede.PNG' // Placeholder image path
   },
   {
     id: 5,
+    company: 'Not Bilgi Teknolojileri',
+    title: 'Full Stack Developer / Social Media Expert',
+    date: '2022-2024',
+    image: '/images/experience/not-bilgi.png' // Placeholder image path
+  },
+  {
+    id: 6,
     company: "Oguzkaan Koleji",
     title: "Information Technology Teacher / IT Specialist",
-    date: '2023-2025',
+    date: '2022-2024',
     image: '/images/experience/oguzkaan.png' // Placeholder image path
   }
 ]
