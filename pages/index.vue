@@ -211,8 +211,8 @@
 
         <HomeBlogSection />
 
-        <!-- Recently Listened Songs -->
-        <div class="space-y-6">
+        <!-- Recently Listened Songs (commented out) -->
+        <!-- <div class="space-y-6">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Recently Listened Songs</h2>
             <a 
@@ -279,7 +279,7 @@
             <Icon name="carbon:error" class="w-12 h-12 text-red-500 mx-auto mb-3" />
             <p class="text-red-600 dark:text-red-400">{{ fetchError }}</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -306,43 +306,43 @@ interface LastPlayedTrack {
   albumArt?: string;
 }
 
-interface RecentTrack {
-  name: string;
-  artist: string;
-  album: string;
-  url?: string;
-  albumArt?: string;
-  playedAt?: string;
-}
+// interface RecentTrack {
+//   name: string;
+//   artist: string;
+//   album: string;
+//   url?: string;
+//   albumArt?: string;
+//   playedAt?: string;
+// }
 
 const lastPlayedTrack = ref<LastPlayedTrack | null>(null);
-const recentTracks = ref<RecentTrack[]>([]);
+// const recentTracks = ref<RecentTrack[]>([]);
 const fetchError = ref<string | null>(null);
 
 const isOnline = computed(() => !!lastPlayedTrack.value?.nowPlaying);
 
-function formatDate(dateString?: string) {
-  if (!dateString) return '';
-  try {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - date.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays === 1) {
-      return 'Dün';
-    } else if (diffDays < 7) {
-      return `${diffDays} gün önce`;
-    } else {
-      return date.toLocaleDateString('tr-TR', {
-        day: 'numeric',
-        month: 'short'
-      });
-    }
-  } catch {
-    return dateString;
-  }
-}
+// function formatDate(dateString?: string) {
+//   if (!dateString) return '';
+//   try {
+//     const date = new Date(dateString);
+//     const now = new Date();
+//     const diffTime = Math.abs(now.getTime() - date.getTime());
+//     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+//     
+//     if (diffDays === 1) {
+//       return 'Dün';
+//     } else if (diffDays < 7) {
+//       return `${diffDays} gün önce`;
+//     } else {
+//       return date.toLocaleDateString('tr-TR', {
+//         day: 'numeric',
+//         month: 'short'
+//       });
+//     }
+//   } catch {
+//     return dateString;
+//   }
+// }
 
 async function fetchLastPlayedTrack() {
   if (!apiKey || !username) {
@@ -380,49 +380,49 @@ async function fetchLastPlayedTrack() {
   }
 }
 
-async function fetchRecentTracks() {
-  if (!apiKey || !username) {
-    return;
-  }
-  try {
-    const params = new URLSearchParams({
-      method: 'user.getrecenttracks',
-      user: username,
-      api_key: apiKey,
-      format: 'json',
-      limit: '8'
-    }).toString();
+// async function fetchRecentTracks() {
+//   if (!apiKey || !username) {
+//     return;
+//   }
+//   try {
+//     const params = new URLSearchParams({
+//       method: 'user.getrecenttracks',
+//       user: username,
+//       api_key: apiKey,
+//       format: 'json',
+//       limit: '8'
+//     }).toString();
 
-    const response = await $fetch<any>(`${LASTFM_API_BASE_URL}?${params}`);
+//     const response = await $fetch<any>(`${LASTFM_API_BASE_URL}?${params}`);
 
-    if (response && response.recenttracks && response.recenttracks.track) {
-      const tracks = Array.isArray(response.recenttracks.track) 
-        ? response.recenttracks.track 
-        : [response.recenttracks.track];
+//     if (response && response.recenttracks && response.recenttracks.track) {
+//       const tracks = Array.isArray(response.recenttracks.track) 
+//         ? response.recenttracks.track 
+//         : [response.recenttracks.track];
       
-      recentTracks.value = tracks.map((track: any) => ({
-        name: track.name,
-        artist: track.artist['#text'],
-        album: track.album['#text'] || '',
-        url: track.url,
-        albumArt: track.image?.find((img: any) => img.size === 'medium')?.['#text'],
-        playedAt: track.date?.['#text'] || 'Şimdi çalıyor'
-      }));
-    }
-  } catch (err: any) {
-    console.error('Error fetching recent tracks:', err);
-  }
-}
+//       recentTracks.value = tracks.map((track: any) => ({
+//         name: track.name,
+//         artist: track.artist['#text'],
+//         album: track.album['#text'] || '',
+//         url: track.url,
+//         albumArt: track.image?.find((img: any) => img.size === 'medium')?.['#text'],
+//         playedAt: track.date?.['#text'] || 'Şimdi çalıyor'
+//       }));
+//     }
+//   } catch (err: any) {
+//     console.error('Error fetching recent tracks:', err);
+//   }
+// }
 
 let refreshInterval: NodeJS.Timeout | null = null;
 
 onMounted(() => {
   fetchLastPlayedTrack();
-  fetchRecentTracks();
+  // fetchRecentTracks();
   // Refresh every 30 seconds (30000 milliseconds)
   refreshInterval = setInterval(() => {
     fetchLastPlayedTrack();
-    fetchRecentTracks();
+    // fetchRecentTracks();
   }, 30000);
 });
 
