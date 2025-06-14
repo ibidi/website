@@ -20,8 +20,7 @@
             </span>
             <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <span class="inline-flex items-center">
-                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007] mr-0" />
-                <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300 ml-0" />
+                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               </span>
               <template v-if="lastPlayedTrack.url">
                 <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200 ml-2">
@@ -241,8 +240,7 @@
                     class="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div v-else class="w-full h-full flex items-center justify-center">
-                    <Icon name="ph:music-note-simple-fill" class="w-6 h-6 text-zinc-400" />
+                  <div v-else class="w-full h-full flex items-center justify-center bg-zinc-300 dark:bg-zinc-600">
                   </div>
                 </div>
                 
