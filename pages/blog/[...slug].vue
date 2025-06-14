@@ -50,6 +50,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  name: 'blog-catch-all'
+})
+
 interface Article {
   title: string
   date: string

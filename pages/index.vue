@@ -212,34 +212,74 @@
 
         <HomeBlogSection />
 
-        <!-- Portfolio Section -->
-        <div class="space-y-8 py-12">
-          <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl text-center">Portfolio</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <PixelTransition 
-              v-for="item in portfolioItems" 
-              :key="item.id"
-              :grid-size="item.gridSize || 10" 
-              :pixel-color="item.pixelColor || '#8b5cf6'" 
-              :animation-step-duration="item.animationStepDuration || 0.4"
-              class-name="shadow-xl w-full"
-              :aspect-ratio="item.aspectRatio || '75%'" 
+        <!-- Recently Listened Songs -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Recently Listened Songs</h2>
+            <a 
+              href="https://www.last.fm/user/ibidi" 
+              target="_blank"
+              class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
-              <template #firstContent>
-                <img 
-                  :src="item.imageUrl"
-                  :alt="item.title"
-                  class="w-full h-full object-cover"
-                />
-              </template>
-              <template #secondContent>
-                <div :class="['w-full h-full flex flex-col items-center justify-center p-4 text-white', item.bgColor || 'bg-violet-700']">
-                  <Icon v-if="item.iconName" :name="item.iconName" class="text-5xl sm:text-6xl mb-3 sm:mb-4" />
-                  <h3 class="text-xl sm:text-2xl font-semibold text-center">{{ item.title }}</h3>
-                  <p v-if="item.description" class="text-sm sm:text-md text-center mt-1">{{ item.description }}</p>
+              <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+              Last.fm Profile
+            </a>
+          </div>
+          
+          <div v-if="recentTracks.length > 0" class="grid gap-4 md:grid-cols-2">
+            <div 
+              v-for="track in recentTracks" 
+              :key="`${track.name}-${track.artist}`"
+              class="group"
+            >
+              <div class="flex items-center gap-4 p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="w-12 h-12 rounded-md bg-zinc-200 dark:bg-zinc-700 flex-shrink-0 overflow-hidden">
+                  <img 
+                    v-if="track.albumArt" 
+                    :src="track.albumArt" 
+                    :alt="`${track.name} album art`"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div v-else class="w-full h-full flex items-center justify-center">
+                    <Icon name="ph:music-note-simple-fill" class="w-6 h-6 text-zinc-400" />
+                  </div>
                 </div>
-              </template>
-            </PixelTransition>
+                
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-start justify-between gap-2">
+                    <div class="min-w-0 flex-1">
+                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 truncate">
+                        <template v-if="track.url">
+                          <a :href="track.url" target="_blank" class="hover:text-violet-500 transition-colors">
+                            {{ track.name }}
+                          </a>
+                        </template>
+                        <span v-else>{{ track.name }}</span>
+                      </h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400 truncate">{{ track.artist }}</p>
+                      <p v-if="track.album" class="text-xs text-zinc-500 dark:text-zinc-500 truncate">{{ track.album }}</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                      <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+                    </div>
+                  </div>
+                  <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
+                    {{ track.playedAt === 'Şimdi çalıyor' ? track.playedAt : formatDate(track.playedAt) }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div v-else-if="!fetchError" class="text-center py-8">
+            <Icon name="simple-icons:lastfm" class="w-12 h-12 text-[#d51007] mx-auto mb-3" />
+            <p class="text-zinc-600 dark:text-zinc-400">Henüz şarkı dinlememiş görünüyorsunuz</p>
+          </div>
+          
+          <div v-else class="text-center py-8">
+            <Icon name="carbon:error" class="w-12 h-12 text-red-500 mx-auto mb-3" />
+            <p class="text-red-600 dark:text-red-400">{{ fetchError }}</p>
           </div>
         </div>
       </div>
@@ -253,7 +293,6 @@ import AnimatedSquares from '~/components/AnimatedSquares.vue';
 import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
 import ShinyText from '~/components/ShinyText.vue';
-import PixelTransition from '~/components/PixelTransition.vue';
 import AnimatedContent from '~/components/AnimatedContent.vue';
 
 const config = useRuntimeConfig();
@@ -269,10 +308,43 @@ interface LastPlayedTrack {
   albumArt?: string;
 }
 
+interface RecentTrack {
+  name: string;
+  artist: string;
+  album: string;
+  url?: string;
+  albumArt?: string;
+  playedAt?: string;
+}
+
 const lastPlayedTrack = ref<LastPlayedTrack | null>(null);
+const recentTracks = ref<RecentTrack[]>([]);
 const fetchError = ref<string | null>(null);
 
 const isOnline = computed(() => !!lastPlayedTrack.value?.nowPlaying);
+
+function formatDate(dateString?: string) {
+  if (!dateString) return '';
+  try {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) {
+      return 'Dün';
+    } else if (diffDays < 7) {
+      return `${diffDays} gün önce`;
+    } else {
+      return date.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'short'
+      });
+    }
+  } catch {
+    return dateString;
+  }
+}
 
 async function fetchLastPlayedTrack() {
   if (!apiKey || !username) {
@@ -310,12 +382,50 @@ async function fetchLastPlayedTrack() {
   }
 }
 
+async function fetchRecentTracks() {
+  if (!apiKey || !username) {
+    return;
+  }
+  try {
+    const params = new URLSearchParams({
+      method: 'user.getrecenttracks',
+      user: username,
+      api_key: apiKey,
+      format: 'json',
+      limit: '8'
+    }).toString();
+
+    const response = await $fetch<any>(`${LASTFM_API_BASE_URL}?${params}`);
+
+    if (response && response.recenttracks && response.recenttracks.track) {
+      const tracks = Array.isArray(response.recenttracks.track) 
+        ? response.recenttracks.track 
+        : [response.recenttracks.track];
+      
+      recentTracks.value = tracks.map((track: any) => ({
+        name: track.name,
+        artist: track.artist['#text'],
+        album: track.album['#text'] || '',
+        url: track.url,
+        albumArt: track.image?.find((img: any) => img.size === 'medium')?.['#text'],
+        playedAt: track.date?.['#text'] || 'Şimdi çalıyor'
+      }));
+    }
+  } catch (err: any) {
+    console.error('Error fetching recent tracks:', err);
+  }
+}
+
 let refreshInterval: NodeJS.Timeout | null = null;
 
 onMounted(() => {
   fetchLastPlayedTrack();
+  fetchRecentTracks();
   // Refresh every 30 seconds (30000 milliseconds)
-  refreshInterval = setInterval(fetchLastPlayedTrack, 30000);
+  refreshInterval = setInterval(() => {
+    fetchLastPlayedTrack();
+    fetchRecentTracks();
+  }, 30000);
 });
 
 onUnmounted(() => {
@@ -441,52 +551,6 @@ const jobs: Job[] = [
     image: '/images/experience/oguzkaan.png' // Placeholder image path
   }
 ]
-
-interface PortfolioItem {
-  id: string;
-  title: string;
-  description?: string;
-  imageUrl: string;
-  iconName?: string;
-  gridSize?: number;
-  pixelColor?: string;
-  animationStepDuration?: number;
-  aspectRatio?: string;
-  bgColor?: string;
-}
-
-const portfolioItems = ref<PortfolioItem[]>([
-  {
-    id: '1',
-    title: 'ibidi.tech',
-    description: 'Personal Website & Blog',
-    imageUrl: '/images/projects/ibidi.png',
-    iconName: 'carbon:user-avatar-filled-alt',
-    pixelColor: '#8b5cf6', // Violet
-    bgColor: 'bg-violet-700',
-    aspectRatio: '75%'
-  },
-  {
-    id: '2',
-    title: 'Project Alpha',
-    description: 'E-commerce Platform',
-    imageUrl: 'https://source.unsplash.com/random/600x450?technology,shop',
-    iconName: 'carbon:shopping-cart',
-    pixelColor: '#34d399', // Emerald
-    bgColor: 'bg-emerald-600',
-    aspectRatio: '75%'
-  },
-  {
-    id: '3',
-    title: 'Service Beta',
-    description: 'SaaS Application',
-    imageUrl: 'https://source.unsplash.com/random/600x450?business,app',
-    iconName: 'carbon:cloud-service',
-    pixelColor: '#60a5fa', // Blue
-    bgColor: 'bg-blue-600',
-    aspectRatio: '75%'
-  },
-]);
 
 const educations: Education[] = [
   {
