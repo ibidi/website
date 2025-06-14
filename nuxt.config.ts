@@ -79,7 +79,7 @@ export default defineNuxtConfig({
       ],
       htmlAttrs: {
         lang: 'tr',
-        class: 'light'
+        class: 'dark'
       }
     }
   },

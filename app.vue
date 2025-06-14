@@ -34,13 +34,14 @@
               <Icon name="carbon:menu" class="text-base" />
             </button>
 
-            <button 
+            <!-- Theme toggle button (commented out) -->
+            <!-- <button 
               @click="toggleColorMode"
               class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <Icon v-if="colorMode.value === 'dark'" name="carbon:sun" class="text-base" />
               <Icon v-else name="carbon:moon" class="text-base" />
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -68,7 +69,7 @@
 <script setup lang="ts">
 import Footer from './components/Footer.vue'
 
-const colorMode = useColorMode()
+// const colorMode = useColorMode() // Commented out - dark theme is now default
 const commandMenu = ref()
 
 // Google Site Verification
@@ -99,9 +100,10 @@ useHead({
   ]
 })
 
-const toggleColorMode = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-}
+// Theme toggle function (commented out - using default dark theme)
+// const toggleColorMode = () => {
+//   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+// }
 
 const openCommandMenu = () => {
   commandMenu.value?.open()
