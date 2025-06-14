@@ -22,7 +22,6 @@ interface _GlobalComponents {
     'HomeBlogSection': typeof import("../components/HomeBlogSection.vue")['default']
     'LastFmStats': typeof import("../components/LastFmStats.vue")['default']
     'PixelTransition': typeof import("../components/PixelTransition.vue")['default']
-    'ScrollVelocity': typeof import("../components/ScrollVelocity.vue")['default']
     'ShinyText': typeof import("../components/ShinyText.vue")['default']
     'ContentDoc': typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentDoc.vue")['default']
     'ContentList': typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentList.vue")['default']
@@ -99,7 +98,6 @@ interface _GlobalComponents {
     'LazyHomeBlogSection': LazyComponent<typeof import("../components/HomeBlogSection.vue")['default']>
     'LazyLastFmStats': LazyComponent<typeof import("../components/LastFmStats.vue")['default']>
     'LazyPixelTransition': LazyComponent<typeof import("../components/PixelTransition.vue")['default']>
-    'LazyScrollVelocity': LazyComponent<typeof import("../components/ScrollVelocity.vue")['default']>
     'LazyShinyText': LazyComponent<typeof import("../components/ShinyText.vue")['default']>
     'LazyContentDoc': LazyComponent<typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentDoc.vue")['default']>
     'LazyContentList': LazyComponent<typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentList.vue")['default']>
@@ -182,7 +180,6 @@ export const Header: typeof import("../components/Header.vue")['default']
 export const HomeBlogSection: typeof import("../components/HomeBlogSection.vue")['default']
 export const LastFmStats: typeof import("../components/LastFmStats.vue")['default']
 export const PixelTransition: typeof import("../components/PixelTransition.vue")['default']
-export const ScrollVelocity: typeof import("../components/ScrollVelocity.vue")['default']
 export const ShinyText: typeof import("../components/ShinyText.vue")['default']
 export const ContentDoc: typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentDoc.vue")['default']
 export const ContentList: typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentList.vue")['default']
@@ -259,7 +256,6 @@ export const LazyHeader: LazyComponent<typeof import("../components/Header.vue")
 export const LazyHomeBlogSection: LazyComponent<typeof import("../components/HomeBlogSection.vue")['default']>
 export const LazyLastFmStats: LazyComponent<typeof import("../components/LastFmStats.vue")['default']>
 export const LazyPixelTransition: LazyComponent<typeof import("../components/PixelTransition.vue")['default']>
-export const LazyScrollVelocity: LazyComponent<typeof import("../components/ScrollVelocity.vue")['default']>
 export const LazyShinyText: LazyComponent<typeof import("../components/ShinyText.vue")['default']>
 export const LazyContentDoc: LazyComponent<typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentDoc.vue")['default']>
 export const LazyContentList: LazyComponent<typeof import("../node_modules/@nuxt/content/dist/runtime/components/ContentList.vue")['default']>
