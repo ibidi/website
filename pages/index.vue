@@ -211,6 +211,29 @@
 
         <HomeBlogSection />
 
+        <!-- Now Playing Scroll Effect -->
+        <div v-if="lastPlayedTrack?.nowPlaying" class="my-12 bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-zinc-800/30 dark:to-zinc-800/50 rounded-lg overflow-hidden border border-violet-200 dark:border-zinc-700/50">
+          <div class="p-4 border-b border-violet-200 dark:border-zinc-700/50">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium text-violet-700 dark:text-zinc-300">Şimdi Çalıyor</span>
+                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
+              </div>
+              <div class="text-xs text-violet-600 dark:text-zinc-400 bg-violet-100 dark:bg-zinc-700/50 px-2 py-1 rounded">
+                Live
+              </div>
+            </div>
+          </div>
+          <ScrollVelocity 
+            :texts="[`🎵 ${lastPlayedTrack.name} - ${lastPlayedTrack.artist} 🎵`]"
+            :velocity="40"
+            className="text-violet-800 dark:text-violet-200 font-semibold"
+            parallaxClassName="py-6"
+            :numCopies="10"
+          />
+        </div>
+
         <!-- Recently Listened Songs -->
         <div class="space-y-6">
           <div class="flex items-center justify-between">
@@ -292,6 +315,7 @@ import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
 import ShinyText from '~/components/ShinyText.vue';
 import AnimatedContent from '~/components/AnimatedContent.vue';
+import ScrollVelocity from '~/components/ScrollVelocity.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
