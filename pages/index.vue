@@ -221,7 +221,7 @@
               target="_blank"
               class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
-              <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+              <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               Last.fm Profile
             </a>
           </div>
@@ -261,7 +261,7 @@
                       <p v-if="track.album" class="text-xs text-zinc-500 dark:text-zinc-500 truncate">{{ track.album }}</p>
                     </div>
                     <div class="flex-shrink-0">
-                      <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007]" />
+                      <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
                     </div>
                   </div>
                   <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
@@ -273,7 +273,7 @@
           </div>
           
           <div v-else-if="!fetchError" class="text-center py-8">
-            <Icon name="simple-icons:lastfm" class="w-12 h-12 text-[#d51007] mx-auto mb-3" />
+            <Icon name="simple-icons:lastdotfm" class="w-12 h-12 text-[#d51007] mx-auto mb-3" />
             <p class="text-zinc-600 dark:text-zinc-400">Henüz şarkı dinlememiş görünüyorsunuz</p>
           </div>
           

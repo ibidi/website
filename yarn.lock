@@ -293,10 +293,10 @@
   resolved "https://registry.npmjs.org/@fastify/busboy/-/busboy-3.1.1.tgz"
   integrity sha512-5DGmA8FTdB2XbDeEwc/5ZXBl6UbBAyBOOLlPuBnZ/N1SwdH9Ii+cOX3tBROlDgcTXxjOYnLMVoKk9+FXAw0CJw==
 
-"@iconify-json/carbon@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/@iconify-json/carbon/-/carbon-1.2.5.tgz"
-  integrity sha512-aI3TEzOrUDGhs74zIT3ym/ZQBUEziyu8JifntX2Hb4siVzsP5sQ/QEfVdmcCUj37kQUYT3TYBSeAw2vTfCJx9w==
+"@iconify-json/carbon@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.npmjs.org/@iconify-json/carbon/-/carbon-1.2.9.tgz"
+  integrity sha512-RyeSAuFTzhs1GX4yrzVEKEbNQGt95p9zMR4S2F63vbThtNoUr5OKwaWbhO/GbHQCSgdbKuZv2ApAOsY2fLxLbQ==
   dependencies:
     "@iconify/types" "*"
 
@@ -311,6 +311,13 @@
   version "1.2.2"
   resolved "https://registry.npmjs.org/@iconify-json/mdi/-/mdi-1.2.2.tgz"
   integrity sha512-84aznJXzfGdbOXGe8xB7E5uNAb7Yo5IABwTgq2X3kczb819qZeS9eL31bTVn7wJdCLK5ieaoUc2GTS3QYIkJ6g==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/ph@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@iconify-json/ph/-/ph-1.2.2.tgz"
+  integrity sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==
   dependencies:
     "@iconify/types" "*"
 

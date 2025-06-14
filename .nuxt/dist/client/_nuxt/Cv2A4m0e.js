@@ -1,0 +1,1 @@
+import{_ as o}from"./DlAUqK2U.js";import{c as t,o as r,z as s}from"./B84Q3UsF.js";const c={},a={class:"flex-grow"};function n(e,_){return r(),t("main",a,[s(e.$slots,"default")])}const d=o(c,[["render",n]]);export{d as default};
