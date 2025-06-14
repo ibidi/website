@@ -20,7 +20,7 @@
             </span>
             <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
               <span class="inline-flex items-center">
-                <Icon name="simple-icons:lastfm" class="w-4 h-4 text-[#d51007] mr-0" />
+                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007] mr-0" />
                 <Icon name="ph:music-note-simple-fill" class="w-4 h-4 text-zinc-700 dark:text-zinc-300 ml-0" />
               </span>
               <template v-if="lastPlayedTrack.url">
