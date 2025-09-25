@@ -3,10 +3,10 @@ import { d as useRoute, u as useHead } from './server.mjs';
 
 const useSeo = (options) => {
   const route = useRoute();
-  const defaultTitle = "ibidi.tr";
+  const defaultTitle = "ihsanbakidogan.com";
   const defaultDescription = "Ki\u015Fisel blog ve portf\xF6y sitesi";
   const defaultImage = "/logo.png";
-  const baseUrl = "https://ibidi.tr";
+  const baseUrl = "https://ihsanbakidogan.com";
   const title = computed(() => options.title || defaultTitle);
   const description = computed(() => options.description || defaultDescription);
   const image = computed(() => options.image || defaultImage);

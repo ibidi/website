@@ -679,7 +679,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="flex items-center gap-3"${_scopeId}><a href="mailto:info@ibidi.tr" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"${_scopeId}>`);
+            _push2(`<div class="flex items-center gap-3"${_scopeId}><a href="mailto:info@ihsanbakidogan.com" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"${_scopeId}>`);
             _push2(ssrRenderComponent(_component_Icon, {
               name: "carbon:email",
               class: "text-base"
@@ -709,7 +709,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             return [
               createVNode("div", { class: "flex items-center gap-3" }, [
                 createVNode("a", {
-                  href: "mailto:info@ibidi.tr",
+                  href: "mailto:info@ihsanbakidogan.com",
                   class: "inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
                 }, [
                   createVNode(_component_Icon, {

@@ -58,7 +58,7 @@
         </a>
 
         <!-- Email -->
-        <a href="mailto:info@ibidi.tr" target="_blank" rel="noopener noreferrer" 
+        <a href="mailto:info@ihsanbakidogan.com" target="_blank" rel="noopener noreferrer" 
            class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors duration-300">Email</h2>

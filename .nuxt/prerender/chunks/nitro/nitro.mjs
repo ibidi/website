@@ -1337,7 +1337,7 @@ const _inlineRuntimeConfig = {
       }
     ],
     "sitemap": [
-      "https://ibidi.tr/sitemap.xml",
+      "https://ihsanbakidogan.com/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,

@@ -2566,12 +2566,12 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             "@type": "Person",
             name: "İhsan Baki Doğan",
             jobTitle: "Full Stack Developer",
-            url: "https://ibidi.tr",
+            url: "https://ihsanbakidogan.com",
             sameAs: [
               "https://github.com/ibidi",
               "https://x.com/ibidicodes"
             ],
-            image: "https://ibidi.tr/logo.png",
+            image: "https://ihsanbakidogan.com/logo.png",
             description: "Full Stack Developer with expertise in Vue.js, Node.js, and modern web technologies."
           })
         }

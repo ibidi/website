@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ibidi.tr</loc>
+    <loc>https://ihsanbakidogan.com</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibidi.tr/blog</loc>
+    <loc>https://ihsanbakidogan.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ibidi.tr/projects</loc>
+    <loc>https://ihsanbakidogan.com/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ibidi.tr/repositories</loc>
+    <loc>https://ihsanbakidogan.com/repositories</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ibidi.tr/daily-songs</loc>
+    <loc>https://ihsanbakidogan.com/daily-songs</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ibidi.tr/contact</loc>
+    <loc>https://ihsanbakidogan.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

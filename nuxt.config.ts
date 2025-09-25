@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   robots: {
     UserAgent: '*',
     Allow: '/',
-    Sitemap: 'https://ibidi.tr/sitemap.xml'
+    Sitemap: 'https://ihsanbakidogan.com/sitemap.xml'
   },
   runtimeConfig: {
     public: {
@@ -58,7 +58,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      titleTemplate: '%s - ibidi.tr',
+      titleTemplate: '%s - ihsanbakidogan.com',
       title: 'Home',
       meta: [
         { charset: 'utf-8' },
@@ -66,7 +66,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Kişisel blog ve portföy sitesi' },
         { name: 'format-detection', content: 'telephone=no' },
         { name: 'theme-color', content: '#000000' },
-        { property: 'og:site_name', content: 'ibidi.tr' },
+        { property: 'og:site_name', content: 'ihsanbakidogan.com' },
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@ibidi' },

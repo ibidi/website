@@ -9,10 +9,10 @@ export const useSeo = (options: SeoOptions) => {
   const config = useRuntimeConfig();
   const route = useRoute();
 
-  const defaultTitle = 'ibidi.tr';
+  const defaultTitle = 'ihsanbakidogan.com';
   const defaultDescription = 'Kişisel blog ve portföy sitesi';
   const defaultImage = '/logo.png';
-  const baseUrl = 'https://ibidi.tr';
+  const baseUrl = 'https://ihsanbakidogan.com';
 
   const title = computed(() => options.title || defaultTitle);
   const description = computed(() => options.description || defaultDescription);
