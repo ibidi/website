@@ -502,16 +502,22 @@ interface Education {
 }
 
 const jobs: Job[] = [
-  {
+{
     id: 1,
-    company: 'Demirayak Yazılım',
-    title: 'Full Stack Developer / Co-Founder',
-    date: '2019-Present',
-    image: '/images/experience/demirayak.png', // Placeholder image path
-    isPresent: true
+    company: 'Uğur Döküm',
+    title: 'IT Specialist',
+    date: '2025-Present',
+    image: '/images/experience/ugurdokum.jpeg', // Placeholder image path
   },
   {
     id: 2,
+    company: 'EduDekor Bilgi Teknolojileri',
+    title: 'Full Stack Developer / Social Media Expert',
+    date: '2022-Present',
+    image: '/images/experience/edudekor.jpeg' // Placeholder image path
+  },
+  {
+    id: 3,
     company: 'Hayati Kodla',
     title: 'Full Stack Developer / Operation Manager',
     date: '2024-Present',
@@ -519,30 +525,28 @@ const jobs: Job[] = [
     isPresent: true
   },
   {
-    id: 3,
-    company: 'Aksis Güzellik Salonları',
-    title: 'Full Stack Developer / Social Media Expert',
-    date: '2023-Present',
-    image: '/images/experience/aksis.jpeg', // Placeholder image path
-    isPresent: true
-  },
-  {
     id: 4,
-    company: 'ASEDE',
-    title: 'Full Stack Developer',
-    date: '2022-2025',
-    image: '/images/experience/asede.PNG', // Placeholder image path
-    isPresent: true
+    company: 'Demirayak Yazılım',
+    title: 'Full Stack Developer / Co-Founder',
+    date: '2019-Present',
+    image: '/images/experience/demirayak.png', // Placeholder image path
   },
   {
     id: 5,
-    company: 'Not Bilgi Teknolojileri',
+    company: 'Aksis Güzellik Salonları',
     title: 'Full Stack Developer / Social Media Expert',
-    date: '2022-2024',
-    image: '/images/experience/not-bilgi.png' // Placeholder image path
+    date: '2023-2025',
+    image: '/images/experience/aksis.jpeg' // Placeholder image path
   },
   {
     id: 6,
+    company: 'ASEDE',
+    title: 'Full Stack Developer',
+    date: '2022-2025',
+    image: '/images/experience/asede.PNG' // Placeholder image path
+  },
+  {
+    id: 7,
     company: "Oguzkaan Koleji",
     title: "Information Technology Teacher / IT Specialist",
     date: '2022-2024',
