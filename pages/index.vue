@@ -231,79 +231,6 @@
           </div>
         </div>
 
-        <!-- Technologies -->
-        <div class="space-y-4">
-          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
-          <div class="grid gap-4 md:grid-cols-2">
-            <!-- Frontend -->
-            <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:application-web" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Frontend</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Vue.js, React.js, TypeScript, TailwindCSS</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Backend -->
-            <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:data-base" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Backend</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Node.js, PHP, MySQL, MongoDB</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tools -->
-            <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:tools" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Tools</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">VS Code, Git, Docker, Figma</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cloud -->
-            <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:cloud" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Cloud</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">AWS, Netlify, Vercel, DigitalOcean</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- Blog & Bookmarks Grid -->
         <div class="grid gap-8 md:grid-cols-2">
@@ -481,6 +408,80 @@
                   </div>
                 </a>
               </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technologies -->
+        <div class="space-y-4">
+          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
+          <div class="grid gap-4 md:grid-cols-2">
+            <!-- Frontend -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:application-web" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Frontend</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Vue.js, React.js, TypeScript, TailwindCSS</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:data-base" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Backend</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Node.js, PHP, MySQL, MongoDB</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:tools" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Tools</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">VS Code, Git, Docker, Figma</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cloud -->
+            <div class="group">
+              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                      <Icon name="carbon:cloud" class="text-base text-violet-500" />
+                    </div>
+                    <div>
+                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Cloud</h3>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400">AWS, Netlify, Vercel, DigitalOcean</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
