@@ -18,7 +18,7 @@
               <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
-            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
+            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-violet-500/10 via-pink-500/10 to-cyan-500/10 dark:from-violet-500/20 dark:via-pink-500/20 dark:to-cyan-500/20 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-violet-200/50 dark:border-violet-700/50 backdrop-blur-sm">
               <span class="inline-flex items-center">
                 <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               </span>
@@ -35,7 +35,7 @@
                 <span v-else class="text-xs text-zinc-500">(son çalan)</span>
               </span>
             </span>
-            <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-500 border border-zinc-200 dark:border-zinc-700/50">
+            <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-gradient-to-r from-gray-500/10 via-slate-500/10 to-zinc-500/10 dark:from-gray-500/20 dark:via-slate-500/20 dark:to-zinc-500/20 rounded-md text-sm text-zinc-500 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
                 <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
                 <span>Müzik aktivitesi yok</span>
             </span>
@@ -87,9 +87,20 @@
         <div class="grid gap-8 md:grid-cols-2">
           <!-- Experience -->
           <div class="space-y-4">
-            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
+              <button 
+                v-if="jobs.length > 3"
+                @click="showAllJobs = !showAllJobs"
+                class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+              >
+                <Icon :name="showAllJobs ? 'carbon:chevron-up' : 'carbon:chevron-down'" class="w-4 h-4" />
+                {{ showAllJobs ? 'Show Less' : `Show All (${jobs.length})` }}
+              </button>
+            </div>
             <div class="space-y-4">
-              <div v-for="job in jobs" :key="job.id" class="group">
+              <!-- First 3 jobs - Full display -->
+              <div v-for="job in jobs.slice(0, 3)" :key="job.id" class="group">
                 <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                   <div class="space-y-4">
                     <div class="flex items-center gap-3">
@@ -108,6 +119,29 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Remaining jobs - Compact display when expanded -->
+              <Transition name="slide-fade">
+                <div v-if="showAllJobs && jobs.length > 3" class="space-y-2">
+                  <div v-for="job in jobs.slice(3)" :key="job.id" class="group">
+                    <div class="flex items-center gap-3 p-3 bg-zinc-50 dark:bg-zinc-800/30 rounded-md border border-zinc-200/50 dark:border-zinc-700/30 transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50">
+                      <div class="w-8 h-8 rounded-md bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                        <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-200 truncate">{{ job.company }}</h3>
+                          <span v-if="job.isPresent" class="px-1.5 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded flex-shrink-0">NOW</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 truncate">{{ job.title }}</p>
+                      </div>
+                      <div class="text-xs text-zinc-500 dark:text-zinc-500 flex-shrink-0">
+                        {{ job.date.split('-')[0] }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Transition>
             </div>
           </div>
 
@@ -490,6 +524,7 @@ interface RecentTrack {
 const lastPlayedTrack = ref<LastPlayedTrack | null>(null);
 const recentTracks = ref<RecentTrack[]>([]);
 const fetchError = ref<string | null>(null);
+const showAllJobs = ref(false);
 
 const isOnline = computed(() => !!lastPlayedTrack.value?.nowPlaying);
 
@@ -767,6 +802,20 @@ const educations: Education[] = [
 
 .animate-gradient-x {
   animation: gradient-x 3s linear infinite;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 
 #animated-code-background span {
