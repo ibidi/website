@@ -508,13 +508,15 @@ const jobs: Job[] = [
     title: 'IT Specialist',
     date: '2025-Present',
     image: '/images/experience/ugurdokum.jpeg', // Placeholder image path
+    isPresent: true
   },
   {
     id: 2,
     company: 'EduDekor Bilgi Teknolojileri',
     title: 'Full Stack Developer / Social Media Expert',
     date: '2022-Present',
-    image: '/images/experience/edudekor.jpeg' // Placeholder image path
+    image: '/images/experience/edudekor.jpeg', // Placeholder image path
+    isPresent: true
   },
   {
     id: 3,
