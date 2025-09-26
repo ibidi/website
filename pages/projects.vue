@@ -142,7 +142,7 @@ const projects: Project[] = [
     title: 'Schengen Visa Bot',
     description: 'Schengen vizesi randevu süreçlerini takip eden ve kullanıcıları bilgilendiren Telegram botu.',
     longDescription: '<p>Schengen vizesi başvuru süreçlerinde randevu bulma zorluğunu hafifletmek amacıyla geliştirilmiş bir Telegram botudur. Belirli aralıklarla konsoloslukların randevu sistemlerini kontrol eder ve boş yer bulunduğunda kullanıcıya bildirim gönderir.</p><p><strong>Temel Özellikler:</strong></p><ul><li>Otomatik randevu takibi</li><li>Telegram üzerinden anlık bildirimler</li><li>Kullanıcı dostu komut arayüzü</li><li>Birden fazla konsolosluk desteği (isteğe bağlı)</li></ul>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
+    image: '/images/projects/schengen-visa-bot.png', // Placeholder - Update this path
     buttons: [
       { text: 'GitHub', url: 'https://github.com/ibidi/schengen-visa-bot', icon: 'carbon:logo-github' }
     ],
