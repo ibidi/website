@@ -184,7 +184,7 @@ const projects: Project[] = [
     buttons: [
       { text: 'Sözlüğe Göz At', url: 'https://yazilim-sozluk.vercel.app', icon: 'carbon:launch' }
     ],
-    imageOnLeft: true,
+    imageOnLeft: false,
     technologies: ['Next.js', 'React', 'Vercel', 'Tailwind CSS', 'TypeScript']
   }
   // Add more projects here following the same structure
