@@ -101,7 +101,7 @@ const projects: Project[] = [
     title: 'Gelişim Üniversitesi Telegram Bot',
     description: 'Gelişim Üniversitesi öğrencileri ve personeli için geliştirilmiş Telegram bot.',
     longDescription: '<p>Gelişim Üniversitesi\'nin öğrenci ve personeline yönelik olarak tasarlanan Telegram bot, üniversite yaşamını kolaylaştıran birçok özelliği bir araya getirmektedir. Kullanıcılar ders programlarına, sınav sonuçlarına, duyurulara ve daha birçok bilgiye kolayca erişebilirler.</p><p><strong>Öne Çıkan Modüller:</strong></p><ul><li>Ders Programı ve Takvimi</li><li>Not Görüntüleme</li><li>Akademik Takvim</li><li>Yemekhane Menüsü</li><li>Kampüs Haritası ve Navigasyon</li><li>Üniversite Haberleri ve Duyuruları</li><li>İletişim Rehberi</li></ul><p>Uygulama, hem iOS hem de Android platformları için native olarak geliştirilmiş olup, kullanıcı dostu arayüzü ve performansıyla dikkat çekmektedir.</p>',
-    image: '/images/projects/igu_telegram_bot.png', // Placeholder - Update this path
+    image: '/images/projects/igu_telegram_bott.png', // Placeholder - Update this path
     buttons: [
       { text: 'App Store', url: '#', icon: 'simple-icons:appleappstore' },
       { text: 'Play Store', url: '#', icon: 'simple-icons:googleplay' }
@@ -167,7 +167,7 @@ const projects: Project[] = [
     title: 'WooCommerce Kargo Barkod Eklentisi',
     description: 'WooCommerce için sipariş kargo barkod etiketlerini kolayca yazdırmayı sağlayan eklenti. Termal yazıcılarla uyumlu, çeşitli formatları destekler.',
     longDescription: '<p>WooCommerce ile e-ticaret yapanlar için geliştirilmiş, sipariş kargo barkod etiketlerini yazdırma sürecini kolaylaştıran bir eklentidir. Özellikle bazı yazıcılarda yaşanan ölçeklendirme sorunlarına çözüm sunar.</p><p><strong>✅ Temel Özellikler:</strong></p><ul><li>Siparişe özel otomatik barkod üretimi</li><li>Termal yazıcılarla tam uyum</li><li>Tek tıkla veya toplu barkod yazdırma</li><li>QR, Code128 gibi çeşitli barkod formatı desteği</li><li>Kargo etiketlerine kolayca entegre edilebilir yapı</li><li>WooCommerce ile sorunsuz ve tam entegre çalışma</li></ul><p>Bu eklenti, kargolama süreçlerini hızlandırmak ve operasyonel verimliliği artırmak isteyen işletmeler için idealdir.</p>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
+    image: '/images/projects/woocommerce.png', // Placeholder - Update this path
     buttons: [
       { text: 'Daha Fazla Bilgi', url: 'https://hayatikodla.net/kargo-barkod-woocommerce/', icon: 'carbon:link' }
     ],
@@ -176,24 +176,11 @@ const projects: Project[] = [
   },
   {
     id: 7,
-    tag: 'E-ticaret / Entegrasyon / Açık Kaynak',
-    title: 'Shopify - Trendyol Entegrasyonu',
-    description: 'React ile geliştirilen, Shopify ve Trendyol arasında veri akışını otomatikleştiren açık kaynaklı entegrasyon projesi.',
-    longDescription: '<p>E-ticaret süreçlerini kolaylaştırmak amacıyla React ile geliştirilmiş bir Shopify-Trendyol entegrasyonudur. Bu proje, yakın bir zamanda açık kaynak olarak paylaşılacaktır.</p><p><strong>✅ Projenin Sağladıkları:</strong></p><ul><li>Shopify mağazanız ile Trendyol arasındaki veri akışını otomatikleştirebilirsiniz.</li><li>Ürün senkronizasyonu ve sipariş yönetimini kolaylaştırabilirsiniz.</li><li>Açık kaynak olması sayesinde kendi ihtiyacınıza göre projeyi özelleştirebilirsiniz!</li></ul><p>E-ticaret entegrasyonlarını geliştirmek ve açık kaynak dünyasına katkıda bulunmak isteyenler için tasarlanmıştır.</p>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
-    buttons: [
-      { text: 'GitHub', url: 'https://github.com/ibidi/trendyol-shopify', icon: 'carbon:logo-github' }
-    ],
-    imageOnLeft: false,
-    technologies: ['React', 'JavaScript', 'Node.js', 'Shopify API', 'Trendyol API']
-  },
-  {
-    id: 8,
     tag: 'Eğitim / Kaynak / Web Uygulaması',
     title: 'Yazılım Sözlük',
     description: 'Yazılım terimlerini, kavramlarını ve teknolojilerini anlaşılır bir şekilde sunan, kapsamlı ve erişilebilir bir sözlük platformu.',
     longDescription: '<p>Yazılım Sözlük, yazılım dünyasında sıkça karşılaşılan terimleri, kavramları ve teknolojilerini anlaşılır bir şekilde sunan bir platformdur. Herkesin kolayca bilgiye ulaşmasını sağlamak amacıyla tasarlanmıştır.</p><p><strong>💡 Amacı:</strong></p><ul><li>Özellikle yazılıma yeni başlayanlar için temel bir kaynak olmak.</li><li>Sektör profesyonelleri için hızlı ve güvenilir bir referans noktası sunmak.</li><li>Kapsamlı, erişilebilir ve sürekli güncellenen bir bilgi havuzu oluşturmak.</li></ul><p>Platform, kullanıcıların yazılım alanındaki bilgilerini artırmalarına ve kavramları daha iyi anlamalarına yardımcı olmayı hedefler.</p>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
+    image: '/images/projects/yazilim-sozluk.png', // Placeholder - Update this path
     buttons: [
       { text: 'Sözlüğe Göz At', url: 'https://yazilim-sozluk.vercel.app', icon: 'carbon:launch' }
     ],
