@@ -167,7 +167,7 @@ const projects: Project[] = [
     title: 'WooCommerce Kargo Barkod Eklentisi',
     description: 'WooCommerce için sipariş kargo barkod etiketlerini kolayca yazdırmayı sağlayan eklenti. Termal yazıcılarla uyumlu, çeşitli formatları destekler.',
     longDescription: '<p>WooCommerce ile e-ticaret yapanlar için geliştirilmiş, sipariş kargo barkod etiketlerini yazdırma sürecini kolaylaştıran bir eklentidir. Özellikle bazı yazıcılarda yaşanan ölçeklendirme sorunlarına çözüm sunar.</p><p><strong>✅ Temel Özellikler:</strong></p><ul><li>Siparişe özel otomatik barkod üretimi</li><li>Termal yazıcılarla tam uyum</li><li>Tek tıkla veya toplu barkod yazdırma</li><li>QR, Code128 gibi çeşitli barkod formatı desteği</li><li>Kargo etiketlerine kolayca entegre edilebilir yapı</li><li>WooCommerce ile sorunsuz ve tam entegre çalışma</li></ul><p>Bu eklenti, kargolama süreçlerini hızlandırmak ve operasyonel verimliliği artırmak isteyen işletmeler için idealdir.</p>',
-    image: '/images/projects/woocommerce.png', // Placeholder - Update this path
+    image: '/images/projects/woo.png', // Placeholder - Update this path
     buttons: [
       { text: 'Daha Fazla Bilgi', url: 'https://hayatikodla.net/kargo-barkod-woocommerce/', icon: 'carbon:link' }
     ],
@@ -180,7 +180,7 @@ const projects: Project[] = [
     title: 'Yazılım Sözlük',
     description: 'Yazılım terimlerini, kavramlarını ve teknolojilerini anlaşılır bir şekilde sunan, kapsamlı ve erişilebilir bir sözlük platformu.',
     longDescription: '<p>Yazılım Sözlük, yazılım dünyasında sıkça karşılaşılan terimleri, kavramları ve teknolojilerini anlaşılır bir şekilde sunan bir platformdur. Herkesin kolayca bilgiye ulaşmasını sağlamak amacıyla tasarlanmıştır.</p><p><strong>💡 Amacı:</strong></p><ul><li>Özellikle yazılıma yeni başlayanlar için temel bir kaynak olmak.</li><li>Sektör profesyonelleri için hızlı ve güvenilir bir referans noktası sunmak.</li><li>Kapsamlı, erişilebilir ve sürekli güncellenen bir bilgi havuzu oluşturmak.</li></ul><p>Platform, kullanıcıların yazılım alanındaki bilgilerini artırmalarına ve kavramları daha iyi anlamalarına yardımcı olmayı hedefler.</p>',
-    image: '/images/projects/yazilim-sozluk.png', // Placeholder - Update this path
+    image: '/images/projects/yazilim.png', // Placeholder - Update this path
     buttons: [
       { text: 'Sözlüğe Göz At', url: 'https://yazilim-sozluk.vercel.app', icon: 'carbon:launch' }
     ],
