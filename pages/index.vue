@@ -13,11 +13,16 @@
           />
 
           <div class="flex items-center gap-3">
-            <span class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
-              <span class="w-2 h-2 rounded-full" :class="isOnline ? 'bg-emerald-500' : 'bg-red-500'"></span>
+            <span 
+              class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-sm transition-all duration-300"
+              :class="isOnline ? 
+                'bg-gradient-to-r from-emerald-400/15 via-green-400/15 to-teal-400/15 dark:from-emerald-400/25 dark:via-green-400/25 dark:to-teal-400/25 border border-emerald-200/60 dark:border-emerald-700/60 text-emerald-700 dark:text-emerald-300 animate-gradient-online backdrop-blur-sm' : 
+                'bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-zinc-600 dark:text-zinc-400'"
+            >
+              <span class="w-2 h-2 rounded-full transition-all duration-300" :class="isOnline ? 'bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
-            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-violet-500/10 via-pink-500/10 to-cyan-500/10 dark:from-violet-500/20 dark:via-pink-500/20 dark:to-cyan-500/20 rounded-md text-sm text-zinc-600 dark:text-zinc-400 border border-violet-200/50 dark:border-violet-700/50 backdrop-blur-sm">
+            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 rounded-md text-sm text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music transition-all duration-300">
               <span class="inline-flex items-center">
                 <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               </span>
@@ -34,8 +39,8 @@
                 <span v-else class="text-xs text-zinc-500">(son çalan)</span>
               </span>
             </span>
-            <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-gradient-to-r from-gray-500/10 via-slate-500/10 to-zinc-500/10 dark:from-gray-500/20 dark:via-slate-500/20 dark:to-zinc-500/20 rounded-md text-sm text-zinc-500 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
+            <span v-else-if="!fetchError && !lastPlayedTrack" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-300">
+                <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007] opacity-60" />
                 <span>Müzik aktivitesi yok</span>
             </span>
             <span v-else-if="fetchError" class="inline-flex items-center gap-2 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-sm text-red-500 dark:text-red-400 border border-zinc-200 dark:border-zinc-700/50">
@@ -815,6 +820,41 @@ const educations: Education[] = [
 .slide-fade-leave-to {
   transform: translateY(-10px);
   opacity: 0;
+}
+
+/* Hareketli gradient animasyonları */
+@keyframes gradient-online {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-music {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 25% 75%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 75% 25%;
+  }
+}
+
+.animate-gradient-online {
+  background-size: 200% 200%;
+  animation: gradient-online 3s ease-in-out infinite;
+}
+
+.animate-gradient-music {
+  background-size: 300% 300%;
+  animation: gradient-music 4s ease-in-out infinite;
 }
 
 #animated-code-background span {
