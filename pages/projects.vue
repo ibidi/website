@@ -97,20 +97,6 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    tag: 'Social Platform',
-    title: 'Message Board',
-    description: 'ibidi katılımcıları için özel bir sosyal medya platformu. Next.js, Firebase ve Tailwind CSS ile geliştirildi.',
-    longDescription: '<p>ibidi katılımcıları için geliştirilmiş, özel bir iletişim ve paylaşım platformudur. Bu platform, katılımcıların program boyunca ve sonrasında birbirleriyle etkileşimde kalmalarını, duyuruları takip etmelerini ve anılarını paylaşmalarını kolaylaştırmayı amaçlamıştır.</p><p><strong>Temel Özellikler:</strong></p><ul><li>Kullanıcı profilleri ve kişisel feed\'ler</li><li>Grup tartışmaları ve mesajlaşma</li><li>Etkinlik takvimi ve duyurular</li><li>Fotoğraf ve video paylaşımı</li><li>Güvenli ve özel erişim</li></ul><p>Proje, modern web teknolojileri kullanılarak kısa bir sürede hayata geçirilmiş ve katılımcılardan olumlu geri dönüşler almıştır.</p>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
-    buttons: [
-      { text: 'Video', url: '#', icon: 'carbon:video-filled' },
-      // { text: 'Live Demo', url: '#', icon: 'carbon:launch' }
-    ],
-    imageOnLeft: true,
-    technologies: ['Next.js', 'Firebase', 'Tailwind CSS', 'TypeScript', 'Vercel']
-  },
-  {
-    id: 2,
     tag: 'Gelişim Üniversitesi Telegram Bot',
     title: 'Gelişim Üniversitesi Telegram Bot',
     description: 'Gelişim Üniversitesi öğrencileri ve personeli için geliştirilmiş Telegram bot.',
@@ -124,7 +110,7 @@ const projects: Project[] = [
     technologies: ['Flutter', 'Dart', 'Firebase', 'REST APIs']
   },
   {
-    id: 3,
+    id: 2,
     tag: 'Kişisel / Web Geliştirme',
     title: 'Kişisel Web Sitem',
     description: 'Vue.js, Nuxt 3 ve Tailwind CSS kullanarak geliştirdiğim, en son projelerimi ve deneyimlerimi sergilediğim kişisel portfolyo sitem.',
@@ -137,7 +123,7 @@ const projects: Project[] = [
     technologies: ['Vue.js', 'Nuxt 3', 'Tailwind CSS', 'TypeScript']
   },
   {
-    id: 4,
+    id: 3,
     tag: 'Automation / Bot',
     title: 'Schengen Visa Bot',
     description: 'Schengen vizesi randevu süreçlerini takip eden ve kullanıcıları bilgilendiren Telegram botu.',
@@ -150,12 +136,12 @@ const projects: Project[] = [
     technologies: ['Python', 'Telethon', 'SQLite', 'Telegram API']
   },
   {
-    id: 5,
+    id: 4,
     tag: 'AI / Education',
     title: 'Oğuzkaan AI',
     description: 'Oğuzkaan Koleji için geliştirilmiş, yapay zeka destekli çeşitli eğitim araçları ve modülleri.',
     longDescription: '<p>Oğuzkaan Koleji öğrencileri ve öğretmenlerinin eğitim süreçlerini desteklemek amacıyla geliştirilmiş yapay zeka tabanlı bir projedir. Öğrenci performansını analiz etme, kişiselleştirilmiş öğrenme materyalleri önerme ve eğitim süreçlerini otomatize etme gibi çeşitli modüller içerir.</p><p><strong>Öne Çıkanlar:</strong></p><ul><li>Yapay zeka destekli soru bankası</li><li>Kişiselleştirilmiş çalışma planları</li><li>Performans analizi ve raporlama</li><li>OpenAI API entegrasyonu</li></ul>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
+    image: '/images/projects/oguzkaan-ai.png', // Placeholder - Update this path
     buttons: [
       { text: 'GitHub', url: 'https://github.com/ibidi/oguzkaan-ai', icon: 'carbon:logo-github' }
     ],
@@ -163,38 +149,12 @@ const projects: Project[] = [
     technologies: ['Python', 'TensorFlow', 'Flask', 'OpenAI API', 'Pandas', 'NumPy']
   },
   {
-    id: 6,
-    tag: 'Music / Web App',
-    title: 'Radio Quuzy',
-    description: 'Çeşitli müzik türlerinde kesintisiz yayın yapan online radyo platformu.',
-    longDescription: '<p>Radio Quuzy, kullanıcıların farklı müzik türlerini keşfedebileceği ve 7/24 kesintisiz müzik dinleyebileceği bir online radyo platformudur. Kullanıcı dostu arayüzü ve geniş müzik arşivi ile keyifli bir dinleme deneyimi sunmayı hedefler.</p><p><strong>Özellikler:</strong></p><ul><li>Farklı türlerde radyo kanalları</li><li>Canlı ve kesintisiz yayın</li><li>Şarkı ve sanatçı bilgileri</li><li>Mobil uyumlu tasarım</li></ul>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
-    buttons: [
-      { text: 'Live App', url: 'https://radio.quuzy.com', icon: 'carbon:launch' }
-    ],
-    imageOnLeft: false,
-    technologies: ['HTML5 Audio', 'JavaScript', 'CSS', 'Streaming Server (e.g., Icecast)']
-  },
-  {
-    id: 7,
-    tag: 'AI / Music Discovery',
-    title: 'Quuzy',
-    description: 'Yapay zeka tabanlı Quuzy, Spotify entegrasyonu sayesinde modunuza özel ruh analizi yaparak size otomatik şarkılar öneriyor.',
-    longDescription: '<p>Geliştirdiğim yapay zeka tabanlı Quuzy, Spotify entegrasyonu sayesinde modunuza özel ruh analizi yaparak size otomatik şarkılar öneriyor. Proje, kullanıcıların müzik keşif deneyimini kişiselleştirmeyi ve ruh hallerine uygun yeni parçalar bulmalarını kolaylaştırmayı amaçlamaktadır.</p><p><strong>Anahtar Özellikler:</strong></p><ul><li>Spotify API ile derin entegrasyon</li><li>Doğal dil işleme ile ruh hali analizi</li><li>Makine öğrenmesi tabanlı kişiselleştirilmiş şarkı önerileri</li><li>Kullanıcı dostu ve etkileşimli arayüz</li><li>Geniş müzik veri tabanına erişim ve akıllı filtreleme</li></ul><p>Quuzy, müziğinizi sizinle birlikte hissetmesini sağlar.</p>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
-    buttons: [
-      { text: 'Live App', url: 'https://quuzy.com', icon: 'carbon:launch' }
-    ],
-    imageOnLeft: true,
-    technologies: ['Python', 'FastAPI', 'Spotify API', 'NLP', 'Machine Learning', 'Vue.js', 'Nuxt.js']
-  },
-  {
-    id: 8,
+    id: 5,
     tag: 'Siber Güvenlik / Simülasyon',
     title: 'Siber Güvenlik Simülasyonu',
     description: 'Yeni başlayanlar için etkileşimli siber güvenlik deneyimi. Phishing, zayıf şifreler, güncel olmayan yazılımlar ve sosyal mühendislik senaryoları içerir.',
     longDescription: '<p>Bu simülasyon, siber güvenliğe ilgi duyan herkesin temel prensipleri uygulamalı olarak öğrenmesini hedefliyor. Kullanıcılar, bir IT güvenlik görevlisi rolüne girerek çeşitli gerçekçi senaryolarda doğru kararlar vermeye çalışır.</p><p><strong>Ele Alınan Senaryolar:</strong></p><ul><li>🔐 Phishing saldırılarını tespit etme</li><li>🔑 Zayıf şifrelerin etkisini anlama</li><li>⚠️ Güncellenmemiş yazılımlarla başa çıkma</li><li>🕵️‍♂️ Sosyal mühendislik tuzaklarını analiz etme</li></ul><p><strong>✨ Öne Çıkan Özellikler:</strong></p><ul><li>Kullanıcı adı ile giriş & skor tablosu</li><li>Her bölüm sonunda "Ne öğrendin?" bilgilendirme ekranı</li><li>Doğru kararlarla puan toplama, yanlışlarla risk puanı artışı</li><li>Simülasyon sonunda detaylı geri bildirim raporu</li></ul>',
-    image: '/images/projects/ibidi.png', // Placeholder - Update this path
+    image: '/images/projects/cyber-security-simulation.png', // Placeholder - Update this path
     buttons: [
       { text: 'Live App', url: 'https://sibersimulasyon.netlify.app', icon: 'carbon:launch' }
     ],
@@ -202,7 +162,7 @@ const projects: Project[] = [
     technologies: ['JavaScript', 'HTML', 'CSS', 'Vue.js', 'Netlify']
   },
   {
-    id: 9,
+    id: 6,
     tag: 'WooCommerce / E-ticaret Eklentisi',
     title: 'WooCommerce Kargo Barkod Eklentisi',
     description: 'WooCommerce için sipariş kargo barkod etiketlerini kolayca yazdırmayı sağlayan eklenti. Termal yazıcılarla uyumlu, çeşitli formatları destekler.',
@@ -215,7 +175,7 @@ const projects: Project[] = [
     technologies: ['PHP', 'WordPress', 'WooCommerce', 'JavaScript', 'HTML', 'CSS']
   },
   {
-    id: 10,
+    id: 7,
     tag: 'E-ticaret / Entegrasyon / Açık Kaynak',
     title: 'Shopify - Trendyol Entegrasyonu',
     description: 'React ile geliştirilen, Shopify ve Trendyol arasında veri akışını otomatikleştiren açık kaynaklı entegrasyon projesi.',
@@ -228,7 +188,7 @@ const projects: Project[] = [
     technologies: ['React', 'JavaScript', 'Node.js', 'Shopify API', 'Trendyol API']
   },
   {
-    id: 11,
+    id: 8,
     tag: 'Eğitim / Kaynak / Web Uygulaması',
     title: 'Yazılım Sözlük',
     description: 'Yazılım terimlerini, kavramlarını ve teknolojilerini anlaşılır bir şekilde sunan, kapsamlı ve erişilebilir bir sözlük platformu.',
