@@ -22,7 +22,12 @@
               <span class="w-2 h-2 rounded-full transition-all duration-300" :class="isOnline ? 'bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
-            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 rounded-md text-sm text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music transition-all duration-300">
+            <span v-if="lastPlayedTrack" 
+              class="inline-flex items-center px-2.5 py-1 rounded-md text-sm transition-all duration-300"
+              :class="lastPlayedTrack.nowPlaying ? 
+                'bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music' : 
+                'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50'"
+            >
               <span class="inline-flex items-center">
                 <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               </span>
@@ -69,7 +74,7 @@
               Contact
             </a>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 relative social-glow-container">
               <a href="https://github.com/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                 <Icon name="carbon:logo-github" class="text-xl" />
               </a>
@@ -855,6 +860,71 @@ const educations: Education[] = [
 .animate-gradient-music {
   background-size: 300% 300%;
   animation: gradient-music 4s ease-in-out infinite;
+}
+
+/* Sosyal medya konteyner ışık efekti */
+.social-glow-container {
+  position: relative;
+}
+
+.social-glow-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981, #3b82f6);
+  background-size: 400% 400%;
+  border-radius: 12px;
+  z-index: -1;
+  animation: glow-border 6s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.social-glow-container::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(45deg, 
+    #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981, #3b82f6);
+  background-size: 400% 400%;
+  border-radius: 10px;
+  z-index: -1;
+  animation: glow-border 6s ease-in-out infinite reverse;
+  opacity: 0.8;
+}
+
+@keyframes glow-border {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Dark mode'da daha belirgin görünüm */
+@media (prefers-color-scheme: dark) {
+  .social-glow-container::before {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  
+  .social-glow-container::after {
+    opacity: 1;
+  }
 }
 
 #animated-code-background span {
