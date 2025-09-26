@@ -22,12 +22,18 @@
               <span class="w-2 h-2 rounded-full transition-all duration-300" :class="isOnline ? 'bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
-            <span v-if="lastPlayedTrack" class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 rounded-md text-sm text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music transition-all duration-300">
+            <span 
+              v-if="lastPlayedTrack" 
+              class="inline-flex items-center px-2.5 py-1 rounded-md text-sm transition-all duration-300"
+              :class="lastPlayedTrack.nowPlaying ? 
+                'bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music' : 
+                'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50'"
+            >
               <span class="inline-flex items-center">
                 <Icon name="simple-icons:lastdotfm" class="w-4 h-4 text-[#d51007]" />
               </span>
               <template v-if="lastPlayedTrack.url">
-                <a :href="lastPlayedTrack.url" target="_blank" class="hover:text-violet-400 transition-colors duration-200 ml-2">
+                <a :href="lastPlayedTrack.url" target="_blank" :class="lastPlayedTrack.nowPlaying ? 'hover:text-violet-400' : 'hover:text-zinc-700 dark:hover:text-zinc-300'" class="transition-colors duration-200 ml-2">
                   {{ lastPlayedTrack.name }} - {{ lastPlayedTrack.artist }}
                   <span v-if="lastPlayedTrack.nowPlaying" class="text-xs text-emerald-500">(şimdi çalıyor)</span>
                   <span v-else class="text-xs text-zinc-500">(son çalan)</span>
