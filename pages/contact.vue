@@ -1,10 +1,13 @@
 <template>
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-start justify-center py-20">
-      <h1 class="text-4xl font-bold text-zinc-200">Contact</h1>
-      <p class="mt-4 text-zinc-400">If you have any questions, feel free to contact me.</p>
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
+    <div class="mx-auto max-w-4xl px-4">
+      <div class="space-y-8">
+        <div class="space-y-4">
+          <h1 class="text-4xl font-bold text-zinc-900 dark:text-zinc-200">Contact</h1>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400">If you have any questions, feel free to contact me.</p>
+        </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
         <!-- Discord -->
         <a href="https://discord.gg/DISCORD_LINK" target="_blank" rel="noopener noreferrer" 
            class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
@@ -15,7 +18,7 @@
               <Icon name="simple-icons:discord" class="text-2xl relative text-zinc-400 group-hover:text-violet-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">Join my Discord server!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Join my Discord server!</p>
         </a>
 
         <!-- X (Twitter) -->
@@ -28,7 +31,7 @@
               <Icon name="simple-icons:x" class="text-2xl relative text-zinc-400 group-hover:text-sky-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">Follow me on X!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Follow me on X!</p>
         </a>
 
         <!-- GitHub -->
@@ -41,7 +44,7 @@
               <Icon name="simple-icons:github" class="text-2xl relative text-zinc-400 group-hover:text-emerald-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">Follow me on GitHub!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Follow me on GitHub!</p>
         </a>
 
         <!-- LinkedIn -->
@@ -54,7 +57,7 @@
               <Icon name="simple-icons:linkedin" class="text-2xl relative text-zinc-400 group-hover:text-blue-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">Connect with me on LinkedIn!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Connect with me on LinkedIn!</p>
         </a>
 
         <!-- Email -->
@@ -67,7 +70,7 @@
               <Icon name="carbon:email" class="text-2xl relative text-zinc-400 group-hover:text-orange-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">Send me an email!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Send me an email!</p>
         </a>
 
         <!-- Trello -->
@@ -80,7 +83,7 @@
               <Icon name="simple-icons:trello" class="text-2xl relative text-zinc-400 group-hover:text-pink-400 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">View my Trello board!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">View my Trello board!</p>
         </a>
       </div>
     </div>

@@ -1,10 +1,10 @@
 <template>
-  <div class="pt-16 pb-16 bg-white dark:bg-zinc-900 min-h-screen">
-    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900 min-h-screen">
+    <div class="container mx-auto max-w-4xl px-4">
       <div class="space-y-12">
-        <div>
-          <h1 class="text-5xl font-bold text-zinc-900 dark:text-zinc-100">Songs</h1>
-          <p class="mt-3 text-xl text-zinc-600 dark:text-zinc-400">My latest listening activity on Last.fm.</p>
+        <div class="space-y-4">
+          <h1 class="text-4xl font-bold text-zinc-900 dark:text-zinc-100">Songs</h1>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400">My latest listening activity on Last.fm.</p>
         </div>
         <LastFmStats />
       </div>
