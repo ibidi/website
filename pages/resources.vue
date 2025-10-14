@@ -63,7 +63,7 @@
                 </div>
               </a>
             </div>
-        </div>
+          </div>
 
           <!-- UI/UX Kaynakları -->
           <div class="space-y-6">
@@ -150,6 +150,7 @@
               </a>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
