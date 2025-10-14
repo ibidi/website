@@ -1,14 +1,13 @@
 ---
 title: "Discord Token Kullanımı ve Güvenlik"
 date: "2025-01-01"
+description: "Discord'da token kullanımı, güvenlik riskleri ve dikkat edilmesi gerekenler hakkında detaylı bir rehber."
 excerpt: "Discord'da token kullanımı, güvenlik riskleri ve dikkat edilmesi gerekenler hakkında detaylı bir rehber."
 readTime: 5
 image: "https://i.pinimg.com/originals/f5/03/64/f503648e3e879a1332d2111c88ce09c4.gif"
 coverImage: "https://i.pinimg.com/originals/f5/03/64/f503648e3e879a1332d2111c88ce09c4.gif"
-tags:
-  - Discord
-  - Güvenlik
-  - Token
+tags: ['Discord', 'Güvenlik', 'Token', 'Security']
+category: 'Güvenlik'
 ---
 
 Discord, oyuncuları bir araya getirmek, beraber oyunlar oynamalarını sağlamak, oyuncuların sesli, yazılı ve görüntülü bir şekilde her türlü ihtiyaçlarını tamamen bedavaya karşılayacağı bir ortamdır. Fakat her resmi/büyük şirketler, uygulamalar ve oyunların kurallarının, kullanım şartlarının olduğu gibi Discord'un kendine ait kullanım şartları vardır.

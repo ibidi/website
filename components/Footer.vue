@@ -3,8 +3,8 @@
   <footer class="mt-12 py-8 border-t border-zinc-200 dark:border-zinc-700/50 text-zinc-600 dark:text-zinc-400 text-sm">
     <div class="container mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
       <!-- Left Section: Version -->
-      <div class="text-xs">
-        <span>v1.0.2</span> <!-- Placeholder version -->
+      <div>
+        <VersionBadge variant="default" />
       </div>
 
       <!-- Center Section: Copyright & GitHub Link -->

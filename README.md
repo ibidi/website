@@ -8,7 +8,11 @@
 </div>
 
 <p align="center">
-  A modern and responsive personal portfolio website with dynamic theme switching, Last.fm integration, an animated code background, homepage blog section, and smooth animations.
+  A modern and responsive personal portfolio website with changelog system, blog filtering, animated theme switching, bookmark management, and comprehensive micro-interactions.
+</p>
+
+<p align="center">
+  <strong>Version 1.1.0</strong> • <a href="/changelog">View Changelog</a>
 </p>
 
 <div align="center">
@@ -17,18 +21,41 @@
 
 ## ✨ Features
 
+### 🆕 New in v1.1.0
+
 <table>
   <tr>
-    <td>🌙</td>
-    <td><strong>Theme Switcher:</strong> Seamless dark/light mode support</td>
+    <td>📋</td>
+    <td><strong>Changelog System:</strong> Complete version management with semantic versioning</td>
   </tr>
   <tr>
+    <td>🔍</td>
+    <td><strong>Blog Filtering:</strong> Filter posts by categories and tags with URL sync</td>
+  </tr>
+  <tr>
+    <td>🌓</td>
+    <td><strong>Animated Theme Toggle:</strong> Smooth circle-expand animation on theme switch</td>
+  </tr>
+  <tr>
+    <td>🏷️</td>
+    <td><strong>Bookmark Tags:</strong> Organize and filter bookmarks with multi-tag support</td>
+  </tr>
+  <tr>
+    <td>✨</td>
+    <td><strong>Micro-interactions:</strong> Hover effects, ripples, and scroll animations</td>
+  </tr>
+</table>
+
+### Core Features
+
+<table>
+  <tr>
     <td>🎵</td>
-    <td><strong>Last.fm Integration:</strong> Real-time music statistics</td>
+    <td><strong>Last.fm Integration:</strong> Real-time music statistics and recently played</td>
   </tr>
   <tr>
     <td>🎨</td>
-    <td><strong>Modern UI:</strong> Beautiful gradient animations and transitions</td>
+    <td><strong>Modern UI:</strong> Beautiful gradient animations and GSAP transitions</td>
   </tr>
   <tr>
     <td>📱</td>
@@ -36,19 +63,15 @@
   </tr>
   <tr>
     <td>⚡️</td>
-    <td><strong>Performance:</strong> Fast page transitions and optimized loading</td>
-  </tr>
-  <tr>
-    <td>🔍</td>
-    <td><strong>Command Menu:</strong> Quick navigation with ⌘K shortcut</td>
+    <td><strong>Performance:</strong> SSR, lazy loading, and optimized animations</td>
   </tr>
   <tr>
     <td>💻</td>
-    <td><strong>Animated Background:</strong> Subtle drifting code snippets on the homepage</td>
+    <td><strong>Animated Background:</strong> Subtle drifting code snippets on homepage</td>
   </tr>
   <tr>
-    <td>✍️</td>
-    <td><strong>Blog on Homepage:</strong> Displays latest posts directly on the main page</td>
+    <td>♿</td>
+    <td><strong>Accessible:</strong> WCAG 2.1 AA compliant with reduced motion support</td>
   </tr>
 </table>
 

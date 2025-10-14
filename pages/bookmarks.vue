@@ -1,164 +1,172 @@
 <template>
-  <div class="relative pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden">
-    <div class="container mx-auto max-w-4xl">
-      <div class="space-y-12">
-
-        <div v-if="groupedBookmarks.size > 0" class="space-y-12">
-                    <div v-for="([dateGroup, items]) in groupedBookmarks" :key="dateGroup" class="space-y-6">
-            <h2 class="text-xl font-medium text-zinc-400 dark:text-zinc-500">
-              {{ formatGroupDate(dateGroup) }}
-            </h2>
-            <div class="space-y-4">
-              <a 
-                v-for="bookmark in items" 
-                :key="bookmark.id" 
-                :href="bookmark.url" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="block p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
-              >
-                <div class="flex justify-between items-start">
-                  <div class="flex-grow pr-4">
-                    <h3 class="text-md font-semibold text-zinc-900 dark:text-zinc-100">
-                      {{ bookmark.title }}
-                    </h3>
-                    <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-                      {{ bookmark.description }}
-                    </p>
-                  </div>
-                  <p class="text-xs text-zinc-500 dark:text-zinc-400 whitespace-nowrap pt-1">
-                    {{ formatCardDate(bookmark.dateAdded) }}
-                  </p>
-                </div>
-              </a>
-            </div>
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
+    <div class="container mx-auto max-w-4xl px-4">
+      <div class="space-y-8">
+        <!-- Header -->
+        <AnimatedContent
+          :distance="50"
+          direction="vertical"
+          :duration="0.8"
+          :delay="0.1"
+          ease="power2.out"
+        >
+          <div class="space-y-4">
+            <h1 class="text-4xl font-bold text-zinc-900 dark:text-zinc-200">Bookmarks</h1>
+            <p class="text-lg text-zinc-600 dark:text-zinc-400">
+              Curated collection of useful resources and tools
+            </p>
           </div>
+        </AnimatedContent>
+
+        <!-- Tag Cloud -->
+        <TagCloud 
+          v-if="bookmarks.length > 0"
+          :bookmarks="bookmarks" 
+          :filtered-count="filteredBookmarks.length"
+        />
+
+        <!-- Bookmarks List -->
+        <div v-if="filteredBookmarks.length > 0" class="space-y-4">
+          <BookmarkCard
+            v-for="(bookmark, index) in filteredBookmarks"
+            :key="bookmark.id"
+            :bookmark="bookmark"
+            :delay="0.3 + (index * 0.05)"
+            @tag-click="handleTagClick"
+          />
         </div>
-        <div v-else class="text-center py-12">
-          <p class="text-lg text-zinc-500 dark:text-zinc-400">Henüz hiç yer imi eklenmemiş.</p>
-        </div>
+
+        <!-- Empty State -->
+        <AnimatedContent
+          v-else
+          :distance="30"
+          direction="vertical"
+          :duration="0.6"
+          :delay="0.3"
+          ease="power2.out"
+        >
+          <div class="text-center py-12">
+            <Icon name="carbon:bookmark" class="w-16 h-16 text-zinc-400 mx-auto mb-4" />
+            <p class="text-lg text-zinc-600 dark:text-zinc-400 mb-2">
+              No bookmarks found
+            </p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-500">
+              Try adjusting your tag filters
+            </p>
+          </div>
+        </AnimatedContent>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import type { Bookmark } from '~/types/changelog';
 
-interface Bookmark {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  dateAdded: string; // ISO date string e.g., '2024-05-15T10:00:00.000Z'
-  tags?: string[];
-}
-
+// Bookmark data
 const bookmarks = ref<Bookmark[]>([
   {
     id: '1',
-    title: 'Tailwind CSS Resmi Sitesi',
-    description: 'Hızla modern web siteleri oluşturmak için kullanışlı bir CSS frameworkü.',
+    title: 'Tailwind CSS',
+    description: 'A utility-first CSS framework for rapidly building custom user interfaces.',
     url: 'https://tailwindcss.com',
     dateAdded: '2024-01-10T00:00:00.000Z',
-    tags: ['css', 'frontend', 'framework']
+    tags: ['css', 'frontend', 'framework', 'design']
   },
   {
     id: '2',
-    title: 'Vue 3 Dokümantasyonu',
-    description: 'Progresif JavaScript frameworkü Vue.js için resmi dokümantasyon.',
+    title: 'Vue 3 Documentation',
+    description: 'The Progressive JavaScript Framework - Official documentation.',
     url: 'https://vuejs.org',
     dateAdded: '2024-02-15T00:00:00.000Z',
-    tags: ['javascript', 'frontend', 'vue']
+    tags: ['javascript', 'frontend', 'vue', 'framework']
   },
   {
     id: '3',
-    title: 'Nuxt 3 Dokümantasyonu',
-    description: 'Vue.js ile sezgisel ve güçlü web uygulamaları oluşturmak için kullanılan framework.',
+    title: 'Nuxt 3',
+    description: 'The Intuitive Vue Framework for building web applications.',
     url: 'https://nuxt.com',
     dateAdded: '2024-03-20T00:00:00.000Z',
-    tags: ['vue', 'nuxt', 'ssr', 'framework']
+    tags: ['vue', 'nuxt', 'ssr', 'framework', 'fullstack']
   },
   {
     id: '4',
     title: 'MDN Web Docs',
-    description: 'Web teknolojileri ve API\'leri hakkında geliştiriciler için kapsamlı kaynak.',
+    description: 'Resources for developers, by developers.',
     url: 'https://developer.mozilla.org/',
     dateAdded: '2023-12-01T00:00:00.000Z',
-    tags: ['web standards', 'html', 'css', 'javascript']
+    tags: ['documentation', 'html', 'css', 'javascript', 'web']
   },
   {
     id: '5',
     title: 'TypeScript Handbook',
-    description: 'TypeScript\'in resmi dokümantasyonu ve rehberi.',
+    description: 'TypeScript is JavaScript with syntax for types.',
     url: 'https://www.typescriptlang.org/docs/',
     dateAdded: '2024-04-05T00:00:00.000Z',
-    tags: ['typescript', 'javascript', 'programming']
+    tags: ['typescript', 'javascript', 'programming', 'documentation']
   },
   {
     id: '6',
-    title: 'Node.js Documentation',
-    description: 'Node.js runtime environment için resmi dokümantasyon.',
+    title: 'Node.js',
+    description: 'Node.js® is a JavaScript runtime built on Chrome\'s V8 JavaScript engine.',
     url: 'https://nodejs.org/en/docs/',
     dateAdded: '2024-05-12T00:00:00.000Z',
-    tags: ['nodejs', 'backend', 'javascript']
+    tags: ['nodejs', 'backend', 'javascript', 'runtime']
+  },
+  {
+    id: '7',
+    title: 'GSAP',
+    description: 'Professional-grade JavaScript animation for the modern web.',
+    url: 'https://greensock.com/gsap/',
+    dateAdded: '2024-06-01T00:00:00.000Z',
+    tags: ['animation', 'javascript', 'frontend', 'library']
+  },
+  {
+    id: '8',
+    title: 'Vite',
+    description: 'Next Generation Frontend Tooling.',
+    url: 'https://vitejs.dev/',
+    dateAdded: '2024-07-10T00:00:00.000Z',
+    tags: ['build-tool', 'frontend', 'development', 'tooling']
   }
 ]);
 
-const formatGroupDate = (dateString: string) => {
-  // dateString will be 'YYYY-MM-DD' from grouping
-  const date = new Date(dateString + 'T00:00:00'); // Ensure it's parsed as local, not UTC for grouping
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options); // Using en-US for 'February 14, 2025' format
-};
+// Use filter composable
+const { activeTags, toggleTag, filterPosts } = useFilter();
 
-const formatCardDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
-};
-
-const groupedBookmarks = computed(() => {
-  const groups = new Map<string, Bookmark[]>();
-  const sortedBookmarks = [...bookmarks.value].sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
-
-  for (const bookmark of sortedBookmarks) {
-    const dateKey = bookmark.dateAdded.split('T')[0]; // Group by YYYY-MM-DD
-    if (!groups.has(dateKey)) {
-      groups.set(dateKey, []);
-    }
-    groups.get(dateKey)!.push(bookmark);
+// Filter bookmarks based on active tags
+const filteredBookmarks = computed(() => {
+  if (activeTags.value.length === 0) {
+    return [...bookmarks.value].sort((a, b) => 
+      new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+    );
   }
-  return groups;
+
+  // Filter bookmarks that have at least one of the active tags
+  const filtered = bookmarks.value.filter(bookmark => {
+    if (!bookmark.tags) return false;
+    return activeTags.value.some(tag => bookmark.tags!.includes(tag));
+  });
+
+  return filtered.sort((a, b) => 
+    new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+  );
 });
 
-// Original formatDate (can be removed if not used elsewhere, or kept for other purposes)
-const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('tr-TR', options);
+// Handle tag click from bookmark card
+const handleTagClick = (tag: string) => {
+  toggleTag(tag);
 };
 
+// SEO
+useSeo({
+  title: 'Bookmarks - İhsan Baki Doğan',
+  description: 'Curated collection of useful web development resources, tools, and documentation.',
+});
 
 definePageMeta({
-  title: 'Yer İmleri'
+  title: 'Bookmarks'
 });
 </script>
 
-<style scoped>
-/* Gerekirse ek özel stiller buraya eklenebilir */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
 
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
-</style>

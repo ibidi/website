@@ -4,8 +4,8 @@ date: '2025-10-14'
 description: 'Kişisel web siteme eklediğim son güncellemeleri keşfedin: dinamik blog ve bookmark entegrasyonu, animasyonlu experience/education bölümleri ve daha fazlası.'
 tags: ['web geliştirme', 'nuxt', 'vuejs', 'typescript', 'animasyon', 'ux', 'güncellemeler']
 readTime: 7
-image: '/images/updates-2025.gif'
-coverImage: '/images/updates-2025.gif'
+image: '/images/update.gif'
+coverImage: '/images/update.gif'
 ---
 
 Merhaba! 👋

@@ -76,11 +76,11 @@ const searchInput = ref<HTMLInputElement | null>(null)
 const navigation = [
   { name: 'Home', path: '/', icon: 'carbon:home' },
   { name: 'Blog', path: '/blog', icon: 'carbon:document' },
+  { name: 'Changelog', path: '/changelog', icon: 'carbon:tag' },
   { name: 'Projects', path: '/projects', icon: 'carbon:tool-kit' },
   { name: 'Resources', path: '/resources', icon: 'carbon:catalog' },
-  { name: 'Daily Song', path: '/muzik', icon: 'carbon:music' },
+  { name: 'Music', path: '/muzik', icon: 'carbon:music' },
   { name: 'Bookmarks', path: '/bookmarks', icon: 'carbon:bookmark' },
-  { name: 'Gallery', path: '/gallery', icon: 'carbon:image-search' },
   { name: 'Contact', path: '/contact', icon: 'carbon:email' },
 ]
 

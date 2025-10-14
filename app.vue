@@ -27,21 +27,35 @@
 
           <!-- Actions -->
           <div class="flex items-center gap-2">
+            <!-- Theme Toggle Button -->
+            <button 
+              @click="handleThemeToggle"
+              class="theme-toggle-button inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:scale-105 active:scale-95"
+              :disabled="isAnimating"
+              :aria-label="colorMode.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+            >
+              <Transition name="icon-fade" mode="out-in">
+                <Icon 
+                  v-if="colorMode.value === 'dark'" 
+                  key="sun"
+                  name="carbon:sun" 
+                  class="text-base" 
+                />
+                <Icon 
+                  v-else 
+                  key="moon"
+                  name="carbon:moon" 
+                  class="text-base" 
+                />
+              </Transition>
+            </button>
+
             <button 
               @click="openCommandMenu"
               class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <Icon name="carbon:menu" class="text-base" />
             </button>
-
-            <!-- Theme toggle button (commented out) -->
-            <!-- <button 
-              @click="toggleColorMode"
-              class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
-            >
-              <Icon v-if="colorMode.value === 'dark'" name="carbon:sun" class="text-base" />
-              <Icon v-else name="carbon:moon" class="text-base" />
-            </button> -->
           </div>
         </div>
       </div>
@@ -69,8 +83,15 @@
 <script setup lang="ts">
 import Footer from './components/Footer.vue'
 
-// const colorMode = useColorMode() // Commented out - dark theme is now default
 const commandMenu = ref()
+
+// Theme management
+const { colorMode, isAnimating, smartToggle } = useTheme()
+
+// Handle theme toggle with animation
+const handleThemeToggle = () => {
+  smartToggle()
+}
 
 // Google Site Verification
 useHead({
@@ -99,11 +120,6 @@ useHead({
     }
   ]
 })
-
-// Theme toggle function (commented out - using default dark theme)
-// const toggleColorMode = () => {
-//   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-// }
 
 const openCommandMenu = () => {
   commandMenu.value?.open()
@@ -136,5 +152,67 @@ html.light {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+/* Theme Toggle Icon Animation */
+.icon-fade-enter-active,
+.icon-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-fade-enter-from {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+}
+
+.icon-fade-leave-to {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8);
+}
+
+/* Theme Toggle Button Hover Effect */
+.theme-toggle-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.theme-toggle-button:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.theme-toggle-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .icon-fade-enter-active,
+  .icon-fade-leave-active {
+    transition: none;
+  }
+  
+  .icon-fade-enter-from,
+  .icon-fade-leave-to {
+    transform: none;
+  }
+  
+  .theme-toggle-button::before {
+    transition: none;
+  }
 }
 </style>

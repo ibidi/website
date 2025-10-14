@@ -1,18 +1,18 @@
 <template>
-  <div class="min-h-screen bg-zinc-900">
+  <div class="min-h-screen bg-white dark:bg-zinc-900">
     <!-- Sol taraf - Sosyal medya ikonları -->
     <div class="fixed left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6">
-      <NuxtLink to="https://twitter.com/share" target="_blank" class="text-zinc-400 hover:text-zinc-200 transition-colors duration-200">
+      <NuxtLink to="https://twitter.com/share" target="_blank" class="text-zinc-400 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors duration-200">
         <Icon name="ri:twitter-x-fill" class="text-2xl" />
       </NuxtLink>
-      <NuxtLink to="https://t.me/share/url" target="_blank" class="text-zinc-400 hover:text-zinc-200 transition-colors duration-200">
+      <NuxtLink to="https://t.me/share/url" target="_blank" class="text-zinc-400 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors duration-200">
         <Icon name="mdi:telegram" class="text-2xl" />
       </NuxtLink>
-      <NuxtLink to="https://api.whatsapp.com/send" target="_blank" class="text-zinc-400 hover:text-zinc-200 transition-colors duration-200">
+      <NuxtLink to="https://api.whatsapp.com/send" target="_blank" class="text-zinc-400 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors duration-200">
         <Icon name="mdi:whatsapp" class="text-2xl" />
       </NuxtLink>
       <button 
-        class="text-zinc-400 hover:text-zinc-200 transition-colors duration-200"
+        class="text-zinc-400 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors duration-200"
         @click="copyUrl"
       >
         <Icon name="mdi:link-variant" class="text-2xl" />
@@ -20,31 +20,31 @@
     </div>
 
     <!-- Sağ taraf - İlerleme çubuğu -->
-    <div class="fixed right-12 top-1/2 -translate-y-1/2 hidden lg:block w-[2px] h-48 bg-zinc-800 rounded-full">
+    <div class="fixed right-12 top-1/2 -translate-y-1/2 hidden lg:block w-[2px] h-48 bg-zinc-200 dark:bg-zinc-800 rounded-full">
       <div 
-        class="w-full bg-violet-400 rounded-full transition-all duration-100"
+        class="w-full bg-violet-500 dark:bg-violet-400 rounded-full transition-all duration-100"
         :style="{ height: `${scrollProgress}%` }"
       ></div>
     </div>
 
     <div class="container mx-auto max-w-3xl px-4 pt-20">
       <!-- Meta -->
-      <div class="flex justify-center items-center gap-4 text-sm text-zinc-400 mb-8">
+      <div class="flex justify-center items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400 mb-8">
         <time class="flex items-center gap-1.5">
-          <Icon name="carbon:calendar" class="text-violet-400" />
+          <Icon name="carbon:calendar" class="text-violet-500 dark:text-violet-400" />
           {{ formatDate(data?.date) }}
         </time>
-        <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
+        <span class="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
         <div class="flex items-center gap-1.5">
-          <Icon name="carbon:time" class="text-violet-400" />
+          <Icon name="carbon:time" class="text-violet-500 dark:text-violet-400" />
           {{ data?.readTime }} dakika okuma
         </div>
       </div>
 
       <!-- Title -->
       <div class="text-center space-y-4 mb-12">
-        <h1 class="text-4xl md:text-5xl font-medium text-zinc-100">{{ data?.title }}</h1>
-        <p class="text-lg md:text-xl text-zinc-400">{{ data?.excerpt }}</p>
+        <h1 class="text-4xl md:text-5xl font-medium text-zinc-900 dark:text-zinc-100">{{ data?.title }}</h1>
+        <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400">{{ data?.excerpt }}</p>
       </div>
 
       <!-- Tags -->
@@ -52,7 +52,7 @@
         <span 
           v-for="tag in data?.tags" 
           :key="tag"
-          class="px-3 py-1 text-sm bg-zinc-800/50 text-zinc-400 rounded-full border border-zinc-800"
+          class="px-3 py-1 text-sm bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 rounded-full border border-zinc-200 dark:border-zinc-800"
         >
           {{ tag }}
         </span>
@@ -62,7 +62,7 @@
       <div class="flex justify-center mb-12">
         <NuxtLink 
           to="/blog"
-          class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors duration-200"
+          class="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors duration-200"
         >
           <Icon name="carbon:arrow-left" class="text-base" />
           Blog'a Dön
@@ -79,29 +79,27 @@
       </div>
 
       <!-- Content -->
-      <article class="prose prose-invert prose-zinc max-w-none pb-20">
-        <div class="prose-headings:text-zinc-200 prose-p:text-zinc-400 prose-a:text-violet-400 prose-strong:text-zinc-200 prose-ul:text-zinc-400 prose-li:text-zinc-400">
-          <ContentDoc>
-            <template #not-found>
-              <p>İçerik bulunamadı.</p>
-            </template>
-          </ContentDoc>
-        </div>
+      <article class="prose dark:prose-invert prose-zinc max-w-none pb-20">
+        <ContentDoc>
+          <template #not-found>
+            <p>İçerik bulunamadı.</p>
+          </template>
+        </ContentDoc>
       </article>
 
       <!-- Mobil için sosyal medya ikonları -->
       <div class="flex justify-center gap-4 py-8 lg:hidden">
-        <NuxtLink to="https://twitter.com/share" target="_blank" class="text-zinc-400 hover:text-zinc-200">
+        <NuxtLink to="https://twitter.com/share" target="_blank" class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200">
           <Icon name="ri:twitter-x-fill" class="text-2xl" />
         </NuxtLink>
-        <NuxtLink to="https://t.me/share/url" target="_blank" class="text-zinc-400 hover:text-zinc-200">
+        <NuxtLink to="https://t.me/share/url" target="_blank" class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200">
           <Icon name="mdi:telegram" class="text-2xl" />
         </NuxtLink>
-        <NuxtLink to="https://api.whatsapp.com/send" target="_blank" class="text-zinc-400 hover:text-zinc-200">
+        <NuxtLink to="https://api.whatsapp.com/send" target="_blank" class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200">
           <Icon name="mdi:whatsapp" class="text-2xl" />
         </NuxtLink>
         <button 
-          class="text-zinc-400 hover:text-zinc-200"
+          class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
           @click="copyUrl"
         >
           <Icon name="mdi:link-variant" class="text-2xl" />
@@ -158,16 +156,16 @@ const copyUrl = () => {
 </script>
 
 <style>
+/* Light mode prose styles */
 .prose {
-  color: theme('colors.zinc.400');
+  @apply text-zinc-700 dark:text-zinc-400;
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  color: theme('colors.zinc.200');
-  font-weight: 500;
+  @apply text-zinc-900 dark:text-zinc-200 font-medium;
   margin-top: 2em;
   margin-bottom: 1em;
 }
@@ -194,13 +192,11 @@ const copyUrl = () => {
 }
 
 .prose a {
-  color: theme('colors.violet.400');
-  text-decoration: none;
+  @apply text-violet-600 dark:text-violet-400 no-underline hover:underline;
 }
 
 .prose strong {
-  color: theme('colors.zinc.200');
-  font-weight: 600;
+  @apply text-zinc-900 dark:text-zinc-200 font-semibold;
 }
 
 .prose ul {
@@ -217,19 +213,16 @@ const copyUrl = () => {
 }
 
 .prose pre {
-  background-color: theme('colors.zinc.800/50');
-  border: 1px solid theme('colors.zinc.700/50');
+  @apply bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50;
   padding: 1em;
   border-radius: 0.375em;
   overflow-x: auto;
 }
 
 .prose code {
-  background-color: theme('colors.zinc.800/50');
-  border: 1px solid theme('colors.zinc.700/50');
+  @apply bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-violet-600 dark:text-violet-200;
   padding: 0.2em 0.4em;
   border-radius: 0.25em;
   font-size: 0.875em;
-  color: theme('colors.violet.200');
 }
 </style> 

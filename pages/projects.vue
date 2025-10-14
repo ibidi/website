@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-32 pb-16 bg-zinc-900 text-zinc-200 min-h-screen">
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 min-h-screen">
     <div class="container mx-auto max-w-7xl px-4">
       <div class="space-y-8 mb-16">
         <h1 class="text-5xl font-bold text-center text-white">Projelerim</h1>
