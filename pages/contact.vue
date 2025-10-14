@@ -85,6 +85,7 @@
           </div>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">View my Trello board!</p>
         </a>
+        </div>
       </div>
     </div>
   </div>
