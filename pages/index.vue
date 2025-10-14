@@ -364,74 +364,186 @@
         </div>
 
         <!-- Technologies -->
-        <div class="space-y-4">
-          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies I Use</h2>
-          <div class="grid gap-4 md:grid-cols-2">
-            <!-- Frontend -->
+        <div class="space-y-6">
+          <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Technologies</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <!-- JavaScript -->
             <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:application-web" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Frontend</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Vue.js, React.js, TypeScript, TailwindCSS</p>
-                    </div>
-                  </div>
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-yellow-500/50">
+                <div class="w-8 h-8 rounded-md bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:javascript" class="text-xl" />
                 </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">JavaScript</span>
               </div>
             </div>
 
-            <!-- Backend -->
+            <!-- PHP -->
             <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:data-base" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Backend</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">Node.js, PHP, MySQL, MongoDB</p>
-                    </div>
-                  </div>
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-indigo-500/50">
+                <div class="w-8 h-8 rounded-md bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:php" class="text-xl" />
                 </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">PHP</span>
               </div>
             </div>
 
-            <!-- Tools -->
+            <!-- TypeScript -->
             <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:tools" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Tools</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">VS Code, Git, Docker, Figma</p>
-                    </div>
-                  </div>
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-blue-500/50">
+                <div class="w-8 h-8 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:typescript-icon" class="text-xl" />
                 </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">TypeScript</span>
               </div>
             </div>
 
-            <!-- Cloud -->
+            <!-- Python -->
             <div class="group">
-              <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                      <Icon name="carbon:cloud" class="text-base text-violet-500" />
-                    </div>
-                    <div>
-                      <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">Cloud</h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400">AWS, Netlify, Vercel, DigitalOcean</p>
-                    </div>
-                  </div>
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-blue-400/50">
+                <div class="w-8 h-8 rounded-md bg-blue-400/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:python" class="text-xl" />
                 </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Python</span>
+              </div>
+            </div>
+
+            <!-- GoLang -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-cyan-500/50">
+                <div class="w-8 h-8 rounded-md bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:go" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">GoLang</span>
+              </div>
+            </div>
+
+            <!-- Node.js -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-green-500/50">
+                <div class="w-8 h-8 rounded-md bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:nodejs-icon" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Node.JS</span>
+              </div>
+            </div>
+
+            <!-- ExpressJS -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-zinc-500/50">
+                <div class="w-8 h-8 rounded-md bg-zinc-500/10 flex items-center justify-center flex-shrink-0">
+                  <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300">ex</span>
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">ExpressJS</span>
+              </div>
+            </div>
+
+            <!-- NestJS -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-red-500/50">
+                <div class="w-8 h-8 rounded-md bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:nestjs" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Nest.JS</span>
+              </div>
+            </div>
+
+            <!-- Vue.js -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-green-500/50">
+                <div class="w-8 h-8 rounded-md bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:vue" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">VueJS</span>
+              </div>
+            </div>
+
+            <!-- Nuxt -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-green-400/50">
+                <div class="w-8 h-8 rounded-md bg-green-400/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:nuxt-icon" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Nuxt</span>
+              </div>
+            </div>
+
+            <!-- React.js -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-cyan-400/50">
+                <div class="w-8 h-8 rounded-md bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:react" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">React.JS</span>
+              </div>
+            </div>
+
+            <!-- Next.js -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-zinc-900/50">
+                <div class="w-8 h-8 rounded-md bg-zinc-900/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:nextjs-icon" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Next.JS</span>
+              </div>
+            </div>
+
+            <!-- Tailwind CSS -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-cyan-500/50">
+                <div class="w-8 h-8 rounded-md bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:tailwindcss-icon" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Tailwind CSS</span>
+              </div>
+            </div>
+
+            <!-- HTML5 -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-orange-500/50">
+                <div class="w-8 h-8 rounded-md bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:html-5" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">HTML5</span>
+              </div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-blue-500/50">
+                <div class="w-8 h-8 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:css-3" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">CSS3</span>
+              </div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-blue-600/50">
+                <div class="w-8 h-8 rounded-md bg-blue-600/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:mysql" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">MySQL</span>
+              </div>
+            </div>
+
+            <!-- PostgreSQL -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-blue-700/50">
+                <div class="w-8 h-8 rounded-md bg-blue-700/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:postgresql" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">PostgreSQL</span>
+              </div>
+            </div>
+
+            <!-- Sass -->
+            <div class="group">
+              <div class="flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-pink-500/50">
+                <div class="w-8 h-8 rounded-md bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name="logos:sass" class="text-xl" />
+                </div>
+                <span class="text-sm font-medium text-zinc-900 dark:text-zinc-200">Sass</span>
               </div>
             </div>
           </div>
