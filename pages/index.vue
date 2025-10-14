@@ -96,87 +96,121 @@
         <!-- Experience & Education -->
         <div class="grid gap-8 md:grid-cols-2">
           <!-- Experience -->
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
-              <button 
-                v-if="jobs.length > 3"
-                @click="showAllJobs = !showAllJobs"
-                class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
-              >
-                <Icon :name="showAllJobs ? 'carbon:chevron-up' : 'carbon:chevron-down'" class="w-4 h-4" />
-                {{ showAllJobs ? 'Show Less' : `Show All (${jobs.length})` }}
-              </button>
-            </div>
+          <AnimatedContent
+            :distance="50"
+            direction="horizontal"
+            :duration="0.8"
+            :delay="0.3"
+            ease="power2.out"
+          >
             <div class="space-y-4">
-              <!-- First 3 jobs - Full display -->
-              <div v-for="job in jobs.slice(0, 3)" :key="job.id" class="group">
-                <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                        <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
-                      </div>
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ job.company }}</h3>
-                          <span v-if="job.isPresent" class="px-2 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded">PRESENT</span>
-                        </div>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ job.title }}</p>
-                        <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ job.date }}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Experience</h2>
+                <button 
+                  v-if="jobs.length > 3"
+                  @click="showAllJobs = !showAllJobs"
+                  class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+                >
+                  <Icon :name="showAllJobs ? 'carbon:chevron-up' : 'carbon:chevron-down'" class="w-4 h-4" />
+                  {{ showAllJobs ? 'Show Less' : `Show All (${jobs.length})` }}
+                </button>
               </div>
-
-              <!-- Remaining jobs - Compact display when expanded -->
-              <Transition name="slide-fade">
-                <div v-if="showAllJobs && jobs.length > 3" class="space-y-2">
-                  <div v-for="job in jobs.slice(3)" :key="job.id" class="group">
-                    <div class="flex items-center gap-3 p-3 bg-zinc-50 dark:bg-zinc-800/30 rounded-md border border-zinc-200/50 dark:border-zinc-700/30 transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50">
-                      <div class="w-8 h-8 rounded-md bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                        <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
-                      </div>
-                      <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2">
-                          <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-200 truncate">{{ job.company }}</h3>
-                          <span v-if="job.isPresent" class="px-1.5 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded flex-shrink-0">NOW</span>
+              <div class="space-y-4">
+                <!-- First 3 jobs - Full display -->
+                <AnimatedContent
+                  v-for="(job, index) in jobs.slice(0, 3)" 
+                  :key="job.id"
+                  :distance="30"
+                  direction="vertical"
+                  :duration="0.6"
+                  :delay="0.4 + (index * 0.1)"
+                  ease="power2.out"
+                  class="group"
+                >
+                  <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                          <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
                         </div>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400 truncate">{{ job.title }}</p>
-                      </div>
-                      <div class="text-xs text-zinc-500 dark:text-zinc-500 flex-shrink-0">
-                        {{ job.date.split('-')[0] }}
+                        <div>
+                          <div class="flex items-center gap-2">
+                            <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ job.company }}</h3>
+                            <span v-if="job.isPresent" class="px-2 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded">PRESENT</span>
+                          </div>
+                          <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ job.title }}</p>
+                          <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ job.date }}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Transition>
+                </AnimatedContent>
+
+                <!-- Remaining jobs - Compact display when expanded -->
+                <Transition name="slide-fade">
+                  <div v-if="showAllJobs && jobs.length > 3" class="space-y-2">
+                    <div v-for="job in jobs.slice(3)" :key="job.id" class="group">
+                      <div class="flex items-center gap-3 p-3 bg-zinc-50 dark:bg-zinc-800/30 rounded-md border border-zinc-200/50 dark:border-zinc-700/30 transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50">
+                        <div class="w-8 h-8 rounded-md bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                          <img :src="job.image" :alt="job.company" class="w-full h-full object-contain" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="flex items-center gap-2">
+                            <h3 class="text-sm font-medium text-zinc-900 dark:text-zinc-200 truncate">{{ job.company }}</h3>
+                            <span v-if="job.isPresent" class="px-1.5 py-0.5 text-xs bg-violet-500/10 text-violet-500 rounded flex-shrink-0">NOW</span>
+                          </div>
+                          <p class="text-xs text-zinc-600 dark:text-zinc-400 truncate">{{ job.title }}</p>
+                        </div>
+                        <div class="text-xs text-zinc-500 dark:text-zinc-500 flex-shrink-0">
+                          {{ job.date.split('-')[0] }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Transition>
+              </div>
             </div>
-          </div>
+          </AnimatedContent>
 
           <!-- Education -->
-          <div class="space-y-4">
-            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Education</h2>
+          <AnimatedContent
+            :distance="50"
+            direction="horizontal"
+            :duration="0.8"
+            :delay="0.4"
+            ease="power2.out"
+          >
             <div class="space-y-4">
-              <div v-for="education in educations" :key="education.id" class="group">
-                <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
-                        <img :src="education.image" :alt="education.school" class="w-full h-full object-contain" />
-                      </div>
-                      <div>
-                        <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ education.school }}</h3>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ education.field }}</p>
-                        <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ education.date }}</p>
+              <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Education</h2>
+              <div class="space-y-4">
+                <AnimatedContent
+                  v-for="(education, index) in educations" 
+                  :key="education.id"
+                  :distance="30"
+                  direction="vertical"
+                  :duration="0.6"
+                  :delay="0.5 + (index * 0.1)"
+                  ease="power2.out"
+                  class="group"
+                >
+                  <div class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-md bg-violet-500/10 flex items-center justify-center">
+                          <img :src="education.image" :alt="education.school" class="w-full h-full object-contain" />
+                        </div>
+                        <div>
+                          <h3 class="text-base font-medium text-zinc-900 dark:text-zinc-200">{{ education.school }}</h3>
+                          <p class="text-sm text-zinc-600 dark:text-zinc-400">{{ education.field }}</p>
+                          <p class="text-sm text-zinc-500 dark:text-zinc-500">{{ education.date }}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </AnimatedContent>
               </div>
             </div>
-          </div>
+          </AnimatedContent>
         </div>
 
         <!-- Recently Listened Songs -->
@@ -548,22 +582,17 @@ const getDomainFromUrl = (url: string) => {
   }
 };
 
-// Blog ve bookmark verilerini çekme fonksiyonları
-async function fetchBlogPosts() {
-  try {
-    const { data: posts } = await useAsyncData('blog-posts', () => 
-      queryContent('/blog')
-        .sort({ date: -1 })
-        .limit(3)
-        .find()
-    );
-    
-    if (posts.value) {
-      recentBlogPosts.value = posts.value as BlogPost[];
-    }
-  } catch (error) {
-    console.error('Blog yazıları alınamadı:', error);
-  }
+// Blog verilerini çek (setup içinde çağrılmalı)
+const { data: blogPostsData } = await useAsyncData('blog-posts', () => 
+  queryContent('/blog')
+    .sort({ date: -1 })
+    .limit(3)
+    .find()
+);
+
+// Blog verilerini reactive değişkene ata
+if (blogPostsData.value) {
+  recentBlogPosts.value = blogPostsData.value as BlogPost[];
 }
 
 function loadBookmarks() {
@@ -573,6 +602,9 @@ function loadBookmarks() {
   );
   recentBookmarks.value = sortedBookmarks.slice(0, 3);
 }
+
+// Bookmarks'ı hemen yükle
+loadBookmarks();
 
 // function formatDate(dateString?: string) {
 //   if (!dateString) return '';
@@ -693,8 +725,6 @@ const codeSnippets = [
 onMounted(() => {
   fetchLastPlayedTrack();
   fetchRecentTracks();
-  fetchBlogPosts();
-  loadBookmarks();
   
   // Refresh every 30 seconds (30000 milliseconds)
   refreshInterval = setInterval(() => {
