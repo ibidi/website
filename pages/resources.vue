@@ -37,7 +37,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-violet-500 dark:text-violet-400 transition-colors duration-300">The Odin Project</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     Ücretsiz, kapsamlı ve proje odaklı web geliştirme eğitimi.
                   </p>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-emerald-400 transition-colors duration-300">Frontend Masters</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     Uzman eğitmenlerden ileri düzey frontend dersleri.
                   </p>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-sky-400 transition-colors duration-300">Refactoring UI</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     Geliştiriciler için pratik UI tasarım rehberi.
                   </p>
                 </div>
@@ -91,7 +91,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-orange-400 transition-colors duration-300">Figma Community</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     Ücretsiz UI kitleri ve tasarım şablonları.
                   </p>
                 </div>
@@ -115,7 +115,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-blue-400 transition-colors duration-300">VS Code</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     Önerdiğim VS Code eklentileri ve ayarları.
                   </p>
                 </div>
@@ -130,7 +130,7 @@
                 </div>
                 <div>
                   <h3 class="font-medium text-zinc-200 group-hover:text-emerald-400 transition-colors duration-300">GitHub Features</h3>
-                  <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
+                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
                     GitHub'ın güçlü özelliklerini keşfedin.
                   </p>
                 </div>
