@@ -2,8 +2,8 @@
   <div class="pt-32 pb-16 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 min-h-screen">
     <div class="container mx-auto max-w-7xl px-4">
       <div class="space-y-8 mb-16">
-        <h1 class="text-5xl font-bold text-center text-white">Projelerim</h1>
-        <p class="text-xl text-zinc-400 text-center">Geliştirdiğim ve katkıda bulunduğum bazı özel projeler.</p>
+        <h1 class="text-5xl font-bold text-center text-zinc-900 dark:text-white">Projelerim</h1>
+        <p class="text-xl text-zinc-600 dark:text-zinc-400 text-center">Geliştirdiğim ve katkıda bulunduğum bazı özel projeler.</p>
       </div>
 
       <div class="space-y-24">
@@ -18,12 +18,12 @@
 
           <!-- Text Content Section -->
           <div class="w-full md:w-1/2 space-y-4">
-            <p class="text-sm font-medium text-violet-400">{{ project.tag }}</p>
-            <h2 class="text-3xl md:text-4xl font-bold text-white">{{ project.title }}</h2>
-            <p class="text-zinc-400 text-lg">{{ project.description }}</p>
+            <p class="text-sm font-medium text-violet-500 dark:text-violet-400">{{ project.tag }}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">{{ project.title }}</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">{{ project.description }}</p>
             <div class="flex flex-wrap gap-3 pt-2">
               <a v-for="button in project.buttons" :key="button.text" :href="button.url" target="_blank"
-                 class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-md text-sm font-medium transition-colors duration-200 border border-zinc-700">
+                 class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white rounded-md text-sm font-medium transition-colors duration-200 border border-zinc-200 dark:border-zinc-700">
                 <Icon v-if="button.icon" :name="button.icon" class="w-4 h-4" />
                 {{ button.text }}
               </a>

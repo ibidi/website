@@ -1,39 +1,42 @@
 <template>
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-start justify-center py-20">
-      <h1 class="text-4xl font-bold text-zinc-200">Kaynaklar</h1>
-      <p class="mt-4 text-zinc-400">Geliştirici yolculuğunuzda faydalı olabilecek kaynaklar ve araçlar.</p>
+  <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
+    <div class="mx-auto max-w-4xl px-4">
+      <div class="space-y-8">
+        <div class="space-y-4">
+          <h1 class="text-4xl font-bold text-zinc-900 dark:text-zinc-200">Kaynaklar</h1>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400">Geliştirici yolculuğunuzda faydalı olabilecek kaynaklar ve araçlar.</p>
+        </div>
 
-      <!-- Arama -->
-      <div class="relative w-full mt-8">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="Kaynaklarda ara..."
-          class="w-full px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-xl text-zinc-200 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
-        />
-        <Icon
-          name="heroicons:magnifying-glass-20-solid"
-          class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500"
-        />
-      </div>
+        <!-- Arama -->
+        <div class="relative w-full">
+          <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="Kaynaklarda ara..."
+            class="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 rounded-xl text-zinc-900 dark:text-zinc-200 placeholder-zinc-500 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
+          />
+          <Icon
+            name="heroicons:magnifying-glass-20-solid"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500"
+          />
+        </div>
 
-      <div class="w-full mt-12 space-y-12">
-        <!-- Frontend Kaynakları -->
-        <div class="space-y-6">
-          <h2 class="text-2xl font-semibold text-zinc-200 flex items-center gap-2">
-            <Icon name="heroicons:code-bracket-20-solid" class="text-violet-400" />
-            Frontend Geliştirme
-          </h2>
+        <div class="space-y-12">
+          <!-- Frontend Kaynakları -->
+          <div class="space-y-6">
+            <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
+              <Icon name="heroicons:code-bracket-20-solid" class="text-violet-500 dark:text-violet-500 dark:text-violet-400" />
+              Frontend Geliştirme
+            </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <a href="https://theodinproject.com" target="_blank" rel="noopener noreferrer" 
                class="group p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all duration-300">
               <div class="flex items-start gap-3">
                 <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
-                  <Icon name="simple-icons:theodinproject" class="text-xl text-violet-400" />
+                  <Icon name="simple-icons:theodinproject" class="text-xl text-violet-500 dark:text-violet-400" />
                 </div>
                 <div>
-                  <h3 class="font-medium text-zinc-200 group-hover:text-violet-400 transition-colors duration-300">The Odin Project</h3>
+                  <h3 class="font-medium text-zinc-200 group-hover:text-violet-500 dark:text-violet-400 transition-colors duration-300">The Odin Project</h3>
                   <p class="mt-1 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
                     Ücretsiz, kapsamlı ve proje odaklı web geliştirme eğitimi.
                   </p>
@@ -60,7 +63,7 @@
 
         <!-- UI/UX Kaynakları -->
         <div class="space-y-6">
-          <h2 class="text-2xl font-semibold text-zinc-200 flex items-center gap-2">
+          <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
             <Icon name="heroicons:square-3-stack-3d-20-solid" class="text-pink-400" />
             UI/UX Tasarım
           </h2>
@@ -99,7 +102,7 @@
 
         <!-- Yazılım Araçları -->
         <div class="space-y-6">
-          <h2 class="text-2xl font-semibold text-zinc-200 flex items-center gap-2">
+          <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
             <Icon name="heroicons:wrench-screwdriver-20-solid" class="text-blue-400" />
             Yazılım Araçları
           </h2>
