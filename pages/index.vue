@@ -258,63 +258,30 @@
               </NuxtLink>
             </div>
             
-            <div class="space-y-3">
-              <article class="group cursor-pointer">
-                <NuxtLink to="/blog/vue-3-composition-api" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+            <div v-if="recentBlogPosts.length > 0" class="space-y-3">
+              <article v-for="post in recentBlogPosts" :key="post._path" class="group cursor-pointer">
+                <NuxtLink :to="post._path" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                   <div class="flex items-start gap-3">
                     <div class="w-2 h-2 rounded-full bg-violet-500 mt-2 flex-shrink-0"></div>
                     <div class="min-w-0 flex-1">
                       <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        Vue 3 Composition API ile Modern Geliştirme
+                        {{ post.title }}
                       </h3>
                       <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2">
-                        Vue 3'ün getirdiği Composition API ile daha temiz ve sürdürülebilir kod yazma teknikleri...
+                        {{ post.description || post.excerpt || 'Blog yazısı açıklaması...' }}
                       </p>
                       <time class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        2 gün önce
+                        {{ formatDate(post.date) }}
                       </time>
                     </div>
                   </div>
                 </NuxtLink>
               </article>
-
-              <article class="group cursor-pointer">
-                <NuxtLink to="/blog/typescript-best-practices" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="flex items-start gap-3">
-                    <div class="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
-                    <div class="min-w-0 flex-1">
-                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        TypeScript Best Practices 2024
-                      </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2">
-                        TypeScript projelerinde kod kalitesini artıran en iyi uygulamalar ve ipuçları...
-                      </p>
-                      <time class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        1 hafta önce
-                      </time>
-                    </div>
-                  </div>
-                </NuxtLink>
-              </article>
-
-              <article class="group cursor-pointer">
-                <NuxtLink to="/blog/nuxt-3-performance" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="flex items-start gap-3">
-                    <div class="w-2 h-2 rounded-full bg-green-500 mt-2 flex-shrink-0"></div>
-                    <div class="min-w-0 flex-1">
-                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        Nuxt 3 Performance Optimizasyonu
-                      </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2">
-                        Nuxt 3 uygulamalarında performansı maksimuma çıkarmak için kullanabileceğiniz teknikler...
-                      </p>
-                      <time class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        2 hafta önce
-                      </time>
-                    </div>
-                  </div>
-                </NuxtLink>
-              </article>
+            </div>
+            
+            <div v-else class="text-center py-8">
+              <Icon name="carbon:blog" class="w-12 h-12 text-zinc-400 mx-auto mb-3" />
+              <p class="text-zinc-600 dark:text-zinc-400">Henüz blog yazısı yok</p>
             </div>
           </div>
 
