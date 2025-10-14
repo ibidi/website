@@ -25,12 +25,12 @@
           <!-- Frontend Kaynakları -->
           <div class="space-y-6">
             <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
-              <Icon name="heroicons:code-bracket-20-solid" class="text-violet-500 dark:text-violet-500 dark:text-violet-400" />
+              <Icon name="heroicons:code-bracket-20-solid" class="text-violet-500 dark:text-violet-400" />
               Frontend Geliştirme
             </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a href="https://theodinproject.com" target="_blank" rel="noopener noreferrer" 
-               class="group p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a href="https://theodinproject.com" target="_blank" rel="noopener noreferrer" 
+                 class="group p-4 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300">
               <div class="flex items-start gap-3">
                 <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
                   <Icon name="simple-icons:theodinproject" class="text-xl text-violet-500 dark:text-violet-400" />
