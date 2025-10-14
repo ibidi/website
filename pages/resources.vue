@@ -31,34 +31,38 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <a href="https://theodinproject.com" target="_blank" rel="noopener noreferrer" 
                  class="group p-4 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300">
-              <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
-                  <Icon name="simple-icons:theodinproject" class="text-xl text-violet-500 dark:text-violet-400" />
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
+                    <Icon name="heroicons:academic-cap-20-solid" class="text-violet-500 dark:text-violet-400" />
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                      The Odin Project
+                    </h3>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                      Ücretsiz, kapsamlı ve proje odaklı web geliştirme eğitimi.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="font-medium text-zinc-200 group-hover:text-violet-500 dark:text-violet-400 transition-colors duration-300">The Odin Project</h3>
-                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
-                    Ücretsiz, kapsamlı ve proje odaklı web geliştirme eğitimi.
-                  </p>
-                </div>
-              </div>
-            </a>
+              </a>
 
-            <a href="https://frontendmasters.com" target="_blank" rel="noopener noreferrer" 
-               class="group p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all duration-300">
-              <div class="flex items-start gap-3">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
-                  <Icon name="simple-icons:frontendmasters" class="text-xl text-emerald-400" />
+              <a href="https://frontendmasters.com" target="_blank" rel="noopener noreferrer" 
+                 class="group p-4 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
+                    <Icon name="heroicons:play-20-solid" class="text-emerald-500 dark:text-emerald-400" />
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                      Frontend Masters
+                    </h3>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                      Uzman eğitmenlerden ileri düzey frontend dersleri.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="font-medium text-zinc-200 group-hover:text-emerald-400 transition-colors duration-300">Frontend Masters</h3>
-                  <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">
-                    Uzman eğitmenlerden ileri düzey frontend dersleri.
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
         </div>
 
         <!-- UI/UX Kaynakları -->
