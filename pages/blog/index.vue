@@ -32,7 +32,7 @@
                 <div class="flex items-center gap-2 mt-1">
                   <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ formatDate(article.date) }}</span>
                   <span class="text-sm text-zinc-600 dark:text-zinc-400">•</span>
-                  <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ article.readingTime || 5 }} dk okuma</span>
+                  <span class="text-sm text-zinc-600 dark:text-zinc-400">{{ article.readTime || 5 }} dk okuma</span>
                 </div>
               </div>
             </div>
@@ -51,7 +51,11 @@ interface Article {
   readingTime: number
 }
 
-const { data: articles } = await useAsyncData('articles', () => queryContent('blog').find())
+const { data: articles } = await useAsyncData('articles', () => 
+  queryContent('blog')
+    .sort({ date: -1 })
+    .find()
+)
 const tags = ['Discord', 'Güvenlik', 'Token']
 
 // SEO

@@ -86,6 +86,22 @@ const bookmarks = ref<Bookmark[]>([
     url: 'https://developer.mozilla.org/',
     dateAdded: '2023-12-01T00:00:00.000Z',
     tags: ['web standards', 'html', 'css', 'javascript']
+  },
+  {
+    id: '5',
+    title: 'TypeScript Handbook',
+    description: 'TypeScript\'in resmi dokümantasyonu ve rehberi.',
+    url: 'https://www.typescriptlang.org/docs/',
+    dateAdded: '2024-04-05T00:00:00.000Z',
+    tags: ['typescript', 'javascript', 'programming']
+  },
+  {
+    id: '6',
+    title: 'Node.js Documentation',
+    description: 'Node.js runtime environment için resmi dokümantasyon.',
+    url: 'https://nodejs.org/en/docs/',
+    dateAdded: '2024-05-12T00:00:00.000Z',
+    tags: ['nodejs', 'backend', 'javascript']
   }
 ]);
 

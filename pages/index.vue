@@ -289,103 +289,42 @@
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Bookmarks</h2>
-              <a 
-                href="/bookmarks" 
+              <NuxtLink 
+                to="/bookmarks" 
                 class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
               >
                 <Icon name="carbon:bookmark" class="w-4 h-4" />
                 View All
-              </a>
+              </NuxtLink>
             </div>
             
-            <div class="space-y-3">
-              <article class="group cursor-pointer">
-                <a href="https://vuejs.org/guide/introduction.html" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+            <div v-if="recentBookmarks.length > 0" class="space-y-3">
+              <article v-for="bookmark in recentBookmarks" :key="bookmark.id" class="group cursor-pointer">
+                <a :href="bookmark.url" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                   <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-md bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
-                      <Icon name="logos:vue" class="w-5 h-5" />
+                    <div class="w-8 h-8 rounded-md bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center flex-shrink-0">
+                      <Icon name="carbon:bookmark" class="w-4 h-4 text-violet-600" />
                     </div>
                     <div class="min-w-0 flex-1">
                       <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        Vue.js Official Documentation
+                        {{ bookmark.title }}
                       </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                        The official Vue.js documentation and guide
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2">
+                        {{ bookmark.description }}
                       </p>
                       <span class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        vuejs.org
+                        {{ getDomainFromUrl(bookmark.url) }}
                       </span>
                     </div>
                     <Icon name="carbon:launch" class="w-4 h-4 text-zinc-400 flex-shrink-0" />
                   </div>
                 </a>
               </article>
-
-              <article class="group cursor-pointer">
-                <a href="https://nuxt.com/docs" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-md bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
-                      <Icon name="logos:nuxt-icon" class="w-5 h-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        Nuxt 3 Documentation
-                      </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                        Build your next Vue.js application with confidence using Nuxt
-                      </p>
-                      <span class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        nuxt.com
-                      </span>
-                    </div>
-                    <Icon name="carbon:launch" class="w-4 h-4 text-zinc-400 flex-shrink-0" />
-                  </div>
-                </a>
-              </article>
-
-              <article class="group cursor-pointer">
-                <a href="https://tailwindcss.com/docs" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-md bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center flex-shrink-0">
-                      <Icon name="logos:tailwindcss-icon" class="w-5 h-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        Tailwind CSS Documentation
-                      </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                        A utility-first CSS framework for rapidly building custom designs
-                      </p>
-                      <span class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        tailwindcss.com
-                      </span>
-                    </div>
-                    <Icon name="carbon:launch" class="w-4 h-4 text-zinc-400 flex-shrink-0" />
-                  </div>
-                </a>
-              </article>
-
-              <article class="group cursor-pointer">
-                <a href="https://typescript-eslint.io/" target="_blank" class="block p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                  <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                      <Icon name="logos:typescript-icon" class="w-5 h-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <h3 class="font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
-                        TypeScript ESLint
-                      </h3>
-                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                        Monorepo for all the tooling which enables ESLint to support TypeScript
-                      </p>
-                      <span class="text-xs text-zinc-500 dark:text-zinc-500 mt-2 block">
-                        typescript-eslint.io
-                      </span>
-                    </div>
-                    <Icon name="carbon:launch" class="w-4 h-4 text-zinc-400 flex-shrink-0" />
-                  </div>
-                </a>
-              </article>
+            </div>
+            
+            <div v-else class="text-center py-8">
+              <Icon name="carbon:bookmark" class="w-12 h-12 text-zinc-400 mx-auto mb-3" />
+              <p class="text-zinc-600 dark:text-zinc-400">Henüz bookmark yok</p>
             </div>
           </div>
         </div>
@@ -503,7 +442,137 @@ const recentTracks = ref<RecentTrack[]>([]);
 const fetchError = ref<string | null>(null);
 const showAllJobs = ref(false);
 
+// Blog ve Bookmark interfaces
+interface BlogPost {
+  _path: string;
+  title: string;
+  description?: string;
+  excerpt?: string;
+  date: string;
+}
+
+interface Bookmark {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  dateAdded: string;
+}
+
+// Blog ve bookmark verileri
+const recentBlogPosts = ref<BlogPost[]>([]);
+const recentBookmarks = ref<Bookmark[]>([]);
+
+// Bookmarks verisi (bookmarks sayfasından alınan)
+const bookmarksData: Bookmark[] = [
+  {
+    id: '1',
+    title: 'Tailwind CSS Resmi Sitesi',
+    description: 'Hızla modern web siteleri oluşturmak için kullanışlı bir CSS frameworkü.',
+    url: 'https://tailwindcss.com',
+    dateAdded: '2024-01-10T00:00:00.000Z'
+  },
+  {
+    id: '2',
+    title: 'Vue 3 Dokümantasyonu',
+    description: 'Progresif JavaScript frameworkü Vue.js için resmi dokümantasyon.',
+    url: 'https://vuejs.org',
+    dateAdded: '2024-02-15T00:00:00.000Z'
+  },
+  {
+    id: '3',
+    title: 'Nuxt 3 Dokümantasyonu',
+    description: 'Vue.js ile sezgisel ve güçlü web uygulamaları oluşturmak için kullanılan framework.',
+    url: 'https://nuxt.com',
+    dateAdded: '2024-03-20T00:00:00.000Z'
+  },
+  {
+    id: '4',
+    title: 'MDN Web Docs',
+    description: 'Web teknolojileri ve API\'leri hakkında geliştiriciler için kapsamlı kaynak.',
+    url: 'https://developer.mozilla.org/',
+    dateAdded: '2023-12-01T00:00:00.000Z'
+  },
+  {
+    id: '5',
+    title: 'TypeScript Handbook',
+    description: 'TypeScript\'in resmi dokümantasyonu ve rehberi.',
+    url: 'https://www.typescriptlang.org/docs/',
+    dateAdded: '2024-04-05T00:00:00.000Z'
+  },
+  {
+    id: '6',
+    title: 'Node.js Documentation',
+    description: 'Node.js runtime environment için resmi dokümantasyon.',
+    url: 'https://nodejs.org/en/docs/',
+    dateAdded: '2024-05-12T00:00:00.000Z'
+  }
+];
+
 const isOnline = computed(() => !!lastPlayedTrack.value?.nowPlaying);
+
+// Yardımcı fonksiyonlar
+const formatDate = (dateString: string) => {
+  try {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) {
+      return 'Bugün';
+    } else if (diffDays === 1) {
+      return 'Dün';
+    } else if (diffDays < 7) {
+      return `${diffDays} gün önce`;
+    } else if (diffDays < 30) {
+      const weeks = Math.floor(diffDays / 7);
+      return `${weeks} hafta önce`;
+    } else {
+      return date.toLocaleDateString('tr-TR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+  } catch {
+    return dateString;
+  }
+};
+
+const getDomainFromUrl = (url: string) => {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
+};
+
+// Blog ve bookmark verilerini çekme fonksiyonları
+async function fetchBlogPosts() {
+  try {
+    const { data: posts } = await useAsyncData('blog-posts', () => 
+      queryContent('/blog')
+        .sort({ date: -1 })
+        .limit(3)
+        .find()
+    );
+    
+    if (posts.value) {
+      recentBlogPosts.value = posts.value as BlogPost[];
+    }
+  } catch (error) {
+    console.error('Blog yazıları alınamadı:', error);
+  }
+}
+
+function loadBookmarks() {
+  // En son 3 bookmark'ı al (tarihe göre sıralı)
+  const sortedBookmarks = [...bookmarksData].sort((a, b) => 
+    new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+  );
+  recentBookmarks.value = sortedBookmarks.slice(0, 3);
+}
 
 // function formatDate(dateString?: string) {
 //   if (!dateString) return '';
@@ -600,22 +669,6 @@ async function fetchRecentTracks() {
 
 let refreshInterval: NodeJS.Timeout | null = null;
 
-onMounted(() => {
-  fetchLastPlayedTrack();
-  fetchRecentTracks();
-  // Refresh every 30 seconds (30000 milliseconds)
-  refreshInterval = setInterval(() => {
-    fetchLastPlayedTrack();
-    fetchRecentTracks();
-  }, 30000);
-});
-
-onUnmounted(() => {
-  if (refreshInterval) {
-    clearInterval(refreshInterval);
-  }
-});
-
 const animatedCodeBackground = ref<HTMLElement | null>(null);
 const codeSnippets = [
   'const', 'let', 'var', 'function', '=>', 'async', 'await',
@@ -639,7 +692,15 @@ const codeSnippets = [
 
 onMounted(() => {
   fetchLastPlayedTrack();
-  refreshInterval = setInterval(fetchLastPlayedTrack, 30000);
+  fetchRecentTracks();
+  fetchBlogPosts();
+  loadBookmarks();
+  
+  // Refresh every 30 seconds (30000 milliseconds)
+  refreshInterval = setInterval(() => {
+    fetchLastPlayedTrack();
+    fetchRecentTracks();
+  }, 30000);
 
   const backgroundContainer = document.getElementById('animated-code-background');
   if (backgroundContainer) {
@@ -659,6 +720,12 @@ onMounted(() => {
       snippetElement.style.opacity = '0'; // Animation will handle fade in
       backgroundContainer.appendChild(snippetElement);
     }
+  }
+});
+
+onUnmounted(() => {
+  if (refreshInterval) {
+    clearInterval(refreshInterval);
   }
 });
 
@@ -871,5 +938,12 @@ html:not(.dark) #animated-code-background span {
 
 ::-moz-selection {
   @apply bg-violet-500/20 text-violet-200;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 </style>

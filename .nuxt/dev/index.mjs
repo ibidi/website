@@ -1307,57 +1307,6 @@ const _inlineRuntimeConfig = {
             "allow": true
           }
         ]
-      },
-      {
-        "comment": [],
-        "disallow": [],
-        "allow": [
-          "/"
-        ],
-        "userAgent": [
-          "*"
-        ],
-        "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "/",
-            "allow": true
-          }
-        ]
-      },
-      {
-        "comment": [],
-        "disallow": [],
-        "allow": [
-          "/"
-        ],
-        "userAgent": [
-          "*"
-        ],
-        "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "/",
-            "allow": true
-          }
-        ]
-      },
-      {
-        "comment": [],
-        "disallow": [],
-        "allow": [
-          "/"
-        ],
-        "userAgent": [
-          "*"
-        ],
-        "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "/",
-            "allow": true
-          }
-        ]
       }
     ],
     "sitemap": [
