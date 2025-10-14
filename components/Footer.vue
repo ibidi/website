@@ -4,7 +4,7 @@
     <div class="container mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
       <!-- Left Section: Version -->
       <div class="text-xs">
-        <span>v1.0.1</span> <!-- Placeholder version -->
+        <span>v1.0.2</span> <!-- Placeholder version -->
       </div>
 
       <!-- Center Section: Copyright & GitHub Link -->
