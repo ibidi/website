@@ -1,5 +1,0 @@
-const index_vue_vue_type_style_index_0_lang = "@keyframes gradient-x{0%{background-position:0 0;background-size:200% 100%}to{background-position:-200% 0;background-size:200% 100%}}.animate-gradient-x{animation:gradient-x 3s linear infinite}#animated-code-background span{font-family:Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;-webkit-user-select:none;-moz-user-select:none;user-select:none}.dark #animated-code-background span{color:#c8c8dc1a}html:not(.dark) #animated-code-background span{color:#3232461a}@keyframes drift{0%{opacity:0;transform:translateY(15vh) translate(0) rotate(0)}10%,90%{opacity:1}to{opacity:0;transform:translateY(-100vh) translate(calc(var(--random-drift-x, 0)*1vw)) rotate(calc(var(--random-rotate, 0)*1deg))}}::selection{background-color:#8b5cf633;--tw-text-opacity:1;color:rgb(221 214 254/var(--tw-text-opacity,1))}::-moz-selection{background-color:#8b5cf633;--tw-text-opacity:1;color:rgb(221 214 254/var(--tw-text-opacity,1))}";
-export {
-  index_vue_vue_type_style_index_0_lang as default
-};
-//# sourceMappingURL=index-styles-1.mjs-CKpdR05t.js.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"default-DRiKl4yF.js","sources":["../../../../layouts/default.vue"],"sourcesContent":["<template>\n  <main class=\"flex-grow\">\n    <slot />\n  </main>\n</template>"],"names":["_ssrRenderAttrs","_mergeProps"],"mappings":";;;;;AACQ,QAAA,QAAAA,eAAAC,WAAA,EAAA,OAAM,eAAW,MAAA,CAAA,CAAA,GAAA;;;;;;;;;;;"}
