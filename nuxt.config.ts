@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
-    '@kevinmarrec/nuxt-pwa'
+    '@vite-pwa/nuxt'
   ],
   colorMode: {
     classSuffix: '',
