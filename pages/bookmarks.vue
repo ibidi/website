@@ -27,13 +27,17 @@
 
         <!-- Bookmarks List -->
         <div v-if="filteredBookmarks.length > 0" class="space-y-4">
-          <BookmarkCard
+          <div
             v-for="(bookmark, index) in filteredBookmarks"
             :key="bookmark.id"
-            :bookmark="bookmark"
-            :delay="0.3 + (index * 0.05)"
-            @tag-click="handleTagClick"
-          />
+            class="p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50"
+          >
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-200">{{ bookmark.title }}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-2">{{ bookmark.description }}</p>
+            <a :href="bookmark.url" target="_blank" class="text-violet-500 text-sm mt-2 inline-block">
+              Visit →
+            </a>
+          </div>
         </div>
 
         <!-- Empty State -->
@@ -136,10 +140,15 @@ const { activeTags, toggleTag, filterPosts } = useFilter();
 
 // Filter bookmarks based on active tags
 const filteredBookmarks = computed(() => {
+  console.log('Bookmarks count:', bookmarks.value.length);
+  console.log('Active tags:', activeTags.value);
+  
   if (activeTags.value.length === 0) {
-    return [...bookmarks.value].sort((a, b) => 
+    const sorted = [...bookmarks.value].sort((a, b) => 
       new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
     );
+    console.log('Filtered bookmarks (no tags):', sorted.length);
+    return sorted;
   }
 
   // Filter bookmarks that have at least one of the active tags
@@ -148,6 +157,7 @@ const filteredBookmarks = computed(() => {
     return activeTags.value.some(tag => bookmark.tags!.includes(tag));
   });
 
+  console.log('Filtered bookmarks (with tags):', filtered.length);
   return filtered.sort((a, b) => 
     new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
   );

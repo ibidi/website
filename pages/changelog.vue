@@ -62,18 +62,32 @@
 <script setup lang="ts">
 import type { ChangelogEntry } from '~/types/changelog';
 
-// Fetch changelog entries
-const { data: changelogData } = await useAsyncData('changelog-entries', () =>
-  queryContent('/changelog')
-    .sort({ version: -1 })
-    .find()
-);
+// Fetch changelog entries using Content v3 API
+const { data: changelogData } = await useAsyncData('changelog-entries', async () => {
+  try {
+    const entries = await queryCollection('changelog').all()
+    return entries
+  } catch (error) {
+    console.error('Error fetching changelog entries:', error)
+    return []
+  }
+});
 
 // Transform data to ChangelogEntry format
 const entries = computed<ChangelogEntry[]>(() => {
-  if (!changelogData.value) return [];
+  if (!changelogData.value || !Array.isArray(changelogData.value)) return [];
   
-  return changelogData.value.map((item: any) => ({
+  return changelogData.value
+    .sort((a: any, b: any) => {
+      // Sort by version in descending order
+      const versionA = a.version.split('.').map(Number);
+      const versionB = b.version.split('.').map(Number);
+      for (let i = 0; i < 3; i++) {
+        if (versionB[i] !== versionA[i]) return versionB[i] - versionA[i];
+      }
+      return 0;
+    })
+    .map((item: any) => ({
     version: item.version,
     date: item.date,
     title: item.title,
