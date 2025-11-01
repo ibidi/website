@@ -609,49 +609,63 @@ interface Bookmark {
 const recentBlogPosts = ref<BlogPost[]>([]);
 const recentBookmarks = ref<Bookmark[]>([]);
 
-// Bookmarks verisi (bookmarks sayfasından alınan)
+// Bookmarks verisi (bookmarks sayfasıyla senkronize)
 const bookmarksData: Bookmark[] = [
   {
     id: '1',
-    title: 'Tailwind CSS Resmi Sitesi',
-    description: 'Hızla modern web siteleri oluşturmak için kullanışlı bir CSS frameworkü.',
+    title: 'Tailwind CSS',
+    description: 'A utility-first CSS framework for rapidly building custom user interfaces.',
     url: 'https://tailwindcss.com',
     dateAdded: '2024-01-10T00:00:00.000Z'
   },
   {
     id: '2',
-    title: 'Vue 3 Dokümantasyonu',
-    description: 'Progresif JavaScript frameworkü Vue.js için resmi dokümantasyon.',
+    title: 'Vue 3 Documentation',
+    description: 'The Progressive JavaScript Framework - Official documentation.',
     url: 'https://vuejs.org',
     dateAdded: '2024-02-15T00:00:00.000Z'
   },
   {
     id: '3',
-    title: 'Nuxt 3 Dokümantasyonu',
-    description: 'Vue.js ile sezgisel ve güçlü web uygulamaları oluşturmak için kullanılan framework.',
+    title: 'Nuxt 3',
+    description: 'The Intuitive Vue Framework for building web applications.',
     url: 'https://nuxt.com',
     dateAdded: '2024-03-20T00:00:00.000Z'
   },
   {
     id: '4',
     title: 'MDN Web Docs',
-    description: 'Web teknolojileri ve API\'leri hakkında geliştiriciler için kapsamlı kaynak.',
+    description: 'Resources for developers, by developers.',
     url: 'https://developer.mozilla.org/',
     dateAdded: '2023-12-01T00:00:00.000Z'
   },
   {
     id: '5',
     title: 'TypeScript Handbook',
-    description: 'TypeScript\'in resmi dokümantasyonu ve rehberi.',
+    description: 'TypeScript is JavaScript with syntax for types.',
     url: 'https://www.typescriptlang.org/docs/',
     dateAdded: '2024-04-05T00:00:00.000Z'
   },
   {
     id: '6',
-    title: 'Node.js Documentation',
-    description: 'Node.js runtime environment için resmi dokümantasyon.',
+    title: 'Node.js',
+    description: 'Node.js® is a JavaScript runtime built on Chrome\'s V8 JavaScript engine.',
     url: 'https://nodejs.org/en/docs/',
     dateAdded: '2024-05-12T00:00:00.000Z'
+  },
+  {
+    id: '7',
+    title: 'GSAP',
+    description: 'Professional-grade JavaScript animation for the modern web.',
+    url: 'https://greensock.com/gsap/',
+    dateAdded: '2024-06-01T00:00:00.000Z'
+  },
+  {
+    id: '8',
+    title: 'Vite',
+    description: 'Next Generation Frontend Tooling.',
+    url: 'https://vitejs.dev/',
+    dateAdded: '2024-07-10T00:00:00.000Z'
   }
 ];
 

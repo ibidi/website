@@ -140,15 +140,10 @@ const { activeTags, toggleTag, filterPosts } = useFilter();
 
 // Filter bookmarks based on active tags
 const filteredBookmarks = computed(() => {
-  console.log('Bookmarks count:', bookmarks.value.length);
-  console.log('Active tags:', activeTags.value);
-  
   if (activeTags.value.length === 0) {
-    const sorted = [...bookmarks.value].sort((a, b) => 
+    return [...bookmarks.value].sort((a, b) => 
       new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
     );
-    console.log('Filtered bookmarks (no tags):', sorted.length);
-    return sorted;
   }
 
   // Filter bookmarks that have at least one of the active tags
@@ -157,7 +152,6 @@ const filteredBookmarks = computed(() => {
     return activeTags.value.some(tag => bookmark.tags!.includes(tag));
   });
 
-  console.log('Filtered bookmarks (with tags):', filtered.length);
   return filtered.sort((a, b) => 
     new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
   );
