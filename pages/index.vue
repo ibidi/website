@@ -1,6 +1,6 @@
 <template>
   <div class="pt-32 pb-16 bg-white dark:bg-zinc-900">
-    <div class="container mx-auto max-w-4xl">
+    <div class="container mx-auto max-w-4xl px-4">
       <div class="flex flex-col gap-20">
         <div class="space-y-6">
           <BlurText 
@@ -290,19 +290,19 @@
             </a>
           </div>
           
-          <div v-if="featuredProjects.length > 0" class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div v-if="featuredProjects.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <a 
               v-for="project in featuredProjects.slice(0, 6)" 
               :key="project.name"
               :href="project.url" 
               target="_blank"
-              class="group flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+              class="group flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 overflow-hidden"
             >
-              <div class="w-10 h-10 rounded-md flex-shrink-0 overflow-hidden flex items-center justify-center" :style="{ backgroundColor: getLanguageColor(project.language) + '20' }">
+              <div class="w-10 h-10 rounded-md flex-shrink-0 flex items-center justify-center" :style="{ backgroundColor: getLanguageColor(project.language) + '20' }">
                 <Icon :name="getLanguageIcon(project.language)" class="text-xl" />
               </div>
               
-              <div class="min-w-0 flex-1">
+              <div class="flex-1 min-w-0">
                 <h3 class="font-medium text-zinc-900 dark:text-zinc-100 truncate text-sm group-hover:text-violet-500 transition-colors">
                   {{ project.name }}
                 </h3>
