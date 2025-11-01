@@ -101,7 +101,7 @@ import type { BlogPost } from '~/types/changelog';
 
 // Fetch all articles
 const { data: articlesData } = await useAsyncData('articles', () => 
-  queryContent('blog')
+  queryContent('/blog')
     .sort({ date: -1 })
     .find()
 );

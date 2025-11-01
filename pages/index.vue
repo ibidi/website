@@ -696,7 +696,7 @@ const getDomainFromUrl = (url: string) => {
 
 // Blog verilerini çek (setup içinde çağrılmalı)
 const { data: blogPostsData } = await useAsyncData('blog-posts', () => 
-  queryContent('blog')
+  queryContent('/blog')
     .sort({ date: -1 })
     .limit(3)
     .find()
