@@ -298,8 +298,8 @@
               target="_blank"
               class="group flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
-              <div class="w-10 h-10 rounded-md bg-zinc-200 dark:bg-zinc-700 flex-shrink-0 overflow-hidden flex items-center justify-center">
-                <Icon name="carbon:logo-github" class="w-5 h-5 text-zinc-600 dark:text-zinc-400" />
+              <div class="w-10 h-10 rounded-md flex-shrink-0 overflow-hidden flex items-center justify-center" :style="{ backgroundColor: getLanguageColor(project.language) + '20' }">
+                <Icon :name="getLanguageIcon(project.language)" class="text-xl" />
               </div>
               
               <div class="min-w-0 flex-1">
@@ -694,9 +694,39 @@ const getLanguageColor = (language: string) => {
     'C#': '#178600',
     'Swift': '#ffac45',
     'Kotlin': '#A97BFF',
-    'Dart': '#00B4AB'
+    'Dart': '#00B4AB',
+    'HTML': '#e34c26',
+    'CSS': '#563d7c'
   };
   return colors[language] || '#8b5cf6';
+};
+
+// Language icons
+const getLanguageIcon = (language: string) => {
+  const icons: Record<string, string> = {
+    'JavaScript': 'logos:javascript',
+    'TypeScript': 'logos:typescript-icon',
+    'Vue': 'logos:vue',
+    'React': 'logos:react',
+    'Python': 'logos:python',
+    'Go': 'logos:go',
+    'Rust': 'logos:rust',
+    'Java': 'logos:java',
+    'PHP': 'logos:php',
+    'Ruby': 'logos:ruby',
+    'C++': 'logos:c-plusplus',
+    'C#': 'logos:c-sharp',
+    'Swift': 'logos:swift',
+    'Kotlin': 'logos:kotlin',
+    'Dart': 'logos:dart',
+    'HTML': 'logos:html-5',
+    'CSS': 'logos:css-3',
+    'Svelte': 'logos:svelte-icon',
+    'Astro': 'logos:astro-icon',
+    'Nuxt': 'logos:nuxt-icon',
+    'Next.js': 'logos:nextjs-icon'
+  };
+  return icons[language] || 'carbon:code';
 };
 
 // Blog ve Bookmark interfaces
