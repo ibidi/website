@@ -695,16 +695,29 @@ const getDomainFromUrl = (url: string) => {
 };
 
 // Blog verilerini çek (setup içinde çağrılmalı)
-const { data: blogPostsData } = await useAsyncData('blog-posts', () => 
-  queryContent('/blog')
-    .sort({ date: -1 })
-    .limit(3)
-    .find()
-);
+const { data: blogPostsData } = await useAsyncData('blog-posts', async () => {
+  try {
+    const articles = await queryCollection('blog').all()
+    return articles
+      .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 3)
+  } catch (error) {
+    console.error('Error fetching blog posts:', error)
+    return []
+  }
+})
 
 // Blog verilerini reactive değişkene ata
-if (blogPostsData.value) {
-  recentBlogPosts.value = blogPostsData.value as BlogPost[];
+if (blogPostsData.value && Array.isArray(blogPostsData.value)) {
+  recentBlogPosts.value = blogPostsData.value.map((article: any) => ({
+    _path: article._path || `/blog/${article._id}`,
+    title: article.title,
+    description: article.description,
+    date: article.date,
+    tags: article.tags || [],
+    category: article.category,
+    readTime: article.readTime
+  })) as BlogPost[];
 }
 
 function loadBookmarks() {

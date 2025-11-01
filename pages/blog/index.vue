@@ -99,25 +99,32 @@
 <script setup lang="ts">
 import type { BlogPost } from '~/types/changelog';
 
-// Fetch all articles
-const { data: articlesData } = await useAsyncData('articles', () => 
-  queryContent('/blog')
-    .sort({ date: -1 })
-    .find()
-);
+// Fetch all articles using Content v3 API
+const { data: articlesData } = await useAsyncData('articles', async () => {
+  try {
+    const articles = await queryCollection('blog').all()
+    return articles
+  } catch (error) {
+    console.error('Error fetching blog articles:', error)
+    return []
+  }
+})
 
 // Convert to BlogPost type
 const allArticles = computed<BlogPost[]>(() => {
-  if (!articlesData.value) return [];
-  return articlesData.value.map((article: any) => ({
-    _path: article._path,
-    title: article.title,
-    description: article.description || article.excerpt,
-    date: article.date,
-    tags: article.tags || [],
-    category: article.category,
-    readTime: article.readTime
-  }));
+  if (!articlesData.value || !Array.isArray(articlesData.value)) return [];
+  
+  return articlesData.value
+    .map((article: any) => ({
+      _path: article._path || `/blog/${article._id}`,
+      title: article.title,
+      description: article.description || article.excerpt,
+      date: article.date,
+      tags: article.tags || [],
+      category: article.category,
+      readTime: article.readTime
+    }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 });
 
 // Use filter composable
