@@ -16,17 +16,17 @@
             <span 
               class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-sm transition-all duration-300"
               :class="isOnline ? 
-                'bg-gradient-to-r from-emerald-400/15 via-green-400/15 to-teal-400/15 dark:from-emerald-400/25 dark:via-green-400/25 dark:to-teal-400/25 border border-emerald-200/60 dark:border-emerald-700/60 text-emerald-700 dark:text-emerald-300 animate-gradient-online backdrop-blur-sm' : 
+                'bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700/50 text-emerald-700 dark:text-emerald-300' : 
                 'bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-zinc-600 dark:text-zinc-400'"
             >
-              <span class="w-2 h-2 rounded-full transition-all duration-300" :class="isOnline ? 'bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse' : 'bg-red-500'"></span>
+              <span class="w-2 h-2 rounded-full transition-all duration-300" :class="isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'"></span>
               {{ isOnline ? 'Online' : 'Offline' }}
             </span>
             <span 
               v-if="lastPlayedTrack" 
               class="inline-flex items-center px-2.5 py-1 rounded-md text-sm transition-all duration-300"
               :class="lastPlayedTrack.nowPlaying ? 
-                'bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-cyan-500/15 dark:from-violet-500/25 dark:via-pink-500/25 dark:to-cyan-500/25 text-violet-700 dark:text-violet-300 border border-violet-200/60 dark:border-violet-700/60 backdrop-blur-sm animate-gradient-music' : 
+                'bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-300 dark:border-violet-700/50' : 
                 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50'"
             >
               <span class="inline-flex items-center">

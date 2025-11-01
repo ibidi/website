@@ -114,9 +114,69 @@ definePageMeta({
   name: 'blog-single'
 })
 
+const route = useRoute()
 const { data } = await useAsyncData('post', () => 
-  queryContent(useRoute().path).findOne()
+  queryContent(route.path).findOne()
 )
+
+// SEO Meta Tags
+useHead(() => ({
+  title: data.value?.title || 'Blog Post',
+  meta: [
+    { name: 'description', content: data.value?.description || data.value?.excerpt || '' },
+    { name: 'keywords', content: data.value?.tags?.join(', ') || '' },
+    { name: 'author', content: 'İhsan Baki Doğan' },
+    
+    // Open Graph
+    { property: 'og:title', content: data.value?.title || '' },
+    { property: 'og:description', content: data.value?.description || data.value?.excerpt || '' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: `https://ihsanbakidogan.com${route.path}` },
+    { property: 'og:image', content: data.value?.image || data.value?.coverImage || 'https://ihsanbakidogan.com/og-image.png' },
+    { property: 'article:published_time', content: data.value?.date || '' },
+    { property: 'article:author', content: 'İhsan Baki Doğan' },
+    { property: 'article:tag', content: data.value?.tags?.join(', ') || '' },
+    
+    // Twitter Card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: data.value?.title || '' },
+    { name: 'twitter:description', content: data.value?.description || data.value?.excerpt || '' },
+    { name: 'twitter:image', content: data.value?.image || data.value?.coverImage || 'https://ihsanbakidogan.com/og-image.png' },
+  ],
+  link: [
+    { rel: 'canonical', href: `https://ihsanbakidogan.com${route.path}` }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: data.value?.title || '',
+        description: data.value?.description || data.value?.excerpt || '',
+        image: data.value?.image || data.value?.coverImage || 'https://ihsanbakidogan.com/og-image.png',
+        datePublished: data.value?.date || '',
+        dateModified: data.value?.date || '',
+        author: {
+          '@type': 'Person',
+          name: 'İhsan Baki Doğan',
+          url: 'https://ihsanbakidogan.com'
+        },
+        publisher: {
+          '@type': 'Person',
+          name: 'İhsan Baki Doğan',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://ihsanbakidogan.com/logo.png'
+          }
+        },
+        keywords: data.value?.tags?.join(', ') || '',
+        articleSection: data.value?.category || 'Technology',
+        inLanguage: 'tr-TR'
+      })
+    }
+  ]
+}))
 
 const scrollProgress = ref(0)
 
