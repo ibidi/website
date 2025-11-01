@@ -25,18 +25,54 @@
           :filtered-count="filteredBookmarks.length"
         />
 
-        <!-- Bookmarks List -->
-        <div v-if="filteredBookmarks.length > 0" class="space-y-4">
-          <div
-            v-for="(bookmark, index) in filteredBookmarks"
-            :key="bookmark.id"
-            class="p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50"
-          >
-            <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-200">{{ bookmark.title }}</h3>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-2">{{ bookmark.description }}</p>
-            <a :href="bookmark.url" target="_blank" class="text-violet-500 text-sm mt-2 inline-block">
-              Visit →
-            </a>
+        <!-- Bookmarks List - Timeline Style -->
+        <div v-if="filteredBookmarks.length > 0" class="space-y-8">
+          <div v-for="(group, date) in groupedBookmarks" :key="date" class="space-y-4">
+            <!-- Date Header -->
+            <h3 class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+              {{ formatDateHeader(date) }}
+            </h3>
+            
+            <!-- Bookmarks for this date -->
+            <div class="space-y-3">
+              <a
+                v-for="bookmark in group"
+                :key="bookmark.id"
+                :href="bookmark.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block group"
+              >
+                <div class="p-4 bg-zinc-50 dark:bg-zinc-900/50 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-base font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                        {{ bookmark.title }}
+                      </h4>
+                      <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 line-clamp-2">
+                        {{ bookmark.description }}
+                      </p>
+                      
+                      <!-- Tags -->
+                      <div v-if="bookmark.tags && bookmark.tags.length > 0" class="flex flex-wrap gap-1.5 mt-2">
+                        <span
+                          v-for="tag in bookmark.tags"
+                          :key="tag"
+                          class="px-2 py-0.5 text-xs rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                        >
+                          {{ tag }}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <!-- Date on the right -->
+                    <div class="flex-shrink-0 text-xs text-zinc-500 dark:text-zinc-500">
+                      {{ formatShortDate(bookmark.dateAdded) }}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -156,6 +192,36 @@ const filteredBookmarks = computed(() => {
     new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
   );
 });
+
+// Group bookmarks by date
+const groupedBookmarks = computed(() => {
+  const groups: Record<string, typeof filteredBookmarks.value> = {};
+  
+  filteredBookmarks.value.forEach(bookmark => {
+    const date = new Date(bookmark.dateAdded);
+    const monthYear = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    
+    if (!groups[monthYear]) {
+      groups[monthYear] = [];
+    }
+    groups[monthYear].push(bookmark);
+  });
+  
+  return groups;
+});
+
+// Format date header (e.g., "February 14, 2025")
+const formatDateHeader = (dateString: string) => {
+  const [year, month] = dateString.split('-');
+  const date = new Date(parseInt(year), parseInt(month) - 1);
+  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+};
+
+// Format short date (e.g., "14/02/2025")
+const formatShortDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+};
 
 // Handle tag click from bookmark card
 const handleTagClick = (tag: string) => {
