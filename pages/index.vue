@@ -276,6 +276,52 @@
           </div>
         </div>
 
+        <!-- GitHub Projects -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-200">Featured Projects</h2>
+            <a 
+              href="https://github.com/ibidi" 
+              target="_blank"
+              class="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/50 rounded-md border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+            >
+              <Icon name="carbon:logo-github" class="w-4 h-4" />
+              GitHub Profile
+            </a>
+          </div>
+          
+          <div v-if="featuredProjects.length > 0" class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <a 
+              v-for="project in featuredProjects.slice(0, 6)" 
+              :key="project.name"
+              :href="project.url" 
+              target="_blank"
+              class="group flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+            >
+              <div class="w-10 h-10 rounded-md bg-zinc-200 dark:bg-zinc-700 flex-shrink-0 overflow-hidden flex items-center justify-center">
+                <Icon name="carbon:logo-github" class="w-5 h-5 text-zinc-600 dark:text-zinc-400" />
+              </div>
+              
+              <div class="min-w-0 flex-1">
+                <h3 class="font-medium text-zinc-900 dark:text-zinc-100 truncate text-sm group-hover:text-violet-500 transition-colors">
+                  {{ project.name }}
+                </h3>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 truncate">
+                  {{ project.description || 'No description' }}
+                </p>
+              </div>
+              
+              <div class="flex-shrink-0">
+                <Icon name="carbon:logo-github" class="w-3 h-3 text-zinc-400" />
+              </div>
+            </a>
+          </div>
+          
+          <div v-else class="text-center py-8">
+            <Icon name="carbon:logo-github" class="w-12 h-12 text-zinc-400 mx-auto mb-3" />
+            <p class="text-zinc-600 dark:text-zinc-400">Projeler yükleniyor...</p>
+          </div>
+        </div>
 
         <!-- Blog & Bookmarks Grid -->
         <div class="grid gap-8 md:grid-cols-2">
@@ -587,6 +633,71 @@ const lastPlayedTrack = ref<LastPlayedTrack | null>(null);
 const recentTracks = ref<RecentTrack[]>([]);
 const fetchError = ref<string | null>(null);
 const showAllJobs = ref(false);
+
+// GitHub Project interface
+interface GitHubProject {
+  name: string;
+  description: string;
+  url: string;
+  language: string;
+  stars: number;
+}
+
+// Featured projects data - fetch from GitHub
+const featuredProjects = ref<GitHubProject[]>([]);
+
+// Fetch GitHub repositories
+const fetchGitHubRepos = async () => {
+  try {
+    const response = await fetch('https://api.github.com/users/ibidi/repos?sort=updated&per_page=6', {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('GitHub API error');
+    }
+
+    const data = await response.json();
+    featuredProjects.value = data.map((repo: any) => ({
+      name: repo.name,
+      description: repo.description || 'No description',
+      url: repo.html_url,
+      language: repo.language || 'Unknown',
+      stars: repo.stargazers_count || 0
+    }));
+  } catch (err) {
+    console.error('Error fetching GitHub repos:', err);
+  }
+};
+
+// Fetch repos on mount
+onMounted(() => {
+  fetchGitHubRepos();
+});
+
+// Language colors
+const getLanguageColor = (language: string) => {
+  const colors: Record<string, string> = {
+    'JavaScript': '#f1e05a',
+    'TypeScript': '#3178c6',
+    'Vue': '#41b883',
+    'React': '#61dafb',
+    'Python': '#3572A5',
+    'Go': '#00ADD8',
+    'Rust': '#dea584',
+    'Java': '#b07219',
+    'PHP': '#4F5D95',
+    'Ruby': '#701516',
+    'C++': '#f34b7d',
+    'C#': '#178600',
+    'Swift': '#ffac45',
+    'Kotlin': '#A97BFF',
+    'Dart': '#00B4AB'
+  };
+  return colors[language] || '#8b5cf6';
+};
 
 // Blog ve Bookmark interfaces
 interface BlogPost {
