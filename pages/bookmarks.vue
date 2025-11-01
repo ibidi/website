@@ -107,6 +107,94 @@ import type { Bookmark } from '~/types/changelog';
 const bookmarks = ref<Bookmark[]>([
   {
     id: '1',
+    title: '8bitcn',
+    description: 'A set of 8-bit styled retro components. Works with your favorite frameworks. Open Source. Open Code.',
+    url: 'https://github.com/8bitcn',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['react', 'components', 'ui', 'retro', 'open-source']
+  },
+  {
+    id: '2',
+    title: 'Aceternity UI',
+    description: 'A modern component library built with Tailwind CSS and Motion for React. Contains unique and beautiful components.',
+    url: 'https://ui.aceternity.com',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['react', 'tailwind', 'components', 'ui', 'animation']
+  },
+  {
+    id: '3',
+    title: 'AI Elements',
+    description: 'Pre-built components like conversations, messages and more to help you build AI-native applications faster.',
+    url: 'https://ai-elements.dev',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['react', 'ai', 'components', 'ui']
+  },
+  {
+    id: '4',
+    title: 'Algolia',
+    description: 'Enterprises and developers use Algolia\'s AI search infrastructure to understand users and show them what matters most.',
+    url: 'https://www.algolia.com',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['search', 'ai', 'infrastructure', 'saas']
+  },
+  {
+    id: '5',
+    title: 'Animate UI',
+    description: 'A fully animated, open-source React component distribution. Browse a list of animated primitives, components and templates.',
+    url: 'https://animate-ui.com',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['react', 'animation', 'components', 'ui', 'open-source']
+  },
+  {
+    id: '6',
+    title: 'Better Upload',
+    description: 'Simple and easy file uploads for React. Upload directly to any S3-compatible service with minimal setup.',
+    url: 'https://better-upload.dev',
+    dateAdded: '2025-02-14T00:00:00.000Z',
+    tags: ['react', 'upload', 'file', 's3', 'library']
+  },
+  {
+    id: '7',
+    title: 'Motion Primitives',
+    description: 'UI kit to make beautiful, animated interfaces, faster. Open-source and customizable.',
+    url: 'https://motion-primitives.com',
+    dateAdded: '2025-01-07T00:00:00.000Z',
+    tags: ['react', 'animation', 'components', 'ui', 'framer-motion']
+  },
+  {
+    id: '8',
+    title: 'Tiptap Dev Toolkit Editor Suite',
+    description: 'Tiptap is a suite of content editing & real time collaboration tools. Build editor experiences like Notion in weeks, not years.',
+    url: 'https://tiptap.dev',
+    dateAdded: '2024-08-10T00:00:00.000Z',
+    tags: ['editor', 'rich-text', 'collaboration', 'react', 'vue']
+  },
+  {
+    id: '9',
+    title: 'React Spectrum Libraries',
+    description: 'A collection of libraries and tools that help you build adaptive, accessible, and robust user experiences.',
+    url: 'https://react-spectrum.adobe.com',
+    dateAdded: '2024-08-10T00:00:00.000Z',
+    tags: ['react', 'accessibility', 'components', 'adobe', 'ui']
+  },
+  {
+    id: '10',
+    title: 'Ultralight - Universal, Pure-GPU HTML Renderer',
+    description: 'Ultralight - Universal, Pure-GPU HTML Renderer.',
+    url: 'https://ultralig.ht',
+    dateAdded: '2024-11-13T00:00:00.000Z',
+    tags: ['html', 'renderer', 'gpu', 'performance']
+  },
+  {
+    id: '11',
+    title: 'udecode/plate: A rich-text editor powered by AI',
+    description: 'A rich-text editor powered by AI.',
+    url: 'https://platejs.org',
+    dateAdded: '2024-11-13T00:00:00.000Z',
+    tags: ['editor', 'rich-text', 'ai', 'react', 'slate']
+  },
+  {
+    id: '12',
     title: 'Tailwind CSS',
     description: 'A utility-first CSS framework for rapidly building custom user interfaces.',
     url: 'https://tailwindcss.com',
@@ -114,7 +202,7 @@ const bookmarks = ref<Bookmark[]>([
     tags: ['css', 'frontend', 'framework', 'design']
   },
   {
-    id: '2',
+    id: '13',
     title: 'Vue 3 Documentation',
     description: 'The Progressive JavaScript Framework - Official documentation.',
     url: 'https://vuejs.org',
@@ -122,52 +210,12 @@ const bookmarks = ref<Bookmark[]>([
     tags: ['javascript', 'frontend', 'vue', 'framework']
   },
   {
-    id: '3',
+    id: '14',
     title: 'Nuxt 3',
     description: 'The Intuitive Vue Framework for building web applications.',
     url: 'https://nuxt.com',
     dateAdded: '2024-03-20T00:00:00.000Z',
     tags: ['vue', 'nuxt', 'ssr', 'framework', 'fullstack']
-  },
-  {
-    id: '4',
-    title: 'MDN Web Docs',
-    description: 'Resources for developers, by developers.',
-    url: 'https://developer.mozilla.org/',
-    dateAdded: '2023-12-01T00:00:00.000Z',
-    tags: ['documentation', 'html', 'css', 'javascript', 'web']
-  },
-  {
-    id: '5',
-    title: 'TypeScript Handbook',
-    description: 'TypeScript is JavaScript with syntax for types.',
-    url: 'https://www.typescriptlang.org/docs/',
-    dateAdded: '2024-04-05T00:00:00.000Z',
-    tags: ['typescript', 'javascript', 'programming', 'documentation']
-  },
-  {
-    id: '6',
-    title: 'Node.js',
-    description: 'Node.js® is a JavaScript runtime built on Chrome\'s V8 JavaScript engine.',
-    url: 'https://nodejs.org/en/docs/',
-    dateAdded: '2024-05-12T00:00:00.000Z',
-    tags: ['nodejs', 'backend', 'javascript', 'runtime']
-  },
-  {
-    id: '7',
-    title: 'GSAP',
-    description: 'Professional-grade JavaScript animation for the modern web.',
-    url: 'https://greensock.com/gsap/',
-    dateAdded: '2024-06-01T00:00:00.000Z',
-    tags: ['animation', 'javascript', 'frontend', 'library']
-  },
-  {
-    id: '8',
-    title: 'Vite',
-    description: 'Next Generation Frontend Tooling.',
-    url: 'https://vitejs.dev/',
-    dateAdded: '2024-07-10T00:00:00.000Z',
-    tags: ['build-tool', 'frontend', 'development', 'tooling']
   }
 ]);
 

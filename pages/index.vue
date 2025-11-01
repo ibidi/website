@@ -609,63 +609,49 @@ interface Bookmark {
 const recentBlogPosts = ref<BlogPost[]>([]);
 const recentBookmarks = ref<Bookmark[]>([]);
 
-// Bookmarks verisi (bookmarks sayfasıyla senkronize)
+// Bookmarks verisi (bookmarks sayfasıyla senkronize - en son 3 tanesi)
 const bookmarksData: Bookmark[] = [
   {
     id: '1',
+    title: '8bitcn',
+    description: 'A set of 8-bit styled retro components. Works with your favorite frameworks. Open Source. Open Code.',
+    url: 'https://github.com/8bitcn',
+    dateAdded: '2025-02-14T00:00:00.000Z'
+  },
+  {
+    id: '2',
+    title: 'Aceternity UI',
+    description: 'A modern component library built with Tailwind CSS and Motion for React. Contains unique and beautiful components.',
+    url: 'https://ui.aceternity.com',
+    dateAdded: '2025-02-14T00:00:00.000Z'
+  },
+  {
+    id: '3',
+    title: 'AI Elements',
+    description: 'Pre-built components like conversations, messages and more to help you build AI-native applications faster.',
+    url: 'https://ai-elements.dev',
+    dateAdded: '2025-02-14T00:00:00.000Z'
+  },
+  {
+    id: '7',
+    title: 'Motion Primitives',
+    description: 'UI kit to make beautiful, animated interfaces, faster. Open-source and customizable.',
+    url: 'https://motion-primitives.com',
+    dateAdded: '2025-01-07T00:00:00.000Z'
+  },
+  {
+    id: '8',
+    title: 'Tiptap Dev Toolkit Editor Suite',
+    description: 'Tiptap is a suite of content editing & real time collaboration tools. Build editor experiences like Notion in weeks, not years.',
+    url: 'https://tiptap.dev',
+    dateAdded: '2024-08-10T00:00:00.000Z'
+  },
+  {
+    id: '12',
     title: 'Tailwind CSS',
     description: 'A utility-first CSS framework for rapidly building custom user interfaces.',
     url: 'https://tailwindcss.com',
     dateAdded: '2024-01-10T00:00:00.000Z'
-  },
-  {
-    id: '2',
-    title: 'Vue 3 Documentation',
-    description: 'The Progressive JavaScript Framework - Official documentation.',
-    url: 'https://vuejs.org',
-    dateAdded: '2024-02-15T00:00:00.000Z'
-  },
-  {
-    id: '3',
-    title: 'Nuxt 3',
-    description: 'The Intuitive Vue Framework for building web applications.',
-    url: 'https://nuxt.com',
-    dateAdded: '2024-03-20T00:00:00.000Z'
-  },
-  {
-    id: '4',
-    title: 'MDN Web Docs',
-    description: 'Resources for developers, by developers.',
-    url: 'https://developer.mozilla.org/',
-    dateAdded: '2023-12-01T00:00:00.000Z'
-  },
-  {
-    id: '5',
-    title: 'TypeScript Handbook',
-    description: 'TypeScript is JavaScript with syntax for types.',
-    url: 'https://www.typescriptlang.org/docs/',
-    dateAdded: '2024-04-05T00:00:00.000Z'
-  },
-  {
-    id: '6',
-    title: 'Node.js',
-    description: 'Node.js® is a JavaScript runtime built on Chrome\'s V8 JavaScript engine.',
-    url: 'https://nodejs.org/en/docs/',
-    dateAdded: '2024-05-12T00:00:00.000Z'
-  },
-  {
-    id: '7',
-    title: 'GSAP',
-    description: 'Professional-grade JavaScript animation for the modern web.',
-    url: 'https://greensock.com/gsap/',
-    dateAdded: '2024-06-01T00:00:00.000Z'
-  },
-  {
-    id: '8',
-    title: 'Vite',
-    description: 'Next Generation Frontend Tooling.',
-    url: 'https://vitejs.dev/',
-    dateAdded: '2024-07-10T00:00:00.000Z'
   }
 ];
 
