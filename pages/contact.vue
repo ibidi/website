@@ -8,27 +8,25 @@
         </div>
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
-        <!-- Discord -->
-        <a href="https://discord.gg/DISCORD_LINK" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+        <!-- Discord - Closed -->
+        <div class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 opacity-60 cursor-not-allowed">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-violet-400 transition-colors duration-300">Discord</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200">Discord</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-violet-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="simple-icons:discord" class="text-2xl relative text-zinc-400 group-hover:text-violet-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <Icon name="simple-icons:discord" class="text-2xl relative text-zinc-400" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Join my Discord server!</p>
-        </a>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Türkiye'de kapatıldı</p>
+        </div>
 
         <!-- X (Twitter) -->
         <a href="https://x.com/ibidicodes" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-sky-400 transition-colors duration-300">X</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-500 transition-colors duration-300">X</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-sky-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="simple-icons:x" class="text-2xl relative text-zinc-400 group-hover:text-sky-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <div class="absolute inset-0 bg-sky-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="simple-icons:x" class="text-2xl relative text-zinc-400 group-hover:text-sky-500 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Follow me on X!</p>
@@ -36,12 +34,12 @@
 
         <!-- GitHub -->
         <a href="https://github.com/ibidi" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-emerald-400 transition-colors duration-300">GitHub</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-emerald-500 transition-colors duration-300">GitHub</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="simple-icons:github" class="text-2xl relative text-zinc-400 group-hover:text-emerald-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <div class="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="simple-icons:github" class="text-2xl relative text-zinc-400 group-hover:text-emerald-500 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Follow me on GitHub!</p>
@@ -49,12 +47,12 @@
 
         <!-- LinkedIn -->
         <a href="https://linkedin.com/in/ibidi" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-blue-400 transition-colors duration-300">LinkedIn</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-blue-500 transition-colors duration-300">LinkedIn</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-blue-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="simple-icons:linkedin" class="text-2xl relative text-zinc-400 group-hover:text-blue-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <div class="absolute inset-0 bg-blue-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="simple-icons:linkedin" class="text-2xl relative text-zinc-400 group-hover:text-blue-500 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Connect with me on LinkedIn!</p>
@@ -62,28 +60,41 @@
 
         <!-- Email -->
         <a href="mailto:info@ihsanbakidogan.com" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors duration-300">Email</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-orange-500 transition-colors duration-300">Email</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-orange-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="carbon:email" class="text-2xl relative text-zinc-400 group-hover:text-orange-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <div class="absolute inset-0 bg-orange-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="carbon:email" class="text-2xl relative text-zinc-400 group-hover:text-orange-500 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Send me an email!</p>
         </a>
 
-        <!-- Trello -->
-        <a href="https://trello.com/YOUR_TRELLO" target="_blank" rel="noopener noreferrer" 
-           class="group relative rounded-xl bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-600 transition-all duration-300">
+        <!-- Instagram -->
+        <a href="https://instagram.com/ihsanbakidogann" target="_blank" rel="noopener noreferrer" 
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-zinc-200 group-hover:text-pink-400 transition-colors duration-300">Trello</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-pink-500 transition-colors duration-300">Instagram</h2>
             <div class="relative">
-              <div class="absolute inset-0 bg-pink-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <Icon name="simple-icons:trello" class="text-2xl relative text-zinc-400 group-hover:text-pink-400 transform group-hover:-translate-y-1 transition-all duration-300" />
+              <div class="absolute inset-0 bg-pink-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="simple-icons:instagram" class="text-2xl relative text-zinc-400 group-hover:text-pink-500 transform group-hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">View my Trello board!</p>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">Follow me on Instagram!</p>
+        </a>
+
+        <!-- Socialin -->
+        <a href="https://socialin.net/ihsanbakidogan" target="_blank" rel="noopener noreferrer" 
+           class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-violet-500 transition-colors duration-300">Socialin</h2>
+            <div class="relative">
+              <div class="absolute inset-0 bg-violet-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <Icon name="carbon:user-avatar" class="text-2xl relative text-zinc-400 group-hover:text-violet-500 transform group-hover:-translate-y-1 transition-all duration-300" />
+            </div>
+          </div>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors duration-300">My social profile!</p>
         </a>
         </div>
       </div>

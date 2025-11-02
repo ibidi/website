@@ -33,7 +33,12 @@
               class="flex items-center gap-2 px-3 py-2 text-sm text-zinc-600 dark:text-zinc-400 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
               @click="close"
             >
-              <Icon :name="item.icon" class="text-base" />
+              <ClientOnly fallback-tag="span">
+                <Icon :name="item.icon" class="text-base" />
+                <template #fallback>
+                  <span class="w-4 h-4"></span>
+                </template>
+              </ClientOnly>
               {{ item.name }}
             </NuxtLink>
           </div>
@@ -50,7 +55,12 @@
               class="flex items-center gap-2 px-3 py-2 text-sm text-zinc-600 dark:text-zinc-400 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
               @click="close"
             >
-              <Icon :name="item.icon" class="text-base" />
+              <ClientOnly fallback-tag="span">
+                <Icon :name="item.icon" class="text-base" />
+                <template #fallback>
+                  <span class="w-4 h-4"></span>
+                </template>
+              </ClientOnly>
               {{ item.name }}
             </NuxtLink>
           </div>

@@ -138,7 +138,8 @@ const fetchRepositories = async () => {
     }
 
     const data = await response.json()
-    repositories.value = data
+    // Star sayısına göre sırala (en yüksekten en düşüğe)
+    repositories.value = data.sort((a: Repository, b: Repository) => b.stargazers_count - a.stargazers_count)
   } catch (err) {
     console.error('Repositories yüklenirken hata oluştu:', err)
     error.value = 'Repository\'ler yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
