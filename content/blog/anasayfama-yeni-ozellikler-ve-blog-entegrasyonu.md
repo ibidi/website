@@ -1,6 +1,6 @@
 ---
 title: 'Anasayfama Taze Bir Soluk: Animasyonlu Arka Plan ve Blog Entegrasyonu!'
-date: '2025-06-08'
+date: '2024-06-08'
 description: 'Kişisel web sitemin anasayfasına eklediğim son yenilikleri keşfedin: dinamik bir kod animasyonu arka planı ve en son blog yazılarımı sergileyen bir bölüm.'
 tags: ['web geliştirme', 'nuxt', 'vuejs', 'javascript', 'css', 'animasyon', 'blog']
 category: 'web geliştirme'

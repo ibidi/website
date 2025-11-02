@@ -839,6 +839,7 @@ const getDomainFromUrl = (url: string) => {
 const { data: blogPostsData } = await useAsyncData('blog-posts', async () => {
   try {
     const articles = await queryCollection('blog').all()
+    console.log('Blog articles:', articles)
     return articles
       .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 3)
@@ -850,15 +851,19 @@ const { data: blogPostsData } = await useAsyncData('blog-posts', async () => {
 
 // Blog verilerini reactive değişkene ata
 if (blogPostsData.value && Array.isArray(blogPostsData.value)) {
-  recentBlogPosts.value = blogPostsData.value.map((article: any) => ({
-    _path: article._path || `/blog/${article._id}`,
-    title: article.title,
-    description: article.description,
-    date: article.date,
-    tags: article.tags || [],
-    category: article.category,
-    readTime: article.readTime
-  })) as BlogPost[];
+  recentBlogPosts.value = blogPostsData.value.map((article: any) => {
+    console.log('Article data:', article)
+    return {
+      _path: article._path || article.path || `/blog/${article._id || article.id}`,
+      title: article.title,
+      description: article.description,
+      date: article.date,
+      tags: article.tags || [],
+      category: article.category,
+      readTime: article.readTime
+    }
+  }) as BlogPost[];
+  console.log('Recent blog posts:', recentBlogPosts.value)
 }
 
 function loadBookmarks() {

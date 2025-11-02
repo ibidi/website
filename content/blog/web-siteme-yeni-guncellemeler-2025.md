@@ -1,6 +1,6 @@
 ---
 title: 'Web Siteme Yeni Güncellemeler: Dinamik İçerik ve Animasyonlar!'
-date: '2025-10-14'
+date: '2024-10-14'
 description: 'Kişisel web siteme eklediğim son güncellemeleri keşfedin: dinamik blog ve bookmark entegrasyonu, animasyonlu experience/education bölümleri ve daha fazlası.'
 tags: ['web geliştirme', 'nuxt', 'vuejs', 'typescript', 'animasyon', 'ux', 'güncellemeler']
 readTime: 7

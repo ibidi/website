@@ -1,6 +1,6 @@
 ---
 title: 'Next.js 16 Yayınlandı: Yeni Nesil Performans ve Geliştirici Deneyimi'
-date: '2025-10-21'
+date: '2024-10-21'
 description: 'Next.js 16 sürümüyle gelen yenilikleri detaylı şekilde inceliyorum. React 19 entegrasyonu, stabil Server Actions, Turbopack geliştirmeleri ve akıllı önbellekleme sistemi hakkında kişisel değerlendirmem.'
 tags: ['nextjs', 'react19', 'turbopack', 'typescript', 'fullstack', 'web geliştirme']
 readTime: 6

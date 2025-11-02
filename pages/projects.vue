@@ -42,23 +42,23 @@
     <div v-if="isModalOpen && selectedProjectForModal" 
          class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity duration-300 ease-in-out"
          @click.self="closeModal"> 
-      <div class="bg-zinc-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto text-zinc-200 space-y-6 transform transition-all duration-300 ease-in-out scale-95 opacity-0 animate-modal-appear">
+      <div class="bg-white dark:bg-zinc-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto text-zinc-800 dark:text-zinc-200 space-y-6 transform transition-all duration-300 ease-in-out scale-95 opacity-0 animate-modal-appear">
         <div class="flex justify-between items-center">
-          <h3 class="text-2xl font-bold text-white">{{ selectedProjectForModal.title }}</h3>
-          <button @click="closeModal" class="text-zinc-400 hover:text-white transition-colors">
+          <h3 class="text-2xl font-bold text-zinc-900 dark:text-white">{{ selectedProjectForModal.title }}</h3>
+          <button @click="closeModal" class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
             <Icon name="carbon:close" class="w-6 h-6" />
           </button>
         </div>
         <div>
-          <p class="text-sm font-medium text-violet-400 mb-1">{{ selectedProjectForModal.tag }}</p>
+          <p class="text-sm font-medium text-violet-600 dark:text-violet-400 mb-1">{{ selectedProjectForModal.tag }}</p>
           <img :src="selectedProjectForModal.image" :alt="selectedProjectForModal.title" class="rounded-md shadow-lg object-cover w-full h-auto max-h-[300px] mb-4" />
-          <div class="prose prose-invert prose-sm md:prose-base max-w-none text-zinc-300" v-html="selectedProjectForModal.longDescription"></div>
+          <div class="prose dark:prose-invert prose-sm md:prose-base max-w-none text-zinc-700 dark:text-zinc-300" v-html="selectedProjectForModal.longDescription"></div>
         </div>
         <div v-if="selectedProjectForModal.technologies && selectedProjectForModal.technologies.length > 0" class="pt-2">
-          <h4 class="text-md font-semibold text-white mb-2">Kullanılan Teknolojiler:</h4>
+          <h4 class="text-md font-semibold text-zinc-900 dark:text-white mb-2">Kullanılan Teknolojiler:</h4>
           <div class="flex flex-wrap gap-2">
             <span v-for="tech in selectedProjectForModal.technologies" :key="tech"
-                  class="bg-zinc-700 text-violet-300 py-1 px-3 rounded-full text-xs font-medium">
+                  class="bg-zinc-100 dark:bg-zinc-700 text-violet-600 dark:text-violet-300 py-1 px-3 rounded-full text-xs font-medium">
               {{ tech }}
             </span>
           </div>

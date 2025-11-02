@@ -28,29 +28,47 @@
     </div>
 
     <div class="container mx-auto max-w-3xl px-4 pt-20">
+      <!-- Loading State -->
+      <div v-if="!data && !error" class="text-center py-20">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500"></div>
+        <p class="mt-4 text-zinc-600 dark:text-zinc-400">Yükleniyor...</p>
+      </div>
+
+      <!-- Error State -->
+      <div v-else-if="error" class="text-center py-20">
+        <p class="text-red-600 dark:text-red-400">İçerik yüklenirken bir hata oluştu.</p>
+        <NuxtLink to="/blog" class="mt-4 inline-block text-violet-600 dark:text-violet-400 hover:underline">
+          Blog'a Dön
+        </NuxtLink>
+      </div>
+
+      <!-- Content -->
+      <template v-else-if="data">
       <!-- Meta -->
       <div class="flex justify-center items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400 mb-8">
         <time class="flex items-center gap-1.5">
           <Icon name="carbon:calendar" class="text-violet-500 dark:text-violet-400" />
-          {{ formatDate(data?.date) }}
+          {{ formatDate(data.date) }}
         </time>
         <span class="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
         <div class="flex items-center gap-1.5">
           <Icon name="carbon:time" class="text-violet-500 dark:text-violet-400" />
-          {{ data?.readTime }} dakika okuma
+          {{ data.readTime || 5 }} dakika okuma
         </div>
       </div>
 
       <!-- Title -->
       <div class="text-center space-y-4 mb-12">
-        <h1 class="text-4xl md:text-5xl font-medium text-zinc-900 dark:text-zinc-100">{{ data?.title }}</h1>
-        <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400">{{ data?.excerpt }}</p>
+        <h1 class="text-4xl md:text-5xl font-medium text-zinc-900 dark:text-zinc-100">{{ data.title }}</h1>
+        <p v-if="data.description || data.excerpt" class="text-lg md:text-xl text-zinc-600 dark:text-zinc-400">
+          {{ data.description || data.excerpt }}
+        </p>
       </div>
 
       <!-- Tags -->
-      <div class="flex justify-center flex-wrap gap-2 mb-12">
+      <div v-if="data.tags && data.tags.length > 0" class="flex justify-center flex-wrap gap-2 mb-12">
         <span 
-          v-for="tag in data?.tags" 
+          v-for="tag in data.tags" 
           :key="tag"
           class="px-3 py-1 text-sm bg-zinc-100 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 rounded-full border border-zinc-200 dark:border-zinc-800"
         >
@@ -70,7 +88,7 @@
       </div>
 
       <!-- Image -->
-      <div v-if="data?.image" class="relative aspect-[16/9] w-full rounded-xl overflow-hidden mb-12 group cursor-pointer">
+      <div v-if="data.image" class="relative aspect-[16/9] w-full rounded-xl overflow-hidden mb-12 group cursor-pointer">
         <img 
           :src="data.image" 
           class="absolute inset-0 w-full h-full object-cover transform transition-all duration-700 ease-in-out group-hover:scale-125"
@@ -80,11 +98,11 @@
 
       <!-- Content -->
       <article class="prose dark:prose-invert prose-zinc max-w-none pb-20">
-        <ContentDoc>
-          <template #not-found>
+        <ContentRenderer :value="data">
+          <template #empty>
             <p>İçerik bulunamadı.</p>
           </template>
-        </ContentDoc>
+        </ContentRenderer>
       </article>
 
       <!-- Mobil için sosyal medya ikonları -->
@@ -105,6 +123,7 @@
           <Icon name="mdi:link-variant" class="text-2xl" />
         </button>
       </div>
+      </template>
     </div>
   </div>
 </template>
@@ -115,9 +134,17 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { data } = await useAsyncData('post', () => 
-  queryContent(route.path).findOne()
-)
+const slug = route.params.slug as string
+
+const { data, error } = await useAsyncData(`blog-${slug}`, async () => {
+  try {
+    const articles = await queryCollection('blog').all()
+    const article = articles.find((a: any) => a._path === `/blog/${slug}` || a.id?.includes(slug))
+    return article || null
+  } catch (err) {
+    return null
+  }
+})
 
 // SEO Meta Tags
 useHead(() => ({
@@ -203,11 +230,22 @@ const updateScrollProgress = () => {
 }
 
 const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString('tr-TR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  if (!date) return 'Tarih belirtilmemiş'
+  
+  try {
+    const dateObj = new Date(date)
+    if (isNaN(dateObj.getTime())) {
+      return 'Geçersiz tarih'
+    }
+    
+    return dateObj.toLocaleDateString('tr-TR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  } catch (error) {
+    return 'Geçersiz tarih'
+  }
 }
 
 const copyUrl = () => {

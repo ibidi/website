@@ -105,7 +105,6 @@ const { data: articlesData } = await useAsyncData('articles', async () => {
     const articles = await queryCollection('blog').all()
     return articles
   } catch (error) {
-    console.error('Error fetching blog articles:', error)
     return []
   }
 })
@@ -115,15 +114,17 @@ const allArticles = computed<BlogPost[]>(() => {
   if (!articlesData.value || !Array.isArray(articlesData.value)) return [];
   
   return articlesData.value
-    .map((article: any) => ({
-      _path: article._path || `/blog/${article._id}`,
-      title: article.title,
-      description: article.description || article.excerpt,
-      date: article.date,
-      tags: article.tags || [],
-      category: article.category,
-      readTime: article.readTime
-    }))
+    .map((article: any) => {
+      return {
+        _path: article._path || article.path || `/blog/${article._id || article.id}`,
+        title: article.title,
+        description: article.description || article.excerpt,
+        date: article.date,
+        tags: article.tags || [],
+        category: article.category,
+        readTime: article.readTime
+      }
+    })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 });
 
