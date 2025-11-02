@@ -35,7 +35,7 @@ const isDark = computed(() => {
 });
 
 const shinyStyle = computed(() => ({
-  color: isDark.value ? 'rgba(181, 181, 181, 0.64)' : 'rgba(82, 82, 91, 0.8)', // zinc-600 for light mode
+  color: isDark.value ? 'rgba(181, 181, 181, 0.64)' : 'rgba(24, 24, 27, 0.95)', // zinc-900 for light mode
   backgroundImage: isDark.value 
     ? 'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)'
     : 'linear-gradient(120deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 60%)',

@@ -58,7 +58,7 @@
           <ShinyText 
             text="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - 🇹🇷"
             tag="p"
-            class-name="text-base text-zinc-600 dark:text-zinc-400"
+            class-name="text-base text-zinc-900 dark:text-zinc-400"
             :speed="8"
           />
 
@@ -79,8 +79,8 @@
               <a href="https://github.com/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                 <Icon name="carbon:logo-github" class="text-xl" />
               </a>
-              <a href="https://twitter.com/ibidicodes" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
-                <Icon name="carbon:logo-twitter" class="text-xl" />
+              <a href="https://x.com/ibidicodes" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                <Icon name="simple-icons:x" class="text-base" />
               </a>
               <a href="https://linkedin.com/in/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                 <Icon name="carbon:logo-linkedin" class="text-xl" />
@@ -122,8 +122,8 @@
                   :key="job.id"
                   :distance="30"
                   direction="vertical"
-                  :duration="0.6"
-                  :delay="0.4 + (index * 0.1)"
+                  :duration="0.4"
+                  :delay="0.1 + (index * 0.05)"
                   ease="power2.out"
                   class="group"
                 >
@@ -188,8 +188,8 @@
                   :key="education.id"
                   :distance="30"
                   direction="vertical"
-                  :duration="0.6"
-                  :delay="0.5 + (index * 0.1)"
+                  :duration="0.4"
+                  :delay="0.1 + (index * 0.05)"
                   ease="power2.out"
                   class="group"
                 >
