@@ -276,6 +276,9 @@
           </div>
         </div>
 
+        <!-- NPM Packages -->
+        <NpmPackages username="ihsanbakidogan" />
+
         <!-- GitHub Projects -->
         <div class="space-y-6">
           <div class="flex items-center justify-between">
@@ -606,6 +609,7 @@ import HomeBlogSection from '~/components/HomeBlogSection.vue';
 import BlurText from '~/components/BlurText.vue';
 import ShinyText from '~/components/ShinyText.vue';
 import AnimatedContent from '~/components/AnimatedContent.vue';
+import NpmPackages from '~/components/NpmPackages.vue';
 
 const config = useRuntimeConfig();
 const apiKey = config.public.lastFmApiKey;
