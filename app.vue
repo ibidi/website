@@ -112,7 +112,7 @@ useHead({
         url: 'https://ihsanbakidogan.com',
         sameAs: [
           'https://github.com/ibidi',
-          'https://x.com/ibidicodes',
+          'https://x.com/ihsanbakidogan',
         ],
         image: 'https://ihsanbakidogan.com/logo.png',
         description: 'Full Stack Developer with expertise in Vue.js, Node.js, and modern web technologies.'

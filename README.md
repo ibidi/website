@@ -454,7 +454,7 @@ in the Software without restriction...
 
 - 🌐 Website: [ihsanbakidogan.com](https://ihsanbakidogan.com)
 - 💼 LinkedIn: [linkedin.com/in/ibidi](https://linkedin.com/in/ibidi)
-- 🐦 Twitter: [@ibidicodes](https://twitter.com/ibidicodes)
+- 🐦 Twitter: [@ihsanbakidogan](https://twitter.com/ihsanbakidogan)
 - 📧 Email: [contact@ihsanbakidogan.com](mailto:contact@ihsanbakidogan.com)
 - 💻 GitHub: [@ibidi](https://github.com/ibidi)
 

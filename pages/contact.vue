@@ -20,7 +20,7 @@
         </div>
 
         <!-- X (Twitter) -->
-        <a href="https://x.com/ibidicodes" target="_blank" rel="noopener noreferrer" 
+        <a href="https://x.com/ihsanbakidogan" target="_blank" rel="noopener noreferrer" 
            class="group relative rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all duration-300">
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-500 transition-colors duration-300">X</h2>

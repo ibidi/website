@@ -24,7 +24,7 @@
         <a href="https://github.com/ibidi" target="_blank" aria-label="GitHub" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">
           <Icon name="carbon:logo-github" class="w-5 h-5" />
         </a>
-        <a href="https://twitter.com/ibidicodes" target="_blank" aria-label="X (Twitter)" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">
+        <a href="https://twitter.com/ihsanbakidogan" target="_blank" aria-label="X (Twitter)" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">
           <Icon name="simple-icons:x" class="w-5 h-5" />
         </a>
         <a href="https://linkedin.com/in/ibidi" target="_blank" aria-label="LinkedIn" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">

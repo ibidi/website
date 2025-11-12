@@ -79,7 +79,7 @@
               <a href="https://github.com/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                 <Icon name="carbon:logo-github" class="text-xl" />
               </a>
-              <a href="https://x.com/ibidicodes" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+              <a href="https://x.com/ihsanbakidogan" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
                 <Icon name="simple-icons:x" class="text-base" />
               </a>
               <a href="https://linkedin.com/in/ibidi" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-zinc-100 dark:bg-zinc-800/50 rounded-md text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
@@ -839,7 +839,6 @@ const getDomainFromUrl = (url: string) => {
 const { data: blogPostsData } = await useAsyncData('blog-posts', async () => {
   try {
     const articles = await queryCollection('blog').all()
-    console.log('Blog articles:', articles)
     return articles
       .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 3)
@@ -851,19 +850,15 @@ const { data: blogPostsData } = await useAsyncData('blog-posts', async () => {
 
 // Blog verilerini reactive değişkene ata
 if (blogPostsData.value && Array.isArray(blogPostsData.value)) {
-  recentBlogPosts.value = blogPostsData.value.map((article: any) => {
-    console.log('Article data:', article)
-    return {
-      _path: article._path || article.path || `/blog/${article._id || article.id}`,
-      title: article.title,
-      description: article.description,
-      date: article.date,
-      tags: article.tags || [],
-      category: article.category,
-      readTime: article.readTime
-    }
-  }) as BlogPost[];
-  console.log('Recent blog posts:', recentBlogPosts.value)
+  recentBlogPosts.value = blogPostsData.value.map((article: any) => ({
+    _path: article._path || article.path || `/blog/${article._id || article.id}`,
+    title: article.title,
+    description: article.description,
+    date: article.date,
+    tags: article.tags || [],
+    category: article.category,
+    readTime: article.readTime
+  })) as BlogPost[];
 }
 
 function loadBookmarks() {

@@ -80,8 +80,8 @@ export default defineNuxtConfig({
         
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@ibidicodes' },
-        { name: 'twitter:creator', content: '@ibidicodes' },
+        { name: 'twitter:site', content: '@ihsanbakidogan' },
+        { name: 'twitter:creator', content: '@ihsanbakidogan' },
         { name: 'twitter:title', content: 'İhsan Baki Doğan - Full Stack Developer' },
         { name: 'twitter:description', content: 'Full Stack Web Developer. Node.js, TypeScript, React, Vue, Nuxt uzmanı.' },
         { name: 'twitter:image', content: 'https://ihsanbakidogan.com/og-image.png' },
@@ -109,7 +109,7 @@ export default defineNuxtConfig({
             image: 'https://ihsanbakidogan.com/logo.png',
             sameAs: [
               'https://github.com/ibidi',
-              'https://twitter.com/ibidicodes',
+              'https://twitter.com/ihsanbakidogan',
               'https://linkedin.com/in/ibidi'
             ],
             jobTitle: 'Full Stack Developer',
