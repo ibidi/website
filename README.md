@@ -246,8 +246,6 @@ Visit [http://localhost:3000](http://localhost:3000) to see your site! 🎉
 
 ```
 website/
-├── .data/                    # Content database (auto-generated)
-├── .nuxt/                    # Nuxt build output (auto-generated)
 ├── components/               # Vue components
 │   ├── blog/                 # Blog-specific components
 │   ├── bookmarks/            # Bookmark components
@@ -308,33 +306,50 @@ npm outdated             # Check for outdated packages
 ---
 title: 'Your Post Title'
 description: 'Brief description'
-date: '2025-10-30'
+date: '2025-11-18'
 tags: ['nuxt', 'vue', 'typescript']
 category: 'Development'
+readTime: '5 min'
 ---
 
-Your content here...
+Your content here with markdown support...
+
+## Heading 2
+### Heading 3
+
+- List item 1
+- List item 2
+
+\`\`\`javascript
+// Code blocks with syntax highlighting
+const example = 'Hello World'
+\`\`\`
 ```
 
-2. The post will automatically appear on the blog page!
+2. The post will automatically appear on the blog page with syntax highlighting and proper formatting!
 
 #### Create a Changelog Entry
 
-1. Create a new file in `content/changelog/`:
+1. Create a new file in `content/changelog/v1.3.0.md`:
 
 ```markdown
 ---
 version: '1.3.0'
-date: '2025-10-30'
+date: '2025-11-18'
 title: 'Feature Update'
 ---
 
-## Added
+## ✨ Added
 - New feature 1
 - New feature 2
 
-## Changed
+## 🔄 Changed
 - Updated feature 3
+- Improved performance
+
+## 🐛 Fixed
+- Bug fix 1
+- Bug fix 2
 ```
 
 2. Update `data/version.json`:
@@ -345,10 +360,29 @@ title: 'Feature Update'
   "history": [
     {
       "version": "1.3.0",
-      "date": "2025-10-30",
-      "changelog": "/changelog#v1.3.0"
+      "date": "2025-11-18",
+      "changelog": "/changelog#v1-3-0"
+    },
+    {
+      "version": "1.2.0",
+      "date": "2025-02-14",
+      "changelog": "/changelog#v1-2-0"
     }
   ]
+}
+```
+
+#### Add a Bookmark
+
+Edit `pages/index.vue` and add to the `bookmarksData` array:
+
+```typescript
+{
+  id: 'unique-id',
+  title: 'Bookmark Title',
+  description: 'Brief description of the resource',
+  url: 'https://example.com',
+  dateAdded: '2025-11-18T00:00:00.000Z'
 }
 ```
 
