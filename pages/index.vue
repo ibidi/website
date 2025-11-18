@@ -299,23 +299,39 @@
               :key="project.name"
               :href="project.url" 
               target="_blank"
-              class="group flex items-center gap-3 p-3 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 overflow-hidden"
+              class="group flex flex-col gap-3 p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg border border-zinc-200 dark:border-zinc-700/50 transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
-              <div class="w-10 h-10 rounded-md flex-shrink-0 flex items-center justify-center" :style="{ backgroundColor: getLanguageColor(project.language) + '20' }">
-                <Icon :name="getLanguageIcon(project.language)" class="text-xl" />
+              <div class="flex items-start justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0 flex-1">
+                  <div class="w-8 h-8 rounded-md flex-shrink-0 flex items-center justify-center" :style="{ backgroundColor: getLanguageColor(project.language) + '20' }">
+                    <Icon :name="getLanguageIcon(project.language)" class="text-base" />
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="font-medium text-zinc-900 dark:text-zinc-100 truncate text-sm group-hover:text-violet-500 transition-colors">
+                      {{ project.name }}
+                    </h3>
+                  </div>
+                </div>
               </div>
               
-              <div class="flex-1 min-w-0">
-                <h3 class="font-medium text-zinc-900 dark:text-zinc-100 truncate text-sm group-hover:text-violet-500 transition-colors">
-                  {{ project.name }}
-                </h3>
-                <p class="text-xs text-zinc-600 dark:text-zinc-400 truncate">
-                  {{ project.description || 'No description' }}
-                </p>
-              </div>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 min-h-[2.5rem]">
+                {{ project.description || 'No description' }}
+              </p>
               
-              <div class="flex-shrink-0">
-                <Icon name="carbon:logo-github" class="w-3 h-3 text-zinc-400" />
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-500 pt-2 border-t border-zinc-200 dark:border-zinc-700/50">
+                <div class="flex items-center gap-3">
+                  <span class="flex items-center gap-1">
+                    <Icon name="carbon:star" class="w-3 h-3" />
+                    {{ project.stars }}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <Icon name="carbon:branch" class="w-3 h-3" />
+                    {{ project.forks }}
+                  </span>
+                </div>
+                <span class="text-[10px] px-1.5 py-0.5 rounded" :style="{ backgroundColor: getLanguageColor(project.language) + '20', color: getLanguageColor(project.language) }">
+                  {{ project.language }}
+                </span>
               </div>
             </a>
           </div>
@@ -645,6 +661,7 @@ interface GitHubProject {
   url: string;
   language: string;
   stars: number;
+  forks: number;
 }
 
 // Featured projects data - fetch from GitHub
@@ -669,7 +686,8 @@ const fetchGitHubRepos = async () => {
       description: repo.description || 'No description',
       url: repo.html_url,
       language: repo.language || 'Unknown',
-      stars: repo.stargazers_count || 0
+      stars: repo.stargazers_count || 0,
+      forks: repo.forks_count || 0
     }));
   } catch (err) {
     console.error('Error fetching GitHub repos:', err);
