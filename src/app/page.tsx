@@ -10,6 +10,7 @@ import {
   Silk,
 } from "@/components";
 import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap } from "lucide-react";
+import { getAllPosts } from "@/lib/blog";
 
 // Format functions
 function formatCount(count: number): string {
@@ -18,18 +19,7 @@ function formatCount(count: number): string {
   return count.toString();
 }
 
-// API'den veri çekme fonksiyonları
-async function getBlogPosts() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return [];
-    return res.json();
-  } catch {
-    return [];
-  }
-}
+
 
 async function getGitHubRepos() {
   try {
@@ -235,7 +225,7 @@ export default async function Home() {
   const [githubRepos, npmPackagesData, blogPosts] = await Promise.all([
     getGitHubRepos(),
     getNPMPackages(),
-    getBlogPosts(),
+    getAllPosts(),
   ]);
 
   // GitHub repos: dynamic or fallback
