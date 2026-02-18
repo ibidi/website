@@ -382,6 +382,7 @@ export default async function Home() {
                           width={20}
                           height={20}
                           className="w-5 h-5 object-contain"
+                          unoptimized
                         />
                       </div>
                       <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
