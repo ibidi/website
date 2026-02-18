@@ -1,6 +1,6 @@
 ---
 title: "TypeScript ve Node.js ile Kendi Verilerinizi AI'ya Tanıtın (RAG Rehberi)"
-date: "2026-02-21"
+date: "2026-02-18"
 description: "RAG (Retrieval-Augmented Generation) nedir? TypeScript ve Node.js kullanarak kendi veritabanınızı veya belgelerinizi yapay zekaya nasıl entegre edebileceğinizi adım adım öğrenin."
 category: "Teknik"
 ---

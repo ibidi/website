@@ -1,6 +1,6 @@
 ---
 title: "2026'da Başarılı Bir Full Stack AI Developer Olma Rehberi"
-date: "2026-02-20"
+date: "2026-02-18"
 description: "Yazılım dünyasının yeni standardı: AI Geliştiriciliği. 2026 yılında bir Full Stack Developer olarak yapay zekayı nasıl iş akışınıza dahil edebileceğinize dair kapsamlı yol haritası."
 category: "Kariyer"
 ---

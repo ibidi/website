@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import { notFound } from 'next/navigation';
-import { Silk, ProfileCard } from "@/components";
+import { Silk, ProfileCard, Comments } from "@/components";
 import { ArrowLeft, Calendar, Tag, Clock, Share2 } from "lucide-react";
 import Link from 'next/link';
 
@@ -139,8 +139,11 @@ export default async function BlogPostPage({ params }: Props) {
                 prose-pre:bg-[#0d0d0d] prose-pre:border prose-pre:border-white/5 prose-pre:rounded-xl
                 prose-blockquote:border-white/20 prose-blockquote:text-neutral-500
                 "
-                                dangerouslySetInnerHTML={{ __html: htmlContent }}
+                                dangerouslySetInnerHTML={{ __html: await htmlContent }}
                             />
+
+                            {/* Yorumlar Bölümü */}
+                            <Comments />
                         </article>
                     </div>
                 </div>

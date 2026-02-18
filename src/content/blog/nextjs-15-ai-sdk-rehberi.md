@@ -1,6 +1,6 @@
 ---
 title: "Next.js 15 ve Vercel AI SDK ile Akıllı Uygulamalar Geliştirmek"
-date: "2026-02-19"
+date: "2026-02-18"
 description: "Yapay zekayı web uygulamalarınıza dahil etmenin en hızlı yolu. Next.js 15 ve Vercel AI SDK kullanarak modern AI özelliklerini nasıl entegre edebileceğinizi keşfedin."
 category: "Yazılım"
 ---
