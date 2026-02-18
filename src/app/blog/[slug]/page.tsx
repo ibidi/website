@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: Props) {
                             />
 
                             {/* Yorumlar Bölümü */}
-                            <Comments />
+                            <Comments title={data.title} id={slug} />
                         </article>
                     </div>
                 </div>
