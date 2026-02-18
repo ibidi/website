@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   keywords: ["İhsan Baki Doğan", "Full Stack Developer", "Web Yazılım", "Node.js uzmanı", "React geliştirici", "ibidi", "software engineer"],
   authors: [{ name: "İhsan Baki Doğan", url: "https://ihsanbakidogan.com" }],
   creator: "İhsan Baki Doğan",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "İhsan Baki Doğan",
     images: [
       {
-        url: "/og-image.png", // Henüz yoksa bile tanımlayalım
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "İhsan Baki Doğan Portfolio",
