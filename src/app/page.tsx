@@ -358,8 +358,12 @@ export default async function Home() {
                     className="group block p-5 premium-card card-hover"
                   >
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-8 h-8 rounded bg-red-500/20 flex items-center justify-center">
-                        <span className="text-red-400 text-xs font-bold">N</span>
+                      <div className="w-8 h-8 rounded bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden">
+                        <img
+                          src="https://cdn.simpleicons.org/npm/CB3837"
+                          alt="NPM"
+                          className="w-5 h-5 object-contain"
+                        />
                       </div>
                       <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
                         {pkg.name}
