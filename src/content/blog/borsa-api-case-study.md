@@ -7,10 +7,12 @@ category: "Proje Analizi"
 
 Bir yazılımcı olarak finansal verilerle uğraşmak her zaman heyecan vericidir. Ancak Borsa İstanbul (BIST) verilerine erişmek, özellikle bireysel geliştiriciler ve eğitim meraklıları için bazen zorlayıcı olabiliyor. İşte bu sorunu çözmek için geliştirdiğim **Borsa-API** projesinin teknik detayları ve arkasındaki strateji.
 
+> **Önemli Not:** Bu proje ve paylaşılan bilgiler tamamen **eğitim amaçlıdır**. Veriler **gecikmeli** olarak gelmektedir. Kesinlikle **yatırım tavsiyesi değildir (YTD)**.
+
 ## Projenin Amacı ve Ortaya Çıkışı
 
 Piyasada bulunan birçok finansal araç ya çok pahalı ya da modern yazılım dilleriyle (Node.js, Python vb.) entegrasyonu zordu. **Borsa-API**, bu boşluğu doldurmak için şu temel prensipler üzerine kuruldu:
-1.  **Hız:** Verilere en düşük gecikmeyle (latency) erişim.
+1.  **Eğitim Odaklılık:** Finansal veri çekme pratikleri için uygun altyapı.
 2.  **Kolaylık:** Tek bir `npm install borsa-api` komutuyla projeye dahil edebilme.
 3.  **Modern Altyapı:** Tamamen TypeScript ile yazılmış, tip güvenli bir yapı.
 
@@ -18,8 +20,8 @@ Piyasada bulunan birçok finansal araç ya çok pahalı ya da modern yazılım d
 
 Proje, modern bir Full Stack geliştiricinin ihtiyaç duyacağı tüm araçları barındırıyor:
 *   **TypeScript:** Veri modellerinin doğruluğunu sağlamak için.
-*   **Axios & Cheerio:** Veri çekme ve parse işlemleri için.
-*   **CLI Desteği:** Terminal üzerinden anlık fiyat takibi yapabilme özelliği.
+*   **Axios & Cheerio:** Kamuoyuna açık kaynaklardan veri çekme ve parse işlemleri için.
+*   **CLI Desteği:** Terminal üzerinden gecikmeli fiyat takibi yapabilme özelliği.
 
 ## SEO Stratejisi: Neden Bu Proje Önemli?
 
@@ -27,6 +29,9 @@ Suparank prensiplerine göre, bir projeyi paylaşırken sadece "kod yazdım" dem
 
 ## Gelecek Planları
 
-İlerleyen versiyonlarda, projeye **WebSocket** desteği ekleyerek gerçek zamanlı veri akışını daha da optimize etmeyi planlıyorum. Ayrıca yapay zeka entegrasyonu ile basit fiyat tahmini modelleri de gündemimizde.
+İlerleyen versiyonlarda, mimariyi daha da optimize ederek veri işleme hızını artırmayı planlıyorum. Ayrıca yapay zeka entegrasyonu ile sadece teknik analiz pratikleri yapabileceğimiz modeller de gündemimizde.
+
+---
+**Yasal Uyarı:** Burada yer alan yatırım bilgi, yorum ve tavsiyeleri yatırım danışmanlığı kapsamında değildir. Bu projeyi kullanarak yapacağınız işlemlerden doğabilecek mali kayıplardan yazılımcı sorumlu tutulamaz.
 
 *Eğer siz de finansal teknolojilerle ilgileniyorsanız, projeye GitHub üzerinden katkıda bulunabilir veya fikirlerinizi yorumlarda paylaşabilirsiniz!*
