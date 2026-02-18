@@ -13,8 +13,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Full Stack Developer",
-  description: "Tasarım ve kodun kesiştiği noktada güzel dijital deneyimler yaratıyorum.",
+  title: {
+    default: "İhsan Baki Doğan | Full Stack Developer",
+    template: "%s | İhsan Baki Doğan"
+  },
+  description: "Full Stack Web Developer - Node.js, TypeScript, React ve Vue uzmanı. Modern ve performanslı web deneyimleri inşa ediyorum.",
+  keywords: ["İhsan Baki Doğan", "Full Stack Developer", "Web Yazılım", "Node.js uzmanı", "React geliştirici", "ibidi", "software engineer"],
+  authors: [{ name: "İhsan Baki Doğan", url: "https://ihsanbakidogan.com" }],
+  creator: "İhsan Baki Doğan",
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "https://ihsanbakidogan.com",
+    title: "İhsan Baki Doğan | Full Stack Developer",
+    description: "Modern web teknolojileri ile dijital deneyimler inşa ediyorum.",
+    siteName: "İhsan Baki Doğan",
+    images: [
+      {
+        url: "/og-image.png", // Henüz yoksa bile tanımlayalım
+        width: 1200,
+        height: 630,
+        alt: "İhsan Baki Doğan Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "İhsan Baki Doğan | Full Stack Developer",
+    description: "Modern web teknolojileri ile dijital deneyimler inşa ediyorum.",
+    creator: "@ihsanbakidogan",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
