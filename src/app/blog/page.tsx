@@ -1,22 +1,10 @@
 import { Silk, ProfileCard, PostCard } from "@/components";
 import { ArrowLeft, BookOpen, Search, Sparkles } from "lucide-react";
 import Link from 'next/link';
-
-// API'den veri çekme fonksiyonları
-async function getBlogPosts() {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`, {
-            cache: "no-store",
-        });
-        if (!res.ok) return [];
-        return res.json();
-    } catch {
-        return [];
-    }
-}
+import { getAllPosts } from "@/lib/blog";
 
 export default async function BlogListPage() {
-    const posts = await getBlogPosts();
+    const posts = await getAllPosts();
 
     return (
         <main className="min-h-screen bg-[#050505] relative">
