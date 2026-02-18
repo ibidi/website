@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ihsanbakidogan.com"),
   title: {
     default: "İhsan Baki Doğan | Full Stack Developer",
     template: "%s | İhsan Baki Doğan"
