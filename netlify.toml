@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version" # Force Netlify to use a newer npm if needed
