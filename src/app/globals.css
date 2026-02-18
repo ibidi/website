@@ -1,26 +1,65 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #fafafa;
+  --card: rgba(17, 17, 17, 0.4);
+  --card-foreground: #fafafa;
+  --border: rgba(255, 255, 255, 0.06);
+  --muted: #a3a3a3;
+  --accent: #22c55e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fafafa 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.premium-card {
+  background: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+}
+
+.section-title {
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #737373;
+  margin-bottom: 1.5rem;
 }

@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Nuxt build output
+.output
+.nuxt
+.nitro
+.cache
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+dist
+dist-ssr
+*.local
+.vercel
+.netlify
