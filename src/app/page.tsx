@@ -9,6 +9,7 @@ import {
   LastFmSection,
   Silk,
 } from "@/components";
+import Image from "next/image";
 import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap } from "lucide-react";
 import { getAllPosts } from "@/lib/blog";
 
@@ -244,6 +245,26 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-[#050505] relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "İhsan Baki Doğan",
+            "url": "https://ihsanbakidogan.com",
+            "image": "https://ihsanbakidogan.com/og-image.png",
+            "sameAs": [
+              "https://github.com/ibidi",
+              "https://linkedin.com/in/ibidi",
+              "https://x.com/ihsanbakidogan",
+              "https://instagram.com/ihsanbakidogann"
+            ],
+            "jobTitle": "Full Stack Web Developer",
+            "description": "Full Stack Web Developer specialized in Node.js, TypeScript, React and Vue."
+          })
+        }}
+      />
       {/* Silk Background */}
       <div className="fixed inset-0 z-0" style={{ opacity: 0.6 }}>
         <Silk
@@ -305,7 +326,13 @@ export default async function Home() {
                       >
                         <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0">
                           {edu.logo.startsWith("/") ? (
-                            <img src={edu.logo} alt={edu.school} className="w-full h-full object-cover" />
+                            <Image
+                              src={edu.logo}
+                              alt={edu.school}
+                              width={48}
+                              height={48}
+                              className="w-full h-full object-cover"
+                            />
                           ) : (
                             <span className="text-white font-bold text-sm">{edu.logo}</span>
                           )}
@@ -349,9 +376,11 @@ export default async function Home() {
                   >
                     <div className="flex items-start gap-3 mb-3">
                       <div className="w-8 h-8 rounded bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden">
-                        <img
+                        <Image
                           src="https://cdn.simpleicons.org/npm/CB3837"
                           alt="NPM"
+                          width={20}
+                          height={20}
                           className="w-5 h-5 object-contain"
                         />
                       </div>

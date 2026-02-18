@@ -1,5 +1,7 @@
 import LastFmSection from "./LastFmSection";
 import { Instagram } from "lucide-react";
+import Image from "next/image";
+
 
 // SVG Icon components
 function GitHubIcon({ className }: { className?: string }) {
@@ -59,10 +61,13 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
         {/* Profile GIF - Büyük ve üstte */}
         <div className="mb-6">
           <div className="relative w-full aspect-square max-w-[200px] rounded-3xl overflow-hidden border border-neutral-800">
-            <img
+            <Image
               src="/ibidiii.gif"
               alt={name}
+              width={200}
+              height={200}
               className="w-full h-full object-cover"
+              unoptimized
             />
           </div>
         </div>
@@ -117,10 +122,13 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
         {/* Profile GIF - Üstte, küçük */}
         <div className="mb-5 flex justify-center">
           <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-neutral-800">
-            <img
+            <Image
               src="/ibidiii.gif"
               alt={name}
+              width={200}
+              height={200}
               className="w-full h-full object-cover"
+              unoptimized
             />
           </div>
         </div>

@@ -2,6 +2,12 @@ import { Silk, ProfileCard, PostCard } from "@/components";
 import { ArrowLeft, BookOpen, Search, Sparkles } from "lucide-react";
 import Link from 'next/link';
 import { getAllPosts } from "@/lib/blog";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Blog | İhsan Baki Doğan",
+    description: "Yazılım, teknoloji ve kişisel deneyimlerim üzerine yazdığım güncel blog yazıları.",
+};
 
 export default async function BlogListPage() {
     const posts = await getAllPosts();
