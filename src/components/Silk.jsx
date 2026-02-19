@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect } from 'react';
+import { forwardRef, useRef, useMemo, useLayoutEffect, useState, useEffect } from 'react';
 import { Color } from 'three';
 
 const hexToNormalizedRGB = hex => {
@@ -70,7 +70,7 @@ void main() {
 }
 `;
 
-const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
+const SilkPlane = forwardRef(function SilkPlane({ uniforms, motionless }, ref) {
   const { viewport } = useThree();
 
   useLayoutEffect(() => {
@@ -80,7 +80,7 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
   }, [ref, viewport]);
 
   useFrame((state) => {
-    if (ref.current && ref.current.material) {
+    if (!motionless && ref.current && ref.current.material) {
       ref.current.material.uniforms.uTime.value = state.clock.elapsedTime;
     }
   });
@@ -94,8 +94,21 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
 });
 SilkPlane.displayName = 'SilkPlane';
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }) => {
+const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0, motionless = false }) => {
   const meshRef = useRef();
+  const [shouldBeMotionless, setShouldBeMotionless] = useState(motionless);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      // 768px is a common tablet/mobile breakpoint
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      setShouldBeMotionless(motionless || isMobile);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [motionless]);
 
   const uniforms = useMemo(
     () => ({
@@ -110,8 +123,8 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
   );
 
   return (
-    <Canvas dpr={1} frameloop="always" gl={{ antialias: false, alpha: true }}>
-      <SilkPlane ref={meshRef} uniforms={uniforms} />
+    <Canvas dpr={1} frameloop={shouldBeMotionless ? "demand" : "always"} gl={{ antialias: false, alpha: true }}>
+      <SilkPlane ref={meshRef} uniforms={uniforms} motionless={shouldBeMotionless} />
     </Canvas>
   );
 };
