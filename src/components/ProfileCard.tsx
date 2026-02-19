@@ -95,21 +95,7 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
         {/* Bio */}
         <p className="text-neutral-400 text-sm leading-relaxed mb-8">{bio}</p>
 
-        {/* Neler yapıyorum? bölümü */}
-        <div className="premium-card p-4">
-          <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
-            Neler yapıyorum?
-            <span className="w-5 h-5 rounded-full bg-neutral-800 border border-white/5 flex items-center justify-center text-[10px] text-neutral-400">?</span>
-          </h3>
-          <div className="flex items-center justify-between gap-3">
-            <button className="flex-1 px-4 py-2.5 rounded-xl bg-neutral-900 border border-white/5 text-neutral-300 text-xs font-medium hover:bg-neutral-800 transition-colors text-left uppercase tracking-wider">
-              Sor
-            </button>
-            <button className="px-5 py-2.5 rounded-xl bg-blue-600/90 text-white text-xs font-bold hover:bg-blue-600 transition-colors uppercase tracking-wider">
-              Demo
-            </button>
-          </div>
-        </div>
+
 
         {/* Last.fm Stats - Desktop sidebar */}
         <div className="mt-8">
