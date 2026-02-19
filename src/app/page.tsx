@@ -25,7 +25,7 @@ function formatCount(count: number): string {
 async function getGitHubRepos() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/github`, {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return [];
     return res.json();
@@ -37,7 +37,7 @@ async function getGitHubRepos() {
 async function getNPMPackages() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/npm`, {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return [];
     return res.json();

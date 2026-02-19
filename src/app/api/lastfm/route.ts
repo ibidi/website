@@ -13,9 +13,9 @@ export async function GET() {
 
         // Fetch user info, recent tracks, and top artists in parallel
         const [userRes, recentRes, topArtistsRes] = await Promise.all([
-            fetch(`${baseUrl}?method=user.getInfo&user=${username}&api_key=${apiKey}&format=json`),
-            fetch(`${baseUrl}?method=user.getRecentTracks&user=${username}&api_key=${apiKey}&limit=5&format=json`),
-            fetch(`${baseUrl}?method=user.getTopArtists&user=${username}&api_key=${apiKey}&period=7day&limit=6&format=json`)
+            fetch(`${baseUrl}?method=user.getInfo&user=${username}&api_key=${apiKey}&format=json`, { next: { revalidate: 300 } }),
+            fetch(`${baseUrl}?method=user.getRecentTracks&user=${username}&api_key=${apiKey}&limit=5&format=json`, { next: { revalidate: 60 } }), // Recent tracks more frequent
+            fetch(`${baseUrl}?method=user.getTopArtists&user=${username}&api_key=${apiKey}&period=7day&limit=6&format=json`, { next: { revalidate: 3600 } }) // Weekly artists less frequent
         ]);
 
         const [userData, recentData, topArtistsData] = await Promise.all([
