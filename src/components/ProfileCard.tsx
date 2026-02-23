@@ -1,4 +1,5 @@
 import LastFmSection from "./LastFmSection";
+import ProjectCard from "./ProjectCard";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
 
@@ -43,9 +44,23 @@ interface ProfileCardProps {
   title: string;
   bio: string;
   image?: string;
+  showLastFm?: boolean;
+  sidebarProjects?: Array<{
+    title: string;
+    description: string;
+    year: number;
+    link?: string;
+  }>;
 }
 
-export default function ProfileCard({ name, title, bio, image }: ProfileCardProps) {
+export default function ProfileCard({
+  name,
+  title,
+  bio,
+  image,
+  showLastFm = true,
+  sidebarProjects = [],
+}: ProfileCardProps) {
   const socialLinks = [
     { icon: GitHubIcon, href: "https://github.com/ibidi", label: "GitHub" },
     { icon: XIcon, href: "https://x.com/ihsanbakidogan", label: "X" },
@@ -59,13 +74,13 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
       {/* Desktop: Dikey layout - GIF üstte */}
       <div className="hidden lg:block">
         {/* Profile GIF - Büyük ve üstte */}
-        <div className="mb-6">
-          <div className="relative w-full aspect-square max-w-[200px] rounded-3xl overflow-hidden border border-neutral-800">
+        <div className="mb-7">
+          <div className="relative w-full aspect-square max-w-[240px] rounded-3xl overflow-hidden border border-neutral-800">
             <Image
               src="/ibidiii.gif"
               alt={name}
-              width={200}
-              height={200}
+              width={240}
+              height={240}
               className="w-full h-full object-cover"
               unoptimized
             />
@@ -73,34 +88,53 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
         </div>
 
         {/* İsim ve unvan */}
-        <h1 className="text-3xl font-bold text-white mb-1">{name}</h1>
-        <p className="text-neutral-500 text-sm mb-6">{title}</p>
+        <h1 className="text-4xl font-bold text-white mb-2 leading-tight">{name}</h1>
+        <p className="text-neutral-500 text-base mb-7">{title}</p>
 
         {/* Sosyal ikonlar */}
-        <div className="flex gap-3 mb-6">
+        <div className="flex gap-3.5 mb-7">
           {socialLinks.map((social) => (
             <a
               key={social.label}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-[#262626] flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-700 transition-colors"
+              className="w-11 h-11 rounded-full premium-surface flex items-center justify-center text-neutral-400 hover:text-white hover:border-white/15 transition-colors"
               aria-label={social.label}
             >
-              <social.icon className="w-4 h-4" />
+              <social.icon className="w-5 h-5" />
             </a>
           ))}
         </div>
 
         {/* Bio */}
-        <p className="text-neutral-400 text-sm leading-relaxed mb-8">{bio}</p>
+        <p className="text-neutral-400 text-base leading-relaxed mb-10 max-w-[34ch]">{bio}</p>
 
 
 
-        {/* Last.fm Stats - Desktop sidebar */}
-        <div className="mt-8">
-          <LastFmSection />
-        </div>
+        {sidebarProjects.length > 0 ? (
+          <div className="mt-10">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-white text-base font-semibold tracking-wide">Projelerim</h2>
+              <span className="text-sm text-neutral-500">{sidebarProjects.length} proje</span>
+            </div>
+            <div className="space-y-4">
+              {sidebarProjects.map((project) => (
+                <ProjectCard
+                  key={`${project.title}-${project.year}`}
+                  title={project.title}
+                  description={project.description}
+                  year={project.year}
+                  link={project.link}
+                />
+              ))}
+            </div>
+          </div>
+        ) : showLastFm ? (
+          <div className="mt-8">
+            <LastFmSection />
+          </div>
+        ) : null}
       </div>
 
       {/* Mobil: GIF üstte, içerik altta - ege.md tarzı */}
@@ -133,7 +167,7 @@ export default function ProfileCard({ name, title, bio, image }: ProfileCardProp
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-[#262626] flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-700 transition-colors"
+              className="w-10 h-10 rounded-full premium-surface flex items-center justify-center text-neutral-400 hover:text-white hover:border-white/15 transition-colors"
               aria-label={social.label}
             >
               <social.icon className="w-4 h-4" />

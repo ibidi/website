@@ -55,6 +55,12 @@ body {
   border-radius: 1rem;
 }
 
+.premium-surface {
+  background: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 .section-title {
   font-size: 0.825rem;
   font-weight: 600;

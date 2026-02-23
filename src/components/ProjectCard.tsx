@@ -13,17 +13,17 @@ export default function ProjectCard({ title, description, year, link }: ProjectC
   return (
     <a
       href={link || "#"}
-      className="group block p-5 rounded-xl bg-[#171717] border border-[#262626] card-hover"
+      className="group block p-6 rounded-xl premium-surface card-hover"
     >
-      <div className="flex items-start justify-between mb-3">
-        <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
+      <div className="flex items-start justify-between mb-4">
+        <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors">
           {title}
         </h3>
-        <span className="text-sm text-neutral-500">{year}</span>
+        <span className="text-base text-neutral-500">{year}</span>
       </div>
-      <p className="text-neutral-400 text-sm leading-relaxed mb-4">{description}</p>
+      <p className="text-neutral-400 text-base leading-relaxed mb-5">{description}</p>
       <div className="flex items-center text-neutral-500 group-hover:text-white transition-colors">
-        <ArrowUpRight className="w-4 h-4" />
+        <ArrowUpRight className="w-5 h-5" />
       </div>
     </a>
   );

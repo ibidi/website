@@ -1,12 +1,10 @@
 import {
   ProfileCard,
-  ProjectCard,
   ToolCard,
   PostCard,
   ContactSection,
   ExperienceList,
   LanguageIcon,
-  LastFmSection,
   Silk,
 } from "@/components";
 import Image from "next/image";
@@ -202,6 +200,21 @@ const githubProjects = [
   },
 ];
 
+const sidebarProjects = [
+  {
+    title: "Proje Adı 1",
+    description: "Bu alana projeni kısa açıklama ile ekleyebilirsin.",
+    year: 2026,
+    link: "https://github.com/ibidi",
+  },
+  {
+    title: "Proje Adı 2",
+    description: "Müzik kutusu yerine gösterilecek manuel proje kartı.",
+    year: 2025,
+    link: "https://github.com/ibidi",
+  },
+];
+
 const defaultServices = [
   {
     _id: "1",
@@ -284,6 +297,8 @@ export default async function Home() {
               name="İhsan Baki Doğan"
               title="Full Stack Web Developer"
               bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
+              showLastFm={false}
+              sidebarProjects={sidebarProjects}
             />
           </div>
 
@@ -488,13 +503,9 @@ export default async function Home() {
                 </div>
               )}
             </section>
+            
 
-
-
-            {/* Last.fm - Only on Mobile */}
-            <div className="lg:hidden">
-              <LastFmSection />
-            </div>
+            {/* Last.fm mobil kutusu devre dışı bırakıldı; bu alan için manuel proje girişi kullanılıyor */}
 
             {/* Blog Posts */}
             <section>
