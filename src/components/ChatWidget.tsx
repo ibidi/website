@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react";
-import { Bot, MessageCircle, Send, X } from "lucide-react";
+import { Bot, MessageCircle, Plus, Send, X } from "lucide-react";
 import { marked, Renderer, Tokens } from "marked";
 
 type ChatMessage = {
@@ -113,6 +113,7 @@ export default function ChatWidget() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const listRef = useRef<HTMLDivElement | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -165,6 +166,9 @@ export default function ChatWidget() {
     ]);
 
     try {
+      const controller = new AbortController();
+      abortRef.current = controller;
+
       const payloadMessages = [...messages, userMessage].map(({ role, content }) => ({
         role,
         content,
@@ -175,6 +179,7 @@ export default function ChatWidget() {
         headers: {
           "Content-Type": "application/json",
         },
+        signal: controller.signal,
         body: JSON.stringify({
           messages: payloadMessages,
           pageContext: {
@@ -241,12 +246,26 @@ export default function ChatWidget() {
         throw new Error("AI cevabi bos dondu.");
       }
     } catch (err) {
+      if (err instanceof Error && err.name === "AbortError") {
+        return;
+      }
+
       const message = err instanceof Error ? err.message : "Beklenmeyen bir hata olustu.";
       setError(message);
       setMessages((prev) => prev.filter((item) => item.id !== assistantMessageId));
     } finally {
+      abortRef.current = null;
       setIsLoading(false);
     }
+  };
+
+  const handleNewChat = () => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+    setIsLoading(false);
+    setError(null);
+    setInput("");
+    setMessages([WELCOME_MESSAGE]);
   };
 
   return (
@@ -266,10 +285,20 @@ export default function ChatWidget() {
             <div className="premium-surface h-9 w-9 rounded-full flex items-center justify-center text-blue-300">
               <Bot className="w-4 h-4" />
             </div>
-            <div>
+            <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-white">AI Sohbet</p>
               <p className="text-xs text-neutral-500">Groq destekli site asistani</p>
             </div>
+            <button
+              type="button"
+              onClick={handleNewChat}
+              className="premium-surface inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-[11px] font-semibold text-neutral-200 hover:border-white/20 transition-colors whitespace-nowrap"
+              aria-label="Yeni sohbet olustur"
+              title="Yeni sohbet olustur"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              Yeni sohbet
+            </button>
           </header>
 
           <div
