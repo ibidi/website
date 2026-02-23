@@ -9,6 +9,21 @@ export const metadata: Metadata = {
     description: "Yazılım, teknoloji ve kişisel deneyimlerim üzerine yazdığım güncel blog yazıları.",
 };
 
+const sidebarProjects = [
+    {
+        title: "Proje 1",
+        description: "Blog tarafinda da gostermek istedigin proje kisa aciklamasi.",
+        year: 2026,
+        link: "https://github.com/ibidi",
+    },
+    {
+        title: "Proje 2",
+        description: "Sol alanda profil altinda gorunecek ikinci proje karti.",
+        year: 2025,
+        link: "https://github.com/ibidi",
+    },
+];
+
 export default async function BlogListPage() {
     const posts = await getAllPosts();
 
@@ -33,34 +48,39 @@ export default async function BlogListPage() {
                             name="İhsan Baki Doğan"
                             title="Full Stack Web Developer"
                             bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
+                            showLastFm={false}
+                            sidebarProjects={sidebarProjects}
                         />
 
-                        <Link
-                            href="/"
-                            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/5 text-neutral-400 hover:text-white hover:bg-white/10 transition-all uppercase text-xs font-bold tracking-widest"
-                        >
-                            <ArrowLeft className="w-4 h-4" />
-                            Anasayfaya Dön
-                        </Link>
-
-                        {/* Newsletter or Search Mockup */}
-                        <div className="premium-card p-6 space-y-4">
-                            <h3 className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-2">
-                                <Search className="w-4 h-4 text-blue-400" />
-                                Yazılarda Ara
-                            </h3>
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    placeholder="Hangi konuyu merak ediyorsun?"
-                                    className="w-full bg-neutral-900 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500/50 transition-all"
-                                />
-                            </div>
-                        </div>
                     </div>
 
                     {/* Main Content */}
                     <div className="lg:col-span-8 space-y-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+                            <Link
+                                href="/"
+                                className="premium-card flex h-full min-h-[92px] items-center gap-2 px-4 sm:px-5 py-3 text-neutral-400 hover:text-white hover:border-white/15 transition-all uppercase text-[11px] font-bold tracking-widest whitespace-nowrap"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Anasayfaya Dön
+                            </Link>
+    
+                            {/* Newsletter or Search Mockup */}
+                            <div className="premium-card h-full min-h-[92px] p-4 sm:p-5 space-y-3">
+                                <h3 className="text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+                                    <Search className="w-3.5 h-3.5 text-blue-400" />
+                                    Yazılarda Ara
+                                </h3>
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        placeholder="Hangi konuyu merak ediyorsun?"
+                                        className="w-full bg-neutral-900 border border-white/5 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500/50 transition-all"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
                         <header className="space-y-4">
                             <div className="flex items-center gap-2 text-blue-400 font-bold text-xs uppercase tracking-[0.2em]">
                                 <Sparkles className="w-4 h-4" />

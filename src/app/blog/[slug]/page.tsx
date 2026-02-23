@@ -81,6 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 name="İhsan Baki Doğan"
                                 title="Full Stack Web Developer"
                                 bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
+                                showLastFm={false}
                             />
                         </div>
                     </div>

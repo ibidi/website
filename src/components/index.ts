@@ -9,3 +9,4 @@ export { default as LanguageIcon } from './LanguageIcon';
 export { default as LastFmSection } from './LastFmSection';
 export { default as Silk } from './Silk';
 export { default as Comments } from './Comments';
+export { default as ChatWidget } from './ChatWidget';
