@@ -10,6 +10,11 @@ type IncomingMessage = {
 
 const MAX_MESSAGES = 12;
 const MAX_CONTENT_LENGTH = 2000;
+const STREAM_HEADERS = {
+  "Content-Type": "text/plain; charset=utf-8",
+  "Cache-Control": "no-cache, no-transform",
+  Connection: "keep-alive",
+};
 
 function normalizeMessages(input: unknown): IncomingMessage[] {
   if (!Array.isArray(input)) return [];
@@ -31,15 +36,100 @@ function normalizeMessages(input: unknown): IncomingMessage[] {
     .slice(-MAX_MESSAGES);
 }
 
+function extractDeltaContent(payload: string) {
+  if (!payload) return { done: false, content: "" };
+  if (payload === "[DONE]") return { done: true, content: "" };
+
+  try {
+    const parsed = JSON.parse(payload) as {
+      choices?: Array<{ delta?: { content?: string | null } }>;
+    };
+
+    return {
+      done: false,
+      content: parsed.choices?.[0]?.delta?.content ?? "",
+    };
+  } catch {
+    return { done: false, content: "" };
+  }
+}
+
+function createTextStreamResponse(upstream: Response) {
+  if (!upstream.body) {
+    return NextResponse.json({ error: "AI stream body bulunamadi." }, { status: 502 });
+  }
+
+  const upstreamReader = upstream.body.getReader();
+  const upstreamDecoder = new TextDecoder();
+  const downstreamEncoder = new TextEncoder();
+
+  const stream = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      let buffer = "";
+
+      try {
+        while (true) {
+          const { done, value } = await upstreamReader.read();
+
+          if (done) {
+            buffer += upstreamDecoder.decode();
+            break;
+          }
+
+          buffer += upstreamDecoder.decode(value, { stream: true });
+
+          const lines = buffer.split("\n");
+          buffer = lines.pop() ?? "";
+
+          for (const line of lines) {
+            const trimmedLine = line.trim();
+            if (!trimmedLine.startsWith("data:")) continue;
+
+            const chunk = extractDeltaContent(trimmedLine.slice(5).trim());
+            if (chunk.done) {
+              controller.close();
+              return;
+            }
+
+            if (chunk.content) {
+              controller.enqueue(downstreamEncoder.encode(chunk.content));
+            }
+          }
+        }
+
+        for (const line of buffer.split("\n")) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine.startsWith("data:")) continue;
+
+          const chunk = extractDeltaContent(trimmedLine.slice(5).trim());
+          if (chunk.done) break;
+          if (chunk.content) {
+            controller.enqueue(downstreamEncoder.encode(chunk.content));
+          }
+        }
+
+        controller.close();
+      } catch (error) {
+        console.error("Groq stream parse error:", error);
+        controller.error(error);
+      } finally {
+        upstreamReader.releaseLock();
+      }
+    },
+    cancel() {
+      upstreamReader.cancel().catch(() => undefined);
+    },
+  });
+
+  return new Response(stream, { headers: STREAM_HEADERS });
+}
+
 export async function POST(request: Request) {
   try {
     const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
-      return NextResponse.json(
-        { error: "GROQ_API_KEY tanımlı değil." },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: "GROQ_API_KEY tanimli degil." }, { status: 500 });
     }
 
     const body = await request.json().catch(() => ({}));
@@ -47,10 +137,7 @@ export async function POST(request: Request) {
     const messages = normalizeMessages(parsedBody.messages);
 
     if (messages.length === 0) {
-      return NextResponse.json(
-        { error: "Geçerli mesaj bulunamadı." },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "Gecerli mesaj bulunamadi." }, { status: 400 });
     }
 
     const systemPrompt = await buildChatSystemPrompt(parsedBody.pageContext);
@@ -65,6 +152,7 @@ export async function POST(request: Request) {
         model: process.env.GROQ_MODEL || "llama-3.1-8b-instant",
         temperature: 0.5,
         max_tokens: 700,
+        stream: true,
         messages: [
           {
             role: "system",
@@ -78,30 +166,14 @@ export async function POST(request: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Groq API error:", response.status, errorText);
-      return NextResponse.json(
-        { error: "Groq API isteği başarısız oldu." },
-        { status: 502 },
-      );
+      return NextResponse.json({ error: "Groq API istegi basarisiz oldu." }, { status: 502 });
     }
 
-    const data = (await response.json()) as {
-      choices?: Array<{ message?: { content?: string | null } }>;
-    };
-
-    const reply = data.choices?.[0]?.message?.content?.trim();
-
-    if (!reply) {
-      return NextResponse.json(
-        { error: "AI cevabı boş döndü." },
-        { status: 502 },
-      );
-    }
-
-    return NextResponse.json({ reply });
+    return createTextStreamResponse(response);
   } catch (error) {
     console.error("Chat API error:", error);
     return NextResponse.json(
-      { error: "Sohbet servisi şu anda kullanılamıyor." },
+      { error: "Sohbet servisi su anda kullanilamiyor." },
       { status: 500 },
     );
   }
