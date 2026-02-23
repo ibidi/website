@@ -55,8 +55,8 @@ function renderMarkdown(content: string) {
   const renderer = new Renderer();
   const defaultTableRenderer = renderer.table.bind(renderer);
 
-  renderer.html = (token: Tokens.HTML | Tokens.Tag) => {
-    const text = "text" in token ? token.text : token.raw;
+  renderer.html = (token: Tokens.HTML) => {
+    const text = token.text || token.raw;
     return escapeHtml(text);
   };
 
@@ -312,11 +312,10 @@ export default function ChatWidget() {
                 className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[88%] min-w-0 rounded-2xl px-3 py-2 text-sm leading-relaxed overflow-hidden ${
-                    message.role === "user"
+                  className={`max-w-[88%] min-w-0 rounded-2xl px-3 py-2 text-sm leading-relaxed overflow-hidden ${message.role === "user"
                       ? "bg-white text-black"
                       : "premium-surface text-neutral-100"
-                  }`}
+                    }`}
                 >
                   {message.role === "assistant" ? (
                     <AssistantMarkdown content={message.content} />
