@@ -157,3 +157,56 @@ body {
 .chat-markdown .chat-table-wrap td {
   color: #d4d4d8;
 }
+
+/* Vinyl Rotation Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Pause animation when not hovering if desired, but we'll control it with state or hover classes */
+.pause-animation {
+  animation-play-state: paused;
+}
+
+.group:hover .animate-spin-slow {
+  animation-play-state: running;
+}
+
+.jukebox-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.jukebox-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -20px rgba(0, 255, 13, 0.15);
+}
+
+.vinyl-record {
+  background: radial-gradient(circle, #111 15%, #222 16%, #111 20%, #222 21%, #111 25%, #222 26%, #111 30%, #222 31%, #111 35%, #222 36%, #111 40%, #222 41%, #111 45%, #222 46%, #111 50%, #222 51%, #111 55%, #222 56%, #111 60%, #222 61%, #111 65%, #222 66%, #111 70%);
+  position: relative;
+}
+
+.vinyl-record::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 25%;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 4px solid #000;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}

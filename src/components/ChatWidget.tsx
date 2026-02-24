@@ -287,7 +287,7 @@ export default function ChatWidget() {
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-white">AI Sohbet</p>
-              <p className="text-xs text-neutral-500">Groq destekli site asistani</p>
+              <p className="text-xs text-neutral-500">ihsanbakidogan.com</p>
             </div>
             <button
               type="button"
@@ -313,8 +313,8 @@ export default function ChatWidget() {
               >
                 <div
                   className={`max-w-[88%] min-w-0 rounded-2xl px-3 py-2 text-sm leading-relaxed overflow-hidden ${message.role === "user"
-                      ? "bg-white text-black"
-                      : "premium-surface text-neutral-100"
+                    ? "bg-white text-black"
+                    : "premium-surface text-neutral-100"
                     }`}
                 >
                   {message.role === "assistant" ? (

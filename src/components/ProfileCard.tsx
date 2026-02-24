@@ -126,6 +126,7 @@ export default function ProfileCard({
                   description={project.description}
                   year={project.year}
                   link={project.link}
+                  variant="compact"
                 />
               ))}
             </div>
