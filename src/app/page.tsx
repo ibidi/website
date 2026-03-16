@@ -266,16 +266,33 @@ export default async function Home() {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "İhsan Baki Doğan",
+            "alternateName": "ibidi",
             "url": "https://ihsanbakidogan.com",
             "image": "https://ihsanbakidogan.com/og-image.png",
             "sameAs": [
               "https://github.com/ibidi",
               "https://linkedin.com/in/ibidi",
               "https://x.com/ihsanbakidogan",
-              "https://instagram.com/ihsanbakidogann"
+              "https://instagram.com/ihsanbakidogann",
+              "https://youtube.com/@ihsanbakidogan"
             ],
             "jobTitle": "Full Stack Web Developer",
-            "description": "Full Stack Web Developer specialized in Node.js, TypeScript, React and Vue."
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Uğur Döküm"
+            },
+            "alumniOf": [
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "Istanbul Gelisim University"
+              },
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "Anadolu University"
+              }
+            ],
+            "description": "Full Stack Web Developer specialized in Node.js, TypeScript, React and Vue. Creating modern, high-performance web experiences.",
+            "knowsAbout": ["Web Development", "TypeScript", "Node.js", "React.js", "Vue.js", "Software Architecture"]
           })
         }}
       />

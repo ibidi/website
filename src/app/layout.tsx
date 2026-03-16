@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     default: "İhsan Baki Doğan | Full Stack Developer",
     template: "%s | İhsan Baki Doğan"
   },
-  description: "Full Stack Web Developer - Node.js, TypeScript, React ve Vue uzmanı. Modern ve performanslı web deneyimleri inşa ediyorum.",
-  keywords: ["İhsan Baki Doğan", "Full Stack Developer", "Web Yazılım", "Node.js uzmanı", "React geliştirici", "ibidi", "software engineer"],
+  description: "İhsan Baki Doğan (ibidi) - Senior Full Stack Web Developer. Node.js, TypeScript ve modern frontend teknolojileri (React, Vue, Next.js) ile ölçeklenebilir dijital çözümler üretiyorum.",
+  keywords: ["İhsan Baki Doğan", "ibidi", "Full Stack Developer", "Software Engineer", "Yazılım Mühendisi", "Node.js Uzmanı", "React Developer", "TypeScript", "Next.js Portfolio", "Web Geliştirme"],
   authors: [{ name: "İhsan Baki Doğan", url: "https://ihsanbakidogan.com" }],
   creator: "İhsan Baki Doğan",
   icons: {
