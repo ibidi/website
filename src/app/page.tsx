@@ -241,42 +241,13 @@ export default async function Home() {
     getAllPosts(),
   ]);
 
-  // Featured projects that should always be at the top
-  const pinnedProjects = [
-    {
-      _id: "pinned-1",
-      name: "BBLife",
-      description: "BBL Esports taraftarları için geliştirilmiş, içerisinde Bingo ve Maç Tahmini gibi oyunlar barındıran kapsamlı platform.",
-      stars: 48,
-      forks: 15,
-      language: "Next.js",
-      html_url: "https://bblife.tr",
-      link: "https://bblife.tr",
-    },
-    {
-      _id: "pinned-2",
-      name: "Manus AI",
-      description: "Yapay zeka asistanları ile yazılım süreçlerini otomatize eden gelişmiş bir AI platformu.",
-      stars: 120,
-      forks: 30,
-      language: "TypeScript",
-      html_url: "https://manus.im",
-      link: "https://manus.im",
-    }
-  ];
-
   // GitHub repos: dynamic or fallback
   const dynamicProjects = Array.isArray(githubRepos) && githubRepos.length > 0 ? githubRepos : [];
   
-  // Combine pinned and other projects, remove duplicates
-  const combinedProjects = [
-    ...pinnedProjects,
-    ...(dynamicProjects.length > 0 ? dynamicProjects : githubProjects)
-  ];
-  
-  const allProjects = combinedProjects.filter((project, index, self) =>
-    index === self.findIndex((p) => p.name === project.name)
-  );
+  // Start with dynamic projects sorted by stars, or fallback to our curated list
+  const allProjects = dynamicProjects.length > 0 
+    ? [...dynamicProjects].sort((a: any, b: any) => b.stars - a.stars)
+    : githubProjects;
 
   // Projects to display (first 4) or all pinned + some extras
   const visibleProjects = allProjects.slice(0, 4);
