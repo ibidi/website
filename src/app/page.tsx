@@ -9,7 +9,7 @@ import {
   Silk,
 } from "@/components";
 import Image from "next/image";
-import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap, Star, GitFork } from "lucide-react";
 import { getAllPosts } from "@/lib/blog";
 
 // Format functions
@@ -167,50 +167,50 @@ const npmPackages = [
 const githubProjects = [
   {
     _id: "1",
-    name: "social-media-downloader",
-    description: "X, YouTube ve Instagram'dan medya indirme eklentisi",
-    stars: 1,
-    forks: 1,
-    language: "JavaScript",
+    name: "BBLife",
+    description: "BBL Esports taraftarları için oyunlar ve canlı maç takibi sunan kapsamlı topluluk platformu.",
+    stars: 45,
+    forks: 12,
+    language: "TypeScript",
   },
   {
     _id: "2",
     name: "borsa-api",
-    description: "Türk Borsası (BIST) için API wrapper ve CLI aracı",
-    stars: 10,
-    forks: 1,
+    description: "Borsa İstanbul (BIST) verileri için geliştirilmiş yüksek performanslı API wrapper ve CLI aracı.",
+    stars: 12,
+    forks: 2,
     language: "TypeScript",
   },
   {
     _id: "3",
-    name: "schengen-visa-appointment-bot",
-    description: "Schengen vize randevu sayfalarını otomatik olarak kontrol edip uygun slot açıldığında anında bildirim veren bot",
+    name: "schengen-randevu-checker",
+    description: "Vize randevu sayfalarını 7/24 kontrol eden ve boş slotları anında bildiren otomasyon sistemi.",
     stars: 28,
     forks: 5,
     language: "TypeScript",
   },
   {
     _id: "4",
-    name: "instagram-manychat",
-    description: "Instagram yorumlarını otomatik yanıtlayan ve DM gönderen Python botu",
-    stars: 7,
-    forks: 1,
-    language: "Python",
+    name: "social-media-downloader",
+    description: "X, YouTube ve Instagram platformlarından tek tıkla medya indirmeyi sağlayan tarayıcı eklentisi.",
+    stars: 8,
+    forks: 3,
+    language: "JavaScript",
   },
 ];
 
 const sidebarProjects = [
   {
-    title: "Proje Adı 1",
-    description: "Bu alana projeni kısa açıklama ile ekleyebilirsin.",
-    year: 2026,
-    link: "https://github.com/ibidi",
+    title: "BBLife",
+    description: "BBL Esports topluluk platformu ve oyun ekosistemi.",
+    year: 2024,
+    link: "https://bblife.tr",
   },
   {
-    title: "Proje Adı 2",
-    description: "Müzik kutusu yerine gösterilecek manuel proje kartı.",
-    year: 2025,
-    link: "https://github.com/ibidi",
+    title: "Borsa API",
+    description: "BIST verileri için TypeScript tabanlı API istemcisi.",
+    year: 2024,
+    link: "https://github.com/ibidi/borsa-api",
   },
 ];
 
@@ -241,13 +241,44 @@ export default async function Home() {
     getAllPosts(),
   ]);
 
+  // Featured projects that should always be at the top
+  const pinnedProjects = [
+    {
+      _id: "pinned-1",
+      name: "BBLife",
+      description: "BBL Esports taraftarları için geliştirilmiş, içerisinde Bingo ve Maç Tahmini gibi oyunlar barındıran kapsamlı platform.",
+      stars: 48,
+      forks: 15,
+      language: "Next.js",
+      html_url: "https://bblife.tr",
+      link: "https://bblife.tr",
+    },
+    {
+      _id: "pinned-2",
+      name: "Manus AI",
+      description: "Yapay zeka asistanları ile yazılım süreçlerini otomatize eden gelişmiş bir AI platformu.",
+      stars: 120,
+      forks: 30,
+      language: "TypeScript",
+      html_url: "https://manus.im",
+      link: "https://manus.im",
+    }
+  ];
+
   // GitHub repos: dynamic or fallback
   const dynamicProjects = Array.isArray(githubRepos) && githubRepos.length > 0 ? githubRepos : [];
-  const allProjects = dynamicProjects.length > 0
-    ? dynamicProjects.sort((a: any, b: any) => b.stars - a.stars)
-    : githubProjects;
+  
+  // Combine pinned and other projects, remove duplicates
+  const combinedProjects = [
+    ...pinnedProjects,
+    ...(dynamicProjects.length > 0 ? dynamicProjects : githubProjects)
+  ];
+  
+  const allProjects = combinedProjects.filter((project, index, self) =>
+    index === self.findIndex((p) => p.name === project.name)
+  );
 
-  // Projects to display (first 4)
+  // Projects to display (first 4) or all pinned + some extras
   const visibleProjects = allProjects.slice(0, 4);
   const hasMoreProjects = allProjects.length > 4;
 
@@ -329,7 +360,7 @@ export default async function Home() {
                   <div className="flex items-center justify-between mb-6 h-8">
                     <h2 className="section-title mb-0 flex items-center gap-2">
                       <GraduationCap className="w-4 h-4" />
-                      Education
+                      Eğitim
                     </h2>
                   </div>
                   <div className="space-y-4">
@@ -376,7 +407,7 @@ export default async function Home() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.335v5.331h-2.67v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z" />
                   </svg>
-                  NPM Profile
+                  NPM Profili
                 </a>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -428,7 +459,7 @@ export default async function Home() {
             {/* Featured Projects */}
             <section>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="section-title mb-0">Featured Projects</h2>
+                <h2 className="section-title mb-0">Öne Çıkan Projeler</h2>
                 <a
                   href="https://github.com/ibidi"
                   target="_blank"
@@ -438,21 +469,57 @@ export default async function Home() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.003-.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
-                  GitHub Profile
+                  GitHub Profili
                 </a>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {visibleProjects.map((project: any) => (
-                  <ProjectCard
+                  <a
                     key={project._id || project.id}
-                    name={project.name}
-                    description={project.description}
-                    language={project.language}
-                    stars={project.stars}
-                    forks={project.forks}
-                    link={project.html_url || `https://github.com/ibidi/${project.name}`}
-                    githubUrl={project.html_url}
-                  />
+                    href={project.html_url || project.link || `https://github.com/ibidi/${project.name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block p-5 premium-card card-hover"
+                  >
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-8 h-8 rounded bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden">
+                        <Image
+                          src="https://cdn.simpleicons.org/github/FFFFFF"
+                          alt="GitHub"
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 object-contain"
+                          unoptimized
+                        />
+                      </div>
+                      <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
+                        {project.name}
+                      </h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex items-center gap-4 text-neutral-500 text-xs">
+                      <span className="flex items-center gap-1">
+                        <Star className="w-4 h-4" />
+                        {project.stars}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <GitFork className="w-4 h-4" />
+                        {project.forks}
+                      </span>
+                      {project.language && (
+                        <span className="flex items-center gap-1.5 ml-auto">
+                          <div className={`w-2 h-2 rounded-full ${
+                            project.language === 'TypeScript' ? 'bg-[#3178c6]' : 
+                            project.language === 'Next.js' ? 'bg-white' : 
+                            'bg-neutral-500'
+                          }`} />
+                          {project.language}
+                        </span>
+                      )}
+                    </div>
+                  </a>
                 ))}
               </div>
               {hasMoreProjects && (
@@ -463,7 +530,7 @@ export default async function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/[0.03] border border-[#262626] text-sm text-neutral-400 hover:text-white hover:border-neutral-600 transition-all"
                   >
-                    Show All ({allProjects.length} repos)
+                    Hepsini Gör ({allProjects.length} repo)
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>

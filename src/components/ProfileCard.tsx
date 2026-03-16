@@ -1,6 +1,5 @@
 import LastFmSection from "./LastFmSection";
-import ProjectCard from "./ProjectCard";
-import { Instagram } from "lucide-react";
+import { Instagram, Github } from "lucide-react";
 import Image from "next/image";
 
 
@@ -116,18 +115,25 @@ export default function ProfileCard({
           <div className="mt-10">
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-white text-base font-semibold tracking-wide">Projelerim</h2>
-              <span className="text-sm text-neutral-500">{sidebarProjects.length} proje</span>
+              <span className="text-sm text-neutral-500">{sidebarProjects.length}</span>
             </div>
-            <div className="space-y-4">
+            <div className="grid grid-cols-3 gap-3">
               {sidebarProjects.map((project) => (
-                <ProjectCard
+                <a
                   key={`${project.title}-${project.year}`}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-xl premium-surface flex items-center justify-center text-neutral-500 hover:text-white hover:border-white/20 transition-all overflow-hidden"
                   title={project.title}
-                  description={project.description}
-                  year={project.year}
-                  link={project.link}
-                  variant="compact"
-                />
+                >
+                  <div className="flex flex-col items-center gap-1">
+                    <Github className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                      {project.title.length > 8 ? project.title.substring(0, 6) + '..' : project.title}
+                    </span>
+                  </div>
+                </a>
               ))}
             </div>
           </div>

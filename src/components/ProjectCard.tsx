@@ -38,7 +38,7 @@ export default function ProjectCard({
         <div className="flex items-center gap-2 mb-3">
           <Music className={`w-3.5 h-3.5 text-accent ${!isCompact ? "animate-pulse" : ""}`} />
           <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-500">
-            {year ? `Release ${year}` : "Now Playing"}
+            {year ? `Yayınlanma ${year}` : "Aktif Proje"}
           </span>
         </div>
 
@@ -62,7 +62,7 @@ export default function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-black hover:scale-110 transition-transform shadow-[0_0_10px_rgba(34,197,94,0.3)]"
-            title="Open Demo/Link"
+            title="Demoyu/Bağlantıyı Aç"
           >
             <Play className="w-4 h-4 fill-current ml-0.5" />
           </a>
@@ -72,7 +72,7 @@ export default function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all"
-            title="View Code"
+            title="Kodları Görüntüle"
           >
             <Github className="w-4 h-4" />
           </a>
