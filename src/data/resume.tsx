@@ -185,7 +185,7 @@ export const DATA = {
     {
       title: "TRCS Topluluk",
       href: "https://trcstopluluk.com",
-      dates: "2025 - Present",
+      dates: "2026 - Present",
       active: true,
       description:
         "Tahmin ligi ve mini oyunlar platformu. Topluluk odaklı gerçek zamanlı skorlama, liderlik tabloları ve etkileşimli oyun deneyimi.",
