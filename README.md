@@ -1,65 +1,42 @@
-# ihsanbakidogan.com - v2 (Modern Era)
+# ibidi.dev
 
-![Banner](https://img.shields.io/badge/Next.js-16+-black?style=for-the-badge&logo=next.js)
-![Banner](https://img.shields.io/badge/Tailwind_CSS-4.0-blue?style=for-the-badge&logo=tailwind-css)
-![Banner](https://img.shields.io/badge/TypeScript-Ready-blue?style=for-the-badge&logo=typescript)
+Personal portfolio and blog of **İhsan Baki Doğan**, built with Next.js 16, TypeScript, Tailwind CSS, MDX, and deployed on Cloudflare Workers.
 
-Kişisel portfolyo ve blog sitemin yepyeni, modern ve yüksek performanslı versiyonu. Bu proje, "v1" olarak adlandırılan eski Nuxt tabanlı sürümün üzerine inşa edilmiş, tam donanımlı bir **Next.js 16** uygulamasıdır.
+## Stack
 
-## 🚀 Öne Çıkan Özellikler
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4, Magic UI
+- **Content:** Content Collections (MDX)
+- **Deployment:** Cloudflare Workers (`@opennextjs/cloudflare`)
 
-- **Modern Stack:** Next.js 16 (App Router), TypeScript ve Tailwind CSS 4.0.
-- **Dinamik Blog:** Markdown tabanlı, SEO uyumlu ve "Vibecoder" estetiğine sahip blog sistemi.
-- **Müzik Kutusu:** Last.fm API entegrasyonu ile gerçek zamanlı "Şu an dinleniyor" ve haftalık favori sanatçılar.
-- **GitHub & NPM:** API üzerinden çekilen canlı repo yıldız sayıları ve paket indirme istatistikleri.
-- **Premium Tasarım:** Cam morfolojisi (glassmorphism), ipeksi (silk) arka plan animasyonları ve kusursuz mobil uyumluluk.
+## Getting Started
 
-## 📁 Proje Yapısı
-
-```bash
-├── src/
-│   ├── app/            # Next.js App Router (Sayfalar ve API rotaları)
-│   ├── components/     # Yeniden kullanılabilir React bileşenleri
-│   ├── content/        # Markdown (.md) blog yazıları
-│   └── lib/            # Yardımcı fonksiyonlar ve servisler
-├── public/             # Statik varlıklar (İkonlar, GIF'ler, resimler)
-└── v1-legacy           # v1 sürümünün arşivlendiği dal (git checkout v1)
-```
-
-## 🛠 Kurulum
-
-1. Depoyu klonlayın:
 ```bash
 git clone https://github.com/ibidi/website.git
-```
-
-2. Bağımlılıkları yükleyin:
-```bash
+cd website
 npm install
-```
-
-3. `.env.local` dosyasını oluşturun ve gerekli anahtarları ekleyin:
-```env
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-LASTFM_API_KEY=your_api_key_here
-```
-
-4. Geliştirme sunucusunu başlatın:
-```bash
 npm run dev
 ```
 
-## 📜 Versiyon Geçmişi
+No environment variables are required for local development.
 
-- **v2 (Güncel):** Next.js 16 ile tamamen sıfırdan yazıldı. Modern UI/UX ve gelişmiş performans.
-- **v1 (Legacy):** Nuxt.js ve Vue tabanlı eski sürüm. Gelişim sürecini görmek için `git checkout v1` komutu ile inceleyebilirsiniz.
+## Deployment
 
-## 📫 İletişim
+```bash
+npm run deploy
+```
 
-- **Web:** [ihsanbakidogan.com](https://ihsanbakidogan.com)
-- **LinkedIn:** [ibidi](https://linkedin.com/in/ibidi)
-- **Instagram:** [ihsanbakidogann](https://instagram.com/ihsanbakidogann)
-- **E-posta:** [ihsanbakidogann@gmail.com](mailto:ihsanbakidogann@gmail.com)
+## Versions
 
----
-Made with ❤️ by [ihsanbakidogan](https://github.com/ibidi)
+- **v3 (Current):** Minimal portfolio & MDX blog on Cloudflare Workers
+- **v2 / v2.1:** Previous Next.js 16 portfolio & API-driven build (`git checkout v2.1`)
+- **v1:** Legacy Nuxt.js & Vue version (`git checkout v1`)
+
+## Links
+
+- **Website:** [ibidi.dev](https://ibidi.dev)
+- **GitHub:** [github.com/ibidi](https://github.com/ibidi)
+- **LinkedIn:** [linkedin.com/in/ibidi](https://linkedin.com/in/ibidi)
+- **X:** [x.com/ihsanbakidogan](https://x.com/ihsanbakidogan)
+- **Email:** [ihsanbakidogann@gmail.com](mailto:ihsanbakidogann@gmail.com)
