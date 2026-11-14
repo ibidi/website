@@ -1,545 +1,152 @@
-import {
-  ProfileCard,
-  ProjectCard,
-  ToolCard,
-  PostCard,
-  ContactSection,
-  ExperienceList,
-  LanguageIcon,
-  Silk,
-} from "@/components";
-import Image from "next/image";
-import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap, Star, GitFork } from "lucide-react";
-import { getAllPosts } from "@/lib/blog";
-import { getGitHubProjects } from "@/lib/github";
-import { getNpmPackages } from "@/lib/npm";
+/* eslint-disable @next/next/no-img-element */
+import BlurFade from "@/components/magicui/blur-fade";
+import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DATA } from "@/data/resume";
+import Link from "next/link";
+import Markdown from "react-markdown";
+import ContactSection from "@/components/section/contact-section";
+import HackathonsSection from "@/components/section/hackathons-section";
+import ProjectsSection from "@/components/section/projects-section";
+import WorkSection from "@/components/section/work-section";
+import { ArrowUpRight } from "lucide-react";
 
-// Format functions
-function formatCount(count: number): string {
-  if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M`;
-  if (count >= 1000) return `${(count / 1000).toFixed(1)}K`;
-  return count.toString();
-}
+const BLUR_FADE_DELAY = 0.04;
 
-const quickLinks = [
-  {
-    icon: Sparkles,
-    title: "TRCS Topluluk — tahmin ligi ve mini oyunlar.",
-    href: "https://trcstopluluk.com",
-  },
-  {
-    icon: Link2,
-    title: "LinkedIn'de Paylaştığım Teknik Yazılar ve Haberler",
-    href: "https://linkedin.com/in/ibidi",
-  },
-  {
-    icon: Link2,
-    title: "En İyi AI Tool Manus",
-    href: "https://manus.im/invitation/ZCONB4PLFU6JN",
-  },
-];
-
-const experiences = [
-  {
-    _id: "7",
-    company: "Satisla",
-    role: "Founder / Full Stack Developer",
-    period: "2026-Present",
-    logo: "/satisla-logo.png",
-    present: true,
-  },
-  {
-    _id: "1",
-    company: "Uğur Döküm",
-    role: "IT Specialist",
-    period: "2025-Present",
-    logo: "/ugurdokum.jpeg",
-    present: true,
-  },
-  {
-    _id: "2",
-    company: "EduDekor",
-    role: "Full Stack Developer",
-    period: "2022-2026",
-    logo: "/edudekor.jpeg",
-  },
-  {
-    _id: "3",
-    company: "Hayati Kodla",
-    role: "Full Stack Developer / Operation Manager",
-    period: "2024-2026",
-    logo: "/hayatikodla.png",
-  },
-  {
-    _id: "4",
-    company: "Demirayak Yazılım",
-    role: "Full Stack Developer / Co-Founder",
-    period: "2019-2025",
-    logo: "/dy.png",
-  },
-  {
-    _id: "5",
-    company: "ASEDE",
-    role: "Full Stack Developer",
-    period: "2025-2025ana",
-    logo: "/asede.png",
-  },
-  {
-    _id: "6",
-    company: "Oguzkaan Koleji",
-    role: "Information Technology Teacher / IT Specialist",
-    period: "2022-2024",
-    logo: "/oguzkaan-koleji.png",
-  },
-];
-
-const education = [
-  {
-    _id: "1",
-    school: "Istanbul Gelisim University",
-    degree: "Computer Programming",
-    period: "2019-2021",
-    logo: "/gelisim.png",
-  },
-  {
-    _id: "2",
-    school: "Anadolu University",
-    degree: "Web Design and Development",
-    period: "2023-2025",
-    logo: "/anadolu.png",
-  },
-  {
-    _id: "3",
-    school: "Istanbul University",
-    degree: "Medical Documentation and Secretarial Services",
-    period: "2022-2024",
-    logo: "/istanbul-university.png",
-  },
-];
-
-const npmPackages = [
-  {
-    _id: "1",
-    name: "borsa-api",
-    description: "Turkish Stock Market (BIST) API wrapper with CLI support - Delayed data for educational use only",
-    downloads: 24,
-    version: "1.2.0",
-  },
-  {
-    _id: "2",
-    name: "schengen-randevu-checker",
-    description: "Modern TypeScript library for checking Schengen visa appointment availability across 18+ countries",
-    downloads: 10,
-    version: "2.2.2",
-  },
-  {
-    _id: "3",
-    name: "quick-next",
-    description: "Quick and customizable Next.js project scaffolding CLI tool with Turkish support",
-    downloads: 4,
-    version: "1.1.0",
-  },
-  {
-    _id: "4",
-    name: "nova-native-ui",
-    description: "A modern, customizable, and accessible React Native UI component library",
-    downloads: 0,
-    version: "0.2.0",
-  },
-];
-
-const githubProjects = [
-  {
-    _id: "1",
-    name: "borsa-api",
-    description: "Borsa İstanbul (BIST) verileri için geliştirilmiş yüksek performanslı API wrapper ve CLI aracı.",
-    stars: 12,
-    forks: 2,
-    language: "TypeScript",
-  },
-  {
-    _id: "3",
-    name: "schengen-randevu-checker",
-    description: "Vize randevu sayfalarını 7/24 kontrol eden ve boş slotları anında bildiren otomasyon sistemi.",
-    stars: 28,
-    forks: 5,
-    language: "TypeScript",
-  },
-  {
-    _id: "4",
-    name: "social-media-downloader",
-    description: "X, YouTube ve Instagram platformlarından tek tıkla medya indirmeyi sağlayan tarayıcı eklentisi.",
-    stars: 8,
-    forks: 3,
-    language: "JavaScript",
-  },
-];
-
-const sidebarProjects = [
-  {
-    title: "TRCS Topluluk",
-    description: "Tahmin ligi ve mini oyunlar platformu.",
-    year: 2025,
-    link: "https://trcstopluluk.com",
-  },
-  {
-    title: "Borsa API",
-    description: "BIST verileri için TypeScript tabanlı API istemcisi.",
-    year: 2024,
-    link: "https://github.com/ibidi/borsa-api",
-  },
-];
-
-const defaultServices = [
-  {
-    _id: "1",
-    title: "Vibecoding Nasıl Yapılır?",
-    description: "\"Vibecoding tam olarak ne demek?\"",
-    duration: "30m",
-    price: 99,
-    link: "#",
-  },
-  {
-    _id: "2",
-    title: "Benimle Birlikte Vibecode",
-    description: "\"Projeni birlikte geliştirelim\"",
-    duration: "120m",
-    price: 199,
-    link: "#",
-  },
-];
-
-export default async function Home() {
-  // Fetch dynamic data from our API routes
-  const [githubRepos, npmPackagesData, blogPosts] = await Promise.all([
-    getGitHubProjects(),
-    getNpmPackages(),
-    getAllPosts(),
-  ]);
-
-  // GitHub repos: dynamic or fallback
-  const dynamicProjects = Array.isArray(githubRepos) && githubRepos.length > 0 ? githubRepos : [];
-
-  // Start with GitHub repos sorted by stars, or fallback to our curated list
-  const allProjects = dynamicProjects.length > 0
-    ? [...dynamicProjects].sort((a: any, b: any) => b.stars - a.stars)
-    : githubProjects;
-
-  // Projects to display (first 6) or all pinned + some extras
-  const visibleProjects = allProjects.slice(0, 6);
-  const hasMoreProjects = allProjects.length > 6;
-
-  // NPM packages: dynamic or fallback
-  const dynamicPackages = Array.isArray(npmPackagesData) && npmPackagesData.length > 0 ? npmPackagesData : [];
-  const packages = dynamicPackages.length > 0 ? dynamicPackages : npmPackages;
-
+export default function Page() {
   return (
-    <main className="min-h-screen bg-[#050505] relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "İhsan Baki Doğan",
-            "alternateName": "ibidi",
-            "url": "https://ibidi.dev",
-            "image": "https://ibidi.dev/og-image.png",
-            "sameAs": [
-              "https://github.com/ibidi",
-              "https://linkedin.com/in/ibidi",
-              "https://x.com/ihsanbakidogan",
-              "https://instagram.com/ihsanbakidogann",
-              "https://youtube.com/@ihsanbakidogan"
-            ],
-            "jobTitle": "Full Stack Web Developer",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Uğur Döküm"
-            },
-            "alumniOf": [
-              {
-                "@type": "CollegeOrUniversity",
-                "name": "Istanbul Gelisim University"
-              },
-              {
-                "@type": "CollegeOrUniversity",
-                "name": "Anadolu University"
-              }
-            ],
-            "description": "Full Stack Web Developer specialized in Node.js, TypeScript, React and Vue. Creating modern, high-performance web experiences.",
-            "knowsAbout": ["Web Development", "TypeScript", "Node.js", "React.js", "Vue.js", "Software Architecture"]
-          })
-        }}
-      />
-      {/* Silk Background */}
-      <div className="fixed inset-0 z-0" style={{ opacity: 0.6 }}>
-        <Silk
-          speed={1}
-          scale={1}
-          color="#7B7481"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Mobil: ProfileCard üstte, masaüstü: solda */}
-          <div className="lg:col-span-4 order-1 lg:order-1">
-            <ProfileCard
-              name="İhsan Baki Doğan"
-              title="Full Stack Web Developer"
-              bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-              sidebarProjects={sidebarProjects}
-            />
-          </div>
-
-          <div className="lg:col-span-8 space-y-16 order-2 lg:order-2">
-            {/* Quick Links */}
-            <section>
-              <div className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    className="group flex items-center gap-3 p-4 premium-card card-hover"
-                  >
-                    <link.icon className="w-5 h-5 text-neutral-400" />
-                    <span className="flex-1 text-white text-sm font-medium">
-                      {link.title}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <ExperienceList experiences={experiences} />
-
-                <div>
-                  <div className="flex items-center justify-between mb-6 h-8">
-                    <h2 className="section-title mb-0 flex items-center gap-2">
-                      <GraduationCap className="w-4 h-4" />
-                      Eğitim
-                    </h2>
-                  </div>
-                  <div className="space-y-4">
-                    {education.map((edu) => (
-                      <div
-                        key={edu._id}
-                        className="flex items-stretch gap-4 p-4 premium-card min-h-[120px]"
-                      >
-                        <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0 self-start">
-                          {edu.logo.startsWith("/") ? (
-                            <Image
-                              src={edu.logo}
-                              alt={edu.school}
-                              width={48}
-                              height={48}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <span className="text-white font-bold text-sm">{edu.logo}</span>
-                          )}
-                        </div>
-                        <div className="flex-1 flex flex-col">
-                          <h3 className="text-white font-medium text-sm sm:text-base leading-tight">{edu.school}</h3>
-                          <p className="text-neutral-400 text-sm mt-1 leading-snug">{edu.degree}</p>
-                          <p className="text-neutral-500 text-xs mt-auto pt-1.5">{edu.period}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* NPM Packages */}
-            <section>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="section-title mb-0">NPM Packages</h2>
-                <a
-                  href="https://www.npmjs.com/~ihsanbakidogan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1 px-3 py-1.5 rounded-full border border-[#262626]"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.335v5.331h-2.67v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z" />
-                  </svg>
-                  NPM Profili
-                </a>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {packages.map((pkg: any) => (
-                  <a
-                    key={pkg._id || pkg.name}
-                    href={pkg.links?.npm || `https://www.npmjs.com/package/${pkg.name}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block p-5 premium-card card-hover"
-                  >
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-8 h-8 rounded bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden">
-                        <Image
-                          src="https://cdn.simpleicons.org/npm/CB3837"
-                          alt="NPM"
-                          width={20}
-                          height={20}
-                          className="w-5 h-5 object-contain"
-                          unoptimized
-                        />
-                      </div>
-                      <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
-                        {pkg.name}
-                      </h3>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4 line-clamp-2">
-                      {pkg.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-neutral-500 text-xs">
-                      <span className="flex items-center gap-1">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        {formatCount(pkg.downloads)}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        {pkg.version}
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            {/* Featured Projects */}
-            <section>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="section-title mb-0">Öne Çıkan Projeler</h2>
-                <a
-                  href="https://github.com/ibidi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1 px-3 py-1.5 rounded-full border border-[#262626]"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.003-.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub Profili
-                </a>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {visibleProjects.map((project: any) => (
-                  <a
-                    key={project._id || project.id}
-                    href={project.html_url || project.link || `https://github.com/ibidi/${project.name}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block p-5 premium-card card-hover"
-                  >
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-8 h-8 rounded bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden">
-                        <Image
-                          src="https://cdn.simpleicons.org/github/FFFFFF"
-                          alt="GitHub"
-                          width={20}
-                          height={20}
-                          className="w-5 h-5 object-contain"
-                          unoptimized
-                        />
-                      </div>
-                      <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors">
-                        {project.name}
-                      </h3>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-neutral-500 text-xs">
-                      <span className="flex items-center gap-1">
-                        <Star className="w-4 h-4" />
-                        {project.stars}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <GitFork className="w-4 h-4" />
-                        {project.forks}
-                      </span>
-                      {project.language && (
-                        <span className="flex items-center gap-1.5 ml-auto">
-                          <div className={`w-2 h-2 rounded-full ${
-                            project.language === 'TypeScript' ? 'bg-[#3178c6]' : 
-                            project.language === 'Next.js' ? 'bg-white' : 
-                            'bg-neutral-500'
-                          }`} />
-                          {project.language}
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                ))}
-              </div>
-              {hasMoreProjects && (
-                <div className="mt-6 text-center">
-                  <a
-                    href="https://github.com/ibidi?tab=repositories"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/[0.03] border border-[#262626] text-sm text-neutral-400 hover:text-white hover:border-neutral-600 transition-all"
-                  >
-                    Hepsini Gör ({allProjects.length} repo)
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
-              )}
-            </section>
-
-
-            {/* Last.fm mobil kutusu devre dışı bırakıldı; bu alan için manuel proje girişi kullanılıyor */}
-
-            {/* Blog Posts */}
-            <section>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="section-title mb-0">Son Yazılar</h2>
-                <a
-                  href="/blog"
-                  className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1 px-4 py-1.5 rounded-full border border-white/5 bg-white/5"
-                >
-                  Tüm Yazıları Gör
-                </a>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {blogPosts.slice(0, 4).map((post: any) => (
-                  <PostCard
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    category={post.category}
-                    slug={post.slug}
-                    date={post.date}
-                  />
-                ))}
-                {blogPosts.length === 0 && (
-                  <div className="col-span-full p-8 premium-card text-center text-neutral-500 italic">
-                    Henüz yazı bulunamadı.
-                  </div>
-                )}
-              </div>
-            </section>
-
-            {/* Contact */}
-            <section>
-              <ContactSection />
-            </section>
+    <main className="min-h-dvh flex flex-col gap-14 relative">
+      <section id="hero">
+        <div className="mx-auto w-full max-w-2xl space-y-8">
+          <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
+            <div className="gap-2 flex flex-col order-2 md:order-1">
+              <BlurFadeText
+                delay={BLUR_FADE_DELAY}
+                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
+                yOffset={8}
+                text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+              />
+              <BlurFadeText
+                className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
+                delay={BLUR_FADE_DELAY}
+                text={DATA.description}
+              />
+            </div>
+            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                <AvatarFallback>{DATA.initials}</AvatarFallback>
+              </Avatar>
+            </BlurFade>
           </div>
         </div>
-      </div>
+      </section>
+      <section id="about">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <h2 className="text-xl font-bold">About</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 4}>
+            <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+              <Markdown>
+                {DATA.summary}
+              </Markdown>
+            </div>
+          </BlurFade>
+        </div>
+      </section>
+      <section id="work">
+        <div className="flex min-h-0 flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Work Experience</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+            <WorkSection />
+          </BlurFade>
+        </div>
+      </section>
+      <section id="education">
+        <div className="flex min-h-0 flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <h2 className="text-xl font-bold">Education</h2>
+          </BlurFade>
+          <div className="flex flex-col gap-8">
+            {DATA.education.map((education, index) => (
+              <BlurFade
+                key={education.school}
+                delay={BLUR_FADE_DELAY * 8 + index * 0.05}
+              >
+                <Link
+                  href={education.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-x-3 justify-between group"
+                >
+                  <div className="flex items-center gap-x-3 flex-1 min-w-0">
+                    {education.logoUrl ? (
+                      <img
+                        src={education.logoUrl}
+                        alt={education.school}
+                        className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+                      />
+                    ) : (
+                      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+                    )}
+                    <div className="flex-1 min-w-0 flex flex-col gap-0.5">
+                      <div className="font-semibold leading-none flex items-center gap-2">
+                        {education.school}
+                        <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" aria-hidden />
+                      </div>
+                      <div className="font-sans text-sm text-muted-foreground">
+                        {education.degree}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground text-right flex-none">
+                    <span>
+                      {education.start} - {education.end}
+                    </span>
+                  </div>
+                </Link>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="skills">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+            <h2 className="text-xl font-bold">Skills</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-2">
+            {DATA.skills.map((skill, id) => (
+              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
+                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
+                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="projects">
+        <BlurFade delay={BLUR_FADE_DELAY * 11}>
+          <ProjectsSection />
+        </BlurFade>
+      </section>
+      {DATA.hackathons.length > 0 && (
+        <section id="hackathons">
+          <BlurFade delay={BLUR_FADE_DELAY * 13}>
+            <HackathonsSection />
+          </BlurFade>
+        </section>
+      )}
+      <section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <ContactSection />
+        </BlurFade>
+      </section>
     </main>
   );
 }

@@ -1,123 +1,141 @@
-import { Silk, ProfileCard, PostCard } from "@/components";
-import { ArrowLeft, BookOpen, Search, Sparkles } from "lucide-react";
-import Link from 'next/link';
-import { getAllPosts } from "@/lib/blog";
-import { Metadata } from 'next';
+import BlurFade from "@/components/magicui/blur-fade";
+import { allPosts } from "content-collections";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { paginate, normalizePage } from "@/lib/pagination";
+import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Blog | İhsan Baki Doğan",
-    description: "Yazılım, teknoloji ve kişisel deneyimlerim üzerine yazdığım güncel blog yazıları.",
+  title: "Blog",
+  description: "Thoughts on software development, life, and more.",
+  openGraph: {
+    title: "Blog",
+    description: "Thoughts on software development, life, and more.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog",
+    description: "Thoughts on software development, life, and more.",
+  },
 };
 
-const sidebarProjects = [
-    {
-        title: "Proje 1",
-        description: "Blog tarafinda da gostermek istedigin proje kisa aciklamasi.",
-        year: 2026,
-        link: "https://github.com/ibidi",
-    },
-    {
-        title: "Proje 2",
-        description: "Sol alanda profil altinda gorunecek ikinci proje karti.",
-        year: 2025,
-        link: "https://github.com/ibidi",
-    },
-];
+const PAGE_SIZE = 5;
+const BLUR_FADE_DELAY = 0.04;
 
-export default async function BlogListPage() {
-    const posts = await getAllPosts();
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
 
-    return (
-        <main className="min-h-screen bg-[#050505] relative">
-            {/* Silk Background */}
-            <div className="fixed inset-0 z-0" style={{ opacity: 0.6 }}>
-                <Silk
-                    speed={1}
-                    scale={1}
-                    color="#7B7481"
-                    noiseIntensity={1.5}
-                    rotation={0}
-                />
+  const posts = allPosts;
+  const sortedPosts = [...posts].sort((a, b) => {
+    if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+      return -1;
+    }
+    return 1;
+  });
+
+  const totalPages = Math.ceil(sortedPosts.length / PAGE_SIZE);
+  const currentPage = normalizePage(pageParam, totalPages);
+  const { items: paginatedPosts, pagination } = paginate(sortedPosts, {
+    page: currentPage,
+    pageSize: PAGE_SIZE,
+  });
+
+  return (
+    <section id="blog">
+      <BlurFade delay={BLUR_FADE_DELAY}>
+        <h1 className="text-2xl font-semibold tracking-tight mb-2">Blog <span className="ml-1 bg-card border border-border rounded-md px-2 py-1 text-muted-foreground text-sm">{sortedPosts.length} posts</span></h1>
+        <p className="text-sm text-muted-foreground mb-8">
+          My thoughts on software development, life, and more.
+        </p>
+      </BlurFade>
+
+      {paginatedPosts.length > 0 ? (
+        <>
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
+            <div className="flex flex-col gap-5">
+              {paginatedPosts.map((post, id) => {
+                const slug = post._meta.path.replace(/\.mdx$/, "");
+                const indexNumber = (pagination.page - 1) * PAGE_SIZE + id + 1;
+                return (
+                  <BlurFade delay={BLUR_FADE_DELAY * 3 + id * 0.05} key={slug}>
+                    <Link
+                      className="flex items-start gap-x-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      href={`/blog/${slug}`}
+                    >
+                      <span className="text-xs font-mono tabular-nums font-medium mt-[5px]">
+                        {String(indexNumber).padStart(2, "0")}.
+                      </span>
+                      <div className="flex flex-col gap-y-2 flex-1">
+                        <p className="tracking-tight text-lg font-medium">
+                          <span className="group-hover:text-foreground transition-colors">
+                            {post.title}
+                            <ChevronRight
+                              className="ml-1 inline-block size-4 stroke-3 text-muted-foreground opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"
+                              aria-hidden
+                            />
+                          </span>
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {post.publishedAt}
+                        </p>
+                      </div>
+                    </Link>
+                  </BlurFade>
+                );
+              })}
             </div>
+          </BlurFade>
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                    {/* Sidebar */}
-                    <div className="lg:col-span-4 space-y-8">
-                        <ProfileCard
-                            name="İhsan Baki Doğan"
-                            title="Full Stack Web Developer"
-                            bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-                            sidebarProjects={sidebarProjects}
-                        />
-
-                    </div>
-
-                    {/* Main Content */}
-                    <div className="lg:col-span-8 space-y-10">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-                            <Link
-                                href="/"
-                                className="premium-card flex h-full min-h-[92px] items-center gap-2 px-4 sm:px-5 py-3 text-neutral-400 hover:text-white hover:border-white/15 transition-all uppercase text-[11px] font-bold tracking-widest whitespace-nowrap"
-                            >
-                                <ArrowLeft className="w-4 h-4" />
-                                Anasayfaya Dön
-                            </Link>
-    
-                            {/* Newsletter or Search Mockup */}
-                            <div className="premium-card h-full min-h-[92px] p-4 sm:p-5 space-y-3">
-                                <h3 className="text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                                    <Search className="w-3.5 h-3.5 text-blue-400" />
-                                    Yazılarda Ara
-                                </h3>
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        placeholder="Hangi konuyu merak ediyorsun?"
-                                        className="w-full bg-neutral-900 border border-white/5 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500/50 transition-all"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <header className="space-y-4">
-                            <div className="flex items-center gap-2 text-blue-400 font-bold text-xs uppercase tracking-[0.2em]">
-                                <Sparkles className="w-4 h-4" />
-                                Personal Archive
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter">
-                                Blog Yazıları
-                            </h1>
-                            <p className="text-neutral-400 text-lg max-w-2xl leading-relaxed">
-                                Teknoloji, yazılım mimarisi ve kişisel deneyimlerim üzerine yazdığım tüm içerikler burada.
-                                Sürekli güncellenen bir bilgi kütüphanesi.
-                            </p>
-                        </header>
-
-                        <div className="w-full h-px bg-gradient-to-r from-blue-500/50 via-white/5 to-transparent" />
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {posts.map((post: any) => (
-                                <PostCard
-                                    key={post.slug}
-                                    title={post.title}
-                                    description={post.description}
-                                    category={post.category}
-                                    slug={post.slug}
-                                    date={post.date}
-                                />
-                            ))}
-
-                            {posts.length === 0 && (
-                                <div className="col-span-full py-20 text-center space-y-4 premium-card">
-                                    <BookOpen className="w-12 h-12 text-neutral-700 mx-auto" />
-                                    <p className="text-neutral-500 italic">Henüz bir yazı paylaşılmamış.</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
+          {/* Pagination Controls */}
+          {pagination.totalPages > 1 && (
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <div className="flex gap-3 flex-row items-center justify-between mt-8">
+                <div className="text-sm text-muted-foreground">
+                  Page {pagination.page} of {pagination.totalPages}
                 </div>
-            </div>
-        </main>
-    );
+                <div className="flex gap-2 sm:justify-end">
+                  {pagination.hasPreviousPage ? (
+                    <Link
+                      href={`/blog?page=${pagination.page - 1}`}
+                      className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      Previous
+                    </Link>
+                  ) : (
+                    <span className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg opacity-50 cursor-not-allowed">
+                      Previous
+                    </span>
+                  )}
+                  {pagination.hasNextPage ? (
+                    <Link
+                      href={`/blog?page=${pagination.page + 1}`}
+                      className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      Next
+                    </Link>
+                  ) : (
+                    <span className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg opacity-50 cursor-not-allowed">
+                      Next
+                    </span>
+                  )}
+                </div>
+              </div>
+            </BlurFade>
+          )}
+        </>
+      ) : (
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <div className="flex flex-col items-center justify-center py-12 px-4 border border-border rounded-xl">
+            <p className="text-muted-foreground text-center">
+              No blog posts yet. Check back soon!
+            </p>
+          </div>
+        </BlurFade>
+      )}
+    </section>
+  );
 }

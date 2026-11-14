@@ -1,32 +1,29 @@
-import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/blog'
+import { MetadataRoute } from "next";
+import { allPosts } from "content-collections";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://ibidi.dev'
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://ibidi.dev";
 
-    // Get all blog posts
-    const posts = await getAllPosts()
+  const postEntries: MetadataRoute.Sitemap = allPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post._meta.path.replace(/\.mdx$/, "")}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
-    const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: 'monthly',
-        priority: 0.7,
-    }))
-
-    return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/blog`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        ...postEntries,
-    ]
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...postEntries,
+  ];
 }

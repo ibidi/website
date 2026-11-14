@@ -1,160 +1,193 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { marked } from 'marked';
-import { notFound } from 'next/navigation';
-import { Silk, ProfileCard, Comments } from "@/components";
-import { ArrowLeft, Calendar, Tag, Clock, Share2 } from "lucide-react";
-import Link from 'next/link';
+import { allPosts } from "content-collections";
+import { formatDate } from "@/lib/utils";
+import { DATA } from "@/data/resume";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { MDXContent } from "@content-collections/mdx/react";
+import { mdxComponents } from "@/mdx-components";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { getAllPosts } from '@/lib/blog';
-import { Metadata, ResolvingMetadata } from 'next';
-
-type Props = {
-    params: Promise<{ slug: string }>;
-};
-
-export const dynamicParams = false;
+function getSortedPosts() {
+  return [...allPosts].sort((a, b) => {
+    if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+      return -1;
+    }
+    return 1;
+  });
+}
 
 export async function generateStaticParams() {
-    const posts = await getAllPosts();
-    return posts.map((post) => ({ slug: post.slug }));
+  return allPosts.map((post) => ({
+    slug: post._meta.path.replace(/\.mdx$/, ""),
+  }));
 }
 
-export async function generateMetadata(
-    { params }: Props,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
-    const { slug } = await params;
-    const posts = await getAllPosts();
-    const post = posts.find((p) => p.slug === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    slug: string;
+  }>;
+}): Promise<Metadata | undefined> {
+  const { slug } = await params;
+  const post = allPosts.find((p) => p._meta.path.replace(/\.mdx$/, "") === slug);
 
-    if (!post) {
-        return {
-            title: 'Post Not Found',
-        };
-    }
+  if (!post) {
+    return undefined;
+  }
 
-    return {
-        title: post.title,
-        description: post.description,
-        openGraph: {
-            title: post.title,
-            description: post.description,
-            type: 'article',
-            publishedTime: post.date,
-            authors: ['İhsan Baki Doğan'],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: post.title,
-            description: post.description,
-        },
-    };
+  let {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `${DATA.url}/blog/${slug}`,
+      ...(image && {
+        images: [
+          {
+            url: `${DATA.url}${image}`,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(image && {
+        images: [`${DATA.url}${image}`],
+      }),
+    },
+  };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{
+    slug: string;
+  }>;
+}) {
+  const { slug } = await params;
+  const sortedPosts = getSortedPosts();
+  const currentIndex = sortedPosts.findIndex(
+    (p) => p._meta.path.replace(/\.mdx$/, "") === slug
+  );
+  const post = sortedPosts[currentIndex];
 
-    const { slug } = await params;
-    const filePath = path.join(process.cwd(), 'src/content/blog', `${slug}.md`);
+  if (!post) {
+    notFound();
+  }
 
-    if (!fs.existsSync(filePath)) {
-        notFound();
-    }
+  const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContent);
-    const htmlContent = marked(content);
+  const getSlug = (post: (typeof sortedPosts)[0]) =>
+    post._meta.path.replace(/\.mdx$/, "");
 
-    return (
-        <main className="min-h-screen bg-[#050505] relative">
-            {/* Silk Background */}
-            <div className="fixed inset-0 z-0" style={{ opacity: 0.3 }}>
-                <Silk
-                    speed={0.5}
-                    scale={1.2}
-                    color="#7B7481"
-                    noiseIntensity={1}
-                    rotation={0}
-                />
-            </div>
+  const jsonLdContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    description: post.summary,
+    image: post.image
+      ? `${DATA.url}${post.image}`
+      : `${DATA.url}/blog/${slug}/opengraph-image`,
+    url: `${DATA.url}/blog/${slug}`,
+    author: {
+      "@type": "Person",
+      name: DATA.name,
+    },
+  }).replace(/</g, "\\u003c");
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                    {/* Sidebar */}
-                    <div className="lg:col-span-4">
-                        <div className="sticky top-12 space-y-8">
-                            <ProfileCard
-                                name="İhsan Baki Doğan"
-                                title="Full Stack Web Developer"
-                                bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-                            />
-                        </div>
-                    </div>
-                    {/* Main Content */}
-                    <div className="lg:col-span-8">
-                        <div className="mb-6">
-                            <Link
-                                href="/"
-                                className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors text-sm"
-                            >
-                                <ArrowLeft className="w-4 h-4" />
-                                Tüm Kaynaklar
-                            </Link>
-                        </div>
+  return (
+    <section id="blog">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: jsonLdContent,
+        }}
+      />
+      <div className="flex justify-start gap-4 items-center">
+        <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group" aria-label="Back to Blog">
+          <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
+          Back to Blog
+        </Link>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="title font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
+          {post.title}
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          {formatDate(post.publishedAt)}
+        </p>
+      </div>
+      <div className="my-6 flex w-full items-center">
+        <div
+          className="flex-1 h-px bg-border"
+          style={{
+            maskImage:
+              "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
+          }}
+        />
+      </div>
+      <article className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        <MDXContent code={post.mdx} components={mdxComponents} />
+      </article>
 
-                        <article className="premium-card p-8 md:p-12">
-                            <script
-                                type="application/ld+json"
-                                dangerouslySetInnerHTML={{
-                                    __html: JSON.stringify({
-                                        "@context": "https://schema.org",
-                                        "@type": "BlogPosting",
-                                        "headline": data.title,
-                                        "description": data.description,
-                                        "author": {
-                                            "@type": "Person",
-                                            "name": "İhsan Baki Doğan",
-                                            "url": "https://ibidi.dev"
-                                        },
-                                        "datePublished": data.date,
-                                        "image": "/og-image.png",
-                                    })
-                                }}
-                            />
-                            <header className="mb-10">
+      <nav className="mt-12 pt-8 max-w-2xl">
+        <div className="flex flex-col sm:flex-row justify-between gap-4">
+          {previousPost ? (
+            <Link
+              href={`/blog/${getSlug(previousPost)}`}
+              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors"
+            >
+              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <ChevronLeft className="size-3" />
+                Previous
+              </span>
+              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
+                {previousPost.title}
+              </span>
+            </Link>
+          ) : (
+            <div className="hidden sm:block flex-1" />
+          )}
 
-                                <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-                                    {data.title}
-                                </h1>
-                                {data.description && (
-                                    <p className="text-lg text-neutral-400 leading-relaxed font-medium">
-                                        {data.description}
-                                    </p>
-                                )}
-                            </header>
-
-                            {/* Content body */}
-                            <div
-                                className="prose prose-invert prose-neutral max-w-none 
-                prose-headings:text-white prose-headings:font-bold prose-headings:mb-4
-                prose-p:text-neutral-400 prose-p:leading-relaxed prose-p:text-base prose-p:mb-6
-                prose-strong:text-white prose-strong:font-bold
-                prose-ul:text-neutral-400 prose-ul:mb-6
-                prose-li:mb-2
-                prose-code:text-neutral-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                prose-pre:bg-[#0d0d0d] prose-pre:border prose-pre:border-white/5 prose-pre:rounded-xl
-                prose-blockquote:border-white/20 prose-blockquote:text-neutral-500
-                "
-                                dangerouslySetInnerHTML={{ __html: await htmlContent }}
-                            />
-
-                            {/* Yorumlar Bölümü */}
-                            <Comments title={data.title} id={slug} />
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+          {nextPost ? (
+            <Link
+              href={`/blog/${getSlug(nextPost)}`}
+              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors text-right"
+            >
+              <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
+                Next
+                <ChevronRight className="size-3" />
+              </span>
+              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
+                {nextPost.title}
+              </span>
+            </Link>
+          ) : (
+            <div className="hidden sm:block flex-1" />
+          )}
+        </div>
+      </nav>
+    </section>
+  );
 }
