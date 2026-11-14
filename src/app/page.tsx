@@ -11,6 +11,8 @@ import {
 import Image from "next/image";
 import { ArrowUpRight, Sparkles, Link2, Briefcase, GraduationCap, Star, GitFork } from "lucide-react";
 import { getAllPosts } from "@/lib/blog";
+import { getGitHubProjects } from "@/lib/github";
+import { getNpmPackages } from "@/lib/npm";
 
 // Format functions
 function formatCount(count: number): string {
@@ -19,35 +21,11 @@ function formatCount(count: number): string {
   return count.toString();
 }
 
-async function getGitHubRepos() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/github`, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return [];
-    return res.json();
-  } catch {
-    return [];
-  }
-}
-
-async function getNPMPackages() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/npm`, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return [];
-    return res.json();
-  } catch {
-    return [];
-  }
-}
-
 const quickLinks = [
   {
     icon: Sparkles,
-    title: "Tüm BBL Esports oyunları tek bir sitede.",
-    href: "https://bblife.tr",
+    title: "TRCS Topluluk — tahmin ligi ve mini oyunlar.",
+    href: "https://trcstopluluk.com",
   },
   {
     icon: Link2,
@@ -63,6 +41,14 @@ const quickLinks = [
 
 const experiences = [
   {
+    _id: "7",
+    company: "Satisla",
+    role: "Founder / Full Stack Developer",
+    period: "2026-Present",
+    logo: "/satisla-logo.png",
+    present: true,
+  },
+  {
     _id: "1",
     company: "Uğur Döküm",
     role: "IT Specialist",
@@ -74,17 +60,15 @@ const experiences = [
     _id: "2",
     company: "EduDekor",
     role: "Full Stack Developer",
-    period: "2022-Present",
+    period: "2022-2026",
     logo: "/edudekor.jpeg",
-    present: true,
   },
   {
     _id: "3",
     company: "Hayati Kodla",
     role: "Full Stack Developer / Operation Manager",
-    period: "2024-Present",
+    period: "2024-2026",
     logo: "/hayatikodla.png",
-    present: true,
   },
   {
     _id: "4",
@@ -167,14 +151,6 @@ const npmPackages = [
 const githubProjects = [
   {
     _id: "1",
-    name: "BBLife",
-    description: "BBL Esports taraftarları için oyunlar ve canlı maç takibi sunan kapsamlı topluluk platformu.",
-    stars: 45,
-    forks: 12,
-    language: "TypeScript",
-  },
-  {
-    _id: "2",
     name: "borsa-api",
     description: "Borsa İstanbul (BIST) verileri için geliştirilmiş yüksek performanslı API wrapper ve CLI aracı.",
     stars: 12,
@@ -201,10 +177,10 @@ const githubProjects = [
 
 const sidebarProjects = [
   {
-    title: "BBLife",
-    description: "BBL Esports topluluk platformu ve oyun ekosistemi.",
-    year: 2024,
-    link: "https://bblife.tr",
+    title: "TRCS Topluluk",
+    description: "Tahmin ligi ve mini oyunlar platformu.",
+    year: 2025,
+    link: "https://trcstopluluk.com",
   },
   {
     title: "Borsa API",
@@ -236,22 +212,22 @@ const defaultServices = [
 export default async function Home() {
   // Fetch dynamic data from our API routes
   const [githubRepos, npmPackagesData, blogPosts] = await Promise.all([
-    getGitHubRepos(),
-    getNPMPackages(),
+    getGitHubProjects(),
+    getNpmPackages(),
     getAllPosts(),
   ]);
 
   // GitHub repos: dynamic or fallback
   const dynamicProjects = Array.isArray(githubRepos) && githubRepos.length > 0 ? githubRepos : [];
-  
-  // Start with dynamic projects sorted by stars, or fallback to our curated list
-  const allProjects = dynamicProjects.length > 0 
+
+  // Start with GitHub repos sorted by stars, or fallback to our curated list
+  const allProjects = dynamicProjects.length > 0
     ? [...dynamicProjects].sort((a: any, b: any) => b.stars - a.stars)
     : githubProjects;
 
-  // Projects to display (first 4) or all pinned + some extras
-  const visibleProjects = allProjects.slice(0, 4);
-  const hasMoreProjects = allProjects.length > 4;
+  // Projects to display (first 6) or all pinned + some extras
+  const visibleProjects = allProjects.slice(0, 6);
+  const hasMoreProjects = allProjects.length > 6;
 
   // NPM packages: dynamic or fallback
   const dynamicPackages = Array.isArray(npmPackagesData) && npmPackagesData.length > 0 ? npmPackagesData : [];
@@ -267,8 +243,8 @@ export default async function Home() {
             "@type": "Person",
             "name": "İhsan Baki Doğan",
             "alternateName": "ibidi",
-            "url": "https://ihsanbakidogan.com",
-            "image": "https://ihsanbakidogan.com/og-image.png",
+            "url": "https://ibidi.dev",
+            "image": "https://ibidi.dev/og-image.png",
             "sameAs": [
               "https://github.com/ibidi",
               "https://linkedin.com/in/ibidi",
@@ -315,7 +291,6 @@ export default async function Home() {
               name="İhsan Baki Doğan"
               title="Full Stack Web Developer"
               bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-              showLastFm={false}
               sidebarProjects={sidebarProjects}
             />
           </div>
@@ -355,9 +330,9 @@ export default async function Home() {
                     {education.map((edu) => (
                       <div
                         key={edu._id}
-                        className="flex items-start gap-4 p-4 premium-card"
+                        className="flex items-stretch gap-4 p-4 premium-card min-h-[120px]"
                       >
-                        <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0 self-start">
                           {edu.logo.startsWith("/") ? (
                             <Image
                               src={edu.logo}
@@ -370,10 +345,10 @@ export default async function Home() {
                             <span className="text-white font-bold text-sm">{edu.logo}</span>
                           )}
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 flex flex-col">
                           <h3 className="text-white font-medium text-sm sm:text-base leading-tight">{edu.school}</h3>
                           <p className="text-neutral-400 text-sm mt-1 leading-snug">{edu.degree}</p>
-                          <p className="text-neutral-500 text-xs mt-1.5">{edu.period}</p>
+                          <p className="text-neutral-500 text-xs mt-auto pt-1.5">{edu.period}</p>
                         </div>
                       </div>
                     ))}

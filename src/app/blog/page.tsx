@@ -48,7 +48,6 @@ export default async function BlogListPage() {
                             name="İhsan Baki Doğan"
                             title="Full Stack Web Developer"
                             bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-                            showLastFm={false}
                             sidebarProjects={sidebarProjects}
                         />
 

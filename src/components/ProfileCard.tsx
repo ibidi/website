@@ -1,4 +1,3 @@
-import LastFmSection from "./LastFmSection";
 import { Instagram, Github } from "lucide-react";
 import Image from "next/image";
 
@@ -43,7 +42,6 @@ interface ProfileCardProps {
   title: string;
   bio: string;
   image?: string;
-  showLastFm?: boolean;
   sidebarProjects?: Array<{
     title: string;
     description: string;
@@ -57,7 +55,6 @@ export default function ProfileCard({
   title,
   bio,
   image,
-  showLastFm = true,
   sidebarProjects = [],
 }: ProfileCardProps) {
   const socialLinks = [
@@ -136,10 +133,6 @@ export default function ProfileCard({
                 </a>
               ))}
             </div>
-          </div>
-        ) : showLastFm ? (
-          <div className="mt-8">
-            <LastFmSection />
           </div>
         ) : null}
       </div>

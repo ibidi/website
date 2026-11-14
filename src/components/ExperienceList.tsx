@@ -37,9 +37,9 @@ export default function ExperienceList({ experiences }: { experiences: Experienc
                 {displayedExperiences.map((exp) => (
                     <div
                         key={exp._id}
-                        className="flex items-start gap-4 p-4 premium-card card-hover"
+                        className="flex items-stretch gap-4 p-4 premium-card card-hover min-h-[120px]"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center overflow-hidden shrink-0 self-start">
                             {exp.logo.startsWith("/") ? (
                                 <img
                                     src={exp.logo}
@@ -50,7 +50,7 @@ export default function ExperienceList({ experiences }: { experiences: Experienc
                                 <span className="text-white font-bold text-sm">{exp.logo}</span>
                             )}
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 flex flex-col">
                             <div className="flex items-center justify-between gap-2">
                                 <h3 className="text-white font-medium leading-tight text-sm sm:text-base">
                                     {exp.company}
@@ -62,7 +62,7 @@ export default function ExperienceList({ experiences }: { experiences: Experienc
                                 )}
                             </div>
                             <p className="text-neutral-400 text-xs sm:text-sm mt-1 leading-snug">{exp.role}</p>
-                            <p className="text-neutral-500 text-[10px] sm:text-xs mt-1.5">{exp.period}</p>
+                            <p className="text-neutral-500 text-[10px] sm:text-xs mt-auto pt-1.5">{exp.period}</p>
                         </div>
                     </div>
                 ))}

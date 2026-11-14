@@ -13,7 +13,7 @@ export default function Comments({ title, id }: CommentsProps) {
 
     const disqusShortname = 'mygear-1';
     const disqusConfig = {
-        url: `https://ihsanbakidogan.com${pathname}`,
+        url: `https://ibidi.dev${pathname}`,
         identifier: id || pathname,
         title: title || 'Blog Post',
         language: 'tr'

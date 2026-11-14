@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://ihsanbakidogan.com/sitemap.xml',
+        sitemap: 'https://ibidi.dev/sitemap.xml',
     }
 }

@@ -6,7 +6,5 @@ export { default as ServiceCard } from './ServiceCard';
 export { default as ContactSection } from './ContactSection';
 export { default as ExperienceList } from './ExperienceList';
 export { default as LanguageIcon } from './LanguageIcon';
-export { default as LastFmSection } from './LastFmSection';
 export { default as Silk } from './Silk';
 export { default as Comments } from './Comments';
-export { default as ChatWidget } from './ChatWidget';

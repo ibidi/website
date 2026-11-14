@@ -14,6 +14,13 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const posts = await getAllPosts();
+    return posts.map((post) => ({ slug: post.slug }));
+}
+
 export async function generateMetadata(
     { params }: Props,
     parent: ResolvingMetadata
@@ -81,7 +88,6 @@ export default async function BlogPostPage({ params }: Props) {
                                 name="İhsan Baki Doğan"
                                 title="Full Stack Web Developer"
                                 bio="Full Stack Web Developer - in ❤️ with Node.js, TypeScript, React.js and Vue.js - TR"
-                                showLastFm={false}
                             />
                         </div>
                     </div>
@@ -109,7 +115,7 @@ export default async function BlogPostPage({ params }: Props) {
                                         "author": {
                                             "@type": "Person",
                                             "name": "İhsan Baki Doğan",
-                                            "url": "https://ihsanbakidogan.com"
+                                            "url": "https://ibidi.dev"
                                         },
                                         "datePublished": data.date,
                                         "image": "/og-image.png",

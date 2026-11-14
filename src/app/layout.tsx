@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ChatWidget } from "@/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,14 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ihsanbakidogan.com"),
+  metadataBase: new URL("https://ibidi.dev"),
   title: {
     default: "İhsan Baki Doğan | Full Stack Developer",
     template: "%s | İhsan Baki Doğan"
   },
   description: "İhsan Baki Doğan (ibidi) - Senior Full Stack Web Developer. Node.js, TypeScript ve modern frontend teknolojileri (React, Vue, Next.js) ile ölçeklenebilir dijital çözümler üretiyorum.",
   keywords: ["İhsan Baki Doğan", "ibidi", "Full Stack Developer", "Software Engineer", "Yazılım Mühendisi", "Node.js Uzmanı", "React Developer", "TypeScript", "Next.js Portfolio", "Web Geliştirme"],
-  authors: [{ name: "İhsan Baki Doğan", url: "https://ihsanbakidogan.com" }],
+  authors: [{ name: "İhsan Baki Doğan", url: "https://ibidi.dev" }],
   creator: "İhsan Baki Doğan",
   icons: {
     icon: "/icon.png",
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://ihsanbakidogan.com",
+    url: "https://ibidi.dev",
     title: "İhsan Baki Doğan | Full Stack Developer",
     description: "Modern web teknolojileri ile dijital deneyimler inşa ediyorum.",
     siteName: "İhsan Baki Doğan",
@@ -73,7 +72,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
         {children}
-        <ChatWidget />
       </body>
     </html>
   );
