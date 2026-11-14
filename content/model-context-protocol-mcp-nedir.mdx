@@ -1,0 +1,45 @@
+---
+title: "Model Context Protocol (MCP) Nedir? AI Agent Mimarisi Rehberi"
+publishedAt: "2026-11-15"
+author: "İhsan Baki Doğan"
+summary: "Model Context Protocol (MCP) nedir, nasıl çalışır? Yapay zeka ajanlarını veritabanlarına, API'lere ve geliştirici araçlarına bağlayan yeni standardı keşfedin."
+category: "Yapay Zeka"
+tags:
+  - "Model Context Protocol"
+  - "MCP nedir"
+  - "AI Agent"
+  - "Yapay Zeka Mimarisi"
+  - "LLM entegrasyonu"
+---
+
+Yapay zeka modelleri yalnızca sohbet eden asistanlar olmaktan çıkıp doğrudan kod yazan, dosya düzenleyen, veritabanı sorgulayan ve dış API'lerle etkileşime giren **AI Agent** sistemlerine dönüştü. Bu dönüşümün merkezinde ise araç entegrasyonunu standartlaştıran **Model Context Protocol (MCP)** yer alıyor.
+
+## Model Context Protocol (MCP) Nedir?
+
+MCP, büyük dil modellerinin (LLM) harici veri kaynakları ve araçlarla (tools) güvenli, tutarlı ve standart bir biçimde iletişim kurmasını sağlayan açık bir protokoldür. Eskiden her yapay zeka uygulaması için GitHub, Slack, PostgreSQL veya dosya sistemi entegrasyonunu sıfırdan yazmak gerekirken, MCP sayesinde tek bir standart arayüz üzerinden tüm bu sistemlere bağlanmak mümkün hale geliyor.
+
+Kısaca USB-C benzetmesi yapılabilir: Farklı cihazları tek bir standart kabloyla bağlamak gibi, farklı AI istemcilerini de tek bir protokolle yüzlerce araca bağlayabilirsiniz.
+
+## MCP Mimarisi Nasıl Çalışır?
+
+MCP mimarisi temel olarak üç ana bileşenden oluşur:
+
+1. **MCP Host:** Kullanıcının etkileşime girdiği yapay zeka uygulaması (IDE eklentileri, masaüstü ajanları veya özel web uygulamaları).
+2. **MCP Client:** Host içinde çalışan ve sunucularla protokol seviyesinde bağlantı kuran istemci katmanı.
+3. **MCP Server:** Belirli bir yeteneği (örneğin veritabanı sorgulama, Git işlemleri veya web arama) dışarıya standart şemalarla sunan hafif servisler.
+
+## Yazılım Geliştiriciler İçin Neden Önemli?
+
+Full Stack geliştiriciler açısından MCP, ürün geliştirme hızını doğrudan artırır:
+
+- **Tekrar Kullanılabilirlik:** Bir kez yazdığınız MCP sunucusunu farklı LLM modelleriyle (Gemini, Claude, GPT vb.) ek kod yazmadan kullanabilirsiniz.
+- **Güvenli Yetkilendirme:** Hangi aracın hangi veriye erişebileceği açık şemalarla sınırlandırılır.
+- **Hızlı Otomasyon:** İçerik üretimi, CI/CD takibi, hata analizi ve müşteri destek akışları doğrudan agent iş akışlarına bağlanabilir.
+
+## Sıkça Sorulan Sorular (SSS)
+
+### MCP sadece tek bir yapay zeka modeliyle mi çalışır?
+Hayır. MCP açık bir standarttır ve protokolü destekleyen tüm modern LLM istemcileri ve agent çerçeveleriyle çalışabilir.
+
+### Kendi projem için MCP sunucusu yazabilir miyim?
+Evet. TypeScript veya Python SDK'larını kullanarak birkaç dosya içinde kendi API'nizi veya veritabanınızı bir MCP sunucusuna dönüştürebilirsiniz.

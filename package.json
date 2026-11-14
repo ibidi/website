@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "generate:news": "node scripts/generate-ai-news.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",

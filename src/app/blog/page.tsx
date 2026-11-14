@@ -7,15 +7,21 @@ import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Thoughts on software development, life, and more.",
+  description:
+    "Yapay zeka haberleri, Next.js, TypeScript ve modern yazılım geliştirme üzerine teknik yazılar ve rehberler.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: "Blog | İhsan Baki Doğan",
+    description:
+      "Yapay zeka haberleri, Next.js, TypeScript ve modern yazılım geliştirme üzerine teknik yazılar ve rehberler.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: "Blog | İhsan Baki Doğan",
+    description:
+      "Yapay zeka haberleri, Next.js, TypeScript ve modern yazılım geliştirme üzerine teknik yazılar ve rehberler.",
   },
 };
 

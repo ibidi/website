@@ -1,0 +1,62 @@
+name: Auto AI Blog & Deploy
+
+on:
+  schedule:
+    # Her gün Türkiye saatiyle 12:00'da (09:00 UTC) çalışır
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      max_posts:
+        description: "Üretilecek maksimum yazı sayısı"
+        required: false
+        default: "1"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Generate Turkish SEO AI blog post
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          MAX_POSTS_PER_RUN: ${{ github.event.inputs.max_posts || '1' }}
+        run: node scripts/generate-ai-news.mjs
+
+      - name: Check for new posts
+        id: git_status
+        run: |
+          if [ -n "$(git status --porcelain content/)" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push new post
+        if: steps.git_status.outputs.has_changes == 'true'
+        run: |
+          git config user.name "ibidi-ai-bot"
+          git config user.email "bot@ibidi.dev"
+          git add content/
+          git commit -m "chore(blog): auto-publish translated AI news post"
+          git push
+
+      - name: Install dependencies & Deploy to Cloudflare Workers
+        if: steps.git_status.outputs.has_changes == 'true' && secrets.CLOUDFLARE_API_TOKEN != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npm ci
+          npm run deploy
