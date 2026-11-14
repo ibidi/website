@@ -190,11 +190,10 @@ export const DATA = {
       description:
         "Tahmin ligi ve mini oyunlar platformu. Topluluk odaklı gerçek zamanlı skorlama, liderlik tabloları ve etkileşimli oyun deneyimi.",
       technologies: [
-        "Next.js",
-        "TypeScript",
-        "TailwindCSS",
-        "Node.js",
-        "Cloudflare Workers",
+        "Tahmin Ligi",
+        "Mini Oyunlar",
+        "Topluluk",
+        "Liderlik Tablosu",
       ],
       links: [
         {
